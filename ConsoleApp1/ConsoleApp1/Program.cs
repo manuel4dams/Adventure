@@ -11,6 +11,7 @@ namespace ConsoleApp1
         public static void Main(string[] args)
         {
         }
+
         public int Distance(int x, int y)
         {
             if (x >= y)
