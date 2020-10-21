@@ -1,5 +1,5 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CoolesSpiel;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ConsoleApp1;
 using System.Diagnostics.CodeAnalysis;
 
 namespace UnitTestProject1
@@ -11,7 +11,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void DistanceTest()
         {
-            Calc c = new Calc();
+            Program c = new Program();
             int result = c.Distance(7, 5);
             Assert.AreEqual(2, result);
         }

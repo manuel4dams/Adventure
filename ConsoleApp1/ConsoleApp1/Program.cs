@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoolesSpiel
+namespace ConsoleApp1
 {
-    public class Calc
+    public class Program
     {
+        public static void Main(string[] args)
+        {
+        }
         public int Distance(int x, int y)
         {
-            if(x >= y)
+            if (x >= y)
             {
                 return x - y;
             }
