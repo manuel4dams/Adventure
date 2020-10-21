@@ -10,7 +10,7 @@ namespace CoolesSpiel
     {
         public int Distance(int x, int y)
         {
-            if(x >= y)
+            if (x >= y)
             {
                 return x - y;
             }
