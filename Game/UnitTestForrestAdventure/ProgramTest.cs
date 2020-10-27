@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConsoleApp1;
+using ForrestAdventure;
 using System.Diagnostics.CodeAnalysis;
 
-namespace UnitTestProject1
+namespace UnitTestForrestAdventure
 {
     [ExcludeFromCodeCoverage]
     [TestClass]
-    public class CalcTest
+    public class ProgramTest
     {
         [TestMethod]
         public void DistanceTest()

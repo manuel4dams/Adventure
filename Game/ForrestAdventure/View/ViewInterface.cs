@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.View
+﻿namespace ForrestAdventure.View
 {
     public interface ViewInterface
     {

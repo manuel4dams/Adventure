@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.Camera
+﻿namespace ForrestAdventure.Camera
 {
     public interface CameraInterface
     {

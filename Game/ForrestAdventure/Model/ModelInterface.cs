@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.Model
+﻿namespace ForrestAdventure.Model
 {
     public interface ModelInterface
     {

@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.Controller
+﻿namespace ForrestAdventure.Controller
 {
     public interface ControllerInterface
     {
