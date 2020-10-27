@@ -1,19 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConsoleApp1;
+using ForrestAdventure;
 using System.Diagnostics.CodeAnalysis;
 
-namespace UnitTestProject1
+namespace UnitTestForrestAdventure
 {
     [ExcludeFromCodeCoverage]
     [TestClass]
-    public class CalcTest
+    public class ProgramTest
     {
         [TestMethod]
-        public void DistanceTest()
+        public void SomeTest()
         {
             Program c = new Program();
-            int result = c.Distance(7, 5);
-            Assert.AreEqual(2, result);
+            // TODO implement testcase
         }
     }
 }
