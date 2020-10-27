@@ -9,11 +9,10 @@ namespace UnitTestForrestAdventure
     public class ProgramTest
     {
         [TestMethod]
-        public void DistanceTest()
+        public void SomeTest()
         {
             Program c = new Program();
-            int result = c.Distance(7, 5);
-            Assert.AreEqual(2, result);
+            // TODO implement testcase
         }
     }
 }
