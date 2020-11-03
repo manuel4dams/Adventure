@@ -9,7 +9,7 @@ namespace ForrestAdventure.Helper
 
         public static Matrix4 Combine(params Matrix4[] transformations)
         {
-            var result = transformations[0];
+            Matrix4 result = transformations[0];
             for (int i = 1; i < transformations.Length; ++i)
             {
                 result = Combine(result, transformations[i]);

@@ -2,6 +2,6 @@
 {
     public interface IView
     {
-        // TODO implement
+        // TODO interface needed?
     }
 }

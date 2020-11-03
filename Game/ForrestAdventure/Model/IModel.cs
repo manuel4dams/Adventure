@@ -1,7 +1,15 @@
-﻿namespace ForrestAdventure.Model
+﻿using System.Collections.Generic;
+
+namespace ForrestAdventure.Model
 {
     public interface IModel
     {
-        // TODO implement
+        IRectangle Player { get; }
+
+        IEnumerable<IRectangle> Enemy { get; }
+
+        IEnumerable<IRectangle> Platform { get; }
+
+        IEnumerable<IRectangle> Arrows { get; }
     }
 }
