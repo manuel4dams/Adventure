@@ -57,9 +57,14 @@
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Helper\Transformation.cs" />
     <Compile Include="Model\IModel.cs" />
+    <Compile Include="Model\IRectangle.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Object.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IView.cs" />
+    <Compile Include="View\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
