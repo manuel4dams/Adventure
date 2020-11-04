@@ -14,6 +14,11 @@ namespace ForrestAdventure.View
             }
         }
 
+        internal void Resize(int width, int height)
+        {
+            GL.Viewport(0, 0, width, height);
+        }
+
         private static void Draw(IRectangle rect)
         {
             GL.Begin(PrimitiveType.Quads);
@@ -26,11 +31,6 @@ namespace ForrestAdventure.View
             GL.TexCoord2(0f, 1f);
             GL.Vertex2(rect.MinX, rect.MaxY);
             GL.End();
-        }
-
-        internal void Resize(int width, int height)
-        {
-            GL.Viewport(0, 0, width, height);
         }
     }
 }

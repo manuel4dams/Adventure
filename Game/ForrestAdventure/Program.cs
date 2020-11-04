@@ -31,7 +31,9 @@ namespace ForrestAdventure
             window.Resize += (objectArgs, args) => view.Resize(window.Width, window.Height);
             window.RenderFrame += (objectArgs, frameEventArgs) => view.Draw(model);
             window.RenderFrame += (objectArgs, frameEventArgs) => window.SwapBuffers();
-            window.Run(); // start the game loop with 60Hz
+
+            // start the game loop with 60Hz
+            window.Run();
         }
     }
 }
