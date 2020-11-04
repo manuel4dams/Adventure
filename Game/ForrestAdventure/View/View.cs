@@ -12,6 +12,7 @@ namespace ForrestAdventure.View
             {
                 Draw(platform);
             }
+            Draw(model.Player);
         }
 
         internal void Resize(int width, int height)

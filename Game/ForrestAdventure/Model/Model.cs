@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 
 namespace ForrestAdventure.Model
 {
@@ -7,12 +8,13 @@ namespace ForrestAdventure.Model
         public Model()
         {
             this.AddPlatforms();
+            this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
 
         private readonly List<Object> platforms = new List<Object>();
         private readonly List<Object> enemies = new List<Object>();
         private readonly List<Object> arrows = new List<Object>();
-        private readonly Player player = new Player(1f, 1f, 1f, 1f);
+        private readonly Player player;
 
         public IRectangle Player => this.player;
 
@@ -25,6 +27,7 @@ namespace ForrestAdventure.Model
 
         public void Update(float frameTime)
         {
+            player.PlayerUpdate(frameTime);
         }
 
         internal void AddPlatforms()
