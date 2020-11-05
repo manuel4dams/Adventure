@@ -5,16 +5,16 @@ namespace ForrestAdventure.Model
 {
     public class Model : IModel
     {
+        private readonly List<Object> platforms = new List<Object>();
+        private readonly List<Object> enemies = new List<Object>();
+        private readonly List<Object> arrows = new List<Object>();
+        private readonly Player player;
+
         public Model()
         {
             this.AddPlatforms();
             this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
-
-        private readonly List<Object> platforms = new List<Object>();
-        private readonly List<Object> enemies = new List<Object>();
-        private readonly List<Object> arrows = new List<Object>();
-        private readonly Player player;
 
         public IRectangle Player => this.player;
 
@@ -23,7 +23,6 @@ namespace ForrestAdventure.Model
         public IEnumerable<IRectangle> Platform => this.platforms;
 
         public IEnumerable<IRectangle> Arrows => this.arrows;
-
 
         public void Update(float frameTime)
         {
