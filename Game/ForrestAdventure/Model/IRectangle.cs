@@ -1,6 +1,6 @@
 ﻿namespace ForrestAdventure.Model
 {
-    public interface IRectangle
+    internal interface IRectangle
     {
         float MaxX { get; }
 

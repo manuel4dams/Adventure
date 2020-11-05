@@ -2,7 +2,7 @@
 
 namespace ForrestAdventure.Model
 {
-    public interface IModel
+    internal interface IModel
     {
         IRectangle Player { get; }
 

@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace ForrestAdventure.Model
 {
-    public class Model : IModel
+    class Model : IModel
     {
         public Model()
         {

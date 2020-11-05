@@ -3,7 +3,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace ForrestAdventure.View
 {
-    public class View : IView
+    public class View
     {
         internal void Draw(IModel model)
         {
@@ -12,12 +12,15 @@ namespace ForrestAdventure.View
             {
                 Draw(platform);
             }
+
             Draw(model.Player);
         }
 
+        internal Camera Camera { get; } = new Camera();
+
         internal void Resize(int width, int height)
         {
-            GL.Viewport(0, 0, width, height);
+            Camera.Resize(width, height);
         }
 
         private static void Draw(IRectangle rect)

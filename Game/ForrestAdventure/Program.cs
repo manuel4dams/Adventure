@@ -9,13 +9,12 @@ namespace ForrestAdventure
     {
         public static void Main()
         {
-            GameWindow window = new GameWindow(1000, 1000);
+            GameWindow window = new GameWindow();
             Model.Model model = new Model.Model();
             View.View view = new View.View();
             window.WindowState = WindowState.Maximized;
 
             window.Title = Assembly.GetExecutingAssembly().GetName().Name;
-            window.WindowState = WindowState.Normal;
             window.KeyDown += (s, a) =>
             {
                 if (a.Key == Key.Escape)
@@ -32,7 +31,7 @@ namespace ForrestAdventure
             window.RenderFrame += (objectArgs, frameEventArgs) => view.Draw(model);
             window.RenderFrame += (objectArgs, frameEventArgs) => window.SwapBuffers();
 
-            // start the game loop with 60Hz
+            // start the game loop
             window.Run();
         }
     }

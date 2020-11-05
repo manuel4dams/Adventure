@@ -1,6 +1,6 @@
 ﻿namespace ForrestAdventure.Model
 {
-    public class Object : IRectangle
+    internal class Object : IRectangle
     {
         public Object(float minX, float minY, float sizeX, float sizeY)
         {
