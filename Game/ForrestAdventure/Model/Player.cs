@@ -3,7 +3,7 @@ using System;
 
 namespace ForrestAdventure.Model
 {
-    internal class Player : Object
+    public class Player : Object
     {
         private readonly IModel model;
         private readonly float gravity = -0.025f;
@@ -16,7 +16,7 @@ namespace ForrestAdventure.Model
             this.model = model;
         }
 
-        internal void PlayerUpdate(float frameTime)
+        public void PlayerUpdate(float frameTime)
         {
             bool intersect = false;
             var keyboard = Keyboard.GetState();
