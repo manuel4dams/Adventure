@@ -3,7 +3,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace ForrestAdventure.View
 {
-    public class View : IView
+    public class View
     {
         internal void Draw(IModel model)
         {
@@ -12,6 +12,7 @@ namespace ForrestAdventure.View
             {
                 Draw(platform);
             }
+
             Draw(model.Player);
         }
 
