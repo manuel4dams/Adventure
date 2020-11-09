@@ -1,19 +1,40 @@
-﻿using ForrestAdventure.Model;
+﻿using System.Drawing;
+using ForrestAdventure.Model;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
 namespace ForrestAdventure.View
 {
     public class View
     {
+        private readonly Color4 exitColor = new Color4(135, 206, 235, 255);
+        private readonly Color4 platformColor = new Color4(139, 69, 19, 255);
+        private readonly Color4 playerColor = new Color4(50, 205, 50, 255);
+        private readonly Color4 enemyColor = new Color4(255, 0, 0, 255);
+        private readonly Image background;
+
+        public View()
+        {
+            // background = TextureTools.LoadFromResource("Content.ForestBackground.png");
+        }
+
         internal void Draw(IModel model)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.Color4(platformColor);
             foreach (IRectangle platform in model.Platform)
             {
                 Draw(platform);
             }
-
+            
+            GL.Color4(playerColor);
             Draw(model.Player);
+            GL.Color4(exitColor);
+            Draw(model.Exit);
+        }
+
+        internal void DrawBackground()
+        {
         }
 
         internal void Resize(int width, int height)
