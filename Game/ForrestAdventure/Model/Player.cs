@@ -26,7 +26,8 @@ namespace ForrestAdventure.Model
                 return;
             }
 
-            handleGravity();
+            checkPlayerFallingOfTheMap();
+            handlePlayerPlatformAirBehavior();
 
             KeyboardState keyboard = Keyboard.GetState();
             handleJump(keyboard, frameTime);
@@ -45,12 +46,21 @@ namespace ForrestAdventure.Model
             }
         }
 
+        private void checkPlayerFallingOfTheMap()
+        {
+            if (this.MinY <= -1.5f)
+            {
+                this.MinY = -0.9f;
+                this.MinX = -0.9f;
+            }
+        }
+
         private bool checkWinCondition()
         {
             return this.IntersectCheck(this.model.Exit);
         }
 
-        private void handleGravity()
+        private void handlePlayerPlatformAirBehavior()
         {
             foreach (IRectangle platform in this.model.Platform)
             {
@@ -97,12 +107,6 @@ namespace ForrestAdventure.Model
             if (this.force < 1f)
             {
                 this.MinY += this.force;
-            }
-
-            if (this.MinY <= -1.5f)
-            {
-                this.MinY = -0.9f;
-                this.MinX = -0.9f;
             }
         }
 
