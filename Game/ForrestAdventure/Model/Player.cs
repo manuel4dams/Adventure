@@ -1,5 +1,5 @@
-﻿using System;
-using OpenTK.Input;
+﻿using OpenTK.Input;
+using System;
 
 namespace ForrestAdventure.Model
 {
@@ -27,6 +27,12 @@ namespace ForrestAdventure.Model
                     intersect = true;
                     break;
                 }
+            }
+
+            // end game if player hits the exit
+            if (this.IntersectCheck(this.model.Exit))
+            {
+                return;
             }
 
             if (intersect)

@@ -11,5 +11,7 @@ namespace ForrestAdventure.Model
         IEnumerable<IRectangle> Platform { get; }
 
         IEnumerable<IRectangle> Arrows { get; }
+
+        Object Exit { get; }
     }
 }
