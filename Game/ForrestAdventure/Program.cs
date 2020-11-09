@@ -33,7 +33,7 @@ namespace ForrestAdventure
             window.RenderFrame += (objectArgs, frameEventArgs) => window.SwapBuffers();
 
             // start the game loop with 60Hz
-            window.Run();
+            window.Run(60);
         }
     }
 }

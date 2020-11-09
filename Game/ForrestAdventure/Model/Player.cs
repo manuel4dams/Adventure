@@ -9,6 +9,7 @@ namespace ForrestAdventure.Model
         private readonly float gravity = -0.025f;
         private float jump = 0;
         private float force = 0.025f;
+        private bool intersect;
 
         public Player(float minX, float minY, float sizeX, float sizeY, IModel model)
             : base(minX, minY, sizeX, sizeY)
@@ -16,10 +17,41 @@ namespace ForrestAdventure.Model
             this.model = model;
         }
 
-        public void PlayerUpdate(float frameTime)
+        public void updatePlayer(float frameTime)
         {
-            bool intersect = false;
-            var keyboard = Keyboard.GetState();
+            checkEnemyCollision();
+            // for now freeze when hitting the exit
+            if (checkWinCondition())
+            {
+                return;
+            }
+
+            handleGravity();
+
+            KeyboardState keyboard = Keyboard.GetState();
+            handleJump(keyboard, frameTime);
+            handleMovement(keyboard, frameTime);
+        }
+
+        private void checkEnemyCollision()
+        {
+            foreach (IRectangle enemy in this.model.Enemies)
+            {
+                if (this.IntersectCheck(enemy))
+                {
+                    this.MinY = -0.9f;
+                    this.MinX = -0.9f;
+                }
+            }
+        }
+
+        private bool checkWinCondition()
+        {
+            return this.IntersectCheck(this.model.Exit);
+        }
+
+        private void handleGravity()
+        {
             foreach (IRectangle platform in this.model.Platform)
             {
                 if (this.IntersectCheck(platform))
@@ -32,20 +64,16 @@ namespace ForrestAdventure.Model
             if (intersect)
             {
                 this.force = 0;
+                intersect = false;
             }
             else
             {
                 this.force += this.gravity;
             }
+        }
 
-            float leftRightAxis = keyboard.IsKeyDown(Key.Left) ? -1f : keyboard.IsKeyDown(Key.Right) ? 1f : 0f;
-            this.MinX += frameTime * leftRightAxis;
-            this.MinX = Math.Max(this.MinX, -1f);
-            if (this.MaxX > 1f)
-            {
-                this.MinX = 1f - this.SizeX;
-            }
-
+        private void handleJump(KeyboardState keyboard, float frameTime)
+        {
             if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
             {
                 this.jump = .5f;
@@ -53,7 +81,11 @@ namespace ForrestAdventure.Model
 
             if (this.jump > 0)
             {
-                this.force += .025f;
+                if (this.force < 1f)
+                {
+                    this.force += .025f;
+                }
+
                 this.jump -= frameTime;
             }
 
@@ -62,12 +94,24 @@ namespace ForrestAdventure.Model
                 this.force = this.gravity;
             }
 
-            this.MinY += this.force;
+            if (this.force < 1f)
+            {
+                this.MinY += this.force;
+            }
+
             if (this.MinY <= -1.5f)
             {
                 this.MinY = -0.9f;
                 this.MinX = -0.9f;
             }
+        }
+
+        private void handleMovement(KeyboardState keyboard, float frameTime)
+        {
+            float leftRightAxis = keyboard.IsKeyDown(Key.Left) ? -1f : keyboard.IsKeyDown(Key.Right) ? 1f : 0f;
+            this.MinX += frameTime * leftRightAxis;
+
+            this.MinX = Math.Max(this.MinX, -1f);
         }
     }
 }

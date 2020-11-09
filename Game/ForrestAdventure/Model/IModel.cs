@@ -6,10 +6,12 @@ namespace ForrestAdventure.Model
     {
         IRectangle Player { get; }
 
-        IEnumerable<IRectangle> Enemy { get; }
+        IEnumerable<IRectangle> Enemies { get; }
 
         IEnumerable<IRectangle> Platform { get; }
 
         IEnumerable<IRectangle> Arrows { get; }
+
+        Object Exit { get; }
     }
 }
