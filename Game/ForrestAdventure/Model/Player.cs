@@ -86,7 +86,14 @@ namespace ForrestAdventure.Model
         {
             if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
             {
-                this.jump = 0.5f;
+                foreach (IRectangle platform in this.model.Platform)
+                {
+                    if (this.BoxCheck(new Object(this.MinX, this.MinY - 0.0375f, 0.075f, 0.075f),platform))
+                    {
+                        this.jump = 0.5f;
+                        break;
+                    }
+                }
             }
 
             if (this.jump > 0f)

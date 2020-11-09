@@ -1,4 +1,6 @@
-﻿namespace ForrestAdventure.Model
+﻿using OpenTK;
+
+namespace ForrestAdventure.Model
 {
     public class Object : IRectangle
     {
@@ -26,6 +28,13 @@
         {
             bool noXintersect = (this.MaxX <= obj.MinX) || (this.MinX >= obj.MaxX);
             bool noYintersect = (this.MaxY <= obj.MinY) || (this.MinY >= obj.MaxY);
+            return !(noXintersect || noYintersect);
+        }
+
+        public bool BoxCheck(IRectangle org, IRectangle obj)
+        {
+            bool noXintersect = (org.MaxX <= obj.MinX) || (org.MinX >= obj.MaxX);
+            bool noYintersect = (org.MaxY <= obj.MinY) || (org.MinY >= obj.MaxY);
             return !(noXintersect || noYintersect);
         }
     }
