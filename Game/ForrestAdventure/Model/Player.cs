@@ -86,19 +86,21 @@ namespace ForrestAdventure.Model
         {
             if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
             {
-                this.jump = .5f;
+                this.jump = 0.5f;
             }
 
-            if (this.jump > 0)
+            if (this.jump > 0f)
             {
                 if (this.force < 1f)
                 {
-                    this.force += .025f;
+                    this.force += 0.025f;
                 }
 
                 this.jump -= frameTime;
+                Console.WriteLine(jump);
             }
 
+            // handle gravity
             if (this.force < this.gravity)
             {
                 this.force = this.gravity;
