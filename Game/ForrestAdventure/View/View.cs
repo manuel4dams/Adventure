@@ -26,9 +26,15 @@ namespace ForrestAdventure.View
             {
                 Draw(platform);
             }
-            
+
             GL.Color4(playerColor);
             Draw(model.Player);
+            GL.Color4(enemyColor);
+            foreach (IRectangle enemy in model.Enemies)
+            {
+                Draw(enemy);
+            }
+
             GL.Color4(exitColor);
             Draw(model.Exit);
         }
