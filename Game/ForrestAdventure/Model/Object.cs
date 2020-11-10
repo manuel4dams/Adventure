@@ -31,10 +31,10 @@ namespace ForrestAdventure.Model
             return !(noXintersect || noYintersect);
         }
 
-        public bool BoxCheck(IRectangle org, IRectangle obj)
+        public bool JumpIntersectCheck(IRectangle player, IRectangle targetObject)
         {
-            bool noXintersect = (org.MaxX <= obj.MinX) || (org.MinX >= obj.MaxX);
-            bool noYintersect = (org.MaxY <= obj.MinY) || (org.MinY >= obj.MaxY);
+            bool noXintersect = (player.MaxX <= targetObject.MinX) || (player.MinX >= targetObject.MaxX);
+            bool noYintersect = (player.MaxY <= targetObject.MinY) || (player.MinY >= targetObject.MaxY);
             return !(noXintersect || noYintersect);
         }
     }

@@ -88,9 +88,9 @@ namespace ForrestAdventure.Model
             {
                 foreach (IRectangle platform in this.model.Platform)
                 {
-                    if (this.BoxCheck(new Object(this.MinX, this.MinY - 0.0375f, 0.075f, 0.075f),platform))
+                    if (this.JumpIntersectCheck(model.Player, platform))
                     {
-                        this.jump = 0.5f;
+                        this.jump = 0.2f;
                         break;
                     }
                 }
@@ -104,7 +104,6 @@ namespace ForrestAdventure.Model
                 }
 
                 this.jump -= frameTime;
-                Console.WriteLine(jump);
             }
 
             // handle gravity
