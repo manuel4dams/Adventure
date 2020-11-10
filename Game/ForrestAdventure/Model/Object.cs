@@ -31,10 +31,14 @@ namespace ForrestAdventure.Model
             return !(noXintersect || noYintersect);
         }
 
-        public bool JumpIntersectCheck(IRectangle player, IRectangle targetObject)
+        public bool JumpIntersectCheck(IRectangle targetObject)
         {
+            // add box on player feet to check collision with platform
+            IRectangle player = new Object(this.MinX, this.MinY, SizeX, 0.03f);
+
             bool noXintersect = (player.MaxX <= targetObject.MinX) || (player.MinX >= targetObject.MaxX);
             bool noYintersect = (player.MaxY <= targetObject.MinY) || (player.MinY >= targetObject.MaxY);
+
             return !(noXintersect || noYintersect);
         }
     }

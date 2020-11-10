@@ -64,7 +64,7 @@ namespace ForrestAdventure.Model
         {
             foreach (IRectangle platform in this.model.Platform)
             {
-                if (this.IntersectCheck(platform))
+                if (this.JumpIntersectCheck(platform))
                 {
                     intersect = true;
                     break;
@@ -88,8 +88,9 @@ namespace ForrestAdventure.Model
             {
                 foreach (IRectangle platform in this.model.Platform)
                 {
-                    if (this.JumpIntersectCheck(model.Player, platform))
+                    if (this.JumpIntersectCheck(platform))
                     {
+                        Console.WriteLine(base.SizeX);
                         this.jump = 0.2f;
                         break;
                     }

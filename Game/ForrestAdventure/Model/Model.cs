@@ -37,17 +37,17 @@ namespace ForrestAdventure.Model
 
         internal void AddPlatforms()
         {
-            this.platforms.Add(new Object(-1f, -1f, 0.8f, 0.005f));
-            this.platforms.Add(new Object(-0.25f, -0.8f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(0.4f, -0.6f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(-0.7f, -0.6f, 0.2f, 0.005f));
-            this.platforms.Add(new Object(-0.25f, -0.4f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(0.5f, -0.2f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(-0.4f, 0f, 0.8f, 0.005f));
-            this.platforms.Add(new Object(-0.2f, 0.2f, 0.2f, 0.005f));
-            this.platforms.Add(new Object(-0.6f, 0.4f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(0f, 0.6f, 0.4f, 0.005f));
-            this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, 0.005f));
+            this.platforms.Add(new Object(-1f, -1f, 0.8f, 0.02f));
+            this.platforms.Add(new Object(-0.25f, -0.8f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(0.4f, -0.6f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(-0.7f, -0.6f, 0.2f, 0.02f));
+            this.platforms.Add(new Object(-0.25f, -0.4f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(0.5f, -0.2f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(-0.4f, 0f, 0.8f, 0.02f));
+            this.platforms.Add(new Object(-0.2f, 0.2f, 0.2f, 0.02f));
+            this.platforms.Add(new Object(-0.6f, 0.4f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(0f, 0.6f, 0.4f, 0.02f));
+            this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, 0.02f));
         }
 
         internal void AddEnemies()
