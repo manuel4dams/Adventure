@@ -23,10 +23,7 @@ namespace ForrestAdventure
                     window.Close();
                 }
             };
-#if DEBUG
-            // DEBUG ONLY get mouse coords on click
-            window.MouseDown += (s, e) => { Console.WriteLine("x:" + e.X + "y:" + e.Y); };
-#endif
+
             window.UpdateFrame += (objectArgs, args) => model.Update((float) args.Time);
             window.Resize += (objectArgs, args) => view.Resize(window.Width, window.Height);
             window.RenderFrame += (objectArgs, frameEventArgs) => view.Draw(model);

@@ -26,7 +26,8 @@ namespace ForrestAdventure.Model
                 return;
             }
 
-            handleGravity();
+            checkPlayerFallingOfTheMap();
+            handlePlayerPlatformAirBehavior();
 
             KeyboardState keyboard = Keyboard.GetState();
             handleJump(keyboard, frameTime);
@@ -45,16 +46,25 @@ namespace ForrestAdventure.Model
             }
         }
 
+        private void checkPlayerFallingOfTheMap()
+        {
+            if (this.MinY <= -1.5f)
+            {
+                this.MinY = -0.9f;
+                this.MinX = -0.9f;
+            }
+        }
+
         private bool checkWinCondition()
         {
             return this.IntersectCheck(this.model.Exit);
         }
 
-        private void handleGravity()
+        private void handlePlayerPlatformAirBehavior()
         {
             foreach (IRectangle platform in this.model.Platform)
             {
-                if (this.IntersectCheck(platform))
+                if (this.JumpIntersectCheck(platform))
                 {
                     intersect = true;
                     break;
@@ -76,19 +86,28 @@ namespace ForrestAdventure.Model
         {
             if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
             {
-                this.jump = .5f;
+                foreach (IRectangle platform in this.model.Platform)
+                {
+                    if (this.JumpIntersectCheck(platform))
+                    {
+                        Console.WriteLine(base.SizeX);
+                        this.jump = 0.2f;
+                        break;
+                    }
+                }
             }
 
-            if (this.jump > 0)
+            if (this.jump > 0f)
             {
                 if (this.force < 1f)
                 {
-                    this.force += .025f;
+                    this.force += 0.025f;
                 }
 
                 this.jump -= frameTime;
             }
 
+            // handle gravity
             if (this.force < this.gravity)
             {
                 this.force = this.gravity;
@@ -97,12 +116,6 @@ namespace ForrestAdventure.Model
             if (this.force < 1f)
             {
                 this.MinY += this.force;
-            }
-
-            if (this.MinY <= -1.5f)
-            {
-                this.MinY = -0.9f;
-                this.MinX = -0.9f;
             }
         }
 
