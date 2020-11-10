@@ -24,7 +24,7 @@ namespace ForrestAdventure
                 }
             };
 
-            window.UpdateFrame += (objectArgs, args) => model.Update((float) args.Time);
+            window.UpdateFrame += (objectArgs, args) => model.Update((float)args.Time);
             window.Resize += (objectArgs, args) => view.Resize(window.Width, window.Height);
             window.RenderFrame += (objectArgs, frameEventArgs) => view.Draw(model);
             window.RenderFrame += (objectArgs, frameEventArgs) => window.SwapBuffers();
