@@ -4,6 +4,12 @@ namespace ForestAdventure.Model
 {
     public class Model : IModel
     {
+        private readonly List<Object> platforms = new List<Object>();
+        private readonly List<Enemy> enemies = new List<Enemy>();
+        private readonly List<Object> arrows = new List<Object>();
+        private readonly Player player;
+        private readonly Object exit;
+
         public Model()
         {
             this.AddPlatforms();
@@ -11,12 +17,6 @@ namespace ForestAdventure.Model
             this.exit = new Object(0.91f, 0.8f, 0.09f, 0.2f);
             this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
-
-        private readonly List<Object> platforms = new List<Object>();
-        private readonly List<Enemy> enemies = new List<Enemy>();
-        private readonly List<Object> arrows = new List<Object>();
-        private readonly Player player;
-        private readonly Object exit;
 
         public IRectangle Player => this.player;
 
@@ -30,7 +30,7 @@ namespace ForestAdventure.Model
 
         public void Update(float frameTime)
         {
-            player.updatePlayer(frameTime);
+            player.UpdatePlayer(frameTime);
             foreach (var enemy in enemies)
             {
                 enemy.UpdateEnemy(frameTime);

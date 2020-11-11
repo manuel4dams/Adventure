@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
+using ForestAdventure.Helper;
 using ForestAdventure.Model;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using ForestAdventure.Helper;
 
 namespace ForestAdventure.View
 {

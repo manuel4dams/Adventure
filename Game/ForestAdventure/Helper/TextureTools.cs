@@ -25,17 +25,33 @@ namespace ForestAdventure.Helper
             var bytes = image.GetPixelsUnsafe().ToArray();
             var handle = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, handle);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS,
+            GL.TexParameter(
+                TextureTarget.Texture2D,
+                TextureParameterName.TextureWrapS,
                 (int) TextureWrapMode.ClampToEdge);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT,
+            GL.TexParameter(
+                TextureTarget.Texture2D,
+                TextureParameterName.TextureWrapT,
                 (int) TextureWrapMode.ClampToEdge);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+            GL.TexParameter(
+                TextureTarget.Texture2D,
+                TextureParameterName.TextureMagFilter,
                 (int) TextureMagFilter.Linear);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+            GL.TexParameter(
+                TextureTarget.Texture2D,
+                TextureParameterName.TextureMinFilter,
                 (int) TextureMinFilter.LinearMipmapLinear);
 
-            GL.TexImage2D(TextureTarget.Texture2D, 0, (PixelInternalFormat) format, image.Width, image.Height, 0,
-                format, PixelType.UnsignedByte, bytes);
+            GL.TexImage2D(
+                TextureTarget.Texture2D,
+                0,
+                (PixelInternalFormat) format,
+                image.Width,
+                image.Height,
+                0,
+                format,
+                PixelType.UnsignedByte,
+                bytes);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.GenerateMipmap, 1);
             GL.BindTexture(TextureTarget.Texture2D, 0);

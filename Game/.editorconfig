@@ -1,0 +1,12 @@
+﻿root = true
+
+[*.cs]
+
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.SA0003.severity = none
+dotnet_diagnostic.SA0009.severity = none
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1633.severity = none
+

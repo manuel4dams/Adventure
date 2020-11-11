@@ -14,10 +14,10 @@ namespace ForestAdventure.Model
 
         public void UpdateEnemy(float frameTime)
         {
-            handleMovement(frameTime);
+            HandleMovement(frameTime);
         }
 
-        private void handleMovement(float frameTime)
+        private void HandleMovement(float frameTime)
         {
             this.MinX += frameTime * 1f;
             this.MinX = Math.Max(this.MinX, -1f);

@@ -13,10 +13,15 @@ namespace ForestAdventure.View
         }
 
         public float MinX { get; set; }
+
         public float MinY { get; set; }
+
         public float MaxX => MinX + SizeX;
+
         public float MaxY => MinY + SizeY;
+
         public float SizeX { get; }
+
         public float SizeY { get; }
     }
 }
