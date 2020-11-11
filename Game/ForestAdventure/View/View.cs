@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
-using ForrestAdventure.Model;
+using ForestAdventure.Model;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
-namespace ForrestAdventure.View
+namespace ForestAdventure.View
 {
     public class View
     {

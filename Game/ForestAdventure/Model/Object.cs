@@ -1,6 +1,4 @@
-﻿using OpenTK;
-
-namespace ForrestAdventure.Model
+﻿namespace ForestAdventure.Model
 {
     public class Object : IRectangle
     {

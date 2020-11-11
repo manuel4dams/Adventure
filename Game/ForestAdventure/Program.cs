@@ -1,9 +1,8 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using OpenTK;
 using OpenTK.Input;
 
-namespace ForrestAdventure
+namespace ForestAdventure
 {
     public class Program
     {

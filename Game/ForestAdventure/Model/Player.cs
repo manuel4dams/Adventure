@@ -1,7 +1,7 @@
-﻿using OpenTK.Input;
-using System;
+﻿using System;
+using OpenTK.Input;
 
-namespace ForrestAdventure.Model
+namespace ForestAdventure.Model
 {
     public class Player : Object
     {

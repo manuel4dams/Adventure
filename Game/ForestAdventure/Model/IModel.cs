@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ForrestAdventure.Model
+namespace ForestAdventure.Model
 {
     public interface IModel
     {

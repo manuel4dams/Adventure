@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
-using OpenTK.Platform.MacOS;
 
-namespace ForrestAdventure.Model
+namespace ForestAdventure.Model
 {
     public class Model : IModel
     {

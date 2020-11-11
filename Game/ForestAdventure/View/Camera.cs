@@ -1,6 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 
-namespace ForrestAdventure.View
+namespace ForestAdventure.View
 {
     internal class Camera
     {
