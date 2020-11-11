@@ -13,14 +13,14 @@ namespace ForestAdventure.Model
         }
 
         private readonly List<Object> platforms = new List<Object>();
-        private readonly List<Object> _enemieses = new List<Object>();
+        private readonly List<Enemy> enemies = new List<Enemy>();
         private readonly List<Object> arrows = new List<Object>();
         private readonly Player player;
         private readonly Object exit;
 
         public IRectangle Player => this.player;
 
-        public IEnumerable<IRectangle> Enemies => this._enemieses;
+        public IEnumerable<IRectangle> Enemies => this.enemies;
 
         public IEnumerable<IRectangle> Platform => this.platforms;
 
@@ -31,6 +31,10 @@ namespace ForestAdventure.Model
         public void Update(float frameTime)
         {
             player.updatePlayer(frameTime);
+            foreach (var enemy in enemies)
+            {
+                enemy.UpdateEnemy(frameTime);
+            }
         }
 
         internal void AddPlatforms()
@@ -50,9 +54,9 @@ namespace ForestAdventure.Model
 
         internal void AddEnemies()
         {
-            this._enemieses.Add(new Object(0.45f, -0.6f, 0.075f, 0.075f));
-            this._enemieses.Add(new Object(-0.2f, 0f, 0.075f, 0.075f));
-            this._enemieses.Add(new Object(0.15f, 0.6f, 0.075f, 0.075f));
+            this.enemies.Add(new Enemy(0.45f, -0.6f, 0.075f, 0.075f, this));
+            this.enemies.Add(new Enemy(-0.2f, 0f, 0.075f, 0.075f, this));
+            this.enemies.Add(new Enemy(0.15f, 0.6f, 0.075f, 0.075f, this));
         }
     }
 }

@@ -5,13 +5,13 @@ namespace ForestAdventure.Model
 {
     public class Player : Object
     {
-        private readonly IModel model;
+        private readonly Model model;
         private readonly float gravity = -0.025f;
         private float jump = 0;
         private float force = 0.025f;
         private bool intersect;
 
-        public Player(float minX, float minY, float sizeX, float sizeY, IModel model)
+        public Player(float minX, float minY, float sizeX, float sizeY, Model model)
             : base(minX, minY, sizeX, sizeY)
         {
             this.model = model;
