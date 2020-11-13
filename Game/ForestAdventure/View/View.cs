@@ -1,26 +1,27 @@
 ﻿using System.Drawing;
-using ForrestAdventure.Model;
+using ForestAdventure.Helper;
+using ForestAdventure.Model;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
-namespace ForrestAdventure.View
+namespace ForestAdventure.View
 {
     public class View
     {
-        private readonly Color4 exitColor = new Color4(135, 206, 235, 255);
-        private readonly Color4 platformColor = new Color4(139, 69, 19, 255);
-        private readonly Color4 playerColor = new Color4(50, 205, 50, 255);
-        private readonly Color4 enemyColor = new Color4(255, 0, 0, 255);
-        private readonly Image background;
+        private readonly Color4 exitColor = new Color4(13, 175, 184, 255);
+        private readonly Color4 platformColor = new Color4(77, 39, 3, 255);
+        private readonly Color4 playerColor = new Color4(5, 128, 13, 255);
+        private readonly Color4 enemyColor = new Color4(184, 12, 0, 255);
+        private int background;
 
         public View()
         {
-            // background = TextureTools.LoadFromResource("Content.ForestBackground.png");
         }
 
         internal void Draw(IModel model)
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            this.DrawBackground();
+
             GL.Color4(platformColor);
             foreach (IRectangle platform in model.Platform)
             {
@@ -41,6 +42,12 @@ namespace ForrestAdventure.View
 
         internal void DrawBackground()
         {
+            this.background = TextureTools.LoadFromResource("GraphicContents.ForestBackground.ForestBackground.png");
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, this.background);
+            var rectangle = new Rectangle(-1, -1, 2, 2);
+            Draw(rectangle);
+            GL.Disable(EnableCap.Texture2D);
         }
 
         internal void Resize(int width, int height)

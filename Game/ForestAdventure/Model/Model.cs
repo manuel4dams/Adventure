@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
-using OpenTK.Platform.MacOS;
 
-namespace ForrestAdventure.Model
+namespace ForestAdventure.Model
 {
     public class Model : IModel
     {
+        private readonly List<Object> platforms = new List<Object>();
+        private readonly List<Enemy> enemies = new List<Enemy>();
+        private readonly List<Object> arrows = new List<Object>();
+        private readonly Player player;
+        private readonly Object exit;
+
         public Model()
         {
             this.AddPlatforms();
@@ -14,15 +18,9 @@ namespace ForrestAdventure.Model
             this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
 
-        private readonly List<Object> platforms = new List<Object>();
-        private readonly List<Object> _enemieses = new List<Object>();
-        private readonly List<Object> arrows = new List<Object>();
-        private readonly Player player;
-        private readonly Object exit;
-
         public IRectangle Player => this.player;
 
-        public IEnumerable<IRectangle> Enemies => this._enemieses;
+        public IEnumerable<IRectangle> Enemies => this.enemies;
 
         public IEnumerable<IRectangle> Platform => this.platforms;
 
@@ -32,7 +30,11 @@ namespace ForrestAdventure.Model
 
         public void Update(float frameTime)
         {
-            player.updatePlayer(frameTime);
+            player.UpdatePlayer(frameTime);
+            foreach (var enemy in enemies)
+            {
+                enemy.UpdateEnemy(frameTime);
+            }
         }
 
         internal void AddPlatforms()
@@ -52,9 +54,10 @@ namespace ForrestAdventure.Model
 
         internal void AddEnemies()
         {
-            this._enemieses.Add(new Object(0.45f, -0.6f, 0.075f, 0.075f));
-            this._enemieses.Add(new Object(-0.2f, 0f, 0.075f, 0.075f));
-            this._enemieses.Add(new Object(0.15f, 0.6f, 0.075f, 0.075f));
+            // for now enemy movementBorderMinimal == <enemy platform> minX, movementBorderMaxmimal == <enemy platform> minX + <enemy platform> sizeX - <Enemy> sizeX
+            this.enemies.Add(new Enemy(0.45f, -0.6f, 0.075f, 0.075f, 0.4f, 0.8f - 0.075f));
+            this.enemies.Add(new Enemy(-0.2f, 0f, 0.075f, 0.075f, -0.4f, 0.4f - 0.075f));
+            this.enemies.Add(new Enemy(0.15f, 0.6f, 0.075f, 0.075f, 0f, 0.4f - 0.075f));
         }
     }
 }

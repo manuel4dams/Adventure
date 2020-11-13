@@ -1,6 +1,6 @@
 ﻿using OpenTK;
 
-namespace ForrestAdventure.Helper
+namespace ForestAdventure.Helper
 {
     public static class Transformation
     {

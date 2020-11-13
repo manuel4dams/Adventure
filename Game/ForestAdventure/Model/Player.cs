@@ -1,40 +1,41 @@
-﻿using OpenTK.Input;
-using System;
+﻿using System;
+using OpenTK.Input;
 
-namespace ForrestAdventure.Model
+namespace ForestAdventure.Model
 {
     public class Player : Object
     {
-        private readonly IModel model;
+        private readonly Model model;
         private readonly float gravity = -0.025f;
         private float jump = 0;
         private float force = 0.025f;
         private bool intersect;
 
-        public Player(float minX, float minY, float sizeX, float sizeY, IModel model)
+        public Player(float minX, float minY, float sizeX, float sizeY, Model model)
             : base(minX, minY, sizeX, sizeY)
         {
             this.model = model;
         }
 
-        public void updatePlayer(float frameTime)
+        public void UpdatePlayer(float frameTime)
         {
-            checkEnemyCollision();
+            CheckEnemyCollision();
+
             // for now freeze when hitting the exit
-            if (checkWinCondition())
+            if (CheckWinCondition())
             {
                 return;
             }
 
-            checkPlayerFallingOfTheMap();
-            handlePlayerPlatformAirBehavior();
+            CheckPlayerFallingOfTheMap();
+            HandlePlayerPlatformAirBehavior();
 
             KeyboardState keyboard = Keyboard.GetState();
-            handleJump(keyboard, frameTime);
-            handleMovement(keyboard, frameTime);
+            HandleJump(keyboard, frameTime);
+            HandleMovement(keyboard, frameTime);
         }
 
-        private void checkEnemyCollision()
+        private void CheckEnemyCollision()
         {
             foreach (IRectangle enemy in this.model.Enemies)
             {
@@ -46,7 +47,7 @@ namespace ForrestAdventure.Model
             }
         }
 
-        private void checkPlayerFallingOfTheMap()
+        private void CheckPlayerFallingOfTheMap()
         {
             if (this.MinY <= -1.5f)
             {
@@ -55,12 +56,12 @@ namespace ForrestAdventure.Model
             }
         }
 
-        private bool checkWinCondition()
+        private bool CheckWinCondition()
         {
             return this.IntersectCheck(this.model.Exit);
         }
 
-        private void handlePlayerPlatformAirBehavior()
+        private void HandlePlayerPlatformAirBehavior()
         {
             foreach (IRectangle platform in this.model.Platform)
             {
@@ -82,7 +83,7 @@ namespace ForrestAdventure.Model
             }
         }
 
-        private void handleJump(KeyboardState keyboard, float frameTime)
+        private void HandleJump(KeyboardState keyboard, float frameTime)
         {
             if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
             {
@@ -90,7 +91,7 @@ namespace ForrestAdventure.Model
                 {
                     if (this.JumpIntersectCheck(platform))
                     {
-                        Console.WriteLine(base.SizeX);
+                        Console.WriteLine(SizeX);
                         this.jump = 0.2f;
                         break;
                     }
@@ -119,7 +120,7 @@ namespace ForrestAdventure.Model
             }
         }
 
-        private void handleMovement(KeyboardState keyboard, float frameTime)
+        private void HandleMovement(KeyboardState keyboard, float frameTime)
         {
             float leftRightAxis = keyboard.IsKeyDown(Key.Left) ? -1f : keyboard.IsKeyDown(Key.Right) ? 1f : 0f;
             this.MinX += frameTime * leftRightAxis;
