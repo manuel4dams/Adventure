@@ -24,14 +24,11 @@ steps:
 
 
   - task: VSBuild@1
-    displayName: 'Build solution **\*.sln'
-    inputs:
-      solution: '$(Parameters.solution)'
-
-      platform: '$(BuildPlatform)'
-
-      configuration: '$(BuildConfiguration)'
+      displayName: 'Build solution **\*.sln'
+      inputs:
+        solution: 'ForestAdventure'
 
 
   - task: VSTest@2
     displayName: 'VsTest - testAssemblies'
+    searchFolder: '$(System.DefaultWorkingDirectory)
