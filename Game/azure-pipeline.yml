@@ -11,6 +11,8 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
+  projectToBuild: '**/*.csproj'
+  testProjectToBuild: '**/*Tests/*.csproj'
 
 #Your build pipeline references an undefined variable named ‘Parameters.RestoreBuildProjects’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references an undefined variable named ‘Parameters.RestoreBuildProjects’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
@@ -23,13 +25,13 @@ steps:
     inputs:
       command: restore
 
-      projects: '**/*.csproj'
+      projects: '$(projectToBuild)'
 
 
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
-      projects: '**/*.csproj'
+      projects: '$(projectToBuild)'
 
       arguments: '--configuration $(BuildConfiguration)'
 
@@ -39,28 +41,9 @@ steps:
     inputs:
       command: test
 
-      projects: '**/*Tests/*.csproj'
+      projects: '$(testProjectToBuild)'
 
       arguments: '--configuration $(BuildConfiguration)'
 
-      publishTestResults: false
-
-
-  - task: VSTest@2
-    displayName: 'VsTest - testAssemblies'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\*TestAdapter.dll
-        !**\obj\**
-        **/*[Tt]ests/*.csproj
-
-      codeCoverageEnabled: true
-
-    enabled: false
-
-  - task: PublishTestResults@2
-    displayName: 'Publish Test Results **/TEST-*.xml'
-
-    enabled: false
+      publishTestResults: true
 
