@@ -40,7 +40,7 @@ steps:
 
       projects: '$(testProjectToBuild)'
 
-      arguments: '--configuration $(BuildConfiguration) --collect “Code coverage”'
+      arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true'
 
       publishTestResults: true
 
