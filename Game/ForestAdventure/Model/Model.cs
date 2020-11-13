@@ -54,9 +54,10 @@ namespace ForestAdventure.Model
 
         internal void AddEnemies()
         {
-            this.enemies.Add(new Enemy(0.45f, -0.6f, 0.075f, 0.075f, this));
-            this.enemies.Add(new Enemy(-0.2f, 0f, 0.075f, 0.075f, this));
-            this.enemies.Add(new Enemy(0.15f, 0.6f, 0.075f, 0.075f, this));
+            // for now enemy movementBorderMinimal == <enemy platform> minX, movementBorderMaxmimal == <enemy platform> minX + <enemy platform> sizeX - <Enemy> sizeX
+            this.enemies.Add(new Enemy(0.45f, -0.6f, 0.075f, 0.075f, 0.4f, 0.8f - 0.075f));
+            this.enemies.Add(new Enemy(-0.2f, 0f, 0.075f, 0.075f, -0.4f, 0.4f - 0.075f));
+            this.enemies.Add(new Enemy(0.15f, 0.6f, 0.075f, 0.075f, 0f, 0.4f - 0.075f));
         }
     }
 }
