@@ -6,7 +6,8 @@ trigger:
   branches:
     include:
       - master
-      - developu
+      - develop
+      - feature-*
       - fix-ci
 
 variables:
