@@ -26,7 +26,7 @@ steps:
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
-      command: rebuild
+      command: build
       projects: '$(projectToBuild)'
       arguments: '--configuration $(BuildConfiguration)'
 
