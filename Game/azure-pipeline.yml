@@ -21,26 +21,19 @@ steps:
     displayName: Restore
     inputs:
       command: restore
-
       projects: '$(projectToBuild)'
-
 
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
+      command: rebuild
       projects: '$(projectToBuild)'
-
       arguments: '--configuration $(BuildConfiguration)'
-
 
   - task: DotNetCoreCLI@2
     displayName: Test
     inputs:
       command: test
-
       projects: '$(testProjectToBuild)'
-
       arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true'
-
       publishTestResults: true
-
