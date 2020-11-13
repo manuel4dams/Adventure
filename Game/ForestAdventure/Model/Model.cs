@@ -39,17 +39,19 @@ namespace ForestAdventure.Model
 
         internal void AddPlatforms()
         {
-            this.platforms.Add(new Object(-1f, -1f, 0.8f, 0.02f));
-            this.platforms.Add(new Object(-0.25f, -0.8f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(0.4f, -0.6f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(-0.7f, -0.6f, 0.2f, 0.02f));
-            this.platforms.Add(new Object(-0.25f, -0.4f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(0.5f, -0.2f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(-0.4f, 0f, 0.8f, 0.02f));
-            this.platforms.Add(new Object(-0.2f, 0.2f, 0.2f, 0.02f));
-            this.platforms.Add(new Object(-0.6f, 0.4f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(0f, 0.6f, 0.4f, 0.02f));
-            this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, 0.02f));
+            const float platformThickness = 0.026f;
+            this.platforms.Add(new Object(-1f, -1f, 0.8f, platformThickness));
+            this.platforms.Add(new Object(-0.25f, -0.8f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(0.4f, -0.6f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(-0.7f, -0.6f, 0.2f, platformThickness));
+            this.platforms.Add(new Object(-0.25f, -0.4f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(0.5f, -0.2f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(-0.4f, 0f, 0.8f, platformThickness));
+            this.platforms.Add(new Object(-0.2f, 0.2f, 0.2f, platformThickness));
+            this.platforms.Add(new Object(-0.6f, 0.4f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(0f, 0.6f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, platformThickness));
+            this.platforms.Add(new Object(-0.6f, -0.8f, 0.3f, platformThickness));
         }
 
         internal void AddEnemies()

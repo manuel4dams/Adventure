@@ -70,6 +70,13 @@ namespace ForestAdventure.Model
                     intersect = true;
                     break;
                 }
+
+                if (this.JumpIntersectCheck(platform, this.force))
+                {
+                    this.MinY = platform.MaxY;
+                    intersect = true;
+                    break;
+                }
             }
 
             if (intersect)

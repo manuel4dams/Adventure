@@ -29,10 +29,10 @@
             return !(noXintersect || noYintersect);
         }
 
-        public bool JumpIntersectCheck(IRectangle targetObject)
+        public bool JumpIntersectCheck(IRectangle targetObject, float SizeY = 0.01f)
         {
             // add box on player feet to check collision with platform
-            IRectangle player = new Object(this.MinX, this.MinY, SizeX, 0.03f);
+            IRectangle player = new Object(this.MinX, this.MinY, this.SizeX, SizeY);
 
             bool noXintersect = (player.MaxX <= targetObject.MinX) || (player.MinX >= targetObject.MaxX);
             bool noYintersect = (player.MaxY <= targetObject.MinY) || (player.MinY >= targetObject.MaxY);
