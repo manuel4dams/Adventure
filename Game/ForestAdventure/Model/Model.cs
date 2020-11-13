@@ -51,7 +51,6 @@ namespace ForestAdventure.Model
             this.platforms.Add(new Object(-0.6f, 0.4f, 0.4f, platformThickness));
             this.platforms.Add(new Object(0f, 0.6f, 0.4f, platformThickness));
             this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, platformThickness));
-            this.platforms.Add(new Object(-0.6f, -0.8f, 0.3f, platformThickness));
         }
 
         internal void AddEnemies()
