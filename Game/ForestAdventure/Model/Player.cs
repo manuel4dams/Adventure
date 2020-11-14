@@ -1,4 +1,6 @@
 ﻿using System;
+using ForestAdventure.View;
+using OpenTK;
 using OpenTK.Input;
 
 namespace ForestAdventure.Model
@@ -33,6 +35,7 @@ namespace ForestAdventure.Model
             KeyboardState keyboard = Keyboard.GetState();
             HandleJump(keyboard, frameTime);
             HandleMovement(keyboard, frameTime);
+            Camera.Position = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
             return false;
         }
 

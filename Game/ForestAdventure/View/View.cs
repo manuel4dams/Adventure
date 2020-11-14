@@ -20,6 +20,7 @@ namespace ForestAdventure.View
 
         internal void Draw(IModel model)
         {
+            GL.Clear(ClearBufferMask.ColorBufferBit);
             this.DrawBackground();
 
             GL.Color4(platformColor);
@@ -59,13 +60,13 @@ namespace ForestAdventure.View
         {
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rect.MinX, rect.MinY);
+            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MinY - Camera.Position.Y);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rect.MaxX, rect.MinY);
+            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MinY - Camera.Position.Y);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rect.MaxX, rect.MaxY);
+            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rect.MinX, rect.MaxY);
+            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
             GL.End();
         }
     }
