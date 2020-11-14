@@ -17,14 +17,14 @@ namespace ForestAdventure.Model
             this.model = model;
         }
 
-        public void UpdatePlayer(float frameTime)
+        public bool UpdatePlayer(float frameTime)
         {
             CheckEnemyCollision();
 
             // for now freeze when hitting the exit
             if (CheckWinCondition())
             {
-                return;
+                return true;
             }
 
             CheckPlayerFallingOfTheMap();
@@ -33,6 +33,7 @@ namespace ForestAdventure.Model
             KeyboardState keyboard = Keyboard.GetState();
             HandleJump(keyboard, frameTime);
             HandleMovement(keyboard, frameTime);
+            return false;
         }
 
         private void CheckEnemyCollision()

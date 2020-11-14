@@ -30,7 +30,11 @@ namespace ForestAdventure.Model
 
         public void Update(float frameTime)
         {
-            player.UpdatePlayer(frameTime);
+            if (player.UpdatePlayer(frameTime))
+            {
+                return;
+            }
+
             foreach (var enemy in enemies)
             {
                 enemy.UpdateEnemy(frameTime);
