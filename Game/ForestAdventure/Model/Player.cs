@@ -104,7 +104,7 @@ namespace ForestAdventure.Model
                     if (this.JumpIntersectCheck(platform))
                     {
                         Console.WriteLine(SizeX);
-                        this.jump = 0.2f;
+                        this.jump = 0.25f;
                         break;
                     }
                 }

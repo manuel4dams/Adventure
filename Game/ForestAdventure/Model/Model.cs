@@ -14,7 +14,7 @@ namespace ForestAdventure.Model
         {
             this.AddPlatforms();
             this.AddEnemies();
-            this.exit = new Object(0.91f, 0.8f, 0.09f, 0.2f);
+            this.exit = new Object(3.71f, 1.426f, 0.09f, 0.2f);
             this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
 
@@ -56,6 +56,12 @@ namespace ForestAdventure.Model
             this.platforms.Add(new Object(0f, 0.6f, 0.4f, platformThickness));
             this.platforms.Add(new Object(0.6f, 0.8f, 0.8f, platformThickness));
             this.platforms.Add(new Object(-0.6f, -0.8f, 0.3f, platformThickness));
+            this.platforms.Add(new Object(1f, 1f, 2f, platformThickness));
+            this.platforms.Add(new Object(2f, 0.8f, 1.5f, platformThickness));
+            this.platforms.Add(new Object(1.5f, 0.6f, 1f, platformThickness));
+            this.platforms.Add(new Object(1f, 0.4f, 0.5f, platformThickness));
+            this.platforms.Add(new Object(3f, 1.2f, 0.4f, platformThickness));
+            this.platforms.Add(new Object(3.5f, 1.4f, 0.3f, platformThickness));
         }
 
         internal void AddEnemies()

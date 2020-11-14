@@ -12,8 +12,8 @@ namespace ForestAdventure.View
             get => position;
             set
             {
-                position.X = value.X <= 0 ? 0 : value.X >= 2 ? 2 : value.X;
-                position.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y;
+                position.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X; // minimaler und maximaler X-Wert der Camera
+                position.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y; // minimaler und maximaler Y-Wert der Camera
             }
         }
 

@@ -46,7 +46,7 @@ namespace ForestAdventure.View
             this.background = TextureTools.LoadFromResource("GraphicContents.ForestBackground.ForestBackground.png");
             GL.Enable(EnableCap.Texture2D);
             GL.BindTexture(TextureTarget.Texture2D, this.background);
-            var rectangle = new Rectangle(-1, -1, 2, 2);
+            var rectangle = new Rectangle((Camera.Position.X * 0.9f) - 1, (Camera.Position.Y * 0.9f) - 1, 3, 3);
             Draw(rectangle);
             GL.Disable(EnableCap.Texture2D);
         }
