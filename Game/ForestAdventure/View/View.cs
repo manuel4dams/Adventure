@@ -20,6 +20,7 @@ namespace ForestAdventure.View
 
         internal void Draw(IModel model)
         {
+            GL.Clear(ClearBufferMask.ColorBufferBit);
             this.DrawBackground();
 
             GL.Color4(platformColor);
@@ -45,7 +46,7 @@ namespace ForestAdventure.View
             this.background = TextureTools.LoadFromResource("GraphicContents.ForestBackground.ForestBackground.png");
             GL.Enable(EnableCap.Texture2D);
             GL.BindTexture(TextureTarget.Texture2D, this.background);
-            var rectangle = new Rectangle(-1, -1, 2, 2);
+            var rectangle = new Rectangle((Camera.Position.X * 0.9f) - 1, (Camera.Position.Y * 0.9f) - 1, 3, 3);
             Draw(rectangle);
             GL.Disable(EnableCap.Texture2D);
         }
@@ -59,13 +60,13 @@ namespace ForestAdventure.View
         {
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rect.MinX, rect.MinY);
+            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MinY - Camera.Position.Y);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rect.MaxX, rect.MinY);
+            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MinY - Camera.Position.Y);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rect.MaxX, rect.MaxY);
+            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rect.MinX, rect.MaxY);
+            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
             GL.End();
         }
     }

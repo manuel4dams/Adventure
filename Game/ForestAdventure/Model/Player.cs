@@ -1,4 +1,6 @@
 ﻿using System;
+using ForestAdventure.View;
+using OpenTK;
 using OpenTK.Input;
 
 namespace ForestAdventure.Model
@@ -17,14 +19,14 @@ namespace ForestAdventure.Model
             this.model = model;
         }
 
-        public void UpdatePlayer(float frameTime)
+        public bool UpdatePlayer(float frameTime)
         {
             CheckEnemyCollision();
 
             // for now freeze when hitting the exit
             if (CheckWinCondition())
             {
-                return;
+                return true;
             }
 
             CheckPlayerFallingOfTheMap();
@@ -33,6 +35,8 @@ namespace ForestAdventure.Model
             KeyboardState keyboard = Keyboard.GetState();
             HandleJump(keyboard, frameTime);
             HandleMovement(keyboard, frameTime);
+            Camera.Position = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
+            return false;
         }
 
         private void CheckEnemyCollision()
@@ -92,14 +96,15 @@ namespace ForestAdventure.Model
 
         private void HandleJump(KeyboardState keyboard, float frameTime)
         {
-            if (keyboard.IsKeyDown(Key.Up) && this.jump <= 0)
+            bool isJump = keyboard.IsKeyDown(Key.Up) || keyboard.IsKeyDown(Key.W);
+            if (isJump && this.jump <= 0)
             {
                 foreach (IRectangle platform in this.model.Platform)
                 {
                     if (this.JumpIntersectCheck(platform))
                     {
                         Console.WriteLine(SizeX);
-                        this.jump = 0.2f;
+                        this.jump = 0.25f;
                         break;
                     }
                 }
@@ -129,7 +134,7 @@ namespace ForestAdventure.Model
 
         private void HandleMovement(KeyboardState keyboard, float frameTime)
         {
-            float leftRightAxis = keyboard.IsKeyDown(Key.Left) ? -1f : keyboard.IsKeyDown(Key.Right) ? 1f : 0f;
+            float leftRightAxis = keyboard.IsKeyDown(Key.Left) || keyboard.IsKeyDown(Key.A) ? -1f : keyboard.IsKeyDown(Key.Right) || keyboard.IsKeyDown(Key.D) ? 1f : 0f;
             this.MinX += frameTime * leftRightAxis;
 
             this.MinX = Math.Max(this.MinX, -1f);
