@@ -1,22 +1,63 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure.View
 {
-    internal class Camera
+    public class Camera
     {
-        private static Vector2 position = new Vector2(0, 0);
+        private Vector2 center = new Vector2(0, 0);
+        private float scale = 1f;
+        // public Matrix4 CameraMatrix => cameraMatrix;
+        // public Matrix4 InvViewportMatrix { get; private set; }
+        // private Matrix4 cameraMatrix = Matrix4.Identity;
+        // private float _invWindowAspectRatio = 1f;
 
-        public static Vector2 Position
+        public Vector2 Center
         {
-            get => position;
+            get => center;
             set
             {
                 // minimaler und maximaler X-Wert der Camera
-                position.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X;
+                center.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X;
 
                 // minimaler und maximaler Y-Wert der Camera
-                position.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y;
+                center.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y;
             }
+        }
+
+        internal void Resize(int width, int height)
+        {
+            GL.Viewport(0, 0, width, height);
+            // _invWindowAspectRatio = height / (float)width;
+            // InvViewportMatrix = Transformation.Combine(Transformation.Scale(2f / width, 2f / height), Transformation.Translate(-Vector2.One));
+            // UpdateMatrix();
+        }
+
+        public void Draw()
+        {
+            // TODO
+            // GL.LoadMatrix(ref cameraMatrix);
+        }
+
+        internal float Scale
+        {
+            get => scale;
+            set
+            {
+                // avoid division by 0 and negative
+                scale = MathF.Max(0.001f, value);
+                UpdateMatrix();
+            }
+        }
+
+        private void UpdateMatrix()
+        {
+            // TODO
+            // var translate = Transformation.Translate(-Center);
+            // var scale = Transformation.Scale(1f / Scale);
+            // var aspect = Transformation.Scale(_invWindowAspectRatio, 1f);
+            // cameraMatrix = Transformation.Combine(translate, scale, aspect);
         }
     }
 }

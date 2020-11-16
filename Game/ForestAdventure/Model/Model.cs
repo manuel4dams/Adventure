@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ForestAdventure.Helper;
+using ForestAdventure.View;
 
 namespace ForestAdventure.Model
 {
@@ -10,13 +11,15 @@ namespace ForestAdventure.Model
         private readonly List<Object> arrows = new List<Object>();
         private readonly Player player;
         private readonly Object exit;
-
-        public Model()
+        private Camera camera;
+        
+        public Model(Camera camera)
         {
+            this.camera = camera;
             this.AddPlatforms(0.026f);
             this.AddEnemies(0.075f, 0.075f);
             this.exit = new Object(3.71f, 1.426f, 0.09f, 0.2f);
-            this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
+            this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this, this.camera);
         }
 
         public IRectangle Player => this.player;

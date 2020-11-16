@@ -12,6 +12,12 @@ namespace ForestAdventure.View
         private readonly Color4 playerColor = new Color4(5, 128, 13, 255);
         private readonly Color4 enemyColor = new Color4(184, 12, 0, 255);
         private int background;
+        private Camera camera;
+
+        public View(Camera camera)
+        {
+            this.camera = camera;
+        }
 
         internal void Draw(IModel model)
         {
@@ -41,27 +47,27 @@ namespace ForestAdventure.View
             this.background = TextureTools.LoadFromResource("GraphicContents.ForestBackground.ForestBackground.png");
             GL.Enable(EnableCap.Texture2D);
             GL.BindTexture(TextureTarget.Texture2D, this.background);
-            Rectangle rectangle = new Rectangle((Camera.Position.X * 0.9f) - 1, (Camera.Position.Y * 0.9f) - 1, 3, 3);
+            Rectangle rectangle = new Rectangle((camera.Center.X * 0.9f) - 1, (camera.Center.Y * 0.9f) - 1, 3, 3);
             Draw(rectangle);
             GL.Disable(EnableCap.Texture2D);
         }
 
         internal void Resize(int width, int height)
         {
-            GL.Viewport(0, 0, width, height);
+            camera.Resize(width, height);
         }
 
-        private static void Draw(IRectangle rect)
+        private void Draw(IRectangle rect)
         {
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MinY - Camera.Position.Y);
+            GL.Vertex2(rect.MinX - camera.Center.X, rect.MinY - camera.Center.Y);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MinY - Camera.Position.Y);
+            GL.Vertex2(rect.MaxX - camera.Center.X, rect.MinY - camera.Center.Y);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rect.MaxX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
+            GL.Vertex2(rect.MaxX - camera.Center.X, rect.MaxY - camera.Center.Y);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rect.MinX - Camera.Position.X, rect.MaxY - Camera.Position.Y);
+            GL.Vertex2(rect.MinX - camera.Center.X, rect.MaxY - camera.Center.Y);
             GL.End();
         }
     }

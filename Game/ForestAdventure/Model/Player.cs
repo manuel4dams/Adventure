@@ -13,10 +13,12 @@ namespace ForestAdventure.Model
         private float jump = 0;
         private float force = 0.025f;
         private bool intersect;
+        private Camera camera;
 
-        public Player(float minX, float minY, float sizeX, float sizeY, Model model)
+        public Player(float minX, float minY, float sizeX, float sizeY, Model model, Camera camera)
             : base(minX, minY, sizeX, sizeY)
         {
+            this.camera = camera;
             this.model = model;
         }
 
@@ -36,7 +38,8 @@ namespace ForestAdventure.Model
             KeyboardState keyboard = Keyboard.GetState();
             HandleJump(keyboard, frameTime);
             HandleMovement(keyboard, frameTime);
-            Camera.Position = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
+            camera.Center = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
+            camera.Draw();
             return false;
         }
 
