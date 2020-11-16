@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure
 {
-    
+    [ExcludeFromCodeCoverage]
     [TestClass]
     public class UnitTest1
     {
