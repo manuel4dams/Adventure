@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using ForestAdventure.Helper;
+﻿using ForestAdventure.Helper;
 using ForestAdventure.Model;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -13,10 +12,6 @@ namespace ForestAdventure.View
         private readonly Color4 playerColor = new Color4(5, 128, 13, 255);
         private readonly Color4 enemyColor = new Color4(184, 12, 0, 255);
         private int background;
-
-        public View()
-        {
-        }
 
         internal void Draw(IModel model)
         {
@@ -46,7 +41,7 @@ namespace ForestAdventure.View
             this.background = TextureTools.LoadFromResource("GraphicContents.ForestBackground.ForestBackground.png");
             GL.Enable(EnableCap.Texture2D);
             GL.BindTexture(TextureTarget.Texture2D, this.background);
-            var rectangle = new Rectangle((Camera.Position.X * 0.9f) - 1, (Camera.Position.Y * 0.9f) - 1, 3, 3);
+            Rectangle rectangle = new Rectangle((Camera.Position.X * 0.9f) - 1, (Camera.Position.Y * 0.9f) - 1, 3, 3);
             Draw(rectangle);
             GL.Disable(EnableCap.Texture2D);
         }

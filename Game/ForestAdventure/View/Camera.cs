@@ -1,5 +1,4 @@
 ﻿using OpenTK;
-using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure.View
 {
@@ -12,14 +11,12 @@ namespace ForestAdventure.View
             get => position;
             set
             {
-                position.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X; // minimaler und maximaler X-Wert der Camera
-                position.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y; // minimaler und maximaler Y-Wert der Camera
-            }
-        }
+                // minimaler und maximaler X-Wert der Camera
+                position.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X;
 
-        public void Resize(int width, int height)
-        {
-            GL.Viewport(0, 0, width, height);
+                // minimaler und maximaler Y-Wert der Camera
+                position.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y;
+            }
         }
     }
 }

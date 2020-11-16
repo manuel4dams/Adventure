@@ -1,4 +1,5 @@
 ﻿using System;
+using ForestAdventure.Helper;
 using ForestAdventure.View;
 using OpenTK;
 using OpenTK.Input;
@@ -134,7 +135,8 @@ namespace ForestAdventure.Model
 
         private void HandleMovement(KeyboardState keyboard, float frameTime)
         {
-            float leftRightAxis = keyboard.IsKeyDown(Key.Left) || keyboard.IsKeyDown(Key.A) ? -1f : keyboard.IsKeyDown(Key.Right) || keyboard.IsKeyDown(Key.D) ? 1f : 0f;
+            float leftRightAxis = keyboard.IsKeyDown(Key.Left) || keyboard.IsKeyDown(Key.A) ? -1f :
+                keyboard.IsKeyDown(Key.Right) || keyboard.IsKeyDown(Key.D) ? 1f : 0f;
             this.MinX += frameTime * leftRightAxis;
 
             this.MinX = Math.Max(this.MinX, -1f);

@@ -5,7 +5,7 @@ namespace ForestAdventure.Model
     public class Enemy : Object
     {
         private Random random = new Random();
-        private String leftright;
+        private string leftright;
         private float movementBorderminimal;
         private float movementBorderMaximal;
 

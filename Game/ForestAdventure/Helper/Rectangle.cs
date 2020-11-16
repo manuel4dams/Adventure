@@ -1,6 +1,4 @@
-﻿using ForestAdventure.Model;
-
-namespace ForestAdventure.View
+﻿namespace ForestAdventure.Helper
 {
     internal class Rectangle : IRectangle
     {

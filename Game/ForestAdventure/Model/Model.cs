@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ForestAdventure.Helper;
 
 namespace ForestAdventure.Model
 {
@@ -12,8 +13,8 @@ namespace ForestAdventure.Model
 
         public Model()
         {
-            this.AddPlatforms();
-            this.AddEnemies();
+            this.AddPlatforms(0.026f);
+            this.AddEnemies(0.075f, 0.075f);
             this.exit = new Object(3.71f, 1.426f, 0.09f, 0.2f);
             this.player = new Player(-0.9f, -0.9f, 0.075f, 0.15f, this);
         }
@@ -41,9 +42,8 @@ namespace ForestAdventure.Model
             }
         }
 
-        internal void AddPlatforms()
+        internal void AddPlatforms(float platformThickness)
         {
-            const float platformThickness = 0.026f;
             this.platforms.Add(new Object(-1f, -1f, 0.8f, platformThickness));
             this.platforms.Add(new Object(-0.25f, -0.8f, 0.4f, platformThickness));
             this.platforms.Add(new Object(0.4f, -0.6f, 0.4f, platformThickness));
@@ -64,12 +64,12 @@ namespace ForestAdventure.Model
             this.platforms.Add(new Object(3.5f, 1.4f, 0.3f, platformThickness));
         }
 
-        internal void AddEnemies()
+        private void AddEnemies(float height, float width)
         {
             // for now enemy movementBorderMinimal == <enemy platform> minX, movementBorderMaxmimal == <enemy platform> minX + <enemy platform> sizeX - <Enemy> sizeX
-            this.enemies.Add(new Enemy(0.45f, -0.6f, 0.075f, 0.075f, 0.4f, 0.8f - 0.075f));
-            this.enemies.Add(new Enemy(-0.2f, 0f, 0.075f, 0.075f, -0.4f, 0.4f - 0.075f));
-            this.enemies.Add(new Enemy(0.15f, 0.6f, 0.075f, 0.075f, 0f, 0.4f - 0.075f));
+            this.enemies.Add(new Enemy(0.45f, -0.6f, width, height, 0.4f, 0.8f - 0.075f));
+            this.enemies.Add(new Enemy(-0.2f, 0f, width, height, -0.4f, 0.4f - 0.075f));
+            this.enemies.Add(new Enemy(0.15f, 0.6f, width, height, 0f, 0.4f - 0.075f));
         }
     }
 }
