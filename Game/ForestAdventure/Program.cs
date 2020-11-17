@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ForestAdventure.View;
 using OpenTK;
 using OpenTK.Input;
 
@@ -9,8 +10,9 @@ namespace ForestAdventure
         public static void Main()
         {
             GameWindow window = new GameWindow(1000, 1000);
-            Model.Model model = new Model.Model();
-            View.View view = new View.View();
+            Camera camera = new Camera();
+            Model.Model model = new Model.Model(camera);
+            View.View view = new View.View(camera);
             window.WindowState = WindowState.Maximized;
 
             window.Title = Assembly.GetExecutingAssembly().GetName().Name;

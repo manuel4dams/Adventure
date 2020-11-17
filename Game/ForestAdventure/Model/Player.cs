@@ -1,4 +1,5 @@
 ﻿using System;
+using ForestAdventure.Helper;
 using ForestAdventure.View;
 using OpenTK;
 using OpenTK.Input;
@@ -12,10 +13,12 @@ namespace ForestAdventure.Model
         private float jump = 0;
         private float force = 0.025f;
         private bool intersect;
+        private Camera camera;
 
-        public Player(float minX, float minY, float sizeX, float sizeY, Model model)
+        public Player(float minX, float minY, float sizeX, float sizeY, Model model, Camera camera)
             : base(minX, minY, sizeX, sizeY)
         {
+            this.camera = camera;
             this.model = model;
         }
 
@@ -35,7 +38,8 @@ namespace ForestAdventure.Model
             KeyboardState keyboard = Keyboard.GetState();
             HandleJump(keyboard, frameTime);
             HandleMovement(keyboard, frameTime);
-            Camera.Position = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
+            camera.Center = new Vector2(this.MinX + (this.SizeX / 2), this.MinY + (this.SizeY / 2));
+            camera.Draw();
             return false;
         }
 
@@ -134,7 +138,8 @@ namespace ForestAdventure.Model
 
         private void HandleMovement(KeyboardState keyboard, float frameTime)
         {
-            float leftRightAxis = keyboard.IsKeyDown(Key.Left) || keyboard.IsKeyDown(Key.A) ? -1f : keyboard.IsKeyDown(Key.Right) || keyboard.IsKeyDown(Key.D) ? 1f : 0f;
+            float leftRightAxis = keyboard.IsKeyDown(Key.Left) || keyboard.IsKeyDown(Key.A) ? -1f :
+                keyboard.IsKeyDown(Key.Right) || keyboard.IsKeyDown(Key.D) ? 1f : 0f;
             this.MinX += frameTime * leftRightAxis;
 
             this.MinX = Math.Max(this.MinX, -1f);

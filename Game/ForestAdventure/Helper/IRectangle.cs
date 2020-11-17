@@ -1,4 +1,4 @@
-﻿namespace ForestAdventure.Model
+﻿namespace ForestAdventure.Helper
 {
     public interface IRectangle
     {
