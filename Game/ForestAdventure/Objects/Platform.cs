@@ -4,7 +4,7 @@ using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
 {
-    public class GameObject : IObject
+    public class Platform : IGameObject
     {
         public List<IComponent> componentList { get; }
 

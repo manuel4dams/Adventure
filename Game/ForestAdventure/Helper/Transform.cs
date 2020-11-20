@@ -1,9 +1,9 @@
-﻿using ForestAdventure.Objects;
+﻿using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Helper
 {
     public class Transform
     {
-        public GameObject GameObject { get; internal set; }
+        public IGameObject GameObject { get; internal set; }
     }
 }

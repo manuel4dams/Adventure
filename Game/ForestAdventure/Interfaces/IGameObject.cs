@@ -3,7 +3,7 @@ using ForestAdventure.Helper;
 
 namespace ForestAdventure.Interfaces
 {
-    public interface IObject
+    public interface IGameObject
     {
         public List<IComponent> ComponentList { get; }
         public Transform Tranform { get; }
