@@ -2,7 +2,7 @@
 
 namespace ForestAdventure.Components
 {
-    public class RectangleComponent : IRectangle
+    public class RectangleComponent : IComponent
     {
         public RectangleComponent(float minX, float minY, float sizeX, float sizeY)
         {

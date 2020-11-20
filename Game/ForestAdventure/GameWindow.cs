@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using OpenTK;
-using OpenTK.Graphics;
 using OpenTK.Input;
 
 namespace ForestAdventure
@@ -14,6 +13,11 @@ namespace ForestAdventure
 
             gameWindow.Title = Assembly.GetExecutingAssembly().GetName().Name;
             gameWindow.WindowState = WindowState.Maximized;
+
+            // run windowed in debug only
+#if DEBUG
+            gameWindow.WindowState = WindowState.Normal;
+#endif
 
             gameWindow.UpdateFrame += (objectArgs, args) => game.Update();
             gameWindow.Resize += (objectArgs, args) => game.Resize(gameWindow.Width, gameWindow.Height);

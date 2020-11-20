@@ -6,24 +6,25 @@ namespace ForestAdventure.Interfaces
     public interface IGameObject
     {
         public List<IComponent> ComponentList { get; }
-        public Transform Tranform { get; }
 
-        public void addComponent(IComponent component)
+        public Transform Transform { get; }
+
+        public void Update()
         {
-            ComponentList.Add(component);
+            // TODO check if component is updateable
+            foreach (var component in ComponentList)
+            {
+                component.Update();
+            }
         }
 
-        public void removeComponent(IComponent component)
+        public void Draw()
         {
-            ComponentList.Remove(component);
-        }
-
-        public void Updateable()
-        {
-        }
-
-        public void Drawable()
-        {
+            // TODO check if component is drawable
+            foreach (var component in ComponentList)
+            {
+                component.Draw();
+            }
         }
     }
 }

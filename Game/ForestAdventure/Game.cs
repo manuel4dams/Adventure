@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ForestAdventure.Interfaces;
 using ForestAdventure.Objects;
 
@@ -7,29 +6,39 @@ namespace ForestAdventure
 {
     public class Game
     {
-        private List<IGameObject> GameObjectList = new List<IGameObject>();
+        private List<IGameObject> gameObjectList = new List<IGameObject>();
 
         public Game()
         {
+            // TODO WIP
             Platform platform = new Platform();
-            addPlatforms(platform);
+            addPlatform(platform);
         }
 
         internal void Resize(float width, float height)
         {
+            // TODO implement
         }
 
         internal void Update()
         {
+            foreach (var gameObject in gameObjectList)
+            {
+                gameObject.Update();
+            }
         }
 
         internal void Draw()
         {
+            foreach (var gameObject in gameObjectList)
+            {
+                gameObject.Draw();
+            }
         }
 
-        private void addPlatforms(Platform platform)
+        private void addPlatform(Platform platform)
         {
-            GameObjectList.Add(platform);
+            gameObjectList.Add(platform);
         }
     }
 }
