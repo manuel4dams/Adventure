@@ -1,6 +1,6 @@
-﻿namespace ForestAdventure.Helper
+﻿namespace ForestAdventure.Interfaces
 {
-    public interface IRectangle
+    public interface IRectangle : IComponent
     {
         float MaxX { get; }
 

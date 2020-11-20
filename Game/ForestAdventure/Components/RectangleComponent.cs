@@ -1,8 +1,10 @@
-﻿namespace ForestAdventure.Helper
+﻿using ForestAdventure.Interfaces;
+
+namespace ForestAdventure.Components
 {
-    internal class Rectangle : IRectangle
+    public class RectangleComponent : IRectangle
     {
-        public Rectangle(float minX, float minY, float sizeX, float sizeY)
+        public RectangleComponent(float minX, float minY, float sizeX, float sizeY)
         {
             MinX = minX;
             MinY = minY;

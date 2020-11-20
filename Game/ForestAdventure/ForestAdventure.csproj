@@ -13,16 +13,12 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.22.1" />
+      <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.22.2.1" />
       <PackageReference Include="OpenTK.NetStandard" Version="1.0.5.32" />
       <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="obj" />
     </ItemGroup>
 
     <ItemGroup>
