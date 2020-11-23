@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ForestAdventure.Helper;
 
 namespace ForestAdventure.Interfaces
 {
@@ -7,24 +6,26 @@ namespace ForestAdventure.Interfaces
     {
         public List<IComponent> ComponentList { get; }
 
-        public Transform Transform { get; }
+        public void AddComponent(IComponent component)
+        {
+            ComponentList.Add(component);
+        }
+
+        public void RemoveComponent(IComponent component)
+        {
+            ComponentList.Remove(component);
+        }
 
         public void Update()
         {
             // TODO check if component is updateable
-            foreach (var component in ComponentList)
-            {
-                component.Update();
-            }
+            foreach (var component in ComponentList) component.Update();
         }
 
         public void Draw()
         {
             // TODO check if component is drawable
-            foreach (var component in ComponentList)
-            {
-                component.Draw();
-            }
+            foreach (var component in ComponentList) component.Draw();
         }
     }
 }

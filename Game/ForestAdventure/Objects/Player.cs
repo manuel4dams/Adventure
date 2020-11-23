@@ -4,9 +4,9 @@ using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
 {
-    public class Platform : IGameObject
+    public class Player : IGameObject
     {
-        public Platform(float minX, float minY, float sizeX, float sizeY)
+        public Player(float minX, float minY, float sizeX, float sizeY)
         {
             ComponentList.Add(new RectangleComponent(minX, minY, sizeX, sizeY));
         }

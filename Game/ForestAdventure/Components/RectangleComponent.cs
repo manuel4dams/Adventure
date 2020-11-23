@@ -1,4 +1,5 @@
 ﻿using ForestAdventure.Interfaces;
+using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure.Components
 {
@@ -23,5 +24,19 @@ namespace ForestAdventure.Components
         public float SizeX { get; }
 
         public float SizeY { get; }
+
+        public void Draw()
+        {
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(MinX, MinY);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(MaxX, MinY);
+            GL.TexCoord2(1f, 1f);
+            GL.Vertex2(MaxX, MaxY);
+            GL.TexCoord2(0f, 1f);
+            GL.Vertex2(MinX, MaxY);
+            GL.End();
+        }
     }
 }

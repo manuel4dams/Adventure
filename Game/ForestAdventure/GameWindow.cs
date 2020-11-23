@@ -8,13 +8,12 @@ namespace ForestAdventure
     {
         public static void Main()
         {
-            GameWindow gameWindow = new GameWindow();
-            Game game = new Game();
+            var gameWindow = new GameWindow();
+            var game = new Game();
 
             gameWindow.Title = Assembly.GetExecutingAssembly().GetName().Name;
             gameWindow.WindowState = WindowState.Maximized;
 
-            // run windowed in debug only
 #if DEBUG
             gameWindow.WindowState = WindowState.Normal;
 #endif
@@ -30,12 +29,9 @@ namespace ForestAdventure
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            KeyboardState input = Keyboard.GetState();
+            var input = Keyboard.GetState();
 
-            if (input.IsKeyDown(Key.Escape))
-            {
-                Exit();
-            }
+            if (input.IsKeyDown(Key.Escape)) Exit();
 
             base.OnUpdateFrame(e);
         }
