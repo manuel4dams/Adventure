@@ -3,9 +3,9 @@ using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure.Components
 {
-    public class RectangleComponent : IComponent
+    public class CRectangle : IDrawable, IUpdateable
     {
-        public RectangleComponent(float minX, float minY, float sizeX, float sizeY)
+        public CRectangle(float minX, float minY, float sizeX, float sizeY)
         {
             MinX = minX;
             MinY = minY;

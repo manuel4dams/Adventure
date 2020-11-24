@@ -8,24 +8,35 @@ namespace ForestAdventure.Interfaces
 
         public void AddComponent(IComponent component)
         {
-            ComponentList.Add(component);
+            throw new System.NotImplementedException();
         }
 
         public void RemoveComponent(IComponent component)
         {
-            ComponentList.Remove(component);
+            throw new System.NotImplementedException();
         }
 
         public void Update()
         {
             // TODO check if component is updateable
-            foreach (var component in ComponentList) component.Update();
+            foreach (var component in ComponentList)
+            {
+                if (component is IUpdateable)
+                {
+                    component.Update();
+                }
+            }
         }
 
         public void Draw()
         {
-            // TODO check if component is drawable
-            foreach (var component in ComponentList) component.Draw();
+            foreach (var component in ComponentList)
+            {
+                if (component is IDrawable)
+                {
+                    component.Draw();
+                }
+            }
         }
     }
 }

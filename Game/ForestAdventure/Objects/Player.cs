@@ -8,7 +8,13 @@ namespace ForestAdventure.Objects
     {
         public Player(float minX, float minY, float sizeX, float sizeY)
         {
-            ComponentList.Add(new RectangleComponent(minX, minY, sizeX, sizeY));
+            AddComponent(new CRectangle(minX, minY, sizeX, sizeY));
+            AddComponent(new CPlayerMovement());
+        }
+
+        public void AddComponent(IComponent component)
+        {
+            ComponentList.Add(component);
         }
 
         public List<IComponent> ComponentList { get; } = new List<IComponent>();
