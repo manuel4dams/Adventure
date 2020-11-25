@@ -1,4 +1,4 @@
-﻿using ImageMagick;
+﻿using System;
 
 namespace ForestAdventure.Interfaces
 {
@@ -6,22 +6,22 @@ namespace ForestAdventure.Interfaces
     {
         public void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Draw()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Move()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void CheckCollision()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

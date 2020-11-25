@@ -11,11 +11,11 @@ namespace ForestAdventure.Objects
             AddComponent(new CRectangle(minX, minY, sizeX, sizeY));
         }
 
+        public List<IComponent> ComponentList { get; } = new List<IComponent>();
+
         public void AddComponent(IComponent component)
         {
             ComponentList.Add(component);
         }
-
-        public List<IComponent> ComponentList { get; } = new List<IComponent>();
     }
 }

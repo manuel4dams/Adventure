@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ForestAdventure.Interfaces
+﻿namespace ForestAdventure.Interfaces
 {
     public interface IUpdateable : IComponent
     {

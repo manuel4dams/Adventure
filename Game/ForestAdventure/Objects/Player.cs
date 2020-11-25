@@ -12,11 +12,11 @@ namespace ForestAdventure.Objects
             AddComponent(new CPlayerMovement(this));
         }
 
+        public List<IComponent> ComponentList { get; } = new List<IComponent>();
+
         public void AddComponent(IComponent component)
         {
             ComponentList.Add(component);
         }
-
-        public List<IComponent> ComponentList { get; } = new List<IComponent>();
     }
 }
