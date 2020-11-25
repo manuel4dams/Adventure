@@ -10,7 +10,7 @@ namespace ForestAdventure
     public class Program
     {
         // public static void Main()
-        public static void bla()
+        public static void Bla()
         {
             var window = new OpenTK.GameWindow(1000, 1000);
             var camera = new Camera();

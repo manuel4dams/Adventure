@@ -22,8 +22,8 @@ namespace ForestAdventure.Interfaces
             // TODO check if component is updateable
             foreach (var component in ComponentList)
             {
-                if (component is IUpdateable) component.Update();
-                if (component is IMovable) component.Move();
+                if (component is IUpdateable) ((IUpdateable) component).Update();
+                if (component is IMovable) ((IMovable) component).Move();
             }
         }
 
@@ -32,7 +32,7 @@ namespace ForestAdventure.Interfaces
             foreach (var component in ComponentList)
             {
                 if (component is IDrawable)
-                    component.Draw();
+                    ((IDrawable) component).Draw();
             }
         }
     }

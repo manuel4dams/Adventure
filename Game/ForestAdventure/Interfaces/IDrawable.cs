@@ -2,7 +2,7 @@
 {
     public interface IDrawable : IComponent
     {
-        void IComponent.Draw()
+        void Draw()
         {
             // throw no exception from base interface, because this method should be callable
         }

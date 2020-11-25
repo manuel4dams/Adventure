@@ -9,10 +9,10 @@ namespace ForestAdventure.Model
     public class Model : IModel
     {
         private readonly List<Object> arrows = new List<Object>();
+        private readonly Camera camera;
         private readonly List<Enemy> enemies = new List<Enemy>();
         private readonly List<Object> platforms = new List<Object>();
         private readonly Player player;
-        private readonly Camera camera;
 
         public Model(Camera camera)
         {

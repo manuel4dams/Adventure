@@ -2,7 +2,7 @@
 {
     public interface IUpdateable : IComponent
     {
-        void IComponent.Update()
+        void Update()
         {
             // throw no exception from base interface, because this method should be callable
         }

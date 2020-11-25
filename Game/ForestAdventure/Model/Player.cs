@@ -8,9 +8,9 @@ namespace ForestAdventure.Model
     [Obsolete]
     public class Player : Object
     {
+        private readonly Camera camera;
         private readonly float gravity = -0.025f;
         private readonly Model model;
-        private readonly Camera camera;
         private float force = 0.025f;
         private bool intersect;
         private float jump;

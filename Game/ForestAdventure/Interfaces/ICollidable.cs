@@ -2,7 +2,7 @@
 {
     public interface ICollidable : IComponent
     {
-        void IComponent.CheckCollision()
+        void CheckCollision()
         {
             // throw no exception from base interface, because this method should be callable
         }

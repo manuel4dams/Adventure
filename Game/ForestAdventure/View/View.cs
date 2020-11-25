@@ -9,11 +9,11 @@ namespace ForestAdventure.View
     [Obsolete]
     public class View
     {
+        private readonly Camera camera;
         private readonly Color4 enemyColor = new Color4(184, 12, 0, 255);
         private readonly Color4 exitColor = new Color4(13, 175, 184, 255);
         private readonly Color4 platformColor = new Color4(77, 39, 3, 255);
         private readonly Color4 playerColor = new Color4(5, 128, 13, 255);
-        private readonly Camera camera;
         private int background;
 
         public View(Camera camera)
