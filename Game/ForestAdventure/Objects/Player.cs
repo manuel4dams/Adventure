@@ -9,7 +9,7 @@ namespace ForestAdventure.Objects
         public Player(float minX, float minY, float sizeX, float sizeY)
         {
             AddComponent(new CRectangle(minX, minY, sizeX, sizeY));
-            AddComponent(new CPlayerMovement());
+            AddComponent(new CPlayerMovement(this));
         }
 
         public void AddComponent(IComponent component)

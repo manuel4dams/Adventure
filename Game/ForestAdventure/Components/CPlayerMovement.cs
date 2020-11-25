@@ -7,9 +7,11 @@ namespace ForestAdventure.Components
     public class CPlayerMovement : IMovable
     {
         private KeyboardState keyboardState;
+        private IGameObject gameObject;
 
-        public CPlayerMovement()
+        public CPlayerMovement(IGameObject gameObject)
         {
+            this.gameObject = gameObject;
             keyboardState = Keyboard.GetState();
         }
 
@@ -17,9 +19,7 @@ namespace ForestAdventure.Components
         {
             float leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f :
                 keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
-            // this.MinX += leftRightAxis;
-
-            // this.MinX = Math.Max(this.MinX, -1f);
+            Console.WriteLine(leftRightAxis);
         }
     }
 }

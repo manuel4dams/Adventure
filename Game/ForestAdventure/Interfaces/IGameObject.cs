@@ -25,6 +25,10 @@ namespace ForestAdventure.Interfaces
                 {
                     component.Update();
                 }
+                if (component is IMovable)
+                {
+                    component.Move();
+                }
             }
         }
 
