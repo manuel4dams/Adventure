@@ -9,8 +9,8 @@ namespace ForestAdventure.Objects
     {
         public Platform(float minX, float minY, float sizeX, float sizeY)
         {
-            ObjectData objectData = new ObjectData(minX, minY, sizeX, sizeY);
-            AddComponent(new CRectangle(objectData));
+            GameObjectBounds gameObjectBounds = new GameObjectBounds(minX, minY, sizeX, sizeY);
+            AddComponent(new CRectangle(gameObjectBounds));
         }
 
         public List<IComponent> ComponentList { get; } = new List<IComponent>();

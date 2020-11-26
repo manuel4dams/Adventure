@@ -13,11 +13,6 @@ namespace ForestAdventure
 
             gameWindow.Title = Assembly.GetExecutingAssembly().GetName().Name;
             gameWindow.WindowState = WindowState.Maximized;
-
-#if DEBUG
-            gameWindow.WindowState = WindowState.Normal;
-#endif
-
             gameWindow.UpdateFrame += (objectArgs, args) => game.Update();
             gameWindow.Resize += (objectArgs, args) => game.Resize(gameWindow.Width, gameWindow.Height);
             gameWindow.RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
@@ -27,6 +22,7 @@ namespace ForestAdventure
             gameWindow.Run(60);
         }
 
+        // handel game exit with escape
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             var input = Keyboard.GetState();

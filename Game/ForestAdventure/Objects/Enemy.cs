@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ForestAdventure.Components;
 using ForestAdventure.Helper;
 using ForestAdventure.Interfaces;
@@ -8,17 +7,24 @@ namespace ForestAdventure.Objects
 {
     public class Enemy : IGameObject
     {
-        public Enemy(float minX, float minY, float sizeX, float sizeY)
+        public Enemy(
+            float minX,
+            float minY,
+            float sizeX,
+            float sizeY,
+            float movementBorderLeft,
+            float movementBorderRight)
         {
-            ObjectData objectData = new ObjectData(minX, minY, sizeX, sizeY);
-            AddComponent(new CRectangle(objectData));
+            GameObjectBounds gameObjectBounds = new GameObjectBounds(minX, minY, sizeX, sizeY);
+            AddComponent(new CRectangle(gameObjectBounds));
+            AddComponent(new CMovementNoInput(movementBorderLeft, movementBorderRight, gameObjectBounds));
         }
-
-        public List<IComponent> ComponentList { get; } = new List<IComponent>();
 
         public void AddComponent(IComponent component)
         {
             ComponentList.Add(component);
         }
+
+        public List<IComponent> ComponentList { get; } = new List<IComponent>();
     }
 }

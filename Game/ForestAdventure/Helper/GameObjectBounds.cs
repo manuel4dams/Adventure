@@ -1,8 +1,8 @@
 ﻿namespace ForestAdventure.Helper
 {
-    public class ObjectData
+    public class GameObjectBounds
     {
-        public ObjectData(float minX, float minY, float sizeX, float sizeY)
+        public GameObjectBounds(float minX, float minY, float sizeX, float sizeY)
         {
             SizeX = sizeX;
             SizeY = sizeY;

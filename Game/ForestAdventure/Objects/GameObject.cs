@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ForestAdventure.Interfaces;
 
-namespace ForestAdventure.Interfaces
+namespace ForestAdventure.Objects
 {
-    public interface IGameObject
+    public class GameObject : IGameObject
     {
-        List<IComponent> ComponentList { get; }
-
+        public List<IComponent> ComponentList { get; }
+        
         void AddComponent(IComponent component)
         {
-            throw new NotImplementedException();
+            ComponentList.Add(component);
         }
 
         void RemoveComponent(IComponent component)
         {
-            throw new NotImplementedException();
+            ComponentList.Remove(component);
         }
 
         void Update()

@@ -7,24 +7,24 @@ namespace ForestAdventure.Components
 {
     public class CRectangle : IDrawable
     {
-        private ObjectData objectData;
+        private GameObjectBounds gameObjectBounds;
 
-        public CRectangle(ObjectData objectData)
+        public CRectangle(GameObjectBounds gameObjectBounds)
         {
-            this.objectData = objectData;
+            this.gameObjectBounds = gameObjectBounds;
         }
 
         public void Draw()
         {
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(objectData.MinX, objectData.MinY);
+            GL.Vertex2(gameObjectBounds.MinX, gameObjectBounds.MinY);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(objectData.MaxX, objectData.MinY);
+            GL.Vertex2(gameObjectBounds.MaxX, gameObjectBounds.MinY);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(objectData.MaxX, objectData.MaxY);
+            GL.Vertex2(gameObjectBounds.MaxX, gameObjectBounds.MaxY);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(objectData.MinX, objectData.MaxY);
+            GL.Vertex2(gameObjectBounds.MinX, gameObjectBounds.MaxY);
             GL.End();
         }
     }

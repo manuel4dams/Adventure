@@ -58,9 +58,10 @@ namespace ForestAdventure
 
         private void AddEnemies(float height, float width)
         {
-            gameObjectList.Add(new Enemy(0.45f, -0.6f, width, height));
-            gameObjectList.Add(new Enemy(-0.2f, 0f, width, height));
-            gameObjectList.Add(new Enemy(0.15f, 0.6f, width, height));
+            // TODO for now enemy movementBorderMinimal == <enemy platform> minX, movementBorderMaxmimal == <enemy platform> minX + <enemy platform> sizeX - <Enemy> sizeX
+            gameObjectList.Add(new Enemy(0.45f, -0.6f, width, height, 0.4f, 0.8f - 0.075f));
+            gameObjectList.Add(new Enemy(-0.2f, 0f, width, height, -0.4f, 0.4f - 0.075f));
+            gameObjectList.Add(new Enemy(0.15f, 0.6f, width, height, 0f, 0.4f - 0.075f));
         }
     }
 }
