@@ -7,7 +7,7 @@ namespace ForestAdventure
 {
     public class Game
     {
-        private readonly List<IGameObject> gameObjectList = new List<IGameObject>();
+        private readonly List<GameObject> gameObjectList = new List<GameObject>();
 
         public Game()
         {

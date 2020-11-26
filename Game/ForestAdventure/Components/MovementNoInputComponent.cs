@@ -4,17 +4,17 @@ using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Components
 {
-    public class CMovementNoInput : IMovable
+    public class MovementNoInputComponent : IMovable
     {
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
         private bool leftRight;
-        private GameObjectBounds gameObjectBounds;
+        private Bounds bounds;
 
-        public CMovementNoInput(float movementBorderLeft, float movementBorderRight, GameObjectBounds gameObjectBounds)
+        public MovementNoInputComponent(float movementBorderLeft, float movementBorderRight, Bounds bounds)
         {
-            this.gameObjectBounds = gameObjectBounds;
+            this.bounds = bounds;
             this.movementBorderLeft = movementBorderLeft;
             this.movementBorderRight = movementBorderRight;
 
@@ -27,19 +27,19 @@ namespace ForestAdventure.Components
             // let enemy move from left to right
             if (leftRight)
             {
-                gameObjectBounds.MinX -= 0.001f;
-                gameObjectBounds.MinX = Math.Max(gameObjectBounds.MinX, -1f);
+                bounds.MinX -= 0.001f;
+                bounds.MinX = Math.Max(bounds.MinX, -1f);
 
                 // turn when border reached
-                if (gameObjectBounds.MinX < movementBorderLeft) leftRight = false;
+                if (bounds.MinX < movementBorderLeft) leftRight = false;
             }
             else if (leftRight == false)
             {
-                gameObjectBounds.MinX += 0.001f;
-                gameObjectBounds.MinX = Math.Max(gameObjectBounds.MinX, -1f);
+                bounds.MinX += 0.001f;
+                bounds.MinX = Math.Max(bounds.MinX, -1f);
 
                 // turn when border reached
-                if (gameObjectBounds.MinX > movementBorderRight) leftRight = true;
+                if (bounds.MinX > movementBorderRight) leftRight = true;
             }
         }
     }

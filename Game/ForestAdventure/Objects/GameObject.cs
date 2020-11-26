@@ -1,25 +1,37 @@
 ﻿using System.Collections.Generic;
+using ForestAdventure.Helper;
 using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
 {
-    public class GameObject : IGameObject
+    public class GameObject
     {
-        public List<IComponent> ComponentList { get; }
-        
-        void AddComponent(IComponent component)
+        private readonly List<IComponent> componentList = new List<IComponent>();
+        private readonly Transform transform;
+
+        public GameObject()
+            : this(new Transform())
         {
-            ComponentList.Add(component);
         }
 
-        void RemoveComponent(IComponent component)
+        public GameObject(Transform transform)
         {
-            ComponentList.Remove(component);
+            this.transform = transform;
         }
 
-        void Update()
+        public void AddComponent(IComponent component)
         {
-            foreach (var component in ComponentList)
+            componentList.Add(component);
+        }
+
+        public void RemoveComponent(IComponent component)
+        {
+            componentList.Remove(component);
+        }
+
+        public void Update()
+        {
+            foreach (var component in componentList)
             {
                 if (component is IUpdateable) ((IUpdateable) component).Update();
                 if (component is IMovable) ((IMovable) component).Move();
@@ -27,9 +39,9 @@ namespace ForestAdventure.Objects
             }
         }
 
-        void Draw()
+        public void Draw()
         {
-            foreach (var component in ComponentList)
+            foreach (var component in componentList)
             {
                 if (component is IDrawable)
                     ((IDrawable) component).Draw();

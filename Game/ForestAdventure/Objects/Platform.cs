@@ -5,19 +5,12 @@ using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
 {
-    public class Platform : IGameObject
+    public class Platform : GameObject
     {
         public Platform(float minX, float minY, float sizeX, float sizeY)
         {
-            GameObjectBounds gameObjectBounds = new GameObjectBounds(minX, minY, sizeX, sizeY);
-            AddComponent(new CRectangle(gameObjectBounds));
-        }
-
-        public List<IComponent> ComponentList { get; } = new List<IComponent>();
-
-        public void AddComponent(IComponent component)
-        {
-            ComponentList.Add(component);
+            Bounds bounds = new Bounds(minX, minY, sizeX, sizeY);
+            AddComponent(new RectangleComponent(bounds));
         }
     }
 }

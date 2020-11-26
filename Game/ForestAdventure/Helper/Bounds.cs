@@ -1,11 +1,12 @@
 ﻿namespace ForestAdventure.Helper
 {
-    public class GameObjectBounds
+    public class Bounds
     {
-        public GameObjectBounds(float minX, float minY, float sizeX, float sizeY)
+        public Bounds(float minX, float minY, float sizeX, float sizeY)
         {
             SizeX = sizeX;
             SizeY = sizeY;
+            // todo rename minX/Y
             MinX = minX;
             MinY = minY;
         }

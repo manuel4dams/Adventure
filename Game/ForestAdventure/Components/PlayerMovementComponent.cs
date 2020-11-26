@@ -5,11 +5,11 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
-    public class CPlayerMovement : IMovable
+    public class PlayerMovementComponent : IMovable
     {
-        private GameObjectBounds objectData;
+        private Bounds objectData;
 
-        public CPlayerMovement(GameObjectBounds objectData)
+        public PlayerMovementComponent(Bounds objectData)
         {
             this.objectData = objectData;
         }

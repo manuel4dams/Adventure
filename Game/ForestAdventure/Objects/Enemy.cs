@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using ForestAdventure.Components;
+﻿using ForestAdventure.Components;
 using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
 {
-    public class Enemy : IGameObject
+    public class Enemy : GameObject
     {
         public Enemy(
             float minX,
@@ -15,16 +13,9 @@ namespace ForestAdventure.Objects
             float movementBorderLeft,
             float movementBorderRight)
         {
-            GameObjectBounds gameObjectBounds = new GameObjectBounds(minX, minY, sizeX, sizeY);
-            AddComponent(new CRectangle(gameObjectBounds));
-            AddComponent(new CMovementNoInput(movementBorderLeft, movementBorderRight, gameObjectBounds));
+            Bounds bounds = new Bounds(minX, minY, sizeX, sizeY);
+            AddComponent(new RectangleComponent(bounds));
+            AddComponent(new MovementNoInputComponent(movementBorderLeft, movementBorderRight, bounds));
         }
-
-        public void AddComponent(IComponent component)
-        {
-            ComponentList.Add(component);
-        }
-
-        public List<IComponent> ComponentList { get; } = new List<IComponent>();
     }
 }
