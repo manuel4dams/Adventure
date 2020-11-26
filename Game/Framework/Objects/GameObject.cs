@@ -6,7 +6,7 @@ namespace Framework.Objects
     public class GameObject
     {
         private readonly List<IComponent> componentList = new List<IComponent>();
-        private readonly Transform transform;
+        public readonly Transform transform;
 
         public GameObject()
             : this(new Transform())
@@ -28,11 +28,11 @@ namespace Framework.Objects
             componentList.Remove(component);
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
             foreach (var component in componentList)
             {
-                if (component is IUpdateable) ((IUpdateable) component).Update();
+                if (component is IUpdateable) ((IUpdateable) component).Update(deltaTime);
                 if (component is ICollidable) ((ICollidable) component).CheckCollision();
             }
         }

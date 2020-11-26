@@ -1,4 +1,6 @@
 ﻿using ForestAdventure.Components;
+using Framework.Components;
+using Framework.Objects;
 
 namespace ForestAdventure.Objects
 {
@@ -12,9 +14,9 @@ namespace ForestAdventure.Objects
             float movementBorderLeft,
             float movementBorderRight)
         {
-            Bounds bounds = new Bounds(minX, minY, sizeX, sizeY);
-            AddComponent(new RectangleComponent(bounds));
-            AddComponent(new MovementNoInputComponent(movementBorderLeft, movementBorderRight, bounds));
+            var bounds = new Bounds(minX, minY, sizeX, sizeY);
+            AddComponent(new RectangleComponent(this, bounds));
+            AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
         }
     }
 }

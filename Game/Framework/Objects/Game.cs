@@ -7,13 +7,9 @@ namespace Framework.Objects
     {
         private readonly List<GameObject> gameObjectList = new List<GameObject>();
 
-        public Game()
+        public void AddGameObject(GameObject gameObject)
         {
-            AddPlatforms(0.026f);
-            gameObjectList.Add(new Exit(3.71f, 1.426f, 0.09f, 0.2f));
-            gameObjectList.Add(new Entrance(-1f, -1f, 0.1f, 0.3f));
-            AddEnemies(0.075f, 0.075f);
-            gameObjectList.Add(new Player(-0.9f, -0.9f, 0.075f, 0.15f));
+            gameObjectList.Add(gameObject);
         }
 
         internal void Resize(float width, float height)
@@ -21,45 +17,15 @@ namespace Framework.Objects
             // TODO implement
         }
 
-        internal void Update()
+        internal void Update(float deltaTime)
         {
-            foreach (var gameObject in gameObjectList) gameObject.Update();
+            foreach (var gameObject in gameObjectList) gameObject.Update(deltaTime);
         }
 
         internal void Draw()
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
             foreach (var gameObject in gameObjectList) gameObject.Draw();
-        }
-
-        private void AddPlatforms(float platformThickness)
-        {
-            gameObjectList.Add(new Platform(-1f, -1f, 0.8f, platformThickness));
-            gameObjectList.Add(new Platform(-0.25f, -0.8f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(0.4f, -0.6f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(-0.7f, -0.6f, 0.2f, platformThickness));
-            gameObjectList.Add(new Platform(-0.25f, -0.4f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(0.5f, -0.2f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(-0.4f, 0f, 0.8f, platformThickness));
-            gameObjectList.Add(new Platform(-0.2f, 0.2f, 0.2f, platformThickness));
-            gameObjectList.Add(new Platform(-0.6f, 0.4f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(0f, 0.6f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(0.6f, 0.8f, 0.8f, platformThickness));
-            gameObjectList.Add(new Platform(-0.6f, -0.8f, 0.3f, platformThickness));
-            gameObjectList.Add(new Platform(1f, 1f, 2f, platformThickness));
-            gameObjectList.Add(new Platform(2f, 0.8f, 1.5f, platformThickness));
-            gameObjectList.Add(new Platform(1.5f, 0.6f, 1f, platformThickness));
-            gameObjectList.Add(new Platform(1f, 0.4f, 0.5f, platformThickness));
-            gameObjectList.Add(new Platform(3f, 1.2f, 0.4f, platformThickness));
-            gameObjectList.Add(new Platform(3.5f, 1.4f, 0.3f, platformThickness));
-        }
-
-        private void AddEnemies(float height, float width)
-        {
-            // TODO for now enemy movementBorderMinimal == <enemy platform> minX, movementBorderMaxmimal == <enemy platform> minX + <enemy platform> sizeX - <Enemy> sizeX
-            gameObjectList.Add(new Enemy(0.45f, -0.6f, width, height, 0.4f, 0.8f - 0.075f));
-            gameObjectList.Add(new Enemy(-0.2f, 0f, width, height, -0.4f, 0.4f - 0.075f));
-            gameObjectList.Add(new Enemy(0.15f, 0.6f, width, height, 0f, 0.4f - 0.075f));
         }
     }
 }

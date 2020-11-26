@@ -2,8 +2,6 @@
 {
     public interface IUpdateable : IComponent
     {
-        void Update()
-        {
-        }
+        void Update(float deltaTime);
     }
 }

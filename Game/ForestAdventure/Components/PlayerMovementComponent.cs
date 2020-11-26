@@ -1,41 +1,33 @@
-﻿using System;
+﻿using Framework.Interfaces;
+using Framework.Objects;
+using OpenTK;
 using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
     public class PlayerMovementComponent : IUpdateable
     {
-        private Bounds objectData;
+        private const float MOVEMENT_SPEED = 1f;
 
-        public PlayerMovementComponent(Bounds objectData)
+        public GameObject gameObject { get; }
+
+        public PlayerMovementComponent(GameObject gameObject)
         {
-            this.objectData = objectData;
+            this.gameObject = gameObject;
         }
 
-        public void Move()
+        public void Update(float deltaTime)
         {
             var keyboardState = Keyboard.GetState();
+            var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f : 0f;
+            var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
+            var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1f : 0f;
+            var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -1f : 0f;
 
-            // handel left right movement
-            var leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.1f :
-                keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.1f : 0f;
-
-            objectData.MinX += leftRightAxis;
-            objectData.MinX = Math.Max(objectData.MinX, -1f);
-
-            // handel upwards movement
-            if (keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W))
-            {
-                objectData.MinY += 0.1f;
-                objectData.MinY = Math.Max(objectData.MinY, -1f);
-            }
-
-            // handel downwards movement
-            if (keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S))
-            {
-                objectData.MinY += -0.1f;
-                objectData.MinY = Math.Max(objectData.MinY, -1f);
-            }
+            gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(
+                left + right,
+                up + down
+            );
         }
     }
 }

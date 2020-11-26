@@ -6,21 +6,18 @@ namespace Framework.Objects
 {
     public class GameWindow : OpenTK.GameWindow
     {
-        public static void Main()
+        public GameWindow(Game game)
         {
-            var gameWindow = new GameWindow();
-            var game = new Game();
-
             // TODO implement deltaTime
-            gameWindow.Title = Assembly.GetExecutingAssembly().GetName().Name;
-            gameWindow.WindowState = WindowState.Maximized;
-            gameWindow.UpdateFrame += (objectArgs, args) => game.Update();
-            gameWindow.Resize += (objectArgs, args) => game.Resize(gameWindow.Width, gameWindow.Height);
-            gameWindow.RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
-            gameWindow.RenderFrame += (objectArgs, frameEventArgs) => gameWindow.SwapBuffers();
+            Title = Assembly.GetExecutingAssembly().GetName().Name;
+            WindowState = WindowState.Maximized;
+            UpdateFrame += (objectArgs, args) => game.Update((float) args.Time);
+            Resize += (objectArgs, args) => game.Resize(Width, Height);
+            RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
+            RenderFrame += (objectArgs, frameEventArgs) => SwapBuffers();
 
             // start the game loop with 60Hz
-            gameWindow.Run(60);
+            Run(60);
         }
 
         // handel game exit with escape

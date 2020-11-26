@@ -2,8 +2,6 @@
 {
     public interface ICollidable : IComponent
     {
-        void CheckCollision()
-        {
-        }
+        void CheckCollision();
     }
 }

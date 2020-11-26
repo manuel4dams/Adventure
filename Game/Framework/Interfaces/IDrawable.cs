@@ -2,8 +2,6 @@
 {
     public interface IDrawable : IComponent
     {
-        void Draw()
-        {
-        }
+        void Draw();
     }
 }

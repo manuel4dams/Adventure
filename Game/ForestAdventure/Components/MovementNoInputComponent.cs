@@ -1,4 +1,6 @@
 ﻿using System;
+using Framework.Interfaces;
+using Framework.Objects;
 
 namespace ForestAdventure.Components
 {
@@ -7,12 +9,15 @@ namespace ForestAdventure.Components
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
-        private Bounds bounds;
         private bool leftRight;
+        public GameObject gameObject { get; }
 
-        public MovementNoInputComponent(float movementBorderLeft, float movementBorderRight, Bounds bounds)
+        public MovementNoInputComponent(
+            GameObject gameObject,
+            float movementBorderLeft,
+            float movementBorderRight)
         {
-            this.bounds = bounds;
+            this.gameObject = gameObject;
             this.movementBorderLeft = movementBorderLeft;
             this.movementBorderRight = movementBorderRight;
 
@@ -20,24 +25,24 @@ namespace ForestAdventure.Components
             leftRight = random.Next(1, 3) == 2;
         }
 
-        public void Move()
+        public void Update(float deltaTime)
         {
             // let enemy move from left to right
             if (leftRight)
             {
-                bounds.MinX -= 0.001f;
-                bounds.MinX = Math.Max(bounds.MinX, -1f);
+                gameObject.transform.position.X -= 1f * deltaTime;
+                gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (bounds.MinX < movementBorderLeft) leftRight = false;
+                if (gameObject.transform.position.X < movementBorderLeft) leftRight = false;
             }
-            else if (leftRight == false)
+            else
             {
-                bounds.MinX += 0.001f;
-                bounds.MinX = Math.Max(bounds.MinX, -1f);
+                gameObject.transform.position.X += 1f * deltaTime;
+                gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (bounds.MinX > movementBorderRight) leftRight = true;
+                if (gameObject.transform.position.X > movementBorderRight) leftRight = true;
             }
         }
     }

@@ -1,26 +1,40 @@
-﻿namespace Framework.Objects
+﻿using OpenTK;
+
+namespace Framework.Objects
 {
     public class Bounds
     {
-        public Bounds(float minX, float minY, float sizeX, float sizeY)
+        public Vector2 center;
+        public Vector2 size;
+
+        public float MinX => center.X - size.X / 2f;
+
+        public float MaxX => center.X + size.X / 2f;
+
+        public float MinY => center.Y - size.Y / 2f;
+
+        public float MaxY => center.Y + size.Y / 2f;
+
+        public Bounds(Vector2 size)
+            : this(Vector2.Zero, size)
         {
-            SizeX = sizeX;
-            SizeY = sizeY;
-            // todo rename minX/Y
-            MinX = minX;
-            MinY = minY;
+            this.size = size;
         }
 
-        public float SizeX { get; set; }
+        public Bounds(Vector2 center, Vector2 size)
+        {
+            this.center = center;
+            this.size = size;
+        }
 
-        public float SizeY { get; set; }
+        public Bounds(float sizeX, float sizeY)
+            : this(new Vector2(sizeX, sizeY))
+        {
+        }
 
-        public float MinX { get; set; }
-
-        public float MaxX => MinX + SizeX;
-
-        public float MinY { get; set; }
-
-        public float MaxY => MinY + SizeY;
+        public Bounds(float centerX, float centerY, float sizeX, float sizeY)
+            : this(new Vector2(centerX, centerY), new Vector2(sizeX, sizeY))
+        {
+        }
     }
 }
