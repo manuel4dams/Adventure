@@ -1,11 +1,11 @@
 ﻿using OpenTK;
 
-namespace ForestAdventure.Helper
+namespace Framework.Objects
 {
     public class Transform
     {
         public Vector2 position;
-        public Vector2 scale;
         public float rotation;
+        public Vector2 scale;
     }
 }

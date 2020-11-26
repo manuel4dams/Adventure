@@ -1,12 +1,12 @@
-﻿using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
+﻿using Framework.Interfaces;
+using Framework.Objects;
 using OpenTK.Graphics.OpenGL;
 
-namespace ForestAdventure.Components
+namespace Framework.Components
 {
     public class RectangleComponent : IDrawable
     {
-        private Bounds bounds;
+        private readonly Bounds bounds;
 
         public RectangleComponent(Bounds bounds)
         {

@@ -2,7 +2,7 @@
 using OpenTK;
 using OpenTK.Input;
 
-namespace ForestAdventure
+namespace Framework.Objects
 {
     public class GameWindow : OpenTK.GameWindow
     {
@@ -11,6 +11,7 @@ namespace ForestAdventure
             var gameWindow = new GameWindow();
             var game = new Game();
 
+            // TODO implement deltaTime
             gameWindow.Title = Assembly.GetExecutingAssembly().GetName().Name;
             gameWindow.WindowState = WindowState.Maximized;
             gameWindow.UpdateFrame += (objectArgs, args) => game.Update();

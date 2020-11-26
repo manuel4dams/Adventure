@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using ForestAdventure.Objects;
 using OpenTK.Graphics.OpenGL;
 
-namespace ForestAdventure
+namespace Framework.Objects
 {
     public class Game
     {

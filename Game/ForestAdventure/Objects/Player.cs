@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using ForestAdventure.Components;
-using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
+﻿using ForestAdventure.Components;
 
 namespace ForestAdventure.Objects
 {

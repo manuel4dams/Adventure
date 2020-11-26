@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using ForestAdventure.Components;
-using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
-
-namespace ForestAdventure.Objects
+﻿namespace ForestAdventure.Objects
 {
     public class Entrance : GameObject
     {

@@ -1,4 +1,4 @@
-﻿namespace ForestAdventure.Helper
+﻿namespace Framework.Objects
 {
     public class Bounds
     {

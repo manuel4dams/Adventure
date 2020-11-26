@@ -1,4 +1,4 @@
-﻿namespace ForestAdventure.Interfaces
+﻿namespace Framework.Interfaces
 {
     public interface IDrawable : IComponent
     {

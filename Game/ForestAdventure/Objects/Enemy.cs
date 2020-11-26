@@ -1,5 +1,4 @@
 ﻿using ForestAdventure.Components;
-using ForestAdventure.Helper;
 
 namespace ForestAdventure.Objects
 {

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
+using Framework.Interfaces;
 
-namespace ForestAdventure.Objects
+namespace Framework.Objects
 {
     public class GameObject
     {
@@ -34,7 +33,6 @@ namespace ForestAdventure.Objects
             foreach (var component in componentList)
             {
                 if (component is IUpdateable) ((IUpdateable) component).Update();
-                if (component is IMovable) ((IMovable) component).Move();
                 if (component is ICollidable) ((ICollidable) component).CheckCollision();
             }
         }

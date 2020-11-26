@@ -1,11 +1,9 @@
 ﻿using System;
-using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
 using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
-    public class PlayerMovementComponent : IMovable
+    public class PlayerMovementComponent : IUpdateable
     {
         private Bounds objectData;
 
@@ -16,10 +14,10 @@ namespace ForestAdventure.Components
 
         public void Move()
         {
-            KeyboardState keyboardState = Keyboard.GetState();
+            var keyboardState = Keyboard.GetState();
 
             // handel left right movement
-            float leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.1f :
+            var leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.1f :
                 keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.1f : 0f;
 
             objectData.MinX += leftRightAxis;

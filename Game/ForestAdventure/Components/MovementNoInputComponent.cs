@@ -1,16 +1,14 @@
 ﻿using System;
-using ForestAdventure.Helper;
-using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Components
 {
-    public class MovementNoInputComponent : IMovable
+    public class MovementNoInputComponent : IUpdateable
     {
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
-        private bool leftRight;
         private Bounds bounds;
+        private bool leftRight;
 
         public MovementNoInputComponent(float movementBorderLeft, float movementBorderRight, Bounds bounds)
         {
