@@ -1,4 +1,5 @@
 ﻿using System;
+using ForestAdventure.Helper;
 using ForestAdventure.Interfaces;
 using OpenTK.Input;
 
@@ -6,20 +7,21 @@ namespace ForestAdventure.Components
 {
     public class CPlayerMovement : IMovable
     {
-        private IGameObject gameObject;
-        private KeyboardState keyboardState;
+        private ObjectData objectData;
 
-        public CPlayerMovement(IGameObject gameObject)
+        public CPlayerMovement(ObjectData objectData)
         {
-            this.gameObject = gameObject;
-            keyboardState = Keyboard.GetState();
+            this.objectData = objectData;
         }
 
         public void Move()
         {
-            var leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f :
+            KeyboardState keyboardState = Keyboard.GetState();
+            float leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f :
                 keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
-            Console.WriteLine(leftRightAxis);
+
+            objectData.MinX += leftRightAxis;
+            objectData.MinX = Math.Max(objectData.MinX, -1f);
         }
     }
 }

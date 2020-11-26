@@ -1,5 +1,8 @@
-﻿namespace ForestAdventure.Helper
+﻿using System;
+
+namespace ForestAdventure.Helper
 {
+    [Obsolete]
     public interface IRectangle
     {
         float MaxX { get; }

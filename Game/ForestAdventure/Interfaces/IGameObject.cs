@@ -5,19 +5,19 @@ namespace ForestAdventure.Interfaces
 {
     public interface IGameObject
     {
-        public List<IComponent> ComponentList { get; }
+        List<IComponent> ComponentList { get; }
 
-        public void AddComponent(IComponent component)
+        void AddComponent(IComponent component)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveComponent(IComponent component)
+        void RemoveComponent(IComponent component)
         {
             throw new NotImplementedException();
         }
 
-        public void Update()
+        void Update()
         {
             // TODO check if component is updateable
             foreach (var component in ComponentList)
@@ -27,7 +27,7 @@ namespace ForestAdventure.Interfaces
             }
         }
 
-        public void Draw()
+        void Draw()
         {
             foreach (var component in ComponentList)
             {

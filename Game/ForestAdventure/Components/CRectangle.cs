@@ -1,41 +1,31 @@
-﻿using ForestAdventure.Interfaces;
+﻿using System;
+using ForestAdventure.Helper;
+using ForestAdventure.Interfaces;
 using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure.Components
 {
-    public class CRectangle : IDrawable, IUpdateable
+    public class CRectangle : IDrawable
     {
-        public CRectangle(float minX, float minY, float sizeX, float sizeY)
+        private ObjectData objectData;
+
+        public CRectangle(ObjectData objectData)
         {
-            MinX = minX;
-            MinY = minY;
-            SizeX = sizeX;
-            SizeY = sizeY;
+            this.objectData = objectData;
         }
-
-        public float MinX { get; set; }
-
-        public float MinY { get; set; }
-
-        public float MaxX => MinX + SizeX;
-
-        public float MaxY => MinY + SizeY;
-
-        public float SizeX { get; }
-
-        public float SizeY { get; }
 
         public void Draw()
         {
+            Console.WriteLine(objectData.MinX);
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(MinX, MinY);
+            GL.Vertex2(objectData.MinX, objectData.MinY);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(MaxX, MinY);
+            GL.Vertex2(objectData.MaxX, objectData.MinY);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(MaxX, MaxY);
+            GL.Vertex2(objectData.MaxX, objectData.MaxY);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(MinX, MaxY);
+            GL.Vertex2(objectData.MinX, objectData.MaxY);
             GL.End();
         }
     }

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ForestAdventure.Components;
+using ForestAdventure.Helper;
 using ForestAdventure.Interfaces;
 
 namespace ForestAdventure.Objects
@@ -8,8 +10,9 @@ namespace ForestAdventure.Objects
     {
         public Player(float minX, float minY, float sizeX, float sizeY)
         {
-            AddComponent(new CRectangle(minX, minY, sizeX, sizeY));
-            AddComponent(new CPlayerMovement(this));
+            ObjectData objectData = new ObjectData(minX, minY, sizeX, sizeY);
+            AddComponent(new CRectangle(objectData));
+            AddComponent(new CPlayerMovement(objectData));
         }
 
         public List<IComponent> ComponentList { get; } = new List<IComponent>();

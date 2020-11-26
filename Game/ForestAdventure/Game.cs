@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ForestAdventure.Interfaces;
 using ForestAdventure.Objects;
+using OpenTK.Graphics.OpenGL;
 
 namespace ForestAdventure
 {
@@ -10,8 +11,8 @@ namespace ForestAdventure
 
         public Game()
         {
-            AddPlatforms(0.026f);
-            AddEnemies(0.075f, 0.075f);
+            // AddPlatforms(0.026f);
+            // AddEnemies(0.075f, 0.075f);
             AddPlayer(0.1f, 0.1f);
         }
 
@@ -27,6 +28,7 @@ namespace ForestAdventure
 
         internal void Draw()
         {
+            GL.Clear(ClearBufferMask.ColorBufferBit);
             foreach (var gameObject in gameObjectList) gameObject.Draw();
         }
 
