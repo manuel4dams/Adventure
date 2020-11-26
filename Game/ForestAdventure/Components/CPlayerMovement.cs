@@ -17,8 +17,8 @@ namespace ForestAdventure.Components
         public void Move()
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            float leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f :
-                keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
+            float leftRightAxis = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.1f :
+                keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.1f : 0f;
 
             objectData.MinX += leftRightAxis;
             objectData.MinX = Math.Max(objectData.MinX, -1f);

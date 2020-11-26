@@ -16,7 +16,6 @@ namespace ForestAdventure.Components
 
         public void Draw()
         {
-            Console.WriteLine(objectData.MinX);
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
             GL.Vertex2(objectData.MinX, objectData.MinY);

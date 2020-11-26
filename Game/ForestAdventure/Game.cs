@@ -11,9 +11,11 @@ namespace ForestAdventure
 
         public Game()
         {
-            // AddPlatforms(0.026f);
-            // AddEnemies(0.075f, 0.075f);
-            AddPlayer(0.1f, 0.1f);
+            AddPlatforms(0.026f);
+            gameObjectList.Add(new Exit(3.71f, 1.426f, 0.09f, 0.2f));
+            gameObjectList.Add(new Entrance(-1f, -1f, 0.1f, 0.3f));
+            AddEnemies(0.075f, 0.075f);
+            gameObjectList.Add(new Player(-0.9f, -0.9f, 0.075f, 0.15f));
         }
 
         internal void Resize(float width, float height)
@@ -52,11 +54,6 @@ namespace ForestAdventure
             gameObjectList.Add(new Platform(1f, 0.4f, 0.5f, platformThickness));
             gameObjectList.Add(new Platform(3f, 1.2f, 0.4f, platformThickness));
             gameObjectList.Add(new Platform(3.5f, 1.4f, 0.3f, platformThickness));
-        }
-
-        private void AddPlayer(float height, float width)
-        {
-            gameObjectList.Add(new Player(-0.9f, -0.9f, 0.075f, 0.15f));
         }
 
         private void AddEnemies(float height, float width)

@@ -1,6 +1,6 @@
 ﻿namespace ForestAdventure.Helper
 {
-    public struct ObjectData
+    public class ObjectData
     {
         public ObjectData(float minX, float minY, float sizeX, float sizeY)
         {
