@@ -9,12 +9,12 @@ namespace ForestAdventure.Components
     {
         private const float MOVEMENT_SPEED = 1f;
 
-        public GameObject gameObject { get; }
-
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
+
+        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {
@@ -26,8 +26,7 @@ namespace ForestAdventure.Components
 
             gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(
                 left + right,
-                up + down
-            );
+                up + down);
         }
     }
 }

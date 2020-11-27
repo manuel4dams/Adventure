@@ -5,8 +5,8 @@ namespace Framework.Objects
 {
     public class GameObject
     {
-        private readonly List<IComponent> componentList = new List<IComponent>();
         public readonly Transform transform;
+        private readonly List<IComponent> componentList = new List<IComponent>();
 
         public GameObject()
             : this(new Transform())
@@ -41,8 +41,7 @@ namespace Framework.Objects
         {
             foreach (var component in componentList)
             {
-                if (component is IDrawable)
-                    ((IDrawable) component).Draw();
+                if (component is IDrawable) ((IDrawable) component).Draw();
             }
         }
     }

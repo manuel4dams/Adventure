@@ -4,16 +4,8 @@ namespace Framework.Objects
 {
     public class Bounds
     {
-        public Vector2 center;
-        public Vector2 size;
-
-        public float MinX => center.X - size.X / 2f;
-
-        public float MaxX => center.X + size.X / 2f;
-
-        public float MinY => center.Y - size.Y / 2f;
-
-        public float MaxY => center.Y + size.Y / 2f;
+        private Vector2 center;
+        private Vector2 size;
 
         public Bounds(Vector2 size)
             : this(Vector2.Zero, size)
@@ -36,5 +28,13 @@ namespace Framework.Objects
             : this(new Vector2(centerX, centerY), new Vector2(sizeX, sizeY))
         {
         }
+
+        public float minX => center.X - size.X / 2f;
+
+        public float maxX => center.X + size.X / 2f;
+
+        public float minY => center.Y - size.Y / 2f;
+
+        public float maxY => center.Y + size.Y / 2f;
     }
 }

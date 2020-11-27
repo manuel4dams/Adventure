@@ -1,14 +1,19 @@
 ﻿using Framework.Components;
 using Framework.Objects;
+using OpenTK;
 
 namespace ForestAdventure.Objects
 {
     public class Platform : GameObject
     {
-        public Platform(float minX, float minY, float sizeX, float sizeY)
+        public Platform(Vector2 position, float length)
         {
-            Bounds bounds = new Bounds(minX, minY, sizeX, sizeY);
+            transform.position = position;
+            var bounds = new Bounds(length, 0.026f);
             AddComponent(new RectangleComponent(this, bounds));
+#if DEBUG
+            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+#endif
         }
     }
 }
