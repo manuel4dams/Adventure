@@ -12,9 +12,9 @@ namespace Framework.Objects
             gameObjectList.Add(gameObject);
         }
 
-        internal void Resize(float width, float height)
+        internal void Resize(int width, int height)
         {
-            // TODO implement
+            Camera.Instance.Resize(width, height);
         }
 
         internal void Update(float deltaTime)

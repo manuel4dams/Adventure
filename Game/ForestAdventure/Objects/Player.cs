@@ -18,6 +18,7 @@ namespace ForestAdventure.Objects
             AddComponent(new RectangleComponent(this, headBounds, Color.Red));
 
             AddComponent(new PlayerMovementComponent(this));
+            AddComponent(new CameraComponent(this));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
 #endif

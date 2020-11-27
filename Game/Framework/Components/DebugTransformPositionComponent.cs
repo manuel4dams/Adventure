@@ -26,10 +26,18 @@ namespace Framework.Components
         {
             GL.Color4(Color.Pink);
             GL.Begin(PrimitiveType.Lines);
-            GL.Vertex2(gameObject.transform.position.X - lineLength, gameObject.transform.position.Y);
-            GL.Vertex2(gameObject.transform.position.X + lineLength, gameObject.transform.position.Y);
-            GL.Vertex2(gameObject.transform.position.X, gameObject.transform.position.Y - lineLength);
-            GL.Vertex2(gameObject.transform.position.X, gameObject.transform.position.Y + lineLength);
+            GL.Vertex2(
+                gameObject.transform.position.X - lineLength - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y - Camera.Instance.centerPosition.Y);
+            GL.Vertex2(
+                gameObject.transform.position.X + lineLength - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y - Camera.Instance.centerPosition.Y);
+            GL.Vertex2(
+                gameObject.transform.position.X - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y - lineLength - Camera.Instance.centerPosition.Y);
+            GL.Vertex2(
+                gameObject.transform.position.X - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y + lineLength - Camera.Instance.centerPosition.Y);
             GL.End();
         }
     }

@@ -29,13 +29,21 @@ namespace Framework.Components
             GL.Color4(color);
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
-            GL.Vertex2(gameObject.transform.position.X + bounds.minX, gameObject.transform.position.Y + bounds.minY);
+            GL.Vertex2(
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
             GL.TexCoord2(1f, 0f);
-            GL.Vertex2(gameObject.transform.position.X + bounds.maxX, gameObject.transform.position.Y + bounds.minY);
+            GL.Vertex2(
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
             GL.TexCoord2(1f, 1f);
-            GL.Vertex2(gameObject.transform.position.X + bounds.maxX, gameObject.transform.position.Y + bounds.maxY);
+            GL.Vertex2(
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
             GL.TexCoord2(0f, 1f);
-            GL.Vertex2(gameObject.transform.position.X + bounds.minX, gameObject.transform.position.Y + bounds.maxY);
+            GL.Vertex2(
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
             GL.End();
         }
     }

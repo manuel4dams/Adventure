@@ -3,7 +3,7 @@ using Framework.Interfaces;
 
 namespace Framework.Objects
 {
-    public class GameObject
+    public abstract class GameObject
     {
         public readonly Transform transform;
         private readonly List<IComponent> componentList = new List<IComponent>();
@@ -34,6 +34,7 @@ namespace Framework.Objects
             {
                 if (component is IUpdateable) ((IUpdateable) component).Update(deltaTime);
                 if (component is ICollidable) ((ICollidable) component).CheckCollision();
+                if (component is ICameraUpdate) ((ICameraUpdate) component).UpdateCamera();
             }
         }
 
