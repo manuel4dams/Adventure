@@ -11,9 +11,9 @@ namespace UnitTestForestAdventure
         [TestMethod]
         public void TestMethod1()
         {
-            Program program = new Program();
-            
-            Assert.AreEqual(1,1);
+            var program = new Program();
+
+            Assert.AreEqual(1, 1);
         }
     }
 }
