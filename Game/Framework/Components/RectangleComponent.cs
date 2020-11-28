@@ -1,6 +1,5 @@
 ﻿using Framework.Interfaces;
 using Framework.Objects;
-using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
