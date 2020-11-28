@@ -14,6 +14,7 @@ namespace ForestAdventure.Objects
 
             var bodyBounds = new Bounds(0.075f, 0.15f);
             AddComponent(new RectangleComponent(this, bodyBounds, new Color4(5, 128, 13, 255)));
+            AddComponent(new BowComponent(this));
 
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraComponent(this));

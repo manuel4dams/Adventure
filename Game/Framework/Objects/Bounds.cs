@@ -29,6 +29,16 @@ namespace Framework.Objects
         {
         }
 
+        public float centerX
+        {
+            get { return center.X; } set { center.X = value; }
+        }
+
+        public float centerY
+        {
+            get { return center.Y; } set { center.Y = value; }
+        }
+
         public float minX => center.X - size.X / 2f;
 
         public float maxX => center.X + size.X / 2f;
