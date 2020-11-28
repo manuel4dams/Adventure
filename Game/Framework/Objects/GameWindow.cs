@@ -8,10 +8,14 @@ namespace Framework.Objects
     {
         public GameWindow(Game game)
         {
-            // TODO implement deltaTime
             Title = Assembly.GetExecutingAssembly().GetName().Name;
+            // TODO
             WindowState = WindowState.Maximized;
-            UpdateFrame += (objectArgs, args) => game.Update((float) args.Time);
+            UpdateFrame += (objectArgs, args) =>
+            {
+                game.Update((float) args.Time);
+                game.CollisionCheck();
+            };
             Resize += (objectArgs, args) => game.Resize(Width, Height);
             RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
             RenderFrame += (objectArgs, frameEventArgs) => SwapBuffers();
