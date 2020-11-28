@@ -13,6 +13,7 @@ namespace ForestAdventure
         {
             game = new Game();
 
+            AddBackground();
             AddPlatforms();
             game.AddGameObject(new Exit());
             game.AddGameObject(new Entrance());
@@ -29,6 +30,11 @@ namespace ForestAdventure
         internal void Run()
         {
             new GameWindow(game);
+        }
+
+        private void AddBackground()
+        {
+            game.AddGameObject(new Background());
         }
 
         private void AddPlatforms()
