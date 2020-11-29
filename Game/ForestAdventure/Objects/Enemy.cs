@@ -22,6 +22,7 @@ namespace ForestAdventure.Objects
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+            AddComponent(new DebugColliderEdges(this, bodyBounds));
 #endif
         }
     }

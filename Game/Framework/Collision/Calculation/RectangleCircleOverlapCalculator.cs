@@ -4,6 +4,7 @@ using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
+    // TODO test calculation für correctness
     public static class RectangleCircleOverlapCalculator
     {
         // see BoxCircleCollisionCalculator

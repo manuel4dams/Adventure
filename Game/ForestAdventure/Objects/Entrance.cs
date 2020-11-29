@@ -14,6 +14,7 @@ namespace ForestAdventure.Objects
             AddComponent(new RectangleDrawable(this, bounds, new Color4(40, 26, 13, 255)));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+            AddComponent(new DebugColliderEdges(this, bounds));
 #endif
         }
     }

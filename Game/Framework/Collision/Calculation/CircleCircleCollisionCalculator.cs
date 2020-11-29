@@ -2,6 +2,7 @@
 
 namespace Framework.Collision.Calculation
 {
+    // TODO test calculation für correctness
     public class CircleCircleCollisionCalculator
     {
         public static bool Intersects(CircleCollider circleA, CircleCollider circleB)

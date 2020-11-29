@@ -3,6 +3,7 @@ using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
+    // TODO test calculation für correctness
     public static class RectangleCircleCollisionCalculator
     {
         // see https://stackoverflow.com/a/1879223

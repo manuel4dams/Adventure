@@ -3,6 +3,7 @@ using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
+    // TODO test calculation für correctness
     public static class RectangleRectangleOverlapCalculator
     {
         public static Vector2 UnrotatedOverlap(RectangleCollider first, RectangleCollider second)

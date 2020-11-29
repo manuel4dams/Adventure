@@ -16,13 +16,15 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleRectangleCollisionCalculator.UnrotatedIntersects(firstRectangle,
+                            return RectangleRectangleCollisionCalculator.UnrotatedIntersects(
+                                firstRectangle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
                             return RectangleCircleCollisionCalculator.UnrotatedIntersects(secondCircle, firstRectangle);
+                        default:
+                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
                     }
 
-                    break;
                 case CircleCollider firstCircle:
                     switch (second)
                     {
@@ -30,13 +32,13 @@ namespace Framework.Collision
                             return RectangleCircleCollisionCalculator.UnrotatedIntersects(firstCircle, secondRectangle);
                         case CircleCollider secondCircle:
                             return CircleCircleCollisionCalculator.Intersects(firstCircle, secondCircle);
+                        default:
+                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
                     }
 
-                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(first.GetType().ToString());
             }
-
-            throw new ArgumentException("Collision between " + first.GetType().Name + " and " +
-                                        second.GetType().Name + " not implemented yet!");
         }
 
         public static Vector2 UnrotatedOverlap(ICollider first, ICollider second)
@@ -47,13 +49,15 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleRectangleOverlapCalculator.UnrotatedOverlap(firstRectangle,
+                            return RectangleRectangleOverlapCalculator.UnrotatedOverlap(
+                                firstRectangle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
                             return RectangleCircleOverlapCalculator.UnrotatedOverlap(firstRectangle, secondCircle);
+                        default:
+                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
                     }
 
-                    break;
                 case CircleCollider firstCircle:
                     switch (second)
                     {
@@ -61,13 +65,13 @@ namespace Framework.Collision
                             return RectangleCircleOverlapCalculator.UnrotatedOverlap(firstCircle, secondRectangle);
                         case CircleCollider secondCircle:
                             return CircleCircleOverlapCalculator.UnrotatedOverlap(firstCircle, secondCircle);
+                        default:
+                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
                     }
 
-                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(first.GetType().ToString());
             }
-
-            throw new ArgumentException("UndoOverlap between " + first.GetType().Name + " and " +
-                                        second.GetType().Name + " not implemented yet!");
         }
     }
 }
