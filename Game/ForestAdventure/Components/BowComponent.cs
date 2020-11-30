@@ -5,6 +5,7 @@ using OpenTK;
 using OpenTK.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ForestAdventure.Components
@@ -28,6 +29,14 @@ namespace ForestAdventure.Components
             }
             // TODO JAN
             // arrows.ForEach(X => X.Update(deltaTime));
+            var updateables = arrows
+                .SelectMany(arrows => arrows.components)
+                .Select(component => component as IUpdateable)
+                .Where(updateable => updateable != null);
+            foreach (var updateable in updateables)
+            {
+                updateable.Update(deltaTime);
+            }
         }
 
         private void ShootArow(float deltaTime)
@@ -48,6 +57,12 @@ namespace ForestAdventure.Components
         {
             //TODO JAN
             // arrows.ForEach(X => X.Draw());
+            var drawables = arrows
+                .SelectMany(arrows => arrows.components)
+                .Select(component => component as IDrawable)
+                .Where(drawable => drawable != null);
+            foreach (var drawable in drawables)
+                drawable.Draw();
         }
     }
 }
