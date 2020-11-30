@@ -31,8 +31,10 @@ namespace ForestAdventure.Components
 
         private void ShootArow(float deltaTime)
         {
-            float dirX = (OpenTK.Input.Mouse.GetCursorState().X / 1920f) - Camera.Instance.centerPosition.X - gameObject.transform.position.X;
-            float dirY = (OpenTK.Input.Mouse.GetCursorState().Y / 1080f) - Camera.Instance.centerPosition.Y - gameObject.transform.position.Y;
+            float dirX = Mouse.GetState().X / 1920f;
+            float dirY = (Mouse.GetState().Y / 1080f) * -1f;
+            //float dirX = OpenTK.Input.Mouse.GetState().X;
+            //float dirY = OpenTK.Input.Mouse.GetState().Y * -1f;
             float magnitude = MathF.Sqrt((dirX * dirX) + (dirY * dirY));
             Arrow arrow = new Arrow();
             ArrowComponent arrowComponent = new ArrowComponent(arrow, 0.2f, new Vector2(dirX / magnitude, dirY / magnitude));
