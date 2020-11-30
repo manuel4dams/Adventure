@@ -2,7 +2,6 @@
 
 namespace Framework.Collision.Calculation
 {
-    // TODO test calculation für correctness
     public static class RectangleRectangleCollisionCalculator
     {
         public static bool UnrotatedIntersects(RectangleCollider first, RectangleCollider second)

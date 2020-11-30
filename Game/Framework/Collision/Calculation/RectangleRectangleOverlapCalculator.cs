@@ -3,14 +3,14 @@ using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
-    // TODO test calculation für correctness
     public static class RectangleRectangleOverlapCalculator
     {
-        public static Vector2 UnrotatedOverlap(RectangleCollider first, RectangleCollider second)
+        public static Vector2 UnrotatedOverlap(RectangleCollider rectangleA, RectangleCollider rectangleB)
         {
-            var newFirst = new RectangleCollider(first.gameObject, first.bounds);
-            newFirst.UndoOverlapInternal(second);
-            return new Vector2(newFirst.bounds.minX - first.bounds.minX, newFirst.bounds.minY - first.bounds.minY);
+            var newRectangleA = new RectangleCollider(rectangleA.gameObject, rectangleA.bounds);
+            newRectangleA.UndoOverlapInternal(rectangleB);
+            return new Vector2(newRectangleA.bounds.minX - rectangleA.bounds.minX,
+                newRectangleA.bounds.minY - rectangleA.bounds.minY);
         }
 
         private static void UndoOverlapInternal(this RectangleCollider rectangleA, RectangleCollider rectangleB)
@@ -21,19 +21,19 @@ namespace Framework.Collision.Calculation
             var directions = new[]
             {
                 // push distance A in positive X-direction
-                new Vector2(rectangleB.bounds.maxX - rectangleA.bounds.minX, 0),
+                new Vector2(rectangleA.bounds.maxX - rectangleB.bounds.minX, 0),
 
                 // push distance A in negative X-direction
-                new Vector2(rectangleB.bounds.minX - rectangleA.bounds.maxX, 0),
+                new Vector2(rectangleA.bounds.minX - rectangleB.bounds.maxX, 0),
 
                 // push distance A in positive Y-direction
-                new Vector2(0, rectangleB.bounds.maxY - rectangleA.bounds.minY),
+                new Vector2(0, rectangleA.bounds.maxY - rectangleB.bounds.minY),
 
                 // push distance A in negative Y-direction
-                new Vector2(0, rectangleB.bounds.minY - rectangleA.bounds.maxY),
+                new Vector2(0, rectangleA.bounds.minY - rectangleB.bounds.maxY),
             };
             var pushDistSqrd = new float[4];
-            for (var i = 0; i < 4; ++i)
+            for (int i = 0; i < 4; ++i)
             {
                 pushDistSqrd[i] = directions[i].LengthSquared;
             }
@@ -45,8 +45,10 @@ namespace Framework.Collision.Calculation
                 minId = pushDistSqrd[i] < pushDistSqrd[minId] ? i : minId;
             }
 
-            rectangleA.bounds.minX += directions[minId].X;
-            rectangleA.bounds.minY += directions[minId].Y;
+            // TODO which object should move in which direction?
+            rectangleB.bounds.minX += directions[minId].X * 0.1f;
+            rectangleB.bounds.minY += directions[minId].Y * 0.1f;
+            // rectangleB.gameObject.transform.position += directions[minId] * new Vector2(0.1f, 0.1f);
         }
     }
 }

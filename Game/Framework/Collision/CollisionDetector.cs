@@ -13,8 +13,7 @@ namespace Framework.Collision
 
             if (!colliderA.isTrigger && !colliderB.isTrigger)
             {
-                var offset = CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
-                colliderA.gameObject.transform.position += offset;
+                colliderA.gameObject.transform.position += CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
             }
         }
     }

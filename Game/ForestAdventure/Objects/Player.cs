@@ -12,7 +12,7 @@ namespace ForestAdventure.Objects
     {
         public Player()
         {
-            transform.position = new Vector2(-0.9f, -0.9f);
+            transform.position = new Vector2(-1.35f, -1f);
 
             var bodyBounds = new Bounds(0.075f, 0.15f);
             AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
@@ -33,7 +33,13 @@ namespace ForestAdventure.Objects
             base.OnCollision(other);
             if (other.gameObject is Enemy)
             {
-                Console.WriteLine("hit enemy");
+                // TODO
+                transform.position = new Vector2(-1.35f, -1f);
+            }
+            else if (other.gameObject is Exit)
+            {
+                // TODO
+                Console.WriteLine("Game Won");
             }
         }
     }
