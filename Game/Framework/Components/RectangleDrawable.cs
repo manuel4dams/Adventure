@@ -1,22 +1,21 @@
 ﻿using Framework.Interfaces;
 using Framework.Objects;
-using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Components
 {
-    public class RectangleComponent : IDrawable
+    public class RectangleDrawable : IDrawable
     {
         private readonly Bounds bounds;
         private readonly Color4 color;
 
-        public RectangleComponent(GameObject gameObject, Bounds bounds)
+        public RectangleDrawable(GameObject gameObject, Bounds bounds)
             : this(gameObject, bounds, Color4.White)
         {
         }
 
-        public RectangleComponent(GameObject gameObject, Bounds bounds, Color4 color)
+        public RectangleDrawable(GameObject gameObject, Bounds bounds, Color4 color)
         {
             this.gameObject = gameObject;
             this.bounds = bounds;

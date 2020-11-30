@@ -7,6 +7,31 @@ namespace Framework.Objects
         private Vector2 center;
         private Vector2 size;
 
+        public float minX
+        {
+            get => center.X - size.X / 2f;
+            set => center.X = value + size.X / 2f;
+        }
+
+        public float maxX
+        {
+            get => center.X + size.X / 2f;
+            set => center.X = value - size.X / 2f;
+        }
+
+        public float minY
+        {
+            get => center.Y - size.Y / 2f;
+            set => center.Y = value + size.Y / 2f;
+        }
+
+        public float maxY
+        {
+            get => center.Y + size.Y / 2f;
+            set => center.Y = value - size.Y / 2f;
+        }
+
+
         public Bounds(Vector2 size)
             : this(Vector2.Zero, size)
         {
@@ -28,23 +53,5 @@ namespace Framework.Objects
             : this(new Vector2(centerX, centerY), new Vector2(sizeX, sizeY))
         {
         }
-
-        public float centerX
-        {
-            get { return center.X; } set { center.X = value; }
-        }
-
-        public float centerY
-        {
-            get { return center.Y; } set { center.Y = value; }
-        }
-
-        public float minX => center.X - size.X / 2f;
-
-        public float maxX => center.X + size.X / 2f;
-
-        public float minY => center.Y - size.Y / 2f;
-
-        public float maxY => center.Y + size.Y / 2f;
     }
 }

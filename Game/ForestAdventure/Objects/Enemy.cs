@@ -16,10 +16,13 @@ namespace ForestAdventure.Objects
             transform.position = position;
 
             var bodyBounds = new Bounds(0.075f, 0.075f);
-            AddComponent(new RectangleComponent(this, bodyBounds, new Color4(184, 12, 0, 255)));
+            AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(184, 12, 0, 255)));
+            AddComponent(new RectangleCollider(this, bodyBounds));
+
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+            AddComponent(new DebugColliderEdges(this, bodyBounds));
 #endif
         }
     }

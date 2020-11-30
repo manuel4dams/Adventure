@@ -11,9 +11,11 @@ namespace ForestAdventure.Objects
         {
             transform.position = new Vector2(-1.35f, -0.85f);
             var bounds = new Bounds(0.1f, 0.3f);
-            AddComponent(new RectangleComponent(this, bounds, new Color4(40, 26, 13, 255)));
+            AddComponent(new RectangleDrawable(this, bounds, new Color4(40, 26, 13, 255)));
+            AddComponent(new RectangleCollider(this, bounds, true));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+            AddComponent(new DebugColliderEdges(this, bounds));
 #endif
         }
     }
