@@ -14,7 +14,7 @@ namespace ForestAdventure.Objects
         {
             transform.position = new Vector2(-1.35f, -1f);
 
-            var bodyBounds = new Bounds(0.075f, 0.15f);
+            var bodyBounds = new Bounds(0.075f, 0.075f);
             AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
             AddComponent(new RectangleCollider(this, bodyBounds));
 

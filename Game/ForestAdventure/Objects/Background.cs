@@ -10,8 +10,6 @@ namespace ForestAdventure.Objects
         public Background()
         {
             transform.position = new Vector2(0f, 0f);
-            var bounds = new Bounds(8f, 4f);
-            AddComponent(new RectangleDrawable(this, bounds, new Color4(34, 139, 34, 255)));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 8f));
 #endif

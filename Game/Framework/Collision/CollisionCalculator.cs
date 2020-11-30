@@ -22,6 +22,7 @@ namespace Framework.Collision
                         case CircleCollider secondCircle:
                             return RectangleCircleCollisionCalculator.UnrotatedIntersects(secondCircle, firstRectangle);
                         default:
+                            // TODO throw new ArgumentException("Invalid " + typeof(VierportAnchor).Name);
                             throw new ArgumentOutOfRangeException(second.GetType().ToString());
                     }
 
