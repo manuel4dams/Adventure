@@ -16,10 +16,13 @@ namespace ForestAdventure.Objects
 
             var bodyBounds = new Bounds(0.075f, 0.075f);
             AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
+
             AddComponent(new RectangleCollider(this, bodyBounds));
 
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
+            
+            AddComponent(new BowComponent(this));
 
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
