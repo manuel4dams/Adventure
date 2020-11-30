@@ -8,7 +8,7 @@ using OpenTK.Graphics;
 
 namespace ForestAdventure.Objects
 {
-    public class Player : GameObject
+    public class Player : GameObject, ICollision
     {
         public Player()
         {
@@ -27,18 +27,16 @@ namespace ForestAdventure.Objects
 #endif
         }
 
-
-        public override void OnCollision(ICollider other)
+        public void OnCollision(ICollider other)
         {
-            base.OnCollision(other);
             if (other.gameObject is Enemy)
             {
-                // TODO
+                // TODO handle death
                 transform.position = new Vector2(-1.35f, -1f);
             }
             else if (other.gameObject is Exit)
             {
-                // TODO
+                // TODO won status
                 Console.WriteLine("Game Won");
             }
         }

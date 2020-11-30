@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Framework.Collision;
-using Framework.Extension;
 using Framework.Interfaces;
+using Framework.Util.Extension;
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Objects

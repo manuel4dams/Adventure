@@ -14,7 +14,6 @@ namespace ForestAdventure
         public ForestAdventure()
         {
             game = new Game();
-
             AddBackground();
             AddPlatforms();
             game.AddGameObject(new Exit());
@@ -22,12 +21,6 @@ namespace ForestAdventure
             AddEnemies();
             game.AddGameObject(new Player());
             game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 2f}, 1.6f));
-
-            // var go = new GameObject();
-            // go.AddComponent(new RectangleDrawable(go, new Bounds(1f, 1f), Color4.Red));
-            // go.transform.position = new Vector2(-1.5f, 0f);
-            // game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 2f}, 1.6f));
-            // game.AddGameObject(go);
         }
 
         public static void Main()

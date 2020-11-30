@@ -1,20 +1,24 @@
-﻿using Framework.Interfaces;
+﻿using ForestAdventure.Objects;
+using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK;
 using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
-    public class PlayerMovementComponent : IComponent, IUpdateable
+    public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 1f;
+        private const float GRAVITY_CONSTANT = 9.81f / 20f;
+
+        public GameObject gameObject { get; }
+
+        private float gravityVelocity;
 
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
-
-        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {
@@ -27,6 +31,14 @@ namespace ForestAdventure.Components
             gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(
                 left + right,
                 up + down);
+            gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
+            gameObject.transform.position += gravityVelocity * new Vector2(0f, -1f);
+        }
+
+        public void OnCollision(ICollider other)
+        {
+            if (other.gameObject is Platform)
+                gravityVelocity = 0f;
         }
     }
 }

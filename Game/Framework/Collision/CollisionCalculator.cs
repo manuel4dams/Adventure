@@ -22,8 +22,7 @@ namespace Framework.Collision
                         case CircleCollider secondCircle:
                             return RectangleCircleCollisionCalculator.UnrotatedIntersects(secondCircle, firstRectangle);
                         default:
-                            // TODO throw new ArgumentException("Invalid " + typeof(VierportAnchor).Name);
-                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
+                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
                 case CircleCollider firstCircle:
@@ -34,11 +33,11 @@ namespace Framework.Collision
                         case CircleCollider secondCircle:
                             return CircleCircleCollisionCalculator.Intersects(firstCircle, secondCircle);
                         default:
-                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
+                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
                 default:
-                    throw new ArgumentOutOfRangeException(first.GetType().ToString());
+                    throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
             }
         }
 
@@ -56,22 +55,24 @@ namespace Framework.Collision
                         case CircleCollider secondCircle:
                             return RectangleCircleOverlapCalculator.UnrotatedOverlap(firstRectangle, secondCircle);
                         default:
-                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
+                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
                 case CircleCollider firstCircle:
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(firstCircle, secondRectangle);
+                            return RectangleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(firstCircle,
+                                secondRectangle);
                         case CircleCollider secondCircle:
-                            return CircleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(firstCircle, secondCircle);
+                            return CircleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(firstCircle,
+                                secondCircle);
                         default:
-                            throw new ArgumentOutOfRangeException(second.GetType().ToString());
+                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
                 default:
-                    throw new ArgumentOutOfRangeException(first.GetType().ToString());
+                    throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
             }
         }
     }

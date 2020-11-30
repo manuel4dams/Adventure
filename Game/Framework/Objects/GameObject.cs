@@ -3,7 +3,6 @@ using Framework.Interfaces;
 
 namespace Framework.Objects
 {
-    // TODO should class be abstract?
     public class GameObject
     {
         public readonly Transform transform;
@@ -27,10 +26,6 @@ namespace Framework.Objects
         public void RemoveComponent(IComponent component)
         {
             components.Remove(component);
-        }
-
-        public virtual void OnCollision(ICollider other)
-        {
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Framework.Interfaces;
+using Framework.Objects;
 
 namespace Framework.Collision
 {
@@ -10,7 +11,9 @@ namespace Framework.Collision
             if (!CollisionCalculator.UnrotatedIntersects(colliderA, colliderB))
                 return;
 
-            colliderA.gameObject.OnCollision(colliderB);
+            (colliderA.gameObject as ICollision)?.OnCollision(colliderB);
+            colliderA.gameObject.components
+                .ForEach(component => (component as ICollision)?.OnCollision(colliderB));
 
             if (!colliderA.isTrigger && !colliderB.isTrigger && !colliderA.isStatic)
             {
