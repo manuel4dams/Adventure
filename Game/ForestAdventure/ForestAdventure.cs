@@ -15,19 +15,19 @@ namespace ForestAdventure
         {
             game = new Game();
 
-            // AddBackground();
-            // AddPlatforms();
-            // game.AddGameObject(new Exit());
-            // game.AddGameObject(new Entrance());
-            // AddEnemies();
-            // game.AddGameObject(new Player());
-            // // TODO scale 1000 for now
-            // game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 500f}, Camera.ResizeViewport.KeepWidth));
+            AddBackground();
+            AddPlatforms();
+            game.AddGameObject(new Exit());
+            game.AddGameObject(new Entrance());
+            AddEnemies();
+            game.AddGameObject(new Player());
+            game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 2f}, 1.6f));
 
-            var go = new GameObject();
-            go.AddComponent(new RectangleDrawable(go, new Bounds(0.5f, 0.5f), Color4.Red));
-            game.AddGameObject(go);
-            game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 2f}, Camera.ResizeViewport.KeepWidth));
+            // var go = new GameObject();
+            // go.AddComponent(new RectangleDrawable(go, new Bounds(1f, 1f), Color4.Red));
+            // go.transform.position = new Vector2(-1.5f, 0f);
+            // game.AddGameObject(new Camera(new Transform {scale = Vector2.One * 2f}, 1.6f));
+            // game.AddGameObject(go);
         }
 
         public static void Main()
