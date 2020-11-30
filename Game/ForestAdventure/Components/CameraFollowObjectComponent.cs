@@ -8,6 +8,7 @@ namespace ForestAdventure.Components
     public class CameraFollowObjectComponent : IComponent, IUpdateable
     {
         private const float SMOOTHNESS = 10f;
+        
         public GameObject gameObject { get; }
 
         public CameraFollowObjectComponent(GameObject gameObject)
