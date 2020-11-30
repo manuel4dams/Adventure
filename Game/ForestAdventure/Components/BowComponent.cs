@@ -26,7 +26,8 @@ namespace ForestAdventure.Components
             {
                 ShootArow(deltaTime);
             }
-            arrows.ForEach(X => X.Update(deltaTime));
+            // TODO JAN
+            // arrows.ForEach(X => X.Update(deltaTime));
         }
 
         private void ShootArow(float deltaTime)
@@ -45,7 +46,8 @@ namespace ForestAdventure.Components
 
         public void Draw()
         {
-            arrows.ForEach(X => X.Draw());
+            //TODO JAN
+            // arrows.ForEach(X => X.Draw());
         }
     }
 }
