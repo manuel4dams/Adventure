@@ -9,7 +9,7 @@ namespace Framework.Collision.Calculation
     {
         // see BoxCircleCollisionCalculator
         // see https://stackoverflow.com/a/1879223
-        public static Vector2 UnrotatedOverlap(CircleCollider circle, RectangleCollider rectangle)
+        public static Vector2 CalculateUnrotatedOverlapOffset(CircleCollider circle, RectangleCollider rectangle)
         {
             // Find the closest point to the circle within the rectangle
             var closestX = MathHelper.Clamp(
@@ -43,7 +43,7 @@ namespace Framework.Collision.Calculation
 
         public static Vector2 UnrotatedOverlap(RectangleCollider rectangle, CircleCollider circle)
         {
-            return -UnrotatedOverlap(circle, rectangle);
+            return -CalculateUnrotatedOverlapOffset(circle, rectangle);
         }
     }
 }

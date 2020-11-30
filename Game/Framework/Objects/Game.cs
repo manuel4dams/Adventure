@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Framework.Collision;
+using Framework.Extension;
 using Framework.Interfaces;
 using OpenTK.Graphics.OpenGL;
 
@@ -17,19 +18,35 @@ namespace Framework.Objects
 
         internal void Resize(int width, int height)
         {
-            Camera.Instance.Resize(width, height);
+            gameObjects
+                .AsEnumerable()
+                .ForEach(gameObject => (gameObject as IResizable)?.Resize(width, height))
+                .SelectMany(gameObject => gameObject.components)
+                .ForEach(component => (component as IResizable)?.Resize(width, height))
+                .Evaluate();
         }
 
         internal void Update(float deltaTime)
         {
-            var updateables = gameObjects
+            gameObjects
+                .AsEnumerable()
+                .ForEach(gameObject => (gameObject as IUpdateable)?.Update(deltaTime))
                 .SelectMany(gameObject => gameObject.components)
-                .Select(component => component as IUpdateable)
-                .Where(updateable => updateable != null);
-            foreach (var updateable in updateables)
-            {
-                updateable.Update(deltaTime);
-            }
+                .ForEach(component => (component as IUpdateable)?.Update(deltaTime))
+                .Evaluate();
+        }
+
+        internal void Draw()
+        {
+            // TODO might not be needed
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+
+            gameObjects
+                .AsEnumerable()
+                .ForEach(gameObject => (gameObject as IDrawable)?.Draw())
+                .SelectMany(gameObject => gameObject.components)
+                .ForEach(component => (component as IDrawable)?.Draw())
+                .Evaluate();
         }
 
         internal void CollisionCheck()
@@ -47,21 +64,9 @@ namespace Framework.Objects
                         continue;
 
                     // TODO catch collision with same gameObject?
-                    CollisionDetector.HandleCollision(collider, secondCollider);
+                    CollisionHandler.HandleCollision(collider, secondCollider);
                 }
             }
-        }
-
-        internal void Draw()
-        {
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            var drawables = gameObjects
-                .SelectMany(gameObject => gameObject.components)
-                .Select(component => component as IDrawable)
-                .Where(drawable => drawable != null);
-            foreach (var drawable in drawables)
-                drawable.Draw();
         }
     }
 }

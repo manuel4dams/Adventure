@@ -6,6 +6,6 @@ namespace Framework.Objects
     {
         public Vector2 position;
         public float rotation;
-        public Vector2 scale;
+        public Vector2 scale = Vector2.One;
     }
 }

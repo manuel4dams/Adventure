@@ -19,6 +19,7 @@ namespace ForestAdventure
             game.AddGameObject(new Entrance());
             AddEnemies();
             game.AddGameObject(new Player());
+            game.AddGameObject(new Camera());
         }
 
         public static void Main()

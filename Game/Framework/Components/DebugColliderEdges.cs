@@ -5,7 +5,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Components
 {
-    public class DebugColliderEdges : IDrawable
+    public class DebugColliderEdges : IComponent, IDrawable
     {
         private readonly Bounds bounds;
         public GameObject gameObject { get; }
@@ -21,29 +21,29 @@ namespace Framework.Components
             GL.Color4(Color.Pink);
             GL.Begin(PrimitiveType.Lines);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.minY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.minY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.maxX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.maxX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + bounds.minX - Camera.Instance.centerPosition.X,
-                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.centerPosition.Y);
+                gameObject.transform.position.X + bounds.minX - Camera.Instance.transform.position.X,
+                gameObject.transform.position.Y + bounds.maxY - Camera.Instance.transform.position.Y);
             GL.End();
         }
     }

@@ -16,6 +16,7 @@ namespace Framework.Objects
                 game.Update((float) args.Time);
                 game.CollisionCheck();
             };
+            game.Resize(Width, Height);
             Resize += (objectArgs, args) => game.Resize(Width, Height);
             RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
             RenderFrame += (objectArgs, frameEventArgs) => SwapBuffers();

@@ -3,7 +3,8 @@ using Framework.Interfaces;
 
 namespace Framework.Objects
 {
-    public abstract class GameObject
+    // TODO should class be abstract?
+    public class GameObject
     {
         public readonly Transform transform;
         public readonly List<IComponent> components = new List<IComponent>();

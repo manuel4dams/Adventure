@@ -1,16 +1,41 @@
 ﻿using Framework.Components;
+using Framework.Objects;
 using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
     public static class RectangleRectangleOverlapCalculator
     {
-        public static Vector2 UnrotatedOverlap(RectangleCollider rectangleA, RectangleCollider rectangleB)
+        // TODO refactor remove additional newRectangleA
+        // TODO calculation is still shit
+        public static Vector2 CalculateUnrotatedOverlapOffset(RectangleCollider rectangleA, RectangleCollider rectangleB)
         {
-            var newRectangleA = new RectangleCollider(rectangleA.gameObject, rectangleA.bounds);
-            newRectangleA.UndoOverlapInternal(rectangleB);
-            return new Vector2(newRectangleA.bounds.minX - rectangleA.bounds.minX,
-                newRectangleA.bounds.minY - rectangleA.bounds.minY);
+            var newRectangleAGameObject = new GameObject
+            {
+                transform =
+                {
+                    position = rectangleA.gameObject.transform.position,
+                    scale = rectangleA.gameObject.transform.scale,
+                    rotation = rectangleA.gameObject.transform.rotation,
+                },
+            };
+            var newRectangleA = new RectangleCollider(newRectangleAGameObject, rectangleA.bounds);
+
+            var newRectangleBGameObject = new GameObject
+            {
+                transform =
+                {
+                    position = rectangleB.gameObject.transform.position,
+                    scale = rectangleB.gameObject.transform.scale,
+                    rotation = rectangleB.gameObject.transform.rotation,
+                },
+            };
+            var newRectangleB = new RectangleCollider(newRectangleBGameObject, rectangleB.bounds);
+
+            newRectangleA.UndoOverlapInternal(newRectangleB);
+            return new Vector2(
+                newRectangleA.gameObject.transform.position.X - rectangleA.gameObject.transform.position.X,
+                newRectangleA.gameObject.transform.position.Y - rectangleA.gameObject.transform.position.Y);
         }
 
         private static void UndoOverlapInternal(this RectangleCollider rectangleA, RectangleCollider rectangleB)
@@ -33,7 +58,7 @@ namespace Framework.Collision.Calculation
                 new Vector2(0, rectangleA.bounds.minY - rectangleB.bounds.maxY),
             };
             var pushDistSqrd = new float[4];
-            for (int i = 0; i < 4; ++i)
+            for (var i = 0; i < 4; ++i)
             {
                 pushDistSqrd[i] = directions[i].LengthSquared;
             }
@@ -45,10 +70,7 @@ namespace Framework.Collision.Calculation
                 minId = pushDistSqrd[i] < pushDistSqrd[minId] ? i : minId;
             }
 
-            // TODO which object should move in which direction?
-            rectangleB.bounds.minX += directions[minId].X * 0.1f;
-            rectangleB.bounds.minY += directions[minId].Y * 0.1f;
-            // rectangleB.gameObject.transform.position += directions[minId] * new Vector2(0.1f, 0.1f);
+            rectangleA.gameObject.transform.position += directions[minId];
         }
     }
 }

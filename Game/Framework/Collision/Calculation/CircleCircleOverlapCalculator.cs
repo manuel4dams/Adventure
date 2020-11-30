@@ -6,7 +6,7 @@ namespace Framework.Collision.Calculation
     // TODO test calculation für correctness
     public static class CircleCircleOverlapCalculator
     {
-        public static Vector2 UnrotatedOverlap(CircleCollider first, CircleCollider second)
+        public static Vector2 CalculateUnrotatedOverlapOffset(CircleCollider first, CircleCollider second)
         {
             var newFirst = new CircleCollider(first.gameObject, first.center, first.radius);
             newFirst.UndoOverlapInternal(second);

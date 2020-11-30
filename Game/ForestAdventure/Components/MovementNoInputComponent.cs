@@ -4,7 +4,7 @@ using Framework.Objects;
 
 namespace ForestAdventure.Components
 {
-    public class MovementNoInputComponent : IUpdateable
+    public class MovementNoInputComponent : IComponent, IUpdateable
     {
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;

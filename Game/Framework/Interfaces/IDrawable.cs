@@ -1,6 +1,6 @@
 ﻿namespace Framework.Interfaces
 {
-    public interface IDrawable : IComponent
+    public interface IDrawable
     {
         void Draw();
     }

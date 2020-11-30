@@ -1,4 +1,4 @@
-﻿using Framework.Objects;
+﻿﻿using Framework.Objects;
 
 namespace Framework.Interfaces
 {

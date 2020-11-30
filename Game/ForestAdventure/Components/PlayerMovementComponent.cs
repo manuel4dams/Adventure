@@ -5,7 +5,7 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
-    public class PlayerMovementComponent : IUpdateable
+    public class PlayerMovementComponent : IComponent, IUpdateable
     {
         private const float MOVEMENT_SPEED = 1f;
 

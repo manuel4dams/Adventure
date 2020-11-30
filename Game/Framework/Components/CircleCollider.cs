@@ -11,6 +11,8 @@ namespace Framework.Components
 
         public GameObject gameObject { get; }
         public bool isTrigger { get; set; }
+        
+        public bool isStatic { get; set; }
 
         public CircleCollider(GameObject gameObject, Vector2 center, float radius)
             : this(gameObject, center, radius, false)

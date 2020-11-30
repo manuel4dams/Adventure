@@ -4,7 +4,7 @@ using OpenTK;
 
 namespace ForestAdventure.Components
 {
-    public class CameraFollowObjectComponent : IUpdateable
+    public class CameraFollowObjectComponent : IComponent, IUpdateable
     {
         public GameObject gameObject { get; }
 
@@ -15,7 +15,7 @@ namespace ForestAdventure.Components
 
         public void Update(float deltaTime)
         {
-            Camera.Instance.centerPosition =
+            Camera.Instance.transform.position =
                 new Vector2(gameObject.transform.position.X, gameObject.transform.position.Y);
         }
     }
