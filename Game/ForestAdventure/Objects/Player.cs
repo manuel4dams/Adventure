@@ -35,7 +35,7 @@ namespace ForestAdventure.Objects
             if (other.gameObject is Enemy)
             {
                 // TODO handle death
-                transform.position = new Vector2(-1.35f, -1f);
+                Console.WriteLine("Enemy hit");
             }
             else if (other.gameObject is Exit)
             {

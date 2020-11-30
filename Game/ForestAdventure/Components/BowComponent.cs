@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ForestAdventure.Components
 {
-    public class BowComponent : IUpdateable, IDrawable
+    public class BowComponent : IComponent, IUpdateable, IDrawable
     {
         public BowComponent(GameObject gameObject)
         {
