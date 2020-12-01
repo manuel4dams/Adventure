@@ -53,7 +53,7 @@ namespace ForestAdventure.Components
             var arrow = new Arrow();
             var arrowComponent = new ArrowComponent(
                 arrow,
-                0.2f,
+                2f,
                 new Vector2(dirX / magnitude, dirY / magnitude));
 
             arrow.transform.position = gameObject.transform.position;
