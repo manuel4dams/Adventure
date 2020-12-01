@@ -36,7 +36,10 @@ namespace ForestAdventure.Components
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (gameObject.transform.position.X < movementBorderLeft) leftRight = false;
+                if (gameObject.transform.position.X < movementBorderLeft)
+                {
+                    leftRight = false;
+                }
             }
             else
             {
@@ -44,7 +47,10 @@ namespace ForestAdventure.Components
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (gameObject.transform.position.X > movementBorderRight) leftRight = true;
+                if (gameObject.transform.position.X > movementBorderRight)
+                {
+                    leftRight = true;
+                }
             }
         }
     }

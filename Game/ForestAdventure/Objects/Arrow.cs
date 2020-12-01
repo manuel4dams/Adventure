@@ -17,8 +17,8 @@ namespace ForestAdventure.Objects
             // TODO migrate from arrow component or add rectangle component?
             throw new NotImplementedException();
         }
-        // TODO implement arrow as object, remove component
 
+        // TODO implement arrow as object, remove component
         public void Update(float deltaTime)
         {
             // TODO migrate from arrow component add updateable component?

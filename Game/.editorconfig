@@ -2,5 +2,28 @@
 
 [*.cs]
 
-
-
+# dont use XML comment analysis
+dotnet_diagnostic.SA0001.severity = none
+#  Do not check XMl header
+dotnet_diagnostic.SA1633.severity = none
+# using directive should NOT be in namespace declaration
+dotnet_diagnostic.SA1200.severity = none
+# only prefix this when needed...
+dotnet_diagnostic.SA1101.severity = none
+# use java style for constants
+dotnet_diagnostic.SA1310.severity = none
+# constructor should be after properties
+dotnet_diagnostic.SA1201.severity = none
+# opening and closing braces should not be spaced
+dotnet_diagnostic.SA1012.severity = none
+dotnet_diagnostic.SA1013.severity = none
+# field should be private when I want it privat.
+dotnet_diagnostic.SA1401.severity = none
+# propertis should not start with uppercase letter
+dotnet_diagnostic.SA1401.severity = none
+dotnet_diagnostic.SA1307.severity = none
+# dont space casts
+dotnet_diagnostic.SA1003.severity = none
+dotnet_diagnostic.SA1009.severity = none
+# global vars should not begin uppercased
+dotnet_diagnostic.SA1300.severity = none

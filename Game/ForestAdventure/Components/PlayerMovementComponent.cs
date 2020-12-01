@@ -13,6 +13,8 @@ namespace ForestAdventure.Components
 
         private float gravityVelocity;
 
+        public GameObject gameObject { get; }
+
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
@@ -21,10 +23,10 @@ namespace ForestAdventure.Components
         public void OnCollision(ICollider other)
         {
             if (other.gameObject is Platform)
+            {
                 gravityVelocity = 0f;
+            }
         }
-
-        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {

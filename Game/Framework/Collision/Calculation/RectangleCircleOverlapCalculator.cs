@@ -15,20 +15,18 @@ namespace Framework.Collision.Calculation
             var closestX = MathHelper.Clamp(
                 circle.gameObject.transform.position.X + circle.center.X,
                 rectangle.gameObject.transform.position.X + rectangle.bounds.minX,
-                rectangle.gameObject.transform.position.X + rectangle.bounds.maxX
-            );
+                rectangle.gameObject.transform.position.X + rectangle.bounds.maxX);
             var closestY = MathHelper.Clamp(
                 circle.gameObject.transform.position.Y + circle.center.Y,
                 rectangle.gameObject.transform.position.Y + rectangle.bounds.minY,
-                rectangle.gameObject.transform.position.Y + rectangle.bounds.maxY
-            );
+                rectangle.gameObject.transform.position.Y + rectangle.bounds.maxY);
 
             // Calculate the distance between the circle's center and this closest point
             var distanceX = circle.gameObject.transform.position.X + circle.center.X - closestX;
             var distanceY = circle.gameObject.transform.position.Y + circle.center.Y - closestY;
 
             // If the distance is less than the circle's radius, an intersection occurs
-            var distance = Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+            var distance = Math.Sqrt((distanceX * distanceX) + (distanceY * distanceY));
             var distanceToMove = circle.radius - distance;
             if (distanceToMove > 0)
             {

@@ -9,6 +9,7 @@ namespace Framework.Objects
         public GameWindow(Game game)
         {
             Title = Assembly.GetExecutingAssembly().GetName().Name;
+
             // TODO fix warning
             WindowState = WindowState.Maximized;
             UpdateFrame += (objectArgs, args) =>
@@ -30,7 +31,10 @@ namespace Framework.Objects
         {
             var input = Keyboard.GetState();
 
-            if (input.IsKeyDown(Key.Escape)) Exit();
+            if (input.IsKeyDown(Key.Escape))
+            {
+                Exit();
+            }
 
             base.OnUpdateFrame(e);
         }

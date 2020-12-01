@@ -33,11 +33,15 @@ namespace ForestAdventure.Objects
         public void OnCollision(ICollider other)
         {
             if (other.gameObject is Enemy)
+            {
                 // TODO handle death
                 transform.position = new Vector2(0f, 4f);
+            }
             else if (other.gameObject is Exit)
+            {
                 // TODO won status
                 Console.WriteLine("Game Won");
+            }
         }
     }
 }

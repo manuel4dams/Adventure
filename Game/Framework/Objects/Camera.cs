@@ -9,9 +9,21 @@ namespace Framework.Objects
     {
         public enum ResizeViewport
         {
+            /// <summary>
+            /// Default value,
+            /// Scale Objects by keeping their Aspect ratio
+            /// </summary>
             KeepContentAspectRatio,
+
+            /// <summary>
+            /// Scale Objects by keeping Width Ratio
+            /// </summary>
             KeepWidth,
-            KeepHeight
+
+            /// <summary>
+            /// Scale Objects by keeping height Ratio
+            /// </summary>
+            KeepHeight,
         }
 
         private static Camera instance;
@@ -44,12 +56,14 @@ namespace Framework.Objects
             get => instance;
             set
             {
-                if (instance != null) throw new Exception("Only one camera allowed");
+                if (instance != null)
+                {
+                    throw new Exception("Only one camera allowed");
+                }
 
                 instance = value;
             }
         }
-
 
         public void Resize(int width, int height)
         {
@@ -76,24 +90,19 @@ namespace Framework.Objects
             GL.Viewport(0, 0, width, height);
             var aspectRatio = (float) width / height;
             if (aspectRatio < contentAspectRatio)
+            {
                 GL.Scale(new Vector3(
                     1 / transform.scale.X,
                     1 / transform.scale.Y * aspectRatio,
                     0f));
+            }
             else
+            {
                 GL.Scale(new Vector3(
                     1 / transform.scale.X / aspectRatio,
                     1 / transform.scale.Y,
                     0f));
-        }
-
-        [Obsolete]
-        private void ResizeScaleContentByWindow(int width, int height)
-        {
-            GL.LoadIdentity();
-            GL.Viewport(0, 0, width, height);
-            // added 1
-            GL.Scale(new Vector3(1 / transform.scale.X / width, 1 / transform.scale.Y / height, 0f));
+            }
         }
 
         private void ResizeKeepWidth(int width, int height)

@@ -30,8 +30,8 @@ namespace ForestAdventure.Components
                 Mouse.GetCursorState().Y);
 #endif
         }
-        // TODO add gravity falloff to arrows
 
+        // TODO add gravity falloff to arrows
         public GameObject gameObject { get; }
 
         public void Draw()
