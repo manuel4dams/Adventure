@@ -1,6 +1,5 @@
 ﻿using System;
 using Framework.Interfaces;
-using Framework.Objects;
 
 namespace Framework.Collision
 {

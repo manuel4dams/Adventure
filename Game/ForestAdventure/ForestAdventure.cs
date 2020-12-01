@@ -1,8 +1,6 @@
 ﻿using ForestAdventure.Objects;
-using Framework.Components;
 using Framework.Objects;
 using OpenTK;
-using OpenTK.Graphics;
 using GameWindow = Framework.Objects.GameWindow;
 
 namespace ForestAdventure

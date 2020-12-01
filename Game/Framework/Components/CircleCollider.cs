@@ -9,11 +9,6 @@ namespace Framework.Components
         public Vector2 center;
         public float radius;
 
-        public GameObject gameObject { get; }
-        public bool isTrigger { get; set; }
-        
-        public bool isStatic { get; set; }
-
         public CircleCollider(GameObject gameObject, Vector2 center, float radius)
             : this(gameObject, center, radius, false)
         {
@@ -26,5 +21,10 @@ namespace Framework.Components
             this.radius = radius;
             this.isTrigger = isTrigger;
         }
+
+        public GameObject gameObject { get; }
+        public bool isTrigger { get; set; }
+
+        public bool isStatic { get; set; }
     }
 }

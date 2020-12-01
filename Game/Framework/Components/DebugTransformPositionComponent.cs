@@ -9,8 +9,6 @@ namespace Framework.Components
     {
         private readonly float lineLength;
 
-        public GameObject gameObject { get; }
-
         public DebugTransformPositionComponent(GameObject gameObject)
             : this(gameObject, 1f)
         {
@@ -21,6 +19,8 @@ namespace Framework.Components
             this.lineLength = lineLength;
             this.gameObject = gameObject;
         }
+
+        public GameObject gameObject { get; }
 
         public void Draw()
         {

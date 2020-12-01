@@ -8,7 +8,8 @@ namespace Framework.Collision.Calculation
     {
         // TODO refactor remove additional newRectangleA
         // TODO calculation is still shit
-        public static Vector2 CalculateUnrotatedOverlapOffset(RectangleCollider rectangleA, RectangleCollider rectangleB)
+        public static Vector2 CalculateUnrotatedOverlapOffset(RectangleCollider rectangleA,
+            RectangleCollider rectangleB)
         {
             var newRectangleAGameObject = new GameObject
             {
@@ -16,8 +17,8 @@ namespace Framework.Collision.Calculation
                 {
                     position = rectangleA.gameObject.transform.position,
                     scale = rectangleA.gameObject.transform.scale,
-                    rotation = rectangleA.gameObject.transform.rotation,
-                },
+                    rotation = rectangleA.gameObject.transform.rotation
+                }
             };
             var newRectangleA = new RectangleCollider(newRectangleAGameObject, rectangleA.bounds);
 
@@ -27,8 +28,8 @@ namespace Framework.Collision.Calculation
                 {
                     position = rectangleB.gameObject.transform.position,
                     scale = rectangleB.gameObject.transform.scale,
-                    rotation = rectangleB.gameObject.transform.rotation,
-                },
+                    rotation = rectangleB.gameObject.transform.rotation
+                }
             };
             var newRectangleB = new RectangleCollider(newRectangleBGameObject, rectangleB.bounds);
 
@@ -55,20 +56,14 @@ namespace Framework.Collision.Calculation
                 new Vector2(0, rectangleA.bounds.maxY - rectangleB.bounds.minY),
 
                 // push distance A in negative Y-direction
-                new Vector2(0, rectangleA.bounds.minY - rectangleB.bounds.maxY),
+                new Vector2(0, rectangleA.bounds.minY - rectangleB.bounds.maxY)
             };
             var pushDistSqrd = new float[4];
-            for (var i = 0; i < 4; ++i)
-            {
-                pushDistSqrd[i] = directions[i].LengthSquared;
-            }
+            for (var i = 0; i < 4; ++i) pushDistSqrd[i] = directions[i].LengthSquared;
 
             // find minimal positive overlap amount
             var minId = 0;
-            for (var i = 1; i < 4; ++i)
-            {
-                minId = pushDistSqrd[i] < pushDistSqrd[minId] ? i : minId;
-            }
+            for (var i = 1; i < 4; ++i) minId = pushDistSqrd[i] < pushDistSqrd[minId] ? i : minId;
 
             rectangleA.gameObject.transform.position += directions[minId];
         }

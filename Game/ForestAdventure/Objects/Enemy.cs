@@ -15,9 +15,9 @@ namespace ForestAdventure.Objects
         {
             transform.position = position;
 
-            var bodyBounds = new Bounds(0.075f, 0.075f);
+            var bodyBounds = new Bounds(0.6f, 1.7f);
             AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(184, 12, 0, 255)));
-            AddComponent(new RectangleCollider(this, bodyBounds));
+            AddComponent(new RectangleCollider(this, bodyBounds, true));
 
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
 #if DEBUG

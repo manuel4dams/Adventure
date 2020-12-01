@@ -10,7 +10,7 @@ namespace ForestAdventure.Objects
         public Exit()
         {
             transform.position = new Vector2(3.605f, 1.45f);
-            var bounds = new Bounds(0.09f, 0.1f);
+            var bounds = new Bounds(0.7f, 2.1f);
             AddComponent(new RectangleDrawable(this, bounds, new Color4(13, 175, 184, 255)));
             AddComponent(new RectangleCollider(this, bounds, true));
 #if DEBUG

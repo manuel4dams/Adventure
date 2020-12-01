@@ -8,13 +8,14 @@ namespace Framework.Components
     public class DebugColliderEdges : IComponent, IDrawable
     {
         private readonly Bounds bounds;
-        public GameObject gameObject { get; }
 
         public DebugColliderEdges(GameObject gameObject, Bounds bounds)
         {
             this.bounds = bounds;
             this.gameObject = gameObject;
         }
+
+        public GameObject gameObject { get; }
 
         public void Draw()
         {

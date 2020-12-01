@@ -5,8 +5,8 @@ namespace Framework.Objects
 {
     public class GameObject
     {
-        public readonly Transform transform;
         public readonly List<IComponent> components = new List<IComponent>();
+        public readonly Transform transform;
 
         public GameObject()
             : this(new Transform())

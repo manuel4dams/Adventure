@@ -2,7 +2,6 @@
 using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Input;
 
 namespace Framework.Objects
 {
@@ -12,26 +11,12 @@ namespace Framework.Objects
         {
             KeepContentAspectRatio,
             KeepWidth,
-            KeepHeight,
+            KeepHeight
         }
 
         private static Camera instance;
-        private ResizeViewport resizeViewport;
-        private float contentAspectRatio;
-
-        public static Camera Instance
-        {
-            get => instance;
-            set
-            {
-                if (instance != null)
-                {
-                    throw new Exception("Only one camera allowed");
-                }
-
-                instance = value;
-            }
-        }
+        private readonly float contentAspectRatio;
+        private readonly ResizeViewport resizeViewport;
 
         public Camera(ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
         {
@@ -54,6 +39,17 @@ namespace Framework.Objects
             this.contentAspectRatio = contentAspectRatio;
         }
 
+        public static Camera Instance
+        {
+            get => instance;
+            set
+            {
+                if (instance != null) throw new Exception("Only one camera allowed");
+
+                instance = value;
+            }
+        }
+
 
         public void Resize(int width, int height)
         {
@@ -73,25 +69,22 @@ namespace Framework.Objects
             }
         }
 
+        // TODO fix bug when moving window
         private void ResizeKeepContentAspectRatio(int width, int height)
         {
             GL.LoadIdentity();
             GL.Viewport(0, 0, width, height);
             var aspectRatio = (float) width / height;
             if (aspectRatio < contentAspectRatio)
-            {
                 GL.Scale(new Vector3(
                     1 / transform.scale.X,
                     1 / transform.scale.Y * aspectRatio,
                     0f));
-            }
             else
-            {
                 GL.Scale(new Vector3(
                     1 / transform.scale.X / aspectRatio,
                     1 / transform.scale.Y,
                     0f));
-            }
         }
 
         [Obsolete]

@@ -16,8 +16,8 @@ namespace Framework.Collision.Calculation
         private static void UndoOverlapInternal(this CircleCollider circleA, CircleCollider circleB)
         {
             // TODO maybe add positions?
-            Vector2 cB = new Vector2(circleB.center.X, circleB.center.Y);
-            Vector2 diff = new Vector2(circleA.center.X, circleA.center.Y);
+            var cB = new Vector2(circleB.center.X, circleB.center.Y);
+            var diff = new Vector2(circleA.center.X, circleA.center.Y);
             diff -= cB;
             diff /= diff.Length;
             diff *= circleA.radius + circleB.radius;

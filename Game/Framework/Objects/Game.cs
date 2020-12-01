@@ -57,15 +57,13 @@ namespace Framework.Objects
                 .Where(collider => collider != null)
                 .ToArray();
             foreach (var collider in colliders)
+            foreach (var secondCollider in colliders)
             {
-                foreach (var secondCollider in colliders)
-                {
-                    if (collider == secondCollider)
-                        continue;
+                if (collider == secondCollider)
+                    continue;
 
-                    // TODO catch collision with same gameObject?
-                    CollisionHandler.HandleCollision(collider, secondCollider);
-                }
+                // TODO catch collision with same gameObject?
+                CollisionHandler.HandleCollision(collider, secondCollider);
             }
         }
     }

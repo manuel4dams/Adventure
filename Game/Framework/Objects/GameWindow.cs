@@ -9,7 +9,7 @@ namespace Framework.Objects
         public GameWindow(Game game)
         {
             Title = Assembly.GetExecutingAssembly().GetName().Name;
-            // TODO
+            // TODO fix warning
             WindowState = WindowState.Maximized;
             UpdateFrame += (objectArgs, args) =>
             {

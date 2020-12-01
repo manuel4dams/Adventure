@@ -11,6 +11,8 @@ namespace ForestAdventure.Components
         private readonly Random random = new Random();
         private bool leftRight;
 
+        public GameObject gameObject { get; }
+
         public MovementNoInputComponent(
             GameObject gameObject,
             float movementBorderLeft,
@@ -23,8 +25,6 @@ namespace ForestAdventure.Components
             // start moving in random direction
             leftRight = random.Next(1, 3) == 2;
         }
-
-        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {

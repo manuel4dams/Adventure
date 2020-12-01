@@ -11,9 +11,9 @@ namespace ForestAdventure.Components
         private const float MOVEMENT_SPEED = 1f;
         private const float GRAVITY_CONSTANT = 9.81f / 20f;
 
-        public GameObject gameObject { get; }
-
         private float gravityVelocity;
+
+        public GameObject gameObject { get; }
 
         public PlayerMovementComponent(GameObject gameObject)
         {
