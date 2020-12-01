@@ -1,7 +1,10 @@
-﻿using ForestAdventure.Components;
+﻿using System;
+using ForestAdventure.Components;
 using Framework.Components;
+using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK;
+using OpenTK.Graphics;
 
 namespace ForestAdventure.Objects
 {
@@ -9,19 +12,38 @@ namespace ForestAdventure.Objects
     {
         public Player()
         {
-            transform.position = new Vector2(-0.9f, -0.9f);
+            transform.position = new Vector2(-1.35f, -1f);
 
             var bodyBounds = new Bounds(0.075f, 0.15f);
-            AddComponent(new RectangleComponent(this, bodyBounds, Color.Aqua));
+            AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
 
-            var headBounds = new Bounds(0f, 0.08f, 0.1f, 0.1f);
-            AddComponent(new RectangleComponent(this, headBounds, Color.Red));
+            AddComponent(new RectangleCollider(this, bodyBounds));
 
             AddComponent(new PlayerMovementComponent(this));
-            AddComponent(new CameraComponent(this));
+            AddComponent(new CameraFollowObjectComponent(this));
+            
+            AddComponent(new BowComponent(this));
+
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
+            AddComponent(new DebugColliderEdges(this, bodyBounds));
 #endif
+        }
+
+
+        public override void OnCollision(ICollider other)
+        {
+            base.OnCollision(other);
+            if (other.gameObject is Enemy)
+            {
+                // TODO
+                transform.position = new Vector2(-1.35f, -1f);
+            }
+            else if (other.gameObject is Exit)
+            {
+                // TODO
+                Console.WriteLine("Game Won");
+            }
         }
     }
 }

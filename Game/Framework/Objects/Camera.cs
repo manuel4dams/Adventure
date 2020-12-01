@@ -34,11 +34,8 @@ namespace Framework.Objects
             get => center;
             set
             {
-                // minimaler und maximaler X-Wert der Camera
-                center.X = value.X <= 0 ? 0 : value.X >= 4 ? 4 : value.X;
-
-                // minimaler und maximaler Y-Wert der Camera
-                center.Y = value.Y <= 0 ? 0 : value.Y >= 2 ? 2 : value.Y;
+                center.X = value.X;
+                center.Y = value.Y;
             }
         }
 

@@ -6,7 +6,7 @@ namespace Framework.Objects
     public abstract class GameObject
     {
         public readonly Transform transform;
-        private readonly List<IComponent> componentList = new List<IComponent>();
+        public readonly List<IComponent> components = new List<IComponent>();
 
         public GameObject()
             : this(new Transform())
@@ -20,30 +20,16 @@ namespace Framework.Objects
 
         public void AddComponent(IComponent component)
         {
-            componentList.Add(component);
+            components.Add(component);
         }
 
         public void RemoveComponent(IComponent component)
         {
-            componentList.Remove(component);
+            components.Remove(component);
         }
 
-        public void Update(float deltaTime)
+        public virtual void OnCollision(ICollider other)
         {
-            foreach (var component in componentList)
-            {
-                if (component is IUpdateable) ((IUpdateable) component).Update(deltaTime);
-                if (component is ICollidable) ((ICollidable) component).CheckCollision();
-                if (component is ICameraUpdate) ((ICameraUpdate) component).UpdateCamera();
-            }
-        }
-
-        public void Draw()
-        {
-            foreach (var component in componentList)
-            {
-                if (component is IDrawable) ((IDrawable) component).Draw();
-            }
         }
     }
 }
