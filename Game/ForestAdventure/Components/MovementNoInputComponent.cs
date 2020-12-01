@@ -4,8 +4,9 @@ using Framework.Objects;
 
 namespace ForestAdventure.Components
 {
-    public class MovementNoInputComponent : IUpdateable
+    public class MovementNoInputComponent : IComponent, IUpdateable
     {
+        private const float MOVEMENT_SPEED = 5f;
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
@@ -31,19 +32,25 @@ namespace ForestAdventure.Components
             // let enemy move from left to right
             if (leftRight)
             {
-                gameObject.transform.position.X -= 0.1f * deltaTime;
+                gameObject.transform.position.X -= MOVEMENT_SPEED * deltaTime;
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (gameObject.transform.position.X < movementBorderLeft) leftRight = false;
+                if (gameObject.transform.position.X < movementBorderLeft)
+                {
+                    leftRight = false;
+                }
             }
             else
             {
-                gameObject.transform.position.X += 0.1f * deltaTime;
+                gameObject.transform.position.X += MOVEMENT_SPEED * deltaTime;
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
-                if (gameObject.transform.position.X > movementBorderRight) leftRight = true;
+                if (gameObject.transform.position.X > movementBorderRight)
+                {
+                    leftRight = true;
+                }
             }
         }
     }

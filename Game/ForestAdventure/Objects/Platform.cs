@@ -10,9 +10,9 @@ namespace ForestAdventure.Objects
         public Platform(Vector2 position, float length)
         {
             transform.position = position;
-            var bounds = new Bounds(length, 0.026f);
+            var bounds = new Bounds(length, 0.40f);
             AddComponent(new RectangleDrawable(this, bounds, new Color4(77, 39, 3, 255)));
-            AddComponent(new RectangleCollider(this, bounds));
+            AddComponent(new RectangleCollider(this, bounds, false, true));
 
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));

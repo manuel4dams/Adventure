@@ -3,10 +3,10 @@ using Framework.Interfaces;
 
 namespace Framework.Objects
 {
-    public abstract class GameObject
+    public class GameObject
     {
-        public readonly Transform transform;
         public readonly List<IComponent> components = new List<IComponent>();
+        public readonly Transform transform;
 
         public GameObject()
             : this(new Transform())
@@ -26,10 +26,6 @@ namespace Framework.Objects
         public void RemoveComponent(IComponent component)
         {
             components.Remove(component);
-        }
-
-        public virtual void OnCollision(ICollider other)
-        {
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Framework.Interfaces
 {
-    public interface IUpdateable : IComponent
+    public interface IUpdateable
     {
         void Update(float deltaTime);
     }

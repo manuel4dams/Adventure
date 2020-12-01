@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure
@@ -11,8 +10,6 @@ namespace UnitTestForestAdventure
         [TestMethod]
         public void TestMethod1()
         {
-            var program = new Program();
-
             Assert.AreEqual(1, 1);
         }
     }

@@ -9,13 +9,15 @@ namespace Framework.Objects
         public GameWindow(Game game)
         {
             Title = Assembly.GetExecutingAssembly().GetName().Name;
-            // TODO
+
+            // TODO fix warning
             WindowState = WindowState.Maximized;
             UpdateFrame += (objectArgs, args) =>
             {
                 game.Update((float) args.Time);
                 game.CollisionCheck();
             };
+            game.Resize(Width, Height);
             Resize += (objectArgs, args) => game.Resize(Width, Height);
             RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
             RenderFrame += (objectArgs, frameEventArgs) => SwapBuffers();
@@ -29,7 +31,10 @@ namespace Framework.Objects
         {
             var input = Keyboard.GetState();
 
-            if (input.IsKeyDown(Key.Escape)) Exit();
+            if (input.IsKeyDown(Key.Escape))
+            {
+                Exit();
+            }
 
             base.OnUpdateFrame(e);
         }

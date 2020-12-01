@@ -7,20 +7,28 @@ namespace Framework.Components
     {
         public Bounds bounds;
 
-        public bool isTrigger { get; set; }
-
-        public GameObject gameObject { get; }
-
         public RectangleCollider(GameObject gameObject, Bounds bounds)
             : this(gameObject, bounds, false)
         {
         }
 
         public RectangleCollider(GameObject gameObject, Bounds bounds, bool isTrigger)
+            : this(gameObject, bounds, isTrigger, false)
+        {
+        }
+
+        public RectangleCollider(GameObject gameObject, Bounds bounds, bool isTrigger, bool isStatic)
         {
             this.gameObject = gameObject;
             this.bounds = bounds;
             this.isTrigger = isTrigger;
+            this.isStatic = isStatic;
         }
+
+        public bool isTrigger { get; set; }
+
+        public bool isStatic { get; set; }
+
+        public GameObject gameObject { get; }
     }
 }

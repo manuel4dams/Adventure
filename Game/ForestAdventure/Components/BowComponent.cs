@@ -1,17 +1,18 @@
-﻿using ForestAdventure.Objects;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using ForestAdventure.Objects;
 using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK;
 using OpenTK.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ForestAdventure.Components
 {
-    public class BowComponent : IUpdateable, IDrawable
+    public class BowComponent : IComponent, IUpdateable, IDrawable
     {
+        private readonly List<Arrow> arrows = new List<Arrow>();
+
         public BowComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
@@ -19,18 +20,27 @@ namespace ForestAdventure.Components
 
         public GameObject gameObject { get; }
 
-        List<Arrow> arrows = new List<Arrow>();
+        public void Draw()
+        {
+            var drawables = arrows
+                .SelectMany(arrow => arrow.components)
+                .Select(component => component as IDrawable)
+                .Where(drawable => drawable != null);
+            foreach (var drawable in drawables)
+            {
+                drawable.Draw();
+            }
+        }
 
         public void Update(float deltaTime)
         {
-            if (OpenTK.Input.Mouse.GetState().IsButtonDown(MouseButton.Left))
+            if (Mouse.GetState().IsButtonDown(MouseButton.Left))
             {
-                ShootArow(deltaTime);
+                ShootArow();
             }
-            // TODO JAN
-            // arrows.ForEach(X => X.Update(deltaTime));
+
             var updateables = arrows
-                .SelectMany(arrows => arrows.components)
+                .SelectMany(arrow => arrow.components)
                 .Select(component => component as IUpdateable)
                 .Where(updateable => updateable != null);
             foreach (var updateable in updateables)
@@ -39,30 +49,26 @@ namespace ForestAdventure.Components
             }
         }
 
-        private void ShootArow(float deltaTime)
+        private void ShootArow()
         {
-            float dirX = Mouse.GetState().X / 1920f;
-            float dirY = (Mouse.GetState().Y / 1080f) * -1f;
-            //float dirX = OpenTK.Input.Mouse.GetState().X;
-            //float dirY = OpenTK.Input.Mouse.GetState().Y * -1f;
-            float magnitude = MathF.Sqrt((dirX * dirX) + (dirY * dirY));
-            Arrow arrow = new Arrow();
-            ArrowComponent arrowComponent = new ArrowComponent(arrow, 0.2f, new Vector2(dirX / magnitude, dirY / magnitude));
+            // TODO get correct mouse position
+            // float dirX = OpenTK.Input.Mouse.GetState().X;
+            // float dirY = OpenTK.Input.Mouse.GetState().Y * -1f;
+            var dirX = Mouse.GetState().X / 1920f;
+            var dirY = Mouse.GetState().Y / 1080f * -1f;
+
+            var magnitude = MathF.Sqrt((dirX * dirX) + (dirY * dirY));
+            var arrow = new Arrow();
+#pragma warning disable 612
+            var arrowComponent = new ArrowComponent(
+#pragma warning restore 612
+                arrow,
+                2f,
+                new Vector2(dirX / magnitude, dirY / magnitude));
+
             arrow.transform.position = gameObject.transform.position;
             arrow.AddComponent(arrowComponent);
             arrows.Add(arrow);
-        }
-
-        public void Draw()
-        {
-            //TODO JAN
-            // arrows.ForEach(X => X.Draw());
-            var drawables = arrows
-                .SelectMany(arrows => arrows.components)
-                .Select(component => component as IDrawable)
-                .Where(drawable => drawable != null);
-            foreach (var drawable in drawables)
-                drawable.Draw();
         }
     }
 }

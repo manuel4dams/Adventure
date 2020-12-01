@@ -1,22 +1,27 @@
 ﻿using Framework.Interfaces;
 using Framework.Objects;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Components
 {
-    public class CameraFollowObjectComponent : IUpdateable
+    public class CameraFollowObjectComponent : IComponent, IUpdateable
     {
-        public GameObject gameObject { get; }
+        private const float SMOOTHNESS = 10f;
 
         public CameraFollowObjectComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
 
+        public GameObject gameObject { get; }
+
         public void Update(float deltaTime)
         {
-            Camera.Instance.centerPosition =
-                new Vector2(gameObject.transform.position.X, gameObject.transform.position.Y);
+            Camera.Instance.transform.position = Vector2.Lerp(
+                Camera.Instance.transform.position,
+                gameObject.transform.position,
+                LerpUtils.SmoothnessToLerp(SMOOTHNESS));
         }
     }
 }
