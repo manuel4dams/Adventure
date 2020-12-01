@@ -12,7 +12,7 @@ namespace ForestAdventure.Objects
     {
         public Player()
         {
-            transform.position = new Vector2(-1.35f, -1f);
+            transform.position = new Vector2(0f, 4f);
 
             var bodyBounds = new Bounds(0.6f, 1.7f);
             AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
@@ -34,7 +34,7 @@ namespace ForestAdventure.Objects
         {
             if (other.gameObject is Enemy)
                 // TODO handle death
-                Console.WriteLine("Enemy hit");
+                transform.position = new Vector2(0f, 4f);
             else if (other.gameObject is Exit)
                 // TODO won status
                 Console.WriteLine("Game Won");

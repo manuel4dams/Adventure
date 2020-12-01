@@ -16,16 +16,13 @@ namespace ForestAdventure.Components
         private readonly Vector2 direction;
 
         private readonly float force;
-        // TODO add gravity falloff to arrows
-
-        public GameObject gameObject { get; }
 
         public ArrowComponent(GameObject gameObject, float force, Vector2 direction)
         {
             this.gameObject = gameObject;
             this.force = force;
             this.direction = direction;
-            bounds = new Bounds(gameObject.transform.position.X, gameObject.transform.position.Y, 0.1f, 0.01f);
+            bounds = new Bounds(gameObject.transform.position.X, gameObject.transform.position.Y, 2f, 0.1f);
 #if DEBUG
             Console.WriteLine(
                 "Mouseclick at: " + "X, " +
@@ -33,12 +30,9 @@ namespace ForestAdventure.Components
                 Mouse.GetCursorState().Y);
 #endif
         }
+        // TODO add gravity falloff to arrows
 
-        public void Update(float deltaTime)
-        {
-            gameObject.transform.position.X += direction.X * force * deltaTime;
-            gameObject.transform.position.Y += direction.Y * force * deltaTime;
-        }
+        public GameObject gameObject { get; }
 
         public void Draw()
         {
@@ -61,6 +55,12 @@ namespace ForestAdventure.Components
                 gameObject.transform.position.X + bounds.minX - Camera.Instance.transform.position.X,
                 gameObject.transform.position.Y + bounds.maxY - Camera.Instance.transform.position.Y);
             GL.End();
+        }
+
+        public void Update(float deltaTime)
+        {
+            gameObject.transform.position.X += direction.X * force * deltaTime;
+            gameObject.transform.position.Y += direction.Y * force * deltaTime;
         }
     }
 }

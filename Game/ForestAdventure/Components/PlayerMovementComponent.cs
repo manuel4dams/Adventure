@@ -8,17 +8,23 @@ namespace ForestAdventure.Components
 {
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
-        private const float MOVEMENT_SPEED = 1f;
-        private const float GRAVITY_CONSTANT = 9.81f / 20f;
+        private const float MOVEMENT_SPEED = 10f;
+        private const float GRAVITY_CONSTANT = 9.81f;
 
         private float gravityVelocity;
-
-        public GameObject gameObject { get; }
 
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
+
+        public void OnCollision(ICollider other)
+        {
+            if (other.gameObject is Platform)
+                gravityVelocity = 0f;
+        }
+
+        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {
@@ -33,12 +39,6 @@ namespace ForestAdventure.Components
                 up + down);
             gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
             gameObject.transform.position += gravityVelocity * new Vector2(0f, -1f);
-        }
-
-        public void OnCollision(ICollider other)
-        {
-            if (other.gameObject is Platform)
-                gravityVelocity = 0f;
         }
     }
 }

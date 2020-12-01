@@ -4,8 +4,8 @@ namespace Framework.Objects
 {
     public class Bounds
     {
-        private Vector2 center;
         private readonly Vector2 size;
+        private Vector2 center;
 
 
         public Bounds(Vector2 size)

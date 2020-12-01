@@ -6,12 +6,11 @@ namespace ForestAdventure.Components
 {
     public class MovementNoInputComponent : IComponent, IUpdateable
     {
+        private const float MOVEMENT_SPEED = 5f;
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
         private bool leftRight;
-
-        public GameObject gameObject { get; }
 
         public MovementNoInputComponent(
             GameObject gameObject,
@@ -26,12 +25,14 @@ namespace ForestAdventure.Components
             leftRight = random.Next(1, 3) == 2;
         }
 
+        public GameObject gameObject { get; }
+
         public void Update(float deltaTime)
         {
             // let enemy move from left to right
             if (leftRight)
             {
-                gameObject.transform.position.X -= 0.1f * deltaTime;
+                gameObject.transform.position.X -= MOVEMENT_SPEED * deltaTime;
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
@@ -39,7 +40,7 @@ namespace ForestAdventure.Components
             }
             else
             {
-                gameObject.transform.position.X += 0.1f * deltaTime;
+                gameObject.transform.position.X += MOVEMENT_SPEED * deltaTime;
                 gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached

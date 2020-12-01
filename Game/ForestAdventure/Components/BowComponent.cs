@@ -13,12 +13,12 @@ namespace ForestAdventure.Components
     {
         private readonly List<Arrow> arrows = new List<Arrow>();
 
-        public GameObject gameObject { get; }
-
         public BowComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
+
+        public GameObject gameObject { get; }
 
         public void Draw()
         {

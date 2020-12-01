@@ -8,7 +8,8 @@ namespace Framework.Collision.Calculation
     {
         // TODO refactor remove additional newRectangleA
         // TODO calculation is still shit
-        public static Vector2 CalculateUnrotatedOverlapOffset(RectangleCollider rectangleA,
+        public static Vector2 CalculateUnrotatedOverlapOffset(
+            RectangleCollider rectangleA,
             RectangleCollider rectangleB)
         {
             var newRectangleAGameObject = new GameObject

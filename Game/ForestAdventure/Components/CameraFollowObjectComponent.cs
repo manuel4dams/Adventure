@@ -9,12 +9,12 @@ namespace ForestAdventure.Components
     {
         private const float SMOOTHNESS = 10f;
 
-        public GameObject gameObject { get; }
-
         public CameraFollowObjectComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
+
+        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {

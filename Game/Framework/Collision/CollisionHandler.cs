@@ -14,11 +14,9 @@ namespace Framework.Collision
             colliderA.gameObject.components
                 .ForEach(component => (component as ICollision)?.OnCollision(colliderB));
 
-            if (!colliderA.isTrigger && !colliderB.isTrigger && !colliderA.isStatic)
-            {
-                Console.WriteLine(CollisionCalculator.UnrotatedOverlap(colliderA, colliderB));
-                colliderA.gameObject.transform.position += CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
-            }
+            if (colliderA.isTrigger || colliderB.isTrigger || colliderA.isStatic) return;
+            Console.WriteLine(CollisionCalculator.UnrotatedOverlap(colliderA, colliderB));
+            colliderA.gameObject.transform.position += CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
         }
     }
 }
