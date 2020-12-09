@@ -8,12 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="GraphicContents\ForestBackground\ForestBackground.png">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.22.2.2" />
         <PackageReference Include="OpenTK.NetStandard" Version="1.0.5.32" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
@@ -27,7 +21,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Framework\Framework.csproj" />
+        <ProjectReference Include="..\Framework\Framework.csproj" />
     </ItemGroup>
-    
+
+    <ItemGroup>
+      <Folder Include="Resources" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\ForestBackground\ForestBackground.png" />
+    </ItemGroup>
+
 </Project>

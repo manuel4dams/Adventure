@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Framework.Util.Extension
+namespace Framework.Util
 {
     public static class LinqExtension
     {

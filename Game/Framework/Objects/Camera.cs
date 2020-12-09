@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 
 namespace Framework.Objects
 {
+    // TODO fix bug, moving window and player at the same time causes the camera to behave weird
     public sealed class Camera : GameObject, IResizable
     {
         public enum ResizeViewport
@@ -26,42 +29,42 @@ namespace Framework.Objects
             KeepHeight,
         }
 
-        private static Camera instance;
+        private static Camera instanceInternal;
         private readonly float contentAspectRatio;
         private readonly ResizeViewport resizeViewport;
 
         public Camera(ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
         {
-            Instance = this;
+            instance = this;
             this.resizeViewport = resizeViewport;
         }
 
         public Camera(Transform transform, ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
             : base(transform)
         {
-            Instance = this;
+            instance = this;
             this.resizeViewport = resizeViewport;
         }
 
         public Camera(Transform transform, float contentAspectRatio)
             : base(transform)
         {
-            Instance = this;
+            instance = this;
             resizeViewport = ResizeViewport.KeepContentAspectRatio;
             this.contentAspectRatio = contentAspectRatio;
         }
 
-        public static Camera Instance
+        public static Camera instance
         {
-            get => instance;
+            get => instanceInternal;
             set
             {
-                if (instance != null)
+                if (instanceInternal != null)
                 {
                     throw new Exception("Only one camera allowed");
                 }
 
-                instance = value;
+                instanceInternal = value;
             }
         }
 
@@ -125,6 +128,59 @@ namespace Framework.Objects
                 1 / transform.scale.X / aspectRatio,
                 1 / transform.scale.Y,
                 0f));
+        }
+
+        public Vector2 MousePositionToWorld()
+        {
+            return MousePositionToWorld(Mouse.GetCursorState());
+        }
+
+        public Vector2 MousePositionToWorld(MouseState mouseState)
+        {
+            return MousePositionToWorld(mouseState.X, mouseState.Y);
+        }
+
+        public Vector2 MousePositionToWorld(float x, float y)
+        {
+            var canvasScreenOffset = Game.instance.gameWindow.PointToClient(new Point(0, 0));
+            var mousePositionInCanvas = new Vector2(x + canvasScreenOffset.X, y + canvasScreenOffset.Y);
+            var mousePositionRelativeToCanvas = new Vector2(
+                mousePositionInCanvas.X / Game.instance.gameWindow.Width * 2f - 1f,
+                -(mousePositionInCanvas.Y / Game.instance.gameWindow.Height * 2f - 1f));
+
+            // TODO Maybe separate into different methods and reuse them also in the Resize() functions?
+            var aspectRatio = (float) Game.instance.gameWindow.Width / Game.instance.gameWindow.Height;
+            Vector2 mousePositionRespectingAspectRatio;
+            switch (resizeViewport)
+            {
+                case ResizeViewport.KeepContentAspectRatio:
+                    if (aspectRatio < contentAspectRatio)
+                    {
+                        mousePositionRespectingAspectRatio =
+                            mousePositionRelativeToCanvas * new Vector2(1f, 1f / aspectRatio);
+                    }
+                    else
+                    {
+                        mousePositionRespectingAspectRatio =
+                            mousePositionRelativeToCanvas * new Vector2(aspectRatio, 1f);
+                    }
+
+                    break;
+                case ResizeViewport.KeepWidth:
+                    mousePositionRespectingAspectRatio =
+                        mousePositionRelativeToCanvas * new Vector2(1f, 1f / aspectRatio);
+                    break;
+                case ResizeViewport.KeepHeight:
+                    mousePositionRespectingAspectRatio =
+                        mousePositionRelativeToCanvas * new Vector2(aspectRatio, 1f);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid " + nameof(ResizeViewport));
+            }
+
+            var scaled = mousePositionRespectingAspectRatio * transform.scale;
+            var positioned = transform.TranslatePosition(scaled);
+            return positioned;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using ForestAdventure.Components;
 using Framework.Components;
+using Framework.Development.Components;
 using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK;
@@ -13,24 +14,21 @@ namespace ForestAdventure.Objects
         public Player()
         {
             transform.position = new Vector2(0f, 4f);
-
-            var bodyBounds = new Bounds(0.6f, 1.7f);
-            AddComponent(new RectangleDrawable(this, bodyBounds, new Color4(5, 128, 13, 255)));
-
+            var bodyBounds = new RectangleBounds(0.6f, 1.7f);
+            AddComponent(new QuadRenderer(this, bodyBounds, new Color4(5, 128, 13, 255)));
             AddComponent(new RectangleCollider(this, bodyBounds));
 
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
-
             AddComponent(new BowComponent(this));
 
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugColliderEdges(this, bodyBounds));
+            AddComponent(new DebugColliderEdgesComponent(this, bodyBounds));
 #endif
         }
 
-        public void OnCollision(ICollider other)
+        public void OnCollision(ICollider other, Vector2 touchOffset)
         {
             if (other.gameObject is Enemy)
             {

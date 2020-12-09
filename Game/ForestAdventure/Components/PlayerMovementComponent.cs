@@ -10,7 +10,6 @@ namespace ForestAdventure.Components
     {
         private const float MOVEMENT_SPEED = 10f;
         private const float GRAVITY_CONSTANT = 9.81f;
-
         private float gravityVelocity;
 
         public GameObject gameObject { get; }
@@ -20,9 +19,9 @@ namespace ForestAdventure.Components
             this.gameObject = gameObject;
         }
 
-        public void OnCollision(ICollider other)
+        public void OnCollision(ICollider other, Vector2 touchOffset)
         {
-            if (other.gameObject is Platform)
+            if (other.gameObject is Platform && touchOffset.Y > 0f)
             {
                 gravityVelocity = 0f;
             }
@@ -30,10 +29,11 @@ namespace ForestAdventure.Components
 
         public void Update(float deltaTime)
         {
+            // TODO Jumping needs improvement to feel more natural
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
-            var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1f : 0f;
+            var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1.5f : 0f;
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -1f : 0f;
 
             gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(

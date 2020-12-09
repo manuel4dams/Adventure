@@ -12,17 +12,17 @@ namespace Framework.Collision
                 return;
             }
 
-            (colliderA.gameObject as ICollision)?.OnCollision(colliderB);
+            var offset = CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
+            (colliderA.gameObject as ICollision)?.OnCollision(colliderB, offset);
             colliderA.gameObject.components
-                .ForEach(component => (component as ICollision)?.OnCollision(colliderB));
+                .ForEach(component => (component as ICollision)?.OnCollision(colliderB, offset));
 
             if (colliderA.isTrigger || colliderB.isTrigger || colliderA.isStatic)
             {
                 return;
             }
 
-            Console.WriteLine(CollisionCalculator.UnrotatedOverlap(colliderA, colliderB));
-            colliderA.gameObject.transform.position += CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
+            colliderA.gameObject.transform.position += offset;
         }
     }
 }

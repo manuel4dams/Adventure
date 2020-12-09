@@ -27,3 +27,13 @@ dotnet_diagnostic.SA1003.severity = none
 dotnet_diagnostic.SA1009.severity = none
 # global vars should not begin uppercased
 dotnet_diagnostic.SA1300.severity = none
+# dont force braces on single statement loops
+dotnet_diagnostic.SA1503.severity = none
+# avoid parenthesis around arithmetic expressions
+dotnet_diagnostic.SA1407.severity = none
+# elements should NOT always be seperated by blank line
+dotnet_diagnostic.SA1516.severity = none
+# single line comments CAN be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
+# single line comments must NOT always be preceded by blank line
+dotnet_diagnostic.SA1515.severity = none

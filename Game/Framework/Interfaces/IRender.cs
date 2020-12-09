@@ -1,6 +1,6 @@
 ﻿namespace Framework.Interfaces
 {
-    public interface IDrawable
+    public interface IRender
     {
         void Draw();
     }

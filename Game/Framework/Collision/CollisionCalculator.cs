@@ -16,11 +16,11 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleRectangleCollisionCalculator.UnrotatedIntersects(
+                            return RectangleRectangleUnrotatedCalculator.Intersects(
                                 firstRectangle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
-                            return RectangleCircleCollisionCalculator.UnrotatedIntersects(secondCircle, firstRectangle);
+                            return RectangleCircleUnrotatedCalculator.Intersects(secondCircle, firstRectangle);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -29,9 +29,9 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleCircleCollisionCalculator.UnrotatedIntersects(firstCircle, secondRectangle);
+                            return RectangleCircleUnrotatedCalculator.Intersects(firstCircle, secondRectangle);
                         case CircleCollider secondCircle:
-                            return CircleCircleCollisionCalculator.Intersects(firstCircle, secondCircle);
+                            return CircleCircleUnrotatedCalculator.Intersects(firstCircle, secondCircle);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -49,11 +49,12 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleRectangleOverlapCalculator.CalculateUnrotatedOverlapOffset(
+                            return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                                 firstRectangle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
-                            return RectangleCircleOverlapCalculator.UnrotatedOverlap(firstRectangle, secondCircle);
+                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(firstRectangle,
+                                secondCircle);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -62,11 +63,11 @@ namespace Framework.Collision
                     switch (second)
                     {
                         case RectangleCollider secondRectangle:
-                            return RectangleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(
+                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
                                 firstCircle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
-                            return CircleCircleOverlapCalculator.CalculateUnrotatedOverlapOffset(
+                            return CircleCircleUnrotatedCalculator.CalculateOverlapOffset(
                                 firstCircle,
                                 secondCircle);
                         default:

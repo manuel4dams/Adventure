@@ -5,12 +5,36 @@ using OpenTK;
 namespace Framework.Collision.Calculation
 {
     // TODO test calculation für correctness
-    public static class RectangleCircleOverlapCalculator
+    public static class RectangleCircleUnrotatedCalculator
     {
+        // see https://stackoverflow.com/a/1879223
+        public static bool Intersects(CircleCollider circle, RectangleCollider rectangle)
+        {
+            throw new NotImplementedException();
+            // Find the closest point to the circle within the rectangle
+            var closestX = MathHelper.Clamp(
+                circle.gameObject.transform.position.X + circle.center.X,
+                rectangle.gameObject.transform.position.X + rectangle.bounds.minX,
+                rectangle.gameObject.transform.position.X + rectangle.bounds.maxX);
+            var closestY = MathHelper.Clamp(
+                circle.gameObject.transform.position.Y + circle.center.Y,
+                rectangle.gameObject.transform.position.Y + rectangle.bounds.minY,
+                rectangle.gameObject.transform.position.Y + rectangle.bounds.maxY);
+
+            // Calculate the distance between the circle's center and this closest point
+            var distanceX = circle.gameObject.transform.position.X + circle.center.X - closestX;
+            var distanceY = circle.gameObject.transform.position.Y + circle.center.Y - closestY;
+
+            // If the distance is less than the circle's radius, an intersection occurs
+            var distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+            return distanceSquared < circle.radius * circle.radius;
+        }
+
         // see BoxCircleCollisionCalculator
         // see https://stackoverflow.com/a/1879223
-        public static Vector2 CalculateUnrotatedOverlapOffset(CircleCollider circle, RectangleCollider rectangle)
+        public static Vector2 CalculateOverlapOffset(CircleCollider circle, RectangleCollider rectangle)
         {
+            throw new NotImplementedException();
             // Find the closest point to the circle within the rectangle
             var closestX = MathHelper.Clamp(
                 circle.gameObject.transform.position.X + circle.center.X,
@@ -39,9 +63,9 @@ namespace Framework.Collision.Calculation
             return Vector2.Zero;
         }
 
-        public static Vector2 UnrotatedOverlap(RectangleCollider rectangle, CircleCollider circle)
+        public static Vector2 CalculateOverlapOffset(RectangleCollider rectangle, CircleCollider circle)
         {
-            return -CalculateUnrotatedOverlapOffset(circle, rectangle);
+            return -CalculateOverlapOffset(circle, rectangle);
         }
     }
 }
