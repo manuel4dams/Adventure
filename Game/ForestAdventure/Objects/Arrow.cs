@@ -67,7 +67,7 @@ namespace ForestAdventure.Objects
             var positionOffset = previousPosition - transform.position;
             // transform.rotation = MathF.Atan2(positionOffset.Y, positionOffset.X);
             transform.rotation =
-                LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.1f);
+                LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.75f);
         }
     }
 }
