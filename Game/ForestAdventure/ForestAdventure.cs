@@ -52,6 +52,7 @@ namespace ForestAdventure
         private static void AddClimbablePlatforms()
         {
             Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(15f, 5f), 12f));
+            Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(0f, 15f), 6f));
         }
 
         private static void AddEnemies()

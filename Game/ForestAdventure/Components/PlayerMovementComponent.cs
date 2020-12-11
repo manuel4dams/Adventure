@@ -24,9 +24,13 @@ namespace ForestAdventure.Components
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
 
-            if ((other.gameObject is Platform || other.gameObject is ClimbablePlatform) && touchOffset.Y > 0f)
+            if (other.gameObject is Platform && touchOffset.Y > 0f)
             {
                 gravityVelocity = 0f;
+            }
+            else if (other.gameObject is ClimbablePlatform && touchOffset.Y > 0f)
+            {
+                gravityVelocity = -0.004f;
             }
             else if (other.gameObject is ClimbablePlatform && touchOffset.Y < 0f)
             {
