@@ -12,7 +12,7 @@ namespace ForestAdventure.Objects
     public class Arrow : GameObject, IUpdateable, ICollision
     {
         private const float GRAVITY_CONSTANT = 9.81f;
-        private const float FORCE_INITIAL_MULTIPLIER = 4f;
+        private const float FORCE_INITIAL_MULTIPLIER = 30f;
         private const float FORCE_DRAIN = 0.99f;
         private float gravityVelocity;
         private bool gravityEnabled = true;
