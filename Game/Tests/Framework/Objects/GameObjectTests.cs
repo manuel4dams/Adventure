@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Objects
     [TestClass]
     public class GameObjectTests
     {
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void GameObjectTest()
@@ -14,7 +14,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             // testcase 1: call first constructor
         }
 
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void GameObjectTest1()

@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Components
     [TestClass]
     public class CircleColliderTests
     {
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void CircleColliderTest()
@@ -14,7 +14,7 @@ namespace UnitTestForestAdventure.Framework.Components
             // testcase 1: call first constructor
         }
 
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void CircleColliderTest1()

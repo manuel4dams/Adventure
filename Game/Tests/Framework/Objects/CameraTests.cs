@@ -1,11 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Reflection;
+using Framework.Objects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects
 {
     [TestClass]
     public class CameraTests
     {
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void CameraTest()
@@ -14,7 +16,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             // testcase 1: call first constructor
         }
 
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void CameraTest1()
@@ -23,7 +25,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             // testcase 1: call second constructor
         }
 
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void CameraTest2()

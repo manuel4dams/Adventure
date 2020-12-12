@@ -6,6 +6,7 @@ namespace UnitTestForestAdventure.Framework.Collision
     public class CollisionCalculatorTests
     {
         // TODO implement test
+        [Ignore]
         [TestMethod]
         public void UnrotatedIntersectsTest()
         {
@@ -26,6 +27,7 @@ namespace UnitTestForestAdventure.Framework.Collision
         }
 
         // TODO implement test
+        [Ignore]
         [TestMethod]
         public void UnrotatedOverlapTest()
         {

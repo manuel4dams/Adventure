@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Components
     [TestClass]
     public class QuadRendererTests
     {
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void QuadRendererTest()
@@ -14,7 +14,7 @@ namespace UnitTestForestAdventure.Framework.Components
             // testcase 1: call first constructor
         }
 
-        // TODO implement test
+        // functional test NA for constructor
         [Ignore]
         [TestMethod]
         public void QuadRendererTest1()
