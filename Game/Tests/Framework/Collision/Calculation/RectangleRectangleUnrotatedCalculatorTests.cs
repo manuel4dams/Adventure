@@ -14,12 +14,12 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 0f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(5f, 5f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(5f, 5f);
+            transformB.position = Vector2.Zero;
 
             Assert.IsFalse(RectangleRectangleUnrotatedCalculator.Intersects(
                 rectangleBoundsA,
@@ -34,12 +34,12 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(1f, 0f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(1f, 0f);
+            transformB.position = Vector2.Zero;
 
             Assert.IsTrue(RectangleRectangleUnrotatedCalculator.Intersects(
                 rectangleBoundsA,
@@ -54,12 +54,12 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(-1f, 0f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(-1f, 0f);
+            transformB.position = Vector2.Zero;
 
             Assert.IsTrue(RectangleRectangleUnrotatedCalculator.Intersects(
                 rectangleBoundsA,
@@ -74,12 +74,12 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(0f, 1f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(0f, 1f);
+            transformB.position = Vector2.Zero;
 
             Assert.IsTrue(RectangleRectangleUnrotatedCalculator.Intersects(
                 rectangleBoundsA,
@@ -94,12 +94,12 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(0f, 1f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(0f, -1f);
+            transformB.position = Vector2.Zero;
 
             Assert.IsTrue(RectangleRectangleUnrotatedCalculator.Intersects(
                 rectangleBoundsA,
@@ -138,14 +138,14 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(0.5f, 0f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(1f, 0f);
+            transformB.position = Vector2.Zero;
             
-            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+            Assert.IsTrue(new Vector2(0.5f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                 rectangleBoundsA,
                 transformA,
                 rectangleBoundsB,
@@ -158,14 +158,14 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(-0.5f, 0f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(-1f, 0f);
+            transformB.position = Vector2.Zero;
             
-            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+            Assert.IsTrue(new Vector2(-0.5f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                 rectangleBoundsA,
                 transformA,
                 rectangleBoundsB,
@@ -178,14 +178,14 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(0f, 0.5f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(0f, 1f);
+            transformB.position = Vector2.Zero;
             
-            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+            Assert.IsTrue(new Vector2(0f, 0.5f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                 rectangleBoundsA,
                 transformA,
                 rectangleBoundsB,
@@ -198,14 +198,14 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
         {
             var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
             var transformA = new Transform();
-            transformA.position = Vector2.Zero;
+            transformA.position = new Vector2(0f, -0.5f);
 
 
             var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
             var transformB = new Transform();
-            transformB.position = new Vector2(0f, -1f);
+            transformB.position = Vector2.Zero;
             
-            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+            Assert.IsTrue(new Vector2(0f, -0.5f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                 rectangleBoundsA,
                 transformA,
                 rectangleBoundsB,
