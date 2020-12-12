@@ -1,40 +1,45 @@
-﻿using System;
-using System.Linq;
-using Framework.Components;
+﻿using Framework.Components;
+using Framework.Objects;
 using OpenTK;
 
 namespace Framework.Collision.Calculation
 {
     public static class RectangleRectangleUnrotatedCalculator
     {
-        public static bool Intersects(RectangleCollider rectangleA, RectangleCollider rectangleB)
+        public static bool Intersects(
+            RectangleBounds rectangleBoundsA,
+            Transform transformA,
+            RectangleBounds rectangleBoundsB,
+            Transform transformB)
         {
             return !(
-                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.X +
-                rectangleB.bounds.minX >
-                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.X +
-                rectangleA.bounds.maxX ||
-                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.X +
-                rectangleB.bounds.maxX <
-                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.X +
-                rectangleA.bounds.minX ||
-                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.Y +
-                rectangleB.bounds.maxY <
-                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.Y +
-                rectangleA.bounds.minY ||
-                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.Y +
-                rectangleB.bounds.minY >
-                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.Y +
-                rectangleA.bounds.maxY
+                rectangleBoundsB.UnrotatedTransform(transformB).center.X +
+                rectangleBoundsB.minX >
+                rectangleBoundsA.UnrotatedTransform(transformA).center.X +
+                rectangleBoundsA.maxX ||
+                rectangleBoundsB.UnrotatedTransform(transformB).center.X +
+                rectangleBoundsB.maxX <
+                rectangleBoundsA.UnrotatedTransform(transformA).center.X +
+                rectangleBoundsA.minX ||
+                rectangleBoundsB.UnrotatedTransform(transformB).center.Y +
+                rectangleBoundsB.maxY <
+                rectangleBoundsA.UnrotatedTransform(transformA).center.Y +
+                rectangleBoundsA.minY ||
+                rectangleBoundsB.UnrotatedTransform(transformB).center.Y +
+                rectangleBoundsB.minY >
+                rectangleBoundsA.UnrotatedTransform(transformA).center.Y +
+                rectangleBoundsA.maxY
             );
         }
 
         public static Vector2 CalculateOverlapOffset(
-            RectangleCollider rectangleA,
-            RectangleCollider rectangleB)
+            RectangleBounds rectangleBoundsA,
+            Transform transformA,
+            RectangleBounds rectangleBoundsB,
+            Transform transformB)
         {
-            var rectangleATransformed = rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform);
-            var rectangleBTransformed = rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform);
+            var rectangleATransformed = rectangleBoundsA.UnrotatedTransform(transformA);
+            var rectangleBTransformed = rectangleBoundsB.UnrotatedTransform(transformB);
             var directions = new[]
             {
                 // push distance A in positive X-direction

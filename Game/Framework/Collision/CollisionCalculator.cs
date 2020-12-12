@@ -52,8 +52,10 @@ namespace Framework.Collision
                     {
                         case RectangleCollider rectangleB:
                             return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
-                                rectangleA,
-                                rectangleB);
+                                rectangleA.bounds,
+                                rectangleA.gameObject.transform,
+                                rectangleB.bounds,
+                                rectangleB.gameObject.transform);
                         case CircleCollider circleB:
                             return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
                                 rectangleA,

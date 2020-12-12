@@ -53,17 +53,17 @@ namespace Framework.Objects
             : this(new Vector2(centerX, centerY), new Vector2(sizeX, sizeY))
         {
         }
-
-        public RectangleBounds UnrotatedTransform(Transform transform)
-        {
-            return new RectangleBounds(
-                transform.position + center,
-                transform.scale * size);
-        }
     }
 
     public static class BoundsExtension
     {
+        public static RectangleBounds UnrotatedTransform(this RectangleBounds rectangleBounds, Transform transform)
+        {
+            return new RectangleBounds(
+                transform.position + rectangleBounds.center,
+                transform.scale * rectangleBounds.size);
+        }
+
         public static Quad Transform(this RectangleBounds rectangleBounds, Transform transform)
         {
             // TODO maybe get rid of tmp variable
