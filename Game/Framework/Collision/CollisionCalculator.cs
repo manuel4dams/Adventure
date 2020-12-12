@@ -53,7 +53,8 @@ namespace Framework.Collision
                                 firstRectangle,
                                 secondRectangle);
                         case CircleCollider secondCircle:
-                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(firstRectangle,
+                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
+                                firstRectangle,
                                 secondCircle);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));

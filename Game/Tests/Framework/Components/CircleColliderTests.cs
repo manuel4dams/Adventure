@@ -1,0 +1,24 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace UnitTestForestAdventure.Framework.Components
+{
+    [TestClass]
+    public class CircleColliderTests
+    {
+        // TODO implement test
+        [Ignore]
+        [TestMethod]
+        public void CircleColliderTest()
+        {
+            Assert.Fail();
+        }
+
+        // TODO implement test
+        [Ignore]
+        [TestMethod]
+        public void CircleColliderTest1()
+        {
+            Assert.Fail();
+        }
+    }
+}

@@ -86,50 +86,6 @@ namespace Framework.Objects
             }
         }
 
-        // TODO fix bug when moving window
-        private void ResizeKeepContentAspectRatio(int width, int height)
-        {
-            GL.LoadIdentity();
-            GL.Viewport(0, 0, width, height);
-            var aspectRatio = (float) width / height;
-            if (aspectRatio < contentAspectRatio)
-            {
-                GL.Scale(new Vector3(
-                    1 / transform.scale.X,
-                    1 / transform.scale.Y * aspectRatio,
-                    0f));
-            }
-            else
-            {
-                GL.Scale(new Vector3(
-                    1 / transform.scale.X / aspectRatio,
-                    1 / transform.scale.Y,
-                    0f));
-            }
-        }
-
-        private void ResizeKeepWidth(int width, int height)
-        {
-            GL.LoadIdentity();
-            GL.Viewport(0, 0, width, height);
-            var aspectRatio = (float) width / height;
-            GL.Scale(new Vector3(
-                1 / transform.scale.X,
-                1 / transform.scale.Y * aspectRatio,
-                0f));
-        }
-
-        private void ResizeKeepHeight(int width, int height)
-        {
-            GL.LoadIdentity();
-            GL.Viewport(0, 0, width, height);
-            var aspectRatio = (float) width / height;
-            GL.Scale(new Vector3(
-                1 / transform.scale.X / aspectRatio,
-                1 / transform.scale.Y,
-                0f));
-        }
-
         public Vector2 MousePositionToWorld()
         {
             return MousePositionToWorld(Mouse.GetCursorState());
@@ -181,6 +137,49 @@ namespace Framework.Objects
             var scaled = mousePositionRespectingAspectRatio * transform.scale;
             var positioned = transform.TranslatePosition(scaled);
             return positioned;
+        }
+
+        private void ResizeKeepContentAspectRatio(int width, int height)
+        {
+            GL.LoadIdentity();
+            GL.Viewport(0, 0, width, height);
+            var aspectRatio = (float) width / height;
+            if (aspectRatio < contentAspectRatio)
+            {
+                GL.Scale(new Vector3(
+                    1 / transform.scale.X,
+                    1 / transform.scale.Y * aspectRatio,
+                    0f));
+            }
+            else
+            {
+                GL.Scale(new Vector3(
+                    1 / transform.scale.X / aspectRatio,
+                    1 / transform.scale.Y,
+                    0f));
+            }
+        }
+
+        private void ResizeKeepWidth(int width, int height)
+        {
+            GL.LoadIdentity();
+            GL.Viewport(0, 0, width, height);
+            var aspectRatio = (float) width / height;
+            GL.Scale(new Vector3(
+                1 / transform.scale.X,
+                1 / transform.scale.Y * aspectRatio,
+                0f));
+        }
+
+        private void ResizeKeepHeight(int width, int height)
+        {
+            GL.LoadIdentity();
+            GL.Viewport(0, 0, width, height);
+            var aspectRatio = (float) width / height;
+            GL.Scale(new Vector3(
+                1 / transform.scale.X / aspectRatio,
+                1 / transform.scale.Y,
+                0f));
         }
     }
 }
