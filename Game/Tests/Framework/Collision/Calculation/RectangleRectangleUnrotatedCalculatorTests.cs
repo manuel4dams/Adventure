@@ -27,7 +27,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
-        
+
         // testcase 3: rectangleA (left) intersects with rectangleB (right)
         [TestMethod]
         public void IntersectsTest_rightIntersect()
@@ -47,7 +47,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
-        
+
         // testcase 2: rectangleA (right) intersects with rectangleB (left)
         [TestMethod]
         public void IntersectsTest_leftIntersect()
@@ -67,7 +67,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
-        
+
         // testcase 4: rectangleA (bottom) intersects with rectangleB (top)
         [TestMethod]
         public void IntersectsTest_bottomIntersect()
@@ -87,7 +87,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
-        
+
         // testcase 5: rectangleA (Top) intersects with rectangleB (bottom)
         [TestMethod]
         public void IntersectsTest_topIntersect()
@@ -107,7 +107,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
-        
+
         // testcase 6:
         // rectangleA (right) intersects with rectangleB (left) and
         // rectangleA (left) intersects with rectangleB (right) and
@@ -131,23 +131,116 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
                 rectangleBoundsB,
                 transformB));
         }
+
+        // testcase 1: rectangleA (right) overlaps with rectangleB (left)
+        [TestMethod]
+        public void CalculateOverlapOffsetTest_rightOverlap()
+        {
+            var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
+            var transformA = new Transform();
+            transformA.position = Vector2.Zero;
+
+
+            var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
+            var transformB = new Transform();
+            transformB.position = new Vector2(1f, 0f);
+            
+            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB));
+        }
         
-        // TODO implement test
-        // testcase 1: rectangleA does not overlap with rectangleB
-        // testcase 2: rectangleA (right) overlaps with rectangleB (left)
-        // testcase 3: rectangleA (left) overlaps with rectangleB (right)
-        // testcase 4: rectangleA (bottom) overlaps with rectangleB (top)
-        // testcase 5: rectangleA (Top) overlaps with rectangleB (bottom)
-        // testcase 6:
+        // testcase 2: rectangleA (left) overlaps with rectangleB (right)
+        [TestMethod]
+        public void CalculateOverlapOffsetTest_leftOverlap()
+        {
+            var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
+            var transformA = new Transform();
+            transformA.position = Vector2.Zero;
+
+
+            var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
+            var transformB = new Transform();
+            transformB.position = new Vector2(-1f, 0f);
+            
+            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB));
+        }
+        
+        // testcase 3: rectangleA (bottom) overlaps with rectangleB (top)
+        [TestMethod]
+        public void CalculateOverlapOffsetTest_bottomOverlap()
+        {
+            var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
+            var transformA = new Transform();
+            transformA.position = Vector2.Zero;
+
+
+            var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
+            var transformB = new Transform();
+            transformB.position = new Vector2(0f, 1f);
+            
+            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB));
+        }
+        
+        // testcase 4: rectangleA (Top) overlaps with rectangleB (bottom)
+        [TestMethod]
+        public void CalculateOverlapOffsetTest_topOverlap()
+        {
+            var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
+            var transformA = new Transform();
+            transformA.position = Vector2.Zero;
+
+
+            var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
+            var transformB = new Transform();
+            transformB.position = new Vector2(0f, -1f);
+            
+            Assert.IsTrue(new Vector2(0f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB));
+        }
+        
+        // testcase 4: rectangleA (Top) overlaps with rectangleB (bottom)
+        // testcase 5:
         // rectangleA (right) overlaps with rectangleB (left) and
         // rectangleA (left) overlaps with rectangleB (right) and
         // rectangleA (bottom) overlaps with rectangleB (top) and
         // rectangleA (Top) overlaps with rectangleB (bottom)
-        [Ignore]
         [TestMethod]
-        public void CalculateOverlapOffsetTest()
+        public void CalculateOverlapOffsetTest_allOverlap()
         {
-            Assert.Fail();
+            var rectangleBoundsA = new RectangleBounds(new Vector2(1f, 1f));
+            var transformA = new Transform();
+            transformA.position = Vector2.Zero;
+
+
+            var rectangleBoundsB = new RectangleBounds(new Vector2(1f, 1f));
+            var transformB = new Transform();
+            transformB.position = Vector2.Zero;
+            
+            var bla =  RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB);
+            
+            Assert.IsTrue(new Vector2(1f, 0f) == RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
+                rectangleBoundsA,
+                transformA,
+                rectangleBoundsB,
+                transformB));
         }
     }
 }
