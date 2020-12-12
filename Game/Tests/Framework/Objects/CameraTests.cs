@@ -11,6 +11,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void CameraTest()
         {
             Assert.Fail();
+            // testcase 1: call first constructor
         }
 
         // TODO implement test
@@ -19,6 +20,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void CameraTest1()
         {
             Assert.Fail();
+            // testcase 1: call second constructor
         }
 
         // TODO implement test
@@ -27,6 +29,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void CameraTest2()
         {
             Assert.Fail();
+            // testcase 1: call third constructor
         }
 
         // TODO implement test
@@ -35,9 +38,14 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void ResizeTest()
         {
             Assert.Fail();
+            // testcase 1: resizing set to default (KeepWidth)
+            // testcase 2: resizing set to KeepContentAspectRatio
+            // testcase 3: resizing set to KeepWidth
+            // testcase 4: resizing set to KeepHeight
+            // testcase 5: resizing set to wrong value
         }
 
-        // TODO implement test
+        // functional test NA for user input
         [Ignore]
         [TestMethod]
         public void MousePositionToWorldTest()
@@ -45,7 +53,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             Assert.Fail();
         }
 
-        // TODO implement test
+        // functional test NA for user input
         [Ignore]
         [TestMethod]
         public void MousePositionToWorldTest1()
@@ -53,7 +61,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             Assert.Fail();
         }
 
-        // TODO implement test
+        // functional test NA for user input
         [Ignore]
         [TestMethod]
         public void MousePositionToWorldTest2()

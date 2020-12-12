@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
     [TestClass]
     public class RectangleCircleUnrotatedCalculatorTests
     {
-        // TODO implement test
+        // TODO NA method to test is not implemented yet
         [Ignore]
         [TestMethod]
         public void IntersectsTest()
@@ -13,7 +13,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
             Assert.Fail();
         }
 
-        // TODO implement test
+        // TODO NA method to test is not implemented yet
         [Ignore]
         [TestMethod]
         public void CalculateOverlapOffsetTest()
@@ -21,7 +21,7 @@ namespace UnitTestForestAdventure.Framework.Collision.Calculation
             Assert.Fail();
         }
 
-        // TODO implement test
+        // TODO NA method to test is not implemented yet
         [Ignore]
         [TestMethod]
         public void CalculateOverlapOffsetTest1()

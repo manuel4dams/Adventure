@@ -11,6 +11,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void GameObjectTest()
         {
             Assert.Fail();
+            // testcase 1: call first constructor
         }
 
         // TODO implement test
@@ -19,6 +20,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void GameObjectTest1()
         {
             Assert.Fail();
+            // testcase 1: call second constructor
         }
 
         // TODO implement test
@@ -27,6 +29,9 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void AddComponentTest()
         {
             Assert.Fail();
+            // testcase 1: add applicable component
+            
+            // testcase 2: add non applicable component
         }
 
         // TODO implement test
@@ -35,6 +40,9 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void RemoveComponentTest()
         {
             Assert.Fail();
+            // testcase 1: remove existing
+            
+            // testcase 2: remove non existent component
         }
     }
 }

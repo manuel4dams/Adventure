@@ -11,6 +11,7 @@ namespace UnitTestForestAdventure.Framework.Components
         public void RectangleColliderTest()
         {
             Assert.Fail();
+            // testcase 1: call first constructor
         }
 
         // TODO implement test
@@ -19,6 +20,7 @@ namespace UnitTestForestAdventure.Framework.Components
         public void RectangleColliderTest1()
         {
             Assert.Fail();
+            // testcase 1: call second constructor
         }
 
         // TODO implement test
@@ -27,6 +29,7 @@ namespace UnitTestForestAdventure.Framework.Components
         public void RectangleColliderTest2()
         {
             Assert.Fail();
+            // testcase 1: call third constructor
         }
     }
 }

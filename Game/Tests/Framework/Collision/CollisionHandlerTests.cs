@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Collision
     [TestClass]
     public class CollisionHandlerTests
     {
-        // TODO implement test
+        // functional test NA for delegation method
         [Ignore]
         [TestMethod]
         public void HandleCollisionTest()

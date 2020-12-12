@@ -11,6 +11,7 @@ namespace UnitTestForestAdventure.Framework.Objects
         public void GameWindowTest()
         {
             Assert.Fail();
+            // testcase 1: call first constructor
         }
     }
 }

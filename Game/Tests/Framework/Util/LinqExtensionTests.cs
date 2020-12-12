@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Util
     [TestClass]
     public class LinqExtensionTests
     {
-        // TODO implement test
+        // NA method executes every items action and returns it
         [Ignore]
         [TestMethod]
         public void ForEachTest()
@@ -13,7 +13,7 @@ namespace UnitTestForestAdventure.Framework.Util
             Assert.Fail();
         }
 
-        // TODO implement test
+        // NA method only validates every object in list
         [Ignore]
         [TestMethod]
         public void EvaluateTest()
