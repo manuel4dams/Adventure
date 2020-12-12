@@ -7,6 +7,9 @@ namespace ForestAdventure
 {
     public static class ForestAdventure
     {
+        // TODO load textures to objects
+        // TODO kill objects, components
+        // TODO collision and overlapping with circles
         public static void Main()
         {
             // Game.instance.AddGameObject(new DebugGameObject());

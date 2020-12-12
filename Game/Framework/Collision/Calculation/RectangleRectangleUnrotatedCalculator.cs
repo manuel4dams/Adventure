@@ -9,20 +9,26 @@ namespace Framework.Collision.Calculation
     {
         public static bool Intersects(RectangleCollider rectangleA, RectangleCollider rectangleB)
         {
-            // TODO use bounds.UnrotatedTransform to also apply scaling
             return !(
-                rectangleB.gameObject.transform.position.X + rectangleB.bounds.minX >
-                rectangleA.gameObject.transform.position.X + rectangleA.bounds.maxX ||
-                rectangleB.gameObject.transform.position.X + rectangleB.bounds.maxX <
-                rectangleA.gameObject.transform.position.X + rectangleA.bounds.minX ||
-                rectangleB.gameObject.transform.position.Y + rectangleB.bounds.maxY <
-                rectangleA.gameObject.transform.position.Y + rectangleA.bounds.minY ||
-                rectangleB.gameObject.transform.position.Y + rectangleB.bounds.minY >
-                rectangleA.gameObject.transform.position.Y + rectangleA.bounds.maxY
+                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.X +
+                rectangleB.bounds.minX >
+                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.X +
+                rectangleA.bounds.maxX ||
+                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.X +
+                rectangleB.bounds.maxX <
+                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.X +
+                rectangleA.bounds.minX ||
+                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.Y +
+                rectangleB.bounds.maxY <
+                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.Y +
+                rectangleA.bounds.minY ||
+                rectangleB.bounds.UnrotatedTransform(rectangleB.gameObject.transform).center.Y +
+                rectangleB.bounds.minY >
+                rectangleA.bounds.UnrotatedTransform(rectangleA.gameObject.transform).center.Y +
+                rectangleA.bounds.maxY
             );
         }
 
-        // TODO calculation is still shit
         public static Vector2 CalculateOverlapOffset(
             RectangleCollider rectangleA,
             RectangleCollider rectangleB)
