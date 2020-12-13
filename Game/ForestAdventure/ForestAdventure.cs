@@ -12,7 +12,6 @@ namespace ForestAdventure
         public static void Main()
         {
             AddBackground();
-            
             AddPlatforms();
             AddClimbablePlatforms();
             Game.instance.AddGameObject(new Exit());
