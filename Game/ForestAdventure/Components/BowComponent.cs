@@ -2,6 +2,7 @@
 using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK.Input;
+using System;
 
 namespace ForestAdventure.Components
 {
@@ -31,6 +32,7 @@ namespace ForestAdventure.Components
         {
             var mousePosition = Camera.instance.MousePositionToWorld();
             var force = mousePosition - gameObject.transform.position;
+            force /= MathF.Sqrt((force.X * force.X) + (force.Y * force.Y));
             var arrow = new Arrow(force);
             arrow.transform.position = gameObject.transform.position;
             Game.instance.AddGameObject(arrow);

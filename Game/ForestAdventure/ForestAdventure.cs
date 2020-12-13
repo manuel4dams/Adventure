@@ -15,6 +15,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new DebugMousePositionGameObject());
             AddBackground();
             AddPlatforms();
+            AddClimbablePlatforms();
             Game.instance.AddGameObject(new Exit());
             Game.instance.AddGameObject(new Entrance());
             AddEnemies();
@@ -46,6 +47,12 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 35f), 4.1f));
             Game.instance.AddGameObject(new Platform(new Vector2(26f, 38f), 4.5f));
             Game.instance.AddGameObject(new Platform(new Vector2(40f, 40f), 4.8f));
+        }
+
+        private static void AddClimbablePlatforms()
+        {
+            Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(15f, 5f), 12f));
+            Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(0f, 15f), 6f));
         }
 
         private static void AddEnemies()

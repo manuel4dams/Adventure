@@ -12,7 +12,7 @@ namespace ForestAdventure.Objects
     public class Arrow : GameObject, IUpdateable, ICollision
     {
         private const float GRAVITY_CONSTANT = 9.81f;
-        private const float FORCE_INITIAL_MULTIPLIER = 4f;
+        private const float FORCE_INITIAL_MULTIPLIER = 30f;
         private const float FORCE_DRAIN = 0.99f;
         private float gravityVelocity;
         private bool gravityEnabled = true;
@@ -67,7 +67,7 @@ namespace ForestAdventure.Objects
             var positionOffset = previousPosition - transform.position;
             // transform.rotation = MathF.Atan2(positionOffset.Y, positionOffset.X);
             transform.rotation =
-                LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.1f);
+                LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.75f);
         }
     }
 }

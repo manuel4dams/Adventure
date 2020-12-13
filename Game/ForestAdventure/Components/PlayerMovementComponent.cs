@@ -6,11 +6,15 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
+    // TODO fix jumping behavior while in air
+    // TODO should jumping from running result in further jump
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 10f;
+        private const float CLIMB_SPEED = 7f;
         private const float GRAVITY_CONSTANT = 9.81f;
         private float gravityVelocity;
+        private bool climbing = false;
 
         public GameObject gameObject { get; }
 
@@ -21,9 +25,21 @@ namespace ForestAdventure.Components
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
+
             if (other.gameObject is Platform && touchOffset.Y > 0f)
             {
                 gravityVelocity = 0f;
+            }
+            else if (other.gameObject is ClimbablePlatform && touchOffset.Y > 0f)
+            {
+                gravityVelocity = -0.004f;
+            }
+            else if (other.gameObject is ClimbablePlatform && touchOffset.Y < 0f)
+            {
+                if (Keyboard.GetState().IsKeyDown(Key.Up) || Keyboard.GetState().IsKeyDown(Key.W))
+                {
+                    climbing = true;
+                }
             }
         }
 
@@ -39,6 +55,14 @@ namespace ForestAdventure.Components
             gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(
                 left + right,
                 up + down);
+            if (climbing == true)
+            {
+                gameObject.transform.position += CLIMB_SPEED * deltaTime * new Vector2(
+                                left + right,
+                                up + down);
+                climbing = false;
+            }
+
             gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
             gameObject.transform.position += gravityVelocity * new Vector2(0f, -1f);
         }
