@@ -10,12 +10,14 @@ namespace Framework.Objects
     public class Game
     {
         private static Game instanceInternal;
-        public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
         public GameWindow gameWindow { get; private set; }
+        private List<GameObject> gameObjectsClone => gameObjects.ToList();
 
         public readonly List<GameObject> gameObjects = new List<GameObject>();
-        private List<GameObject> gameObjectsClone => gameObjects.ToList();
+
+
+        public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
         private Game()
         {

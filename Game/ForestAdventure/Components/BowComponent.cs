@@ -1,14 +1,15 @@
-﻿using ForestAdventure.Objects;
+﻿using System;
+using ForestAdventure.Objects;
 using Framework.Interfaces;
 using Framework.Objects;
 using OpenTK.Input;
-using System;
 
 namespace ForestAdventure.Components
 {
     public class BowComponent : IComponent, IUpdateable
     {
         private const float COOLDOWN = 1f;
+
         private float shotTimer = COOLDOWN;
 
         public GameObject gameObject { get; }

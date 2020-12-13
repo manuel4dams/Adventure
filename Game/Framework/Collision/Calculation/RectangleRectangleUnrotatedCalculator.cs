@@ -1,5 +1,4 @@
-﻿using Framework.Components;
-using Framework.Objects;
+﻿using Framework.Objects;
 using OpenTK;
 
 namespace Framework.Collision.Calculation

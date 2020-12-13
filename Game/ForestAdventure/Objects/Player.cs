@@ -14,14 +14,13 @@ namespace ForestAdventure.Objects
         public Player()
         {
             transform.position = new Vector2(0f, 4f);
+
             var bodyBounds = new RectangleBounds(0.6f, 1.7f);
             AddComponent(new QuadRenderer(this, bodyBounds, new Color4(5, 128, 13, 255)));
             AddComponent(new RectangleCollider(this, bodyBounds));
-
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
             AddComponent(new BowComponent(this));
-
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));

@@ -13,6 +13,7 @@ namespace ForestAdventure.Components
         private const float MOVEMENT_SPEED = 10f;
         private const float CLIMB_SPEED = 7f;
         private const float GRAVITY_CONSTANT = 9.81f;
+
         private float gravityVelocity;
         private bool climbing = false;
 
@@ -25,20 +26,22 @@ namespace ForestAdventure.Components
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
-
-            if (other.gameObject is Platform && touchOffset.Y > 0f)
+            switch (other.gameObject)
             {
-                gravityVelocity = 0f;
-            }
-            else if (other.gameObject is ClimbablePlatform && touchOffset.Y > 0f)
-            {
-                gravityVelocity = -0.004f;
-            }
-            else if (other.gameObject is ClimbablePlatform && touchOffset.Y < 0f)
-            {
-                if (Keyboard.GetState().IsKeyDown(Key.Up) || Keyboard.GetState().IsKeyDown(Key.W))
+                case Platform _ when touchOffset.Y > 0f:
+                    gravityVelocity = 0f;
+                    break;
+                case ClimbablePlatform _ when touchOffset.Y > 0f:
+                    gravityVelocity = -0.004f;
+                    break;
+                case ClimbablePlatform _ when touchOffset.Y < 0f:
                 {
-                    climbing = true;
+                    if (Keyboard.GetState().IsKeyDown(Key.Up) || Keyboard.GetState().IsKeyDown(Key.W))
+                    {
+                        climbing = true;
+                    }
+
+                    break;
                 }
             }
         }
@@ -58,8 +61,8 @@ namespace ForestAdventure.Components
             if (climbing == true)
             {
                 gameObject.transform.position += CLIMB_SPEED * deltaTime * new Vector2(
-                                left + right,
-                                up + down);
+                    left + right,
+                    up + down);
                 climbing = false;
             }
 

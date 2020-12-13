@@ -10,6 +10,7 @@ namespace ForestAdventure.Objects
         public DebugCollisionObject()
         {
             transform.position = new Vector2(1f, 1f);
+
             var bodyBounds = new RectangleBounds(2f, 2f);
             AddComponent(new QuadRenderer(this, bodyBounds));
             AddComponent(new RectangleCollider(this, bodyBounds, false, true));

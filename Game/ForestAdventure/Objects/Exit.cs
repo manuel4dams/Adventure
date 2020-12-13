@@ -11,6 +11,7 @@ namespace ForestAdventure.Objects
         public Exit()
         {
             transform.position = new Vector2(40f, 41f);
+
             var bounds = new RectangleBounds(1.4f, 2.1f);
             AddComponent(new QuadRenderer(this, bounds, new Color4(13, 175, 184, 255)));
             AddComponent(new RectangleCollider(this, bounds, true));
