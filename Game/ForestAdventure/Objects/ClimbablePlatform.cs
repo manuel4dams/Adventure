@@ -8,6 +8,8 @@ namespace ForestAdventure.Objects
 {
     public class ClimbablePlatform : GameObject
     {
+        // TODO should player be able to jump from climbing?
+        // TODO if climbing player should clipp to fixed position in platform
         public ClimbablePlatform(Vector2 position, float length)
         {
             transform.position = position;

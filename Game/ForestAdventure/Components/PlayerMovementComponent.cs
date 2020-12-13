@@ -6,6 +6,8 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
+    // TODO fix jumping behavior while in air
+    // TODO should jumping from running result in further jump
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 10f;
