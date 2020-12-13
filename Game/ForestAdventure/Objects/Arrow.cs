@@ -1,5 +1,4 @@
 ﻿using System;
-<<<<<<< HEAD
 using Framework.Components;
 using Framework.Development.Components;
 using Framework.Interfaces;
@@ -70,32 +69,6 @@ namespace ForestAdventure.Objects
             // transform.rotation = MathF.Atan2(positionOffset.Y, positionOffset.X);
             transform.rotation =
                 LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.75f);
-=======
-using Framework.Interfaces;
-using Framework.Objects;
-
-namespace ForestAdventure.Objects
-{
-    public class Arrow : GameObject, IUpdateable, ICollision, IDrawable
-    {
-        public void OnCollision(ICollider other)
-        {
-            // TODO add collision
-            throw new NotImplementedException();
-        }
-
-        public void Draw()
-        {
-            // TODO migrate from arrow component or add rectangle component?
-            throw new NotImplementedException();
-        }
-
-        // TODO implement arrow as object, remove component
-        public void Update(float deltaTime)
-        {
-            // TODO migrate from arrow component add updateable component?
-            throw new NotImplementedException();
->>>>>>> master
         }
     }
 }

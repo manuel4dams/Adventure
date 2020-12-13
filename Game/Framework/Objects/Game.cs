@@ -2,18 +2,13 @@
 using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
-<<<<<<< HEAD
 using Framework.Util;
-=======
-using Framework.Util.Extension;
->>>>>>> master
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Objects
 {
     public class Game
     {
-<<<<<<< HEAD
         private static Game instanceInternal;
 
         public GameWindow gameWindow { get; private set; }
@@ -34,9 +29,6 @@ namespace Framework.Objects
             // run the game loop with 60hz
             gameWindow.Run(60);
         }
-=======
-        private readonly List<GameObject> gameObjects = new List<GameObject>();
->>>>>>> master
 
         public void AddGameObject(GameObject gameObject)
         {
@@ -45,11 +37,7 @@ namespace Framework.Objects
 
         internal void Resize(int width, int height)
         {
-<<<<<<< HEAD
             gameObjectsClone
-=======
-            gameObjects
->>>>>>> master
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IResizable)?.Resize(width, height))
                 .SelectMany(gameObject => gameObject.components)
@@ -59,11 +47,7 @@ namespace Framework.Objects
 
         internal void Update(float deltaTime)
         {
-<<<<<<< HEAD
             gameObjectsClone
-=======
-            gameObjects
->>>>>>> master
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IUpdateable)?.Update(deltaTime))
                 .SelectMany(gameObject => gameObject.components)
@@ -76,29 +60,17 @@ namespace Framework.Objects
             // TODO might not be needed
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-<<<<<<< HEAD
             gameObjectsClone
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IRender)?.Draw())
                 .SelectMany(gameObject => gameObject.components)
                 .ForEach(component => (component as IRender)?.Draw())
-=======
-            gameObjects
-                .AsEnumerable()
-                .ForEach(gameObject => (gameObject as IDrawable)?.Draw())
-                .SelectMany(gameObject => gameObject.components)
-                .ForEach(component => (component as IDrawable)?.Draw())
->>>>>>> master
                 .Evaluate();
         }
 
         internal void CollisionCheck()
         {
-<<<<<<< HEAD
             var colliders = gameObjectsClone
-=======
-            var colliders = gameObjects
->>>>>>> master
                 .SelectMany(gameObject => gameObject.components)
                 .Select(component => component as ICollider)
                 .Where(collider => collider != null)

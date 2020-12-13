@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿using Framework.Development.Components;
-=======
-﻿using Framework.Components;
->>>>>>> master
+using Framework.Development.Components;
 using Framework.Objects;
 using OpenTK;
 
