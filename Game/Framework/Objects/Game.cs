@@ -16,7 +16,6 @@ namespace Framework.Objects
 
         public readonly List<GameObject> gameObjects = new List<GameObject>();
 
-
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
         private Game()
