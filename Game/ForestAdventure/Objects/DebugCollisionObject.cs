@@ -13,7 +13,7 @@ namespace ForestAdventure.Objects
             var bodyBounds = new RectangleBounds(2f, 2f);
             AddComponent(new QuadRenderer(this, bodyBounds));
             AddComponent(new RectangleCollider(this, bodyBounds, false, true));
-            AddComponent(new DebugColliderEdgesComponent(this, bodyBounds));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));
             AddComponent(new DebugTransformPositionComponent(this));
         }
     }

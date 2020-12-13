@@ -16,7 +16,7 @@ namespace ForestAdventure.Objects
             AddComponent(new RectangleCollider(this, bounds, true));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugColliderEdgesComponent(this, bounds));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
 #endif
         }
     }

@@ -12,26 +12,28 @@ namespace Framework.Collision
         {
             switch (first)
             {
-                case RectangleCollider firstRectangle:
+                case RectangleCollider rectangleA:
                     switch (second)
                     {
-                        case RectangleCollider secondRectangle:
+                        case RectangleCollider rectangleB:
                             return RectangleRectangleUnrotatedCalculator.Intersects(
-                                firstRectangle,
-                                secondRectangle);
-                        case CircleCollider secondCircle:
-                            return RectangleCircleUnrotatedCalculator.Intersects(secondCircle, firstRectangle);
+                                rectangleA.bounds,
+                                rectangleA.gameObject.transform,
+                                rectangleB.bounds,
+                                rectangleB.gameObject.transform);
+                        case CircleCollider circleB:
+                            return RectangleCircleUnrotatedCalculator.Intersects(circleB, rectangleA);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
-                case CircleCollider firstCircle:
+                case CircleCollider circleA:
                     switch (second)
                     {
-                        case RectangleCollider secondRectangle:
-                            return RectangleCircleUnrotatedCalculator.Intersects(firstCircle, secondRectangle);
-                        case CircleCollider secondCircle:
-                            return CircleCircleUnrotatedCalculator.Intersects(firstCircle, secondCircle);
+                        case RectangleCollider rectangleB:
+                            return RectangleCircleUnrotatedCalculator.Intersects(circleA, rectangleB);
+                        case CircleCollider circleB:
+                            return CircleCircleUnrotatedCalculator.Intersects(circleA, circleB);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -45,31 +47,34 @@ namespace Framework.Collision
         {
             switch (first)
             {
-                case RectangleCollider firstRectangle:
+                case RectangleCollider rectangleA:
                     switch (second)
                     {
-                        case RectangleCollider secondRectangle:
+                        case RectangleCollider rectangleB:
                             return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
-                                firstRectangle,
-                                secondRectangle);
-                        case CircleCollider secondCircle:
-                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(firstRectangle,
-                                secondCircle);
+                                rectangleA.bounds,
+                                rectangleA.gameObject.transform,
+                                rectangleB.bounds,
+                                rectangleB.gameObject.transform);
+                        case CircleCollider circleB:
+                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
+                                rectangleA,
+                                circleB);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
 
-                case CircleCollider firstCircle:
+                case CircleCollider circleA:
                     switch (second)
                     {
-                        case RectangleCollider secondRectangle:
+                        case RectangleCollider rectangleB:
                             return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
-                                firstCircle,
-                                secondRectangle);
-                        case CircleCollider secondCircle:
+                                circleA,
+                                rectangleB);
+                        case CircleCollider circleB:
                             return CircleCircleUnrotatedCalculator.CalculateOverlapOffset(
-                                firstCircle,
-                                secondCircle);
+                                circleA,
+                                circleB);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }

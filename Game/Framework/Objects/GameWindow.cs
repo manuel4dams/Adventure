@@ -14,8 +14,11 @@ namespace Framework.Objects
             WindowState = WindowState.Normal;
             UpdateFrame += (objectArgs, args) =>
             {
-                // TODO explain magic constant 0.5, comment
-                if (args.Time >= 0.5)
+                // args.Time spikes on slower machines or when a lot of objects are spawned (lags),
+                // this causes spikes in the deltaTime. when deltaTime spikes objects get boosted
+                // to fast because the deltaTime is used to calculate the updating of objects,
+                // which can cause clipping errors. To prevent this we skip the Frame when we get a deltaTime spike.
+                if (args.Time >= 0.2)
                     return;
 
                 game.Update((float) args.Time);

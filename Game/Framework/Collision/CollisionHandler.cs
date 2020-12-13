@@ -1,5 +1,4 @@
-﻿using System;
-using Framework.Interfaces;
+﻿using Framework.Interfaces;
 
 namespace Framework.Collision
 {

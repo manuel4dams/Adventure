@@ -24,7 +24,7 @@ namespace ForestAdventure.Objects
 
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugColliderEdgesComponent(this, bodyBounds));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));
 #endif
         }
 
