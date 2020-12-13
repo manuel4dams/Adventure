@@ -15,7 +15,7 @@ namespace Framework.Objects
             UpdateFrame += (objectArgs, args) =>
             {
                 // TODO explain magic constant 0.5, comment
-                if (args.Time >= 0.5)
+                if (args.Time >= 0.2)
                     return;
 
                 game.Update((float) args.Time);
