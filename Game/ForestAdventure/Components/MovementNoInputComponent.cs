@@ -7,6 +7,7 @@ namespace ForestAdventure.Components
     public class MovementNoInputComponent : IComponent, IUpdateable
     {
         private const float MOVEMENT_SPEED = 5f;
+<<<<<<< HEAD
 
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
@@ -16,6 +17,13 @@ namespace ForestAdventure.Components
 
         public GameObject gameObject { get; }
 
+=======
+        private readonly float movementBorderLeft;
+        private readonly float movementBorderRight;
+        private readonly Random random = new Random();
+        private bool leftRight;
+
+>>>>>>> master
         public MovementNoInputComponent(
             GameObject gameObject,
             float movementBorderLeft,
@@ -29,6 +37,11 @@ namespace ForestAdventure.Components
             leftRight = random.Next(1, 3) == 2;
         }
 
+<<<<<<< HEAD
+=======
+        public GameObject gameObject { get; }
+
+>>>>>>> master
         public void Update(float deltaTime)
         {
             // let enemy move from left to right

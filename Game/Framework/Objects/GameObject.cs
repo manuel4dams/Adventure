@@ -9,6 +9,7 @@ namespace Framework.Objects
         public readonly Transform transform;
 
         public GameObject()
+<<<<<<< HEAD
         {
             transform = new Transform();
         }
@@ -17,6 +18,15 @@ namespace Framework.Objects
             : this()
         {
             this.transform.Apply(transform);
+=======
+            : this(new Transform())
+        {
+        }
+
+        public GameObject(Transform transform)
+        {
+            this.transform = transform;
+>>>>>>> master
         }
 
         public void AddComponent(IComponent component)

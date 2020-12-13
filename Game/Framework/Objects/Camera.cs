@@ -2,7 +2,10 @@
 using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+<<<<<<< HEAD
 using OpenTK.Input;
+=======
+>>>>>>> master
 
 namespace Framework.Objects
 {
@@ -27,6 +30,7 @@ namespace Framework.Objects
             KeepHeight,
         }
 
+<<<<<<< HEAD
         private static Camera instanceInternal;
 
         private readonly float contentAspectRatio;
@@ -49,24 +53,42 @@ namespace Framework.Objects
         public Camera(ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
         {
             instance = this;
+=======
+        private static Camera instance;
+        private readonly float contentAspectRatio;
+        private readonly ResizeViewport resizeViewport;
+
+        public Camera(ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
+        {
+            Instance = this;
+>>>>>>> master
             this.resizeViewport = resizeViewport;
         }
 
         public Camera(Transform transform, ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
             : base(transform)
         {
+<<<<<<< HEAD
             instance = this;
+=======
+            Instance = this;
+>>>>>>> master
             this.resizeViewport = resizeViewport;
         }
 
         public Camera(Transform transform, float contentAspectRatio)
             : base(transform)
         {
+<<<<<<< HEAD
             instance = this;
+=======
+            Instance = this;
+>>>>>>> master
             resizeViewport = ResizeViewport.KeepContentAspectRatio;
             this.contentAspectRatio = contentAspectRatio;
         }
 
+<<<<<<< HEAD
         public Vector2 MousePositionToWorld()
         {
             return MousePositionToWorld(Mouse.GetCursorState());
@@ -118,6 +140,20 @@ namespace Framework.Objects
             var scaled = mousePositionRespectingAspectRatio * transform.scale;
             var positioned = transform.TranslatePosition(scaled);
             return positioned;
+=======
+        public static Camera Instance
+        {
+            get => instance;
+            set
+            {
+                if (instance != null)
+                {
+                    throw new Exception("Only one camera allowed");
+                }
+
+                instance = value;
+            }
+>>>>>>> master
         }
 
         public void Resize(int width, int height)
@@ -138,6 +174,10 @@ namespace Framework.Objects
             }
         }
 
+<<<<<<< HEAD
+=======
+        // TODO fix bug when moving window
+>>>>>>> master
         private void ResizeKeepContentAspectRatio(int width, int height)
         {
             GL.LoadIdentity();

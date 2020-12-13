@@ -11,6 +11,7 @@ namespace Framework.Objects
             Title = Assembly.GetExecutingAssembly().GetName().Name;
 
             // TODO fix warning
+<<<<<<< HEAD
             WindowState = WindowState.Normal;
             UpdateFrame += (objectArgs, args) =>
             {
@@ -21,11 +22,17 @@ namespace Framework.Objects
                 if (args.Time >= 0.2)
                     return;
 
+=======
+            WindowState = WindowState.Maximized;
+            UpdateFrame += (objectArgs, args) =>
+            {
+>>>>>>> master
                 game.Update((float) args.Time);
                 game.CollisionCheck();
             };
             game.Resize(Width, Height);
             Resize += (objectArgs, args) => game.Resize(Width, Height);
+<<<<<<< HEAD
             RenderFrame += (objectArgs, frameEventArgs) =>
             {
                 game.Draw();
@@ -40,6 +47,26 @@ namespace Framework.Objects
             base.OnUpdateFrame(e);
             if (Keyboard.GetState().IsKeyDown(Key.Escape))
                 Exit();
+=======
+            RenderFrame += (objectArgs, frameEventArgs) => game.Draw();
+            RenderFrame += (objectArgs, frameEventArgs) => SwapBuffers();
+
+            // start the game loop with 60Hz
+            Run(60);
+        }
+
+        // handel game exit with escape
+        protected override void OnUpdateFrame(FrameEventArgs e)
+        {
+            var input = Keyboard.GetState();
+
+            if (input.IsKeyDown(Key.Escape))
+            {
+                Exit();
+            }
+
+            base.OnUpdateFrame(e);
+>>>>>>> master
         }
     }
 }

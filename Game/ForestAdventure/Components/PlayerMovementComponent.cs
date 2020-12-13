@@ -6,6 +6,7 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Components
 {
+<<<<<<< HEAD
     // TODO fix jumping behavior while in air
     // TODO should jumping from running result in further jump
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
@@ -16,6 +17,14 @@ namespace ForestAdventure.Components
 
         private float gravityVelocity;
         private bool climbing = false;
+=======
+    public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
+    {
+        private const float MOVEMENT_SPEED = 10f;
+        private const float GRAVITY_CONSTANT = 9.81f;
+
+        private float gravityVelocity;
+>>>>>>> master
 
         public GameObject gameObject { get; }
 
@@ -24,6 +33,7 @@ namespace ForestAdventure.Components
             this.gameObject = gameObject;
         }
 
+<<<<<<< HEAD
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
             switch (other.gameObject)
@@ -43,21 +53,36 @@ namespace ForestAdventure.Components
 
                     break;
                 }
+=======
+        public void OnCollision(ICollider other)
+        {
+            if (other.gameObject is Platform)
+            {
+                gravityVelocity = 0f;
+>>>>>>> master
             }
         }
 
         public void Update(float deltaTime)
         {
+<<<<<<< HEAD
             // TODO Jumping needs improvement to feel more natural
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
             var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1.5f : 0f;
+=======
+            var keyboardState = Keyboard.GetState();
+            var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -1f : 0f;
+            var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 1f : 0f;
+            var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1f : 0f;
+>>>>>>> master
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -1f : 0f;
 
             gameObject.transform.position += MOVEMENT_SPEED * deltaTime * new Vector2(
                 left + right,
                 up + down);
+<<<<<<< HEAD
             if (climbing == true)
             {
                 gameObject.transform.position += CLIMB_SPEED * deltaTime * new Vector2(
@@ -66,6 +91,8 @@ namespace ForestAdventure.Components
                 climbing = false;
             }
 
+=======
+>>>>>>> master
             gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
             gameObject.transform.position += gravityVelocity * new Vector2(0f, -1f);
         }

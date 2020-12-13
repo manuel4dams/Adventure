@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using System;
 using OpenTK;
+=======
+﻿using OpenTK;
+>>>>>>> master
 
 namespace Framework.Objects
 {
@@ -8,6 +12,7 @@ namespace Framework.Objects
         public Vector2 position;
         public float rotation;
         public Vector2 scale = Vector2.One;
+<<<<<<< HEAD
 
         public void Apply(Transform other)
         {
@@ -35,5 +40,7 @@ namespace Framework.Objects
         {
             throw new NotImplementedException();
         }
+=======
+>>>>>>> master
     }
 }
