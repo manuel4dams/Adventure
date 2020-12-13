@@ -7,10 +7,14 @@ namespace ForestAdventure.Components
     public class MovementNoInputComponent : IComponent, IUpdateable
     {
         private const float MOVEMENT_SPEED = 5f;
+
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
+
         private bool leftRight;
+
+        public GameObject gameObject { get; }
 
         public MovementNoInputComponent(
             GameObject gameObject,
@@ -24,8 +28,6 @@ namespace ForestAdventure.Components
             // start moving in random direction
             leftRight = random.Next(1, 3) == 2;
         }
-
-        public GameObject gameObject { get; }
 
         public void Update(float deltaTime)
         {

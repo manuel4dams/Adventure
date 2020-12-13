@@ -9,13 +9,14 @@ namespace Framework.Objects
         public readonly Transform transform;
 
         public GameObject()
-            : this(new Transform())
         {
+            transform = new Transform();
         }
 
         public GameObject(Transform transform)
+            : this()
         {
-            this.transform = transform;
+            this.transform.Apply(transform);
         }
 
         public void AddComponent(IComponent component)

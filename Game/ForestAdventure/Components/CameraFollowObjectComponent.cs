@@ -9,17 +9,17 @@ namespace ForestAdventure.Components
     {
         private const float SMOOTHNESS = 10f;
 
+        public GameObject gameObject { get; }
+
         public CameraFollowObjectComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
         }
 
-        public GameObject gameObject { get; }
-
         public void Update(float deltaTime)
         {
-            Camera.Instance.transform.position = Vector2.Lerp(
-                Camera.Instance.transform.position,
+            Camera.instance.transform.position = Vector2.Lerp(
+                Camera.instance.transform.position,
                 gameObject.transform.position,
                 LerpUtils.SmoothnessToLerp(SMOOTHNESS));
         }
