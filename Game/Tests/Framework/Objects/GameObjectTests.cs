@@ -24,7 +24,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             Assert.Fail();
             // testcase 1: call second constructor
         }
-        
+
         [TestMethod]
         public void AddComponentTest()
         {
@@ -32,7 +32,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             gameObject.AddComponent(new TestComponent());
             Assert.IsTrue(gameObject.components.Count == 1);
         }
-        
+
         [TestMethod]
         public void RemoveComponentTest()
         {
@@ -40,12 +40,12 @@ namespace UnitTestForestAdventure.Framework.Objects
             var testComponent = new TestComponent();
             gameObject.AddComponent(testComponent);
             Assert.IsTrue(gameObject.components.Count == 1);
-            
+
             gameObject.RemoveComponent(testComponent);
             Assert.IsTrue(gameObject.components.Count == 0);
         }
     }
-    
+
 
     public class TestComponent : IComponent
     {

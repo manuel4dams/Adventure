@@ -12,9 +12,10 @@ namespace ForestAdventure.Objects
     {
         public DebugGameObject()
         {
-            var bounds = new RectangleBounds(8f, 2f);
             transform.scale = new Vector2(1f, 2f);
             transform.position = new Vector2(3f, 1f);
+
+            var bounds = new RectangleBounds(8f, 2f);
             AddComponent(new QuadRenderer(this, bounds, Color4.Cyan));
             AddComponent(new RectanglePointRenderer(this, bounds, 8f));
         }
@@ -31,14 +32,14 @@ namespace ForestAdventure.Objects
             private readonly RectangleBounds rectangleBounds;
             private readonly float pointSize;
 
+            public GameObject gameObject { get; }
+
             public RectanglePointRenderer(GameObject gameObject, RectangleBounds rectangleBounds, float pointSize = 1f)
             {
                 this.gameObject = gameObject;
                 this.rectangleBounds = rectangleBounds;
                 this.pointSize = pointSize;
             }
-
-            public GameObject gameObject { get; }
 
             public void Draw()
             {

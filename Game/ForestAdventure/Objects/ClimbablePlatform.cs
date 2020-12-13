@@ -13,6 +13,7 @@ namespace ForestAdventure.Objects
         public ClimbablePlatform(Vector2 position, float length)
         {
             transform.position = position;
+
             var bounds = new RectangleBounds(length, 0.40f);
             AddComponent(new QuadRenderer(this, bounds, new Color4(170, 80, 10, 255)));
             AddComponent(new RectangleCollider(this, bounds, true, true));

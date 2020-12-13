@@ -7,6 +7,11 @@ namespace Framework.Components
     {
         public RectangleBounds bounds;
 
+        public bool isTrigger { get; set; }
+        public bool isStatic { get; set; }
+
+        public GameObject gameObject { get; }
+
         public RectangleCollider(GameObject gameObject, RectangleBounds bounds)
             : this(gameObject, bounds, false)
         {
@@ -24,11 +29,5 @@ namespace Framework.Components
             this.isTrigger = isTrigger;
             this.isStatic = isStatic;
         }
-
-        public bool isTrigger { get; set; }
-
-        public bool isStatic { get; set; }
-
-        public GameObject gameObject { get; }
     }
 }

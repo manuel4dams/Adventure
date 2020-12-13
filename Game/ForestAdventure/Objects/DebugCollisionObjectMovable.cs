@@ -1,5 +1,4 @@
-﻿using System;
-using Framework.Components;
+﻿using Framework.Components;
 using Framework.Development.Components;
 using Framework.Interfaces;
 using Framework.Objects;
@@ -13,6 +12,7 @@ namespace ForestAdventure.Objects
         public DebugCollisionObjectMovable()
         {
             transform.position = new Vector2(-2f, 1f);
+
             var bodyBounds = new RectangleBounds(2f, 2f);
             AddComponent(new QuadRenderer(this, bodyBounds));
             AddComponent(new RectangleCollider(this, bodyBounds));

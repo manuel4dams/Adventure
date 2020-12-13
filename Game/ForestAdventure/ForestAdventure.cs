@@ -1,5 +1,4 @@
 ﻿using ForestAdventure.Objects;
-using Framework.Development.Objects;
 using Framework.Objects;
 using OpenTK;
 
@@ -12,7 +11,6 @@ namespace ForestAdventure
         // TODO collision and overlapping with circles
         public static void Main()
         {
-            Game.instance.AddGameObject(new DebugMousePositionGameObject());
             AddBackground();
             AddPlatforms();
             AddClimbablePlatforms();

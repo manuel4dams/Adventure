@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
@@ -29,8 +28,23 @@ namespace Framework.Objects
         }
 
         private static Camera instanceInternal;
+
         private readonly float contentAspectRatio;
         private readonly ResizeViewport resizeViewport;
+
+        public static Camera instance
+        {
+            get => instanceInternal;
+            set
+            {
+                if (instanceInternal != null)
+                {
+                    throw new Exception("Only one camera allowed");
+                }
+
+                instanceInternal = value;
+            }
+        }
 
         public Camera(ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
         {
@@ -51,38 +65,6 @@ namespace Framework.Objects
             instance = this;
             resizeViewport = ResizeViewport.KeepContentAspectRatio;
             this.contentAspectRatio = contentAspectRatio;
-        }
-
-        public static Camera instance
-        {
-            get => instanceInternal;
-            set
-            {
-                if (instanceInternal != null)
-                {
-                    throw new Exception("Only one camera allowed");
-                }
-
-                instanceInternal = value;
-            }
-        }
-
-        public void Resize(int width, int height)
-        {
-            switch (resizeViewport)
-            {
-                case ResizeViewport.KeepContentAspectRatio:
-                    ResizeKeepContentAspectRatio(width, height);
-                    break;
-                case ResizeViewport.KeepWidth:
-                    ResizeKeepWidth(width, height);
-                    break;
-                case ResizeViewport.KeepHeight:
-                    ResizeKeepHeight(width, height);
-                    break;
-                default:
-                    throw new ArgumentException("Invalid " + nameof(ResizeViewport));
-            }
         }
 
         public Vector2 MousePositionToWorld()
@@ -136,6 +118,24 @@ namespace Framework.Objects
             var scaled = mousePositionRespectingAspectRatio * transform.scale;
             var positioned = transform.TranslatePosition(scaled);
             return positioned;
+        }
+
+        public void Resize(int width, int height)
+        {
+            switch (resizeViewport)
+            {
+                case ResizeViewport.KeepContentAspectRatio:
+                    ResizeKeepContentAspectRatio(width, height);
+                    break;
+                case ResizeViewport.KeepWidth:
+                    ResizeKeepWidth(width, height);
+                    break;
+                case ResizeViewport.KeepHeight:
+                    ResizeKeepHeight(width, height);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid " + nameof(ResizeViewport));
+            }
         }
 
         private void ResizeKeepContentAspectRatio(int width, int height)

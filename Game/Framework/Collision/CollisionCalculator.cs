@@ -8,12 +8,12 @@ namespace Framework.Collision
 {
     public static class CollisionCalculator
     {
-        public static bool UnrotatedIntersects(ICollider first, ICollider second)
+        public static bool UnrotatedIntersects(ICollider colliderA, ICollider colliderB)
         {
-            switch (first)
+            switch (colliderA)
             {
                 case RectangleCollider rectangleA:
-                    switch (second)
+                    switch (colliderB)
                     {
                         case RectangleCollider rectangleB:
                             return RectangleRectangleUnrotatedCalculator.Intersects(
@@ -28,7 +28,7 @@ namespace Framework.Collision
                     }
 
                 case CircleCollider circleA:
-                    switch (second)
+                    switch (colliderB)
                     {
                         case RectangleCollider rectangleB:
                             return RectangleCircleUnrotatedCalculator.Intersects(circleA, rectangleB);
@@ -43,12 +43,12 @@ namespace Framework.Collision
             }
         }
 
-        public static Vector2 UnrotatedOverlap(ICollider first, ICollider second)
+        public static Vector2 UnrotatedOverlap(ICollider colliderA, ICollider colliderB)
         {
-            switch (first)
+            switch (colliderA)
             {
                 case RectangleCollider rectangleA:
-                    switch (second)
+                    switch (colliderB)
                     {
                         case RectangleCollider rectangleB:
                             return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
@@ -65,7 +65,7 @@ namespace Framework.Collision
                     }
 
                 case CircleCollider circleA:
-                    switch (second)
+                    switch (colliderB)
                     {
                         case RectangleCollider rectangleB:
                             return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
