@@ -7,7 +7,6 @@ using OpenTK.Input;
 
 namespace Framework.Objects
 {
-    // TODO fix bug, moving window and player at the same time causes the camera to behave weird
     public sealed class Camera : GameObject, IResizable
     {
         public enum ResizeViewport

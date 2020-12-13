@@ -12,9 +12,6 @@ namespace ForestAdventure
         // TODO collision and overlapping with circles
         public static void Main()
         {
-            // Game.instance.AddGameObject(new DebugGameObject());
-            // Game.instance.AddGameObject(new DebugCollisionObjectMovable());
-            // Game.instance.AddGameObject(new DebugCollisionObject());
             Game.instance.AddGameObject(new DebugMousePositionGameObject());
             AddBackground();
             AddPlatforms();

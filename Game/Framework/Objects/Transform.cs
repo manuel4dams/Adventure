@@ -1,4 +1,5 @@
-﻿using OpenTK;
+﻿using System;
+using OpenTK;
 
 namespace Framework.Objects
 {
@@ -25,6 +26,14 @@ namespace Framework.Objects
             return this.position + position;
         }
 
-        // TODO add method scale and rotate
+        public void Scale()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Rotate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
