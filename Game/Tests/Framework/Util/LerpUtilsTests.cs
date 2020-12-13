@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Util
     [TestClass]
     public class LerpUtilsTests
     {
-        // TODO implement test
+        // functioanl test NA for extension method
         [Ignore]
         [TestMethod]
         public void LerpTest()
@@ -16,7 +16,7 @@ namespace UnitTestForestAdventure.Framework.Util
             // testcase2: provide a, b, percentage 100%
         }
 
-        // TODO implement test
+        // functioanl test NA for extension method
         [Ignore]
         [TestMethod]
         public void SmoothnessToLerpTest()

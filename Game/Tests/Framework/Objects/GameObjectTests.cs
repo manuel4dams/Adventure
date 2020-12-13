@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Framework.Interfaces;
+using Framework.Objects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects
 {
@@ -22,27 +24,31 @@ namespace UnitTestForestAdventure.Framework.Objects
             Assert.Fail();
             // testcase 1: call second constructor
         }
-
-        // TODO implement test
-        [Ignore]
+        
         [TestMethod]
         public void AddComponentTest()
         {
-            Assert.Fail();
-            // testcase 1: add applicable component
-            
-            // testcase 2: add non applicable component
+            var gameObject = new GameObject();
+            gameObject.AddComponent(new TestComponent());
+            Assert.IsTrue(gameObject.components.Count == 1);
         }
-
-        // TODO implement test
-        [Ignore]
+        
         [TestMethod]
         public void RemoveComponentTest()
         {
-            Assert.Fail();
-            // testcase 1: remove existing
+            var gameObject = new GameObject();
+            var testComponent = new TestComponent();
+            gameObject.AddComponent(testComponent);
+            Assert.IsTrue(gameObject.components.Count == 1);
             
-            // testcase 2: remove non existent component
+            gameObject.RemoveComponent(testComponent);
+            Assert.IsTrue(gameObject.components.Count == 0);
         }
+    }
+    
+
+    public class TestComponent : IComponent
+    {
+        public GameObject gameObject { get; }
     }
 }

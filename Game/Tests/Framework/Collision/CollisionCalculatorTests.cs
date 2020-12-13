@@ -5,7 +5,7 @@ namespace UnitTestForestAdventure.Framework.Collision
     [TestClass]
     public class CollisionCalculatorTests
     {
-        // TODO implement test
+        // functional test NA would only test which class gets called
         [Ignore]
         [TestMethod]
         public void UnrotatedIntersectsTest()
@@ -26,7 +26,7 @@ namespace UnitTestForestAdventure.Framework.Collision
             // default 1: wrong collider type for first collider
         }
 
-        // TODO implement test
+        // functional test NA would only test which class gets called
         [Ignore]
         [TestMethod]
         public void UnrotatedOverlapTest()

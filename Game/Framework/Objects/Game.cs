@@ -14,7 +14,7 @@ namespace Framework.Objects
 
         public GameWindow gameWindow { get; private set; }
 
-        private readonly List<GameObject> gameObjects = new List<GameObject>();
+        public readonly List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsClone => gameObjects.ToList();
 
         private Game()

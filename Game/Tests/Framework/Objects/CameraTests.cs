@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using Framework.Objects;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects
 {
@@ -34,7 +32,7 @@ namespace UnitTestForestAdventure.Framework.Objects
             // testcase 1: call third constructor
         }
 
-        // TODO implement test
+        // functional test NA because method delegates to resize method set in enum.
         [Ignore]
         [TestMethod]
         public void ResizeTest()

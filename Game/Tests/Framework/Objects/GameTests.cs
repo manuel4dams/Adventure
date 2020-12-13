@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Framework.Objects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects
 {
@@ -13,15 +14,15 @@ namespace UnitTestForestAdventure.Framework.Objects
             Assert.Fail();
         }
 
-        // TODO implement test
-        [Ignore]
         [TestMethod]
         public void AddGameObjectTest()
         {
-            Assert.Fail();
-            // testcase 1: add applicable gameObject
-
-            // testcase 2: add non applicable gameObject
+            Game.instance.AddGameObject(new TestGameOBject());
+            Assert.IsTrue(Game.instance.gameObjects.Count == 1);
         }
+    }
+
+    public class TestGameOBject : GameObject
+    {
     }
 }
