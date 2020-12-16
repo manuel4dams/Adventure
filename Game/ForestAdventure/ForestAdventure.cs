@@ -79,9 +79,9 @@ namespace ForestAdventure
         private static void AddEnemies()
         {
             // Ground floor
+            Game.instance.AddGameObject(new Enemy(new Vector2(20f, 1.2f), 1f, 63f));
             Game.instance.AddGameObject(new Enemy(new Vector2(30f, 1.2f), 1f, 63f));
             Game.instance.AddGameObject(new Enemy(new Vector2(40f, 1.2f), 1f, 63f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(50f, 1.2f), 1f, 63f));
             // floor 3
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.2f), 18f, 30f));
             // floor 7

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ForestAdventure.Objects;
 using Framework.Game;
 using Framework.Interfaces;
