@@ -1,4 +1,4 @@
-﻿using Framework.Objects;
+﻿using Framework.Shapes;
 using OpenTK;
 
 namespace Framework.Collision.Calculation
@@ -7,35 +7,28 @@ namespace Framework.Collision.Calculation
     {
         public static bool Intersects(
             RectangleBounds rectangleBoundsA,
-            Transform transformA,
+            Transform.Transform transformA,
             RectangleBounds rectangleBoundsB,
-            Transform transformB)
+            Transform.Transform transformB)
         {
+            var transformedRectangleBoundsA = rectangleBoundsA.UnrotatedTransform(transformA);
+            var transformedRectangleBoundsB = rectangleBoundsB.UnrotatedTransform(transformB);
             return !(
-                rectangleBoundsB.UnrotatedTransform(transformB).center.X +
-                rectangleBoundsB.minX >
-                rectangleBoundsA.UnrotatedTransform(transformA).center.X +
-                rectangleBoundsA.maxX ||
-                rectangleBoundsB.UnrotatedTransform(transformB).center.X +
-                rectangleBoundsB.maxX <
-                rectangleBoundsA.UnrotatedTransform(transformA).center.X +
-                rectangleBoundsA.minX ||
-                rectangleBoundsB.UnrotatedTransform(transformB).center.Y +
-                rectangleBoundsB.maxY <
-                rectangleBoundsA.UnrotatedTransform(transformA).center.Y +
-                rectangleBoundsA.minY ||
-                rectangleBoundsB.UnrotatedTransform(transformB).center.Y +
-                rectangleBoundsB.minY >
-                rectangleBoundsA.UnrotatedTransform(transformA).center.Y +
-                rectangleBoundsA.maxY
-            );
+                transformedRectangleBoundsB.minX >
+                transformedRectangleBoundsA.maxX ||
+                transformedRectangleBoundsB.maxX <
+                transformedRectangleBoundsA.minX ||
+                transformedRectangleBoundsB.maxY <
+                transformedRectangleBoundsA.minY ||
+                transformedRectangleBoundsB.minY >
+                transformedRectangleBoundsA.maxY);
         }
 
         public static Vector2 CalculateOverlapOffset(
             RectangleBounds rectangleBoundsA,
-            Transform transformA,
+            Transform.Transform transformA,
             RectangleBounds rectangleBoundsB,
-            Transform transformB)
+            Transform.Transform transformB)
         {
             var rectangleATransformed = rectangleBoundsA.UnrotatedTransform(transformA);
             var rectangleBTransformed = rectangleBoundsB.UnrotatedTransform(transformB);

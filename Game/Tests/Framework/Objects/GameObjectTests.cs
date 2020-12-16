@@ -1,5 +1,5 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
+﻿using Framework.Game;
+using Framework.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects

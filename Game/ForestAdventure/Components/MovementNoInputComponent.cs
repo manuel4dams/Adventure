@@ -1,6 +1,6 @@
 ﻿using System;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
 
 namespace ForestAdventure.Components
 {

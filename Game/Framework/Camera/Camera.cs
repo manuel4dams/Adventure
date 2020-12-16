@@ -1,10 +1,11 @@
 ﻿using System;
+using Framework.Game;
 using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 
-namespace Framework.Objects
+namespace Framework.Camera
 {
     public sealed class Camera : GameObject, IResizable
     {
@@ -52,14 +53,14 @@ namespace Framework.Objects
             this.resizeViewport = resizeViewport;
         }
 
-        public Camera(Transform transform, ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
+        public Camera(Transform.Transform transform, ResizeViewport resizeViewport = ResizeViewport.KeepWidth)
             : base(transform)
         {
             instance = this;
             this.resizeViewport = resizeViewport;
         }
 
-        public Camera(Transform transform, float contentAspectRatio)
+        public Camera(Transform.Transform transform, float contentAspectRatio)
             : base(transform)
         {
             instance = this;
@@ -79,14 +80,14 @@ namespace Framework.Objects
 
         public Vector2 MousePositionToWorld(float x, float y)
         {
-            var canvasScreenOffset = Game.instance.gameWindow.PointToClient(new Point(0, 0));
+            var canvasScreenOffset = Game.Game.instance.gameWindow.PointToClient(new Point(0, 0));
             var mousePositionInCanvas = new Vector2(x + canvasScreenOffset.X, y + canvasScreenOffset.Y);
             var mousePositionRelativeToCanvas = new Vector2(
-                mousePositionInCanvas.X / Game.instance.gameWindow.Width * 2f - 1f,
-                -(mousePositionInCanvas.Y / Game.instance.gameWindow.Height * 2f - 1f));
+                mousePositionInCanvas.X / Game.Game.instance.gameWindow.Width * 2f - 1f,
+                -(mousePositionInCanvas.Y / Game.Game.instance.gameWindow.Height * 2f - 1f));
 
             // TODO Maybe separate into different methods and reuse them also in the Resize() functions?
-            var aspectRatio = (float) Game.instance.gameWindow.Width / Game.instance.gameWindow.Height;
+            var aspectRatio = (float) Game.Game.instance.gameWindow.Width / Game.Game.instance.gameWindow.Height;
             Vector2 mousePositionRespectingAspectRatio;
             switch (resizeViewport)
             {

@@ -1,5 +1,6 @@
 ﻿using Framework.Collision.Calculation;
-using Framework.Objects;
+using Framework.Shapes;
+using Framework.Transform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenTK;
 

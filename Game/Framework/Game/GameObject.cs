@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using Framework.Interfaces;
 
-namespace Framework.Objects
+namespace Framework.Game
 {
     public class GameObject
     {
         public readonly List<IComponent> components = new List<IComponent>();
-        public readonly Transform transform;
+        public readonly Transform.Transform transform;
 
         public GameObject()
         {
-            transform = new Transform();
+            transform = new Transform.Transform();
         }
 
-        public GameObject(Transform transform)
+        public GameObject(Transform.Transform transform)
             : this()
         {
             this.transform.Apply(transform);

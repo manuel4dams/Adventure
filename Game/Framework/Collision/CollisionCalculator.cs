@@ -1,6 +1,6 @@
 ﻿using System;
 using Framework.Collision.Calculation;
-using Framework.Components;
+using Framework.Collision.Collider;
 using Framework.Interfaces;
 using OpenTK;
 
@@ -12,28 +12,15 @@ namespace Framework.Collision
         {
             switch (colliderA)
             {
-                case RectangleCollider rectangleA:
+                case RectangleColliderComponent rectangleA:
                     switch (colliderB)
                     {
-                        case RectangleCollider rectangleB:
+                        case RectangleColliderComponent rectangleB:
                             return RectangleRectangleUnrotatedCalculator.Intersects(
                                 rectangleA.bounds,
                                 rectangleA.gameObject.transform,
                                 rectangleB.bounds,
                                 rectangleB.gameObject.transform);
-                        case CircleCollider circleB:
-                            return RectangleCircleUnrotatedCalculator.Intersects(circleB, rectangleA);
-                        default:
-                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
-                    }
-
-                case CircleCollider circleA:
-                    switch (colliderB)
-                    {
-                        case RectangleCollider rectangleB:
-                            return RectangleCircleUnrotatedCalculator.Intersects(circleA, rectangleB);
-                        case CircleCollider circleB:
-                            return CircleCircleUnrotatedCalculator.Intersects(circleA, circleB);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -47,34 +34,15 @@ namespace Framework.Collision
         {
             switch (colliderA)
             {
-                case RectangleCollider rectangleA:
+                case RectangleColliderComponent rectangleA:
                     switch (colliderB)
                     {
-                        case RectangleCollider rectangleB:
+                        case RectangleColliderComponent rectangleB:
                             return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                                 rectangleA.bounds,
                                 rectangleA.gameObject.transform,
                                 rectangleB.bounds,
                                 rectangleB.gameObject.transform);
-                        case CircleCollider circleB:
-                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
-                                rectangleA,
-                                circleB);
-                        default:
-                            throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
-                    }
-
-                case CircleCollider circleA:
-                    switch (colliderB)
-                    {
-                        case RectangleCollider rectangleB:
-                            return RectangleCircleUnrotatedCalculator.CalculateOverlapOffset(
-                                circleA,
-                                rectangleB);
-                        case CircleCollider circleB:
-                            return CircleCircleUnrotatedCalculator.CalculateOverlapOffset(
-                                circleA,
-                                circleB);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }

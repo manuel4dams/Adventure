@@ -1,19 +1,19 @@
 ﻿using ForestAdventure.Objects;
-using Framework.Objects;
+using Framework.Camera;
+using Framework.Game;
+using Framework.Transform;
 using OpenTK;
 
 namespace ForestAdventure
 {
     public static class ForestAdventure
     {
-        // TODO load textures to objects
-        // TODO kill objects, components
-        // TODO collision and overlapping with circles
+        // TODO load textures to objects/components
         public static void Main()
         {
-            AddBackground();
+            Game.instance.AddGameObject(new Tower());
             AddPlatforms();
-            AddClimbablePlatforms();
+            AddRopes();
             Game.instance.AddGameObject(new Exit());
             Game.instance.AddGameObject(new Entrance());
             AddEnemies();
@@ -22,41 +22,74 @@ namespace ForestAdventure
             Game.instance.Run();
         }
 
-        private static void AddBackground()
-        {
-            Game.instance.AddGameObject(new Background());
-        }
-
         private static void AddPlatforms()
         {
-            Game.instance.AddGameObject(new Platform(new Vector2(0f, -1f), 14.8f));
-            Game.instance.AddGameObject(new Platform(new Vector2(10f, 2f), 4.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(18f, 6), 4.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(12f, 10f), 4.2f));
-            Game.instance.AddGameObject(new Platform(new Vector2(16, 14f), 4.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(35f, 15f), 14.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(50f, 12f), 4.8f));
-            Game.instance.AddGameObject(new Platform(new Vector2(57f, 6f), 4.2f));
-            Game.instance.AddGameObject(new Platform(new Vector2(60f, 18f), 4.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(62f, 25f), 4.4f));
-            Game.instance.AddGameObject(new Platform(new Vector2(50f, 26f), 2f));
-            Game.instance.AddGameObject(new Platform(new Vector2(36f, 27f), 14.3f));
-            Game.instance.AddGameObject(new Platform(new Vector2(22f, 29f), 5.5f));
-            Game.instance.AddGameObject(new Platform(new Vector2(16f, 35f), 4.1f));
-            Game.instance.AddGameObject(new Platform(new Vector2(26f, 38f), 4.5f));
-            Game.instance.AddGameObject(new Platform(new Vector2(40f, 40f), 4.8f));
+            // tower floor for now
+            Game.instance.AddGameObject(new Platform(new Vector2(32f, 0f), 64f));
+
+            // floor 1
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 6f), 6f));
+            // floor 2
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 12f), 6f));
+            // floor 3
+            Game.instance.AddGameObject(new Platform(new Vector2(24f, 18f), 12f));
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 18f), 6f));
+            // floor 4
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 24f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 24f), 6f));
+            // floor 5
+            Game.instance.AddGameObject(new Platform(new Vector2(16f, 30f), 6f));
+            // floor 6
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 36f), 6f));
+            // floor 7
+            Game.instance.AddGameObject(new Platform(new Vector2(16f, 42f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(40f, 42f), 12f));
+            // floor 8
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 48f), 6f));
+            // floor 9
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 54f), 6f));
+            // floor 10
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 60f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(24f, 60f), 12f));
+            // floor 11
+            Game.instance.AddGameObject(new Platform(new Vector2(16f, 66f), 6f));
+            // floor 12
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 72f), 6f));
+            // floor 13
+            Game.instance.AddGameObject(new Platform(new Vector2(16f, 78f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 78f), 12f));
+            // floor 14
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 84f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 84f), 6f));
+            // floor 15
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 90f), 6f));
+            // floor 16
+            Game.instance.AddGameObject(new Platform(new Vector2(61f, 96f), 6f));
         }
 
-        private static void AddClimbablePlatforms()
+        private static void AddRopes()
         {
-            Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(15f, 5f), 12f));
-            Game.instance.AddGameObject(new ClimbablePlatform(new Vector2(0f, 15f), 6f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 16f), 20f));
+            // floor 10
+            Game.instance.AddGameObject(new HorizontalRope(new Vector2(44f, 63f), 30f));
+            // floor 13
+            Game.instance.AddGameObject(new HorizontalRope(new Vector2(32f, 81f), 30f));
         }
 
         private static void AddEnemies()
         {
-            Game.instance.AddGameObject(new Enemy(new Vector2(35f, 16f), 28f, 42f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(36f, 28f), 29f, 43f));
+            // Ground floor
+            Game.instance.AddGameObject(new Enemy(new Vector2(30f, 1.2f), 1f, 63f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 1.2f), 1f, 63f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(50f, 1.2f), 1f, 63f));
+            // floor 3
+            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.2f), 18f, 30f));
+            // floor 7
+            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 43.2f), 34f, 46f));
+            // floor 10
+            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 61.2f), 18f, 30f));
+            // floor 13
+            Game.instance.AddGameObject(new Enemy(new Vector2(48f, 79.2f), 42f, 54f));
         }
     }
 }

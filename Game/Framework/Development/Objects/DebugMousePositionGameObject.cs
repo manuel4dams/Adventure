@@ -1,6 +1,6 @@
 ﻿using Framework.Development.Components;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
 
 namespace Framework.Development.Objects
 {
@@ -13,7 +13,7 @@ namespace Framework.Development.Objects
 
         public void Update(float deltaTime)
         {
-            transform.position = Camera.instance.MousePositionToWorld();
+            transform.position = Camera.Camera.instance.MousePositionToWorld();
         }
     }
 }

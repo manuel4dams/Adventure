@@ -1,6 +1,8 @@
-﻿using Framework.Components;
+﻿using Framework.Collision.Collider;
 using Framework.Development.Components;
-using Framework.Objects;
+using Framework.Game;
+using Framework.Render;
+using Framework.Shapes;
 using OpenTK;
 using OpenTK.Graphics;
 
@@ -12,9 +14,9 @@ namespace ForestAdventure.Objects
         {
             transform.position = position;
 
-            var bounds = new RectangleBounds(length, 0.40f);
+            var bounds = new RectangleBounds(length, 0.50f);
             AddComponent(new QuadRenderer(this, bounds, new Color4(77, 39, 3, 255)));
-            AddComponent(new RectangleCollider(this, bounds, false, true));
+            AddComponent(new RectangleColliderComponent(this, bounds, false, true));
 
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));

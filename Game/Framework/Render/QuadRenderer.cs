@@ -1,9 +1,10 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
+﻿using Framework.Game;
+using Framework.Interfaces;
+using Framework.Shapes;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
-namespace Framework.Components
+namespace Framework.Render
 {
     public class QuadRenderer : IComponent, IRender
     {
@@ -27,7 +28,7 @@ namespace Framework.Components
         public void Draw()
         {
             var rectangle = rectangleBounds.Transform(gameObject.transform);
-            rectangle.Translate(-Camera.instance.transform.position);
+            rectangle.Translate(-Camera.Camera.instance.transform.position);
 
             GL.Color4(color);
             GL.Begin(PrimitiveType.Quads);

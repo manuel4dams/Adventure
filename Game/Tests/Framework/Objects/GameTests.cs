@@ -1,4 +1,4 @@
-﻿using Framework.Objects;
+﻿using Framework.Game;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestForestAdventure.Framework.Objects

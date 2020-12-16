@@ -1,8 +1,10 @@
 ﻿using System;
-using Framework.Components;
+using Framework.Collision.Collider;
 using Framework.Development.Components;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
+using Framework.Render;
+using Framework.Shapes;
 using Framework.Util;
 using OpenTK;
 using OpenTK.Graphics;
@@ -15,18 +17,21 @@ namespace ForestAdventure.Objects
         private const float FORCE_INITIAL_MULTIPLIER = 30f;
         private const float FORCE_DRAIN = 0.99f;
 
+        private readonly float arrowNoCollisionTime;
+        private float lifeTime = 5f;
         private float gravityVelocity;
         private bool gravityEnabled = true;
         private Vector2 force;
 
         public Arrow(Vector2 force)
         {
+            arrowNoCollisionTime = lifeTime - 0.04f;
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
             var arrowBounds = new RectangleBounds(2f, 0.1f);
             AddComponent(new QuadRenderer(this, arrowBounds, Color4.Brown));
-            AddComponent(new RectangleCollider(this, arrowBounds, true));
+            AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds));
@@ -35,21 +40,35 @@ namespace ForestAdventure.Objects
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
-            if (other.gameObject is Platform && touchOffset.Y > 0f)
+            switch (other.gameObject)
             {
-                force = Vector2.Zero;
-                gravityEnabled = false;
-            }
+                case Player _:
+                    break;
+                case HorizontalRope _:
+                    break;
+                case VerticalRope _:
+                    break;
+                case Enemy _:
+                    Game.instance.RemoveGameObject(other.gameObject);
+                    Game.instance.RemoveGameObject(this);
+                    break;
+                default:
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        Game.instance.RemoveGameObject(this);
+                    }
 
-            if (other.gameObject is Enemy)
-            {
-                // TODO kill enemy
-                Console.WriteLine("Enemy hit");
+                    break;
             }
         }
 
         public void Update(float deltaTime)
         {
+            if ((lifeTime -= deltaTime) <= 0)
+            {
+                Game.instance.RemoveGameObject(this);
+            }
+
             // Cache position
             var previousPosition = transform.position;
 
@@ -64,9 +83,9 @@ namespace ForestAdventure.Objects
                 transform.position += gravityVelocity * new Vector2(0f, -1f);
             }
 
+            // TODO fix rotation of arrows
             // Calculate rotation by position change
             var positionOffset = previousPosition - transform.position;
-            // transform.rotation = MathF.Atan2(positionOffset.Y, positionOffset.X);
             transform.rotation =
                 LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 0.75f);
         }

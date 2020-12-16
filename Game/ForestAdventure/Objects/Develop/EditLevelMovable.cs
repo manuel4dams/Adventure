@@ -1,23 +1,20 @@
-﻿using Framework.Components;
+﻿using ForestAdventure.Components;
 using Framework.Development.Components;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
 using OpenTK;
 using OpenTK.Input;
 
-namespace ForestAdventure.Objects
+namespace ForestAdventure.Objects.Develop
 {
-    public class DebugCollisionObjectMovable : GameObject, IUpdateable
+    public class EditLevelMovable : GameObject, IUpdateable
     {
-        public DebugCollisionObjectMovable()
+        public EditLevelMovable()
         {
-            transform.position = new Vector2(-2f, 1f);
+            transform.position = new Vector2(0f,0f);
 
-            var bodyBounds = new RectangleBounds(2f, 2f);
-            AddComponent(new QuadRenderer(this, bodyBounds));
-            AddComponent(new RectangleCollider(this, bodyBounds));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));
-            AddComponent(new DebugTransformPositionComponent(this));
+            AddComponent(new DebugTransformPositionComponent(this, 1f));
+            AddComponent(new CameraFollowObjectComponent(this));
         }
 
         public void Update(float deltaTime)
@@ -28,7 +25,7 @@ namespace ForestAdventure.Objects
             var up = keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W) ? 1f : 0f;
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -1f : 0f;
 
-            transform.position += 10f * deltaTime * new Vector2(
+            transform.position += 50f * deltaTime * new Vector2(
                 left + right,
                 up + down);
         }

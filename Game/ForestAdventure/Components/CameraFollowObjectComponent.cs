@@ -1,5 +1,6 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
+﻿using Framework.Camera;
+using Framework.Game;
+using Framework.Interfaces;
 using Framework.Util;
 using OpenTK;
 

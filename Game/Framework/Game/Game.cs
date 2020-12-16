@@ -5,7 +5,7 @@ using Framework.Interfaces;
 using Framework.Util;
 using OpenTK.Graphics.OpenGL;
 
-namespace Framework.Objects
+namespace Framework.Game
 {
     public class Game
     {
@@ -33,6 +33,11 @@ namespace Framework.Objects
         public void AddGameObject(GameObject gameObject)
         {
             gameObjects.Add(gameObject);
+        }
+
+        public void RemoveGameObject(GameObject gameObject)
+        {
+            gameObjects.Remove(gameObject);
         }
 
         internal void Resize(int width, int height)

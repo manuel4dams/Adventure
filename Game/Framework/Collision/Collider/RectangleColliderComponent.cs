@@ -1,9 +1,10 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
+﻿using Framework.Game;
+using Framework.Interfaces;
+using Framework.Shapes;
 
-namespace Framework.Components
+namespace Framework.Collision.Collider
 {
-    public class RectangleCollider : ICollider
+    public class RectangleColliderComponent : ICollider
     {
         public RectangleBounds bounds;
 
@@ -12,17 +13,17 @@ namespace Framework.Components
 
         public GameObject gameObject { get; }
 
-        public RectangleCollider(GameObject gameObject, RectangleBounds bounds)
+        public RectangleColliderComponent(GameObject gameObject, RectangleBounds bounds)
             : this(gameObject, bounds, false)
         {
         }
 
-        public RectangleCollider(GameObject gameObject, RectangleBounds bounds, bool isTrigger)
+        public RectangleColliderComponent(GameObject gameObject, RectangleBounds bounds, bool isTrigger)
             : this(gameObject, bounds, isTrigger, false)
         {
         }
 
-        public RectangleCollider(GameObject gameObject, RectangleBounds bounds, bool isTrigger, bool isStatic)
+        public RectangleColliderComponent(GameObject gameObject, RectangleBounds bounds, bool isTrigger, bool isStatic)
         {
             this.gameObject = gameObject;
             this.bounds = bounds;

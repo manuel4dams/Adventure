@@ -1,12 +1,14 @@
-﻿using Framework.Components;
+﻿using Framework.Camera;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
+using Framework.Render;
+using Framework.Shapes;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 
-namespace ForestAdventure.Objects
+namespace ForestAdventure.Objects.Develop
 {
     public class DebugGameObject : GameObject, IUpdateable
     {

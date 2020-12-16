@@ -2,7 +2,7 @@
 using OpenTK;
 using OpenTK.Input;
 
-namespace Framework.Objects
+namespace Framework.Game
 {
     public class GameWindow : OpenTK.GameWindow
     {

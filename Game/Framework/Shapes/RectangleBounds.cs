@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenTK;
 
-namespace Framework.Objects
+namespace Framework.Shapes
 {
     public struct RectangleBounds
     {
@@ -57,14 +57,16 @@ namespace Framework.Objects
 
     public static class BoundsExtension
     {
-        public static RectangleBounds UnrotatedTransform(this RectangleBounds rectangleBounds, Transform transform)
+        public static RectangleBounds UnrotatedTransform(
+            this RectangleBounds rectangleBounds,
+            Transform.Transform transform)
         {
             return new RectangleBounds(
                 transform.position + rectangleBounds.center,
                 transform.scale * rectangleBounds.size);
         }
 
-        public static Quad Transform(this RectangleBounds rectangleBounds, Transform transform)
+        public static Quad Transform(this RectangleBounds rectangleBounds, Transform.Transform transform)
         {
             // TODO maybe get rid of tmp variable
             var tmp = new RectangleBounds(rectangleBounds.size * transform.scale);

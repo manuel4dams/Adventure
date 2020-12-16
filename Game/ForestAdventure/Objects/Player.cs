@@ -1,9 +1,11 @@
 ﻿using System;
 using ForestAdventure.Components;
-using Framework.Components;
+using Framework.Collision.Collider;
 using Framework.Development.Components;
+using Framework.Game;
 using Framework.Interfaces;
-using Framework.Objects;
+using Framework.Render;
+using Framework.Shapes;
 using OpenTK;
 using OpenTK.Graphics;
 
@@ -13,11 +15,11 @@ namespace ForestAdventure.Objects
     {
         public Player()
         {
-            transform.position = new Vector2(0f, 4f);
+            transform.position = new Vector2(1f, 1f);
 
-            var bodyBounds = new RectangleBounds(0.6f, 1.7f);
+            var bodyBounds = new RectangleBounds(0.5f, 2f);
             AddComponent(new QuadRenderer(this, bodyBounds, new Color4(5, 128, 13, 255)));
-            AddComponent(new RectangleCollider(this, bodyBounds));
+            AddComponent(new RectangleColliderComponent(this, bodyBounds));
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
             AddComponent(new BowComponent(this));
@@ -32,7 +34,7 @@ namespace ForestAdventure.Objects
             if (other.gameObject is Enemy)
             {
                 // TODO handle death
-                transform.position = new Vector2(0f, 4f);
+                transform.position = new Vector2(0f, 0f);
             }
             else if (other.gameObject is Exit)
             {

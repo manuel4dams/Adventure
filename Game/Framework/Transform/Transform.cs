@@ -1,7 +1,7 @@
 ﻿using System;
 using OpenTK;
 
-namespace Framework.Objects
+namespace Framework.Transform
 {
     public class Transform
     {
