@@ -1,4 +1,8 @@
-﻿using ForestAdventure.Objects;
+﻿using ForestAdventure.Enemies;
+using ForestAdventure.Level;
+using ForestAdventure.MyPlayer;
+using ForestAdventure.Platforms;
+using ForestAdventure.Ropes;
 using Framework.Camera;
 using Framework.Game;
 using Framework.Transform;
