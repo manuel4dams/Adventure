@@ -12,11 +12,13 @@ namespace Framework.Game
         private static Game instanceInternal;
 
         public GameWindow gameWindow { get; private set; }
+        public string title { get; set; }
         private List<GameObject> gameObjectsClone => gameObjects.ToList();
 
         public readonly List<GameObject> gameObjects = new List<GameObject>();
 
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
+
 
         private Game()
         {
@@ -24,7 +26,7 @@ namespace Framework.Game
 
         public void Run()
         {
-            gameWindow = new GameWindow(this);
+            gameWindow = new GameWindow(this, title);
 
             // run the game loop with 60hz
             gameWindow.Run(60);

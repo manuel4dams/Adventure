@@ -1,4 +1,5 @@
-﻿using ForestAdventure.Enemies;
+﻿using System.Reflection;
+using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.MyPlayer;
 using ForestAdventure.Platforms;
@@ -15,6 +16,8 @@ namespace ForestAdventure
         // TODO load textures to objects/components
         public static void Main()
         {
+            Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
+            Game.instance.AddGameObject(new ForestBackground());
             Game.instance.AddGameObject(new Tower());
             AddPlatforms();
             AddRopes();

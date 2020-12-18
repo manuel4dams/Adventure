@@ -6,9 +6,9 @@ namespace Framework.Game
 {
     public class GameWindow : OpenTK.GameWindow
     {
-        public GameWindow(Game game)
+        public GameWindow(Game game, string title)
         {
-            Title = Assembly.GetExecutingAssembly().GetName().Name;
+            Title = title;
 
             // TODO fix warning
             WindowState = WindowState.Normal;

@@ -13,7 +13,7 @@ namespace UnitTestForestAdventure.Framework.GameTests
         [TestMethod]
         public void GameWindowTest()
         {
-            var gameWindow = new GameWindow(Game.instance);
+            var gameWindow = new GameWindow(Game.instance, "test");
 
             Assert.IsTrue(gameWindow.WindowState == WindowState.Normal);
         }

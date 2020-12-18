@@ -14,6 +14,7 @@ namespace ForestAdventure.Level
         {
             transform.position = new Vector2(-1f, -2f);
 
+            AddTowerBackground();
             AddTowerFloor();
             AddLeftWall();
             AddRightWall();
@@ -22,6 +23,12 @@ namespace ForestAdventure.Level
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this));
 #endif
+        }
+
+        private void AddTowerBackground()
+        {
+            var towerFloor = new RectangleBounds(new Vector2(33f, 52f), new Vector2(66f, 104f));
+            AddComponent(new QuadRenderer(this, towerFloor, Color4.DarkGray));
         }
 
         private void AddTowerFloor()

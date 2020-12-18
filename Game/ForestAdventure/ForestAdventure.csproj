@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="Resources\ForestBackground\ForestBackground.png" />
+      <EmbeddedResource Include="Resources\ForestBackground\dummy.png" />
     </ItemGroup>
 
 </Project>
