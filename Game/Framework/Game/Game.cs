@@ -3,7 +3,6 @@ using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
 using Framework.Util;
-using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Game
 {
@@ -12,6 +11,7 @@ namespace Framework.Game
         private static Game instanceInternal;
 
         public GameWindow gameWindow { get; private set; }
+        public string title { get; set; }
         private List<GameObject> gameObjectsClone => gameObjects.ToList();
 
         public readonly List<GameObject> gameObjects = new List<GameObject>();
@@ -24,7 +24,7 @@ namespace Framework.Game
 
         public void Run()
         {
-            gameWindow = new GameWindow(this);
+            gameWindow = new GameWindow(this, title);
 
             // run the game loop with 60hz
             gameWindow.Run(60);
@@ -62,9 +62,6 @@ namespace Framework.Game
 
         internal void Draw()
         {
-            // TODO might not be needed
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-
             gameObjectsClone
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IRender)?.Draw())

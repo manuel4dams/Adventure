@@ -8,8 +8,6 @@ using OpenTK.Input;
 
 namespace ForestAdventure.MyPlayer
 {
-    // TODO fix jumping behavior while in air
-    // TODO should jumping from running result in further jump
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 15f;
@@ -63,11 +61,9 @@ namespace ForestAdventure.MyPlayer
 
         public void Update(float deltaTime)
         {
-            // TODO Jumping needs improvement to feel more natural
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
-            // TODO changing Key for climbing
             var climbing = keyboardState.IsKeyDown(Key.ShiftLeft);
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.5f : 0f;
             var up = 0f;
