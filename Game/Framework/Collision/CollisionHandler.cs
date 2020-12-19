@@ -1,5 +1,4 @@
 ﻿using Framework.Interfaces;
-using Framework.References;
 
 namespace Framework.Collision
 {
@@ -13,9 +12,13 @@ namespace Framework.Collision
             }
 
             var offset = CollisionCalculator.UnrotatedOverlap(colliderA, colliderB);
-            GameReferences.GameObjectAsICollision(colliderA.gameObject)?.OnCollision(colliderB, offset);
+            // TODO ad method to get colliderA.gameObject as ICollision to remove reference
+            // splitting tomethods does not change the reference occurance in vs
+            (colliderA.gameObject as ICollision)?.OnCollision(colliderB, offset);
+            // TODO ad method to get colliderA.gameObject.components as ICollision to remove reference
+            // splitting tomethods does not change the reference occurance in vs
             colliderA.gameObject.components
-                .ForEach(component => GameReferences.ComponentAsICollision(component)?.OnCollision(colliderB, offset));
+                .ForEach(component => (component as ICollision)?.OnCollision(colliderB, offset));
 
             if (colliderA.isTrigger || colliderB.isTrigger || colliderA.isStatic)
             {
