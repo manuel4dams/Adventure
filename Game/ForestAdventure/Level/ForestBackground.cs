@@ -13,7 +13,7 @@ namespace ForestAdventure.Level
             transform.position = new Vector2(30f, 50f);
 
             var bounds = new RectangleBounds(200f, 200f);
-            AddComponent(new QuadRenderer(this, bounds, Resources.ForestBackground));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.ForestBackground));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this));
 #endif

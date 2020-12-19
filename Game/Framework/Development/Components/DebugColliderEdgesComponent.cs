@@ -2,7 +2,6 @@
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Shapes;
-using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Development.Components

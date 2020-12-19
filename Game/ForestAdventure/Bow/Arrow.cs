@@ -10,7 +10,6 @@ using Framework.Render;
 using Framework.Shapes;
 using Framework.Util;
 using OpenTK;
-using OpenTK.Graphics;
 
 namespace ForestAdventure.Bow
 {
@@ -33,7 +32,7 @@ namespace ForestAdventure.Bow
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
             var arrowBounds = new RectangleBounds(2f, 0.1f);
-            AddComponent(new QuadRenderer(this, arrowBounds, Color4.Brown));
+            AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this, 0.1f));

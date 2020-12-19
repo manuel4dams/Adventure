@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System;
 using OpenTK;
 using OpenTK.Input;
 
@@ -21,7 +21,7 @@ namespace Framework.Game
                 if (args.Time >= 0.2)
                     return;
 
-                game.Update(System.Math.Min((float) args.Time, 0.018f));
+                game.Update(Math.Min((float) args.Time, 0.018f));
                 game.CollisionCheck();
             };
             game.Resize(Width, Height);

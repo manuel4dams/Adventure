@@ -4,7 +4,6 @@ using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
-using OpenTK.Graphics;
 
 namespace ForestAdventure.Level
 {
@@ -27,47 +26,47 @@ namespace ForestAdventure.Level
 
         private void AddTowerBackground()
         {
-            var towerFloor = new RectangleBounds(new Vector2(33f, 52f), new Vector2(66f, 104f));
-            AddComponent(new QuadRenderer(this, towerFloor, Color4.DarkGray));
+            var bounds = new RectangleBounds(new Vector2(33f, 52f), new Vector2(66f, 104f));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.TowerBackground));
         }
 
         private void AddTowerFloor()
         {
-            var towerFloor = new RectangleBounds(new Vector2(33f, 1f), new Vector2(68f, 2f));
-            AddComponent(new QuadRenderer(this, towerFloor, Color4.Gray));
-            AddComponent(new RectangleColliderComponent(this, towerFloor, false, true));
+            var bounds = new RectangleBounds(new Vector2(33f, 1f), new Vector2(68f, 2f));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.BrickWall));
+            AddComponent(new RectangleColliderComponent(this, bounds, false, true));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, towerFloor));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
 #endif
         }
 
         private void AddRightWall()
         {
-            var leftWall = new RectangleBounds(new Vector2(0f, 52f), new Vector2(2f, 100f));
-            AddComponent(new QuadRenderer(this, leftWall, Color4.Gray));
-            AddComponent(new RectangleColliderComponent(this, leftWall, false, true));
+            var bounds = new RectangleBounds(new Vector2(0f, 52f), new Vector2(2f, 100f));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.BrickWall));
+            AddComponent(new RectangleColliderComponent(this, bounds, false, true));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, leftWall));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
 #endif
         }
 
         private void AddLeftWall()
         {
-            var rightWall = new RectangleBounds(new Vector2(66f, 52f), new Vector2(2f, 100f));
-            AddComponent(new QuadRenderer(this, rightWall, Color4.Gray));
-            AddComponent(new RectangleColliderComponent(this, rightWall, false, true));
+            var bounds = new RectangleBounds(new Vector2(66f, 52f), new Vector2(2f, 100f));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.BrickWall));
+            AddComponent(new RectangleColliderComponent(this, bounds, false, true));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, rightWall));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
 #endif
         }
 
         private void AddTowerRoof()
         {
-            var towerRoof = new RectangleBounds(new Vector2(33f, 105), new Vector2(68f, 6f));
-            AddComponent(new QuadRenderer(this, towerRoof, Color4.Gray));
-            AddComponent(new RectangleColliderComponent(this, towerRoof, false, true));
+            var bounds = new RectangleBounds(new Vector2(33f, 105), new Vector2(68f, 6f));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.BrickWall));
+            AddComponent(new RectangleColliderComponent(this, bounds, false, true));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, towerRoof));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
 #endif
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
@@ -10,7 +11,6 @@ using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
-using OpenTK.Graphics;
 
 namespace ForestAdventure.MyPlayer
 {
@@ -21,7 +21,7 @@ namespace ForestAdventure.MyPlayer
             transform.position = new Vector2(2f, 2f);
 
             var bodyBounds = new RectangleBounds(0.5f, 2f);
-            AddComponent(new QuadRenderer(this, bodyBounds, new Color4(5, 128, 13, 255)));
+            AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.PlayerRight));
             AddComponent(new RectangleColliderComponent(this, bodyBounds));
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));

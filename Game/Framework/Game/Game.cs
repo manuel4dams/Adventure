@@ -3,7 +3,6 @@ using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
 using Framework.Util;
-using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Game
 {
@@ -64,9 +63,6 @@ namespace Framework.Game
 
         internal void Draw()
         {
-            // TODO might not be needed
-            GL.Clear(ClearBufferMask.ColorBufferBit);
-
             gameObjectsClone
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IRender)?.Draw())

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
@@ -16,7 +17,7 @@ namespace UnitTestForestAdventure.Framework.RenderTests
         {
             var gameObject = new GameObject();
             var bounds = new RectangleBounds();
-            var quadRenderer = new QuadRenderer(gameObject, bounds);
+            var quadRenderer = new RectangleColorRenderer(gameObject, bounds);
             Assert.IsTrue(quadRenderer.gameObject != null);
         }
 
@@ -25,7 +26,7 @@ namespace UnitTestForestAdventure.Framework.RenderTests
         {
             var gameObject = new GameObject();
             var bounds = new RectangleBounds();
-            var quadRenderer = new QuadRenderer(gameObject, bounds, Color4.Olive);
+            var quadRenderer = new RectangleColorRenderer(gameObject, bounds, Color.Olive);
             Assert.IsTrue(quadRenderer.gameObject != null);
         }
     }
