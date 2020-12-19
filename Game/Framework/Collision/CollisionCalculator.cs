@@ -18,9 +18,9 @@ namespace Framework.Collision
                         case RectangleColliderComponent rectangleB:
                             return RectangleRectangleUnrotatedCalculator.Intersects(
                                 rectangleA.bounds,
-                                rectangleA.gameObject.transform,
+                                colliderA.gameObject.transform,
                                 rectangleB.bounds,
-                                rectangleB.gameObject.transform);
+                                colliderB.gameObject.transform);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
@@ -40,9 +40,9 @@ namespace Framework.Collision
                         case RectangleColliderComponent rectangleB:
                             return RectangleRectangleUnrotatedCalculator.CalculateOverlapOffset(
                                 rectangleA.bounds,
-                                rectangleA.gameObject.transform,
+                                colliderA.gameObject.transform,
                                 rectangleB.bounds,
-                                rectangleB.gameObject.transform);
+                                colliderB.gameObject.transform);
                         default:
                             throw new ArgumentOutOfRangeException("Invalid " + nameof(ICollider));
                     }
