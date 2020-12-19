@@ -13,7 +13,6 @@ namespace ForestAdventure
 {
     public static class ForestAdventure
     {
-        // TODO load textures to objects/components
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;

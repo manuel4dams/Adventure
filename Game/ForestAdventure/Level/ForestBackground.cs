@@ -3,7 +3,6 @@ using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
-using OpenTK.Graphics;
 
 namespace ForestAdventure.Level
 {
@@ -14,7 +13,7 @@ namespace ForestAdventure.Level
             transform.position = new Vector2(30f, 50f);
 
             var bounds = new RectangleBounds(200f, 200f);
-            AddComponent(new QuadRenderer(this, bounds, Color4.LightGreen));
+            AddComponent(new QuadRenderer(this, bounds, Resources.ForestBackground));
 #if DEBUG
             AddComponent(new DebugTransformPositionComponent(this));
 #endif
