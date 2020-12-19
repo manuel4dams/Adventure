@@ -38,7 +38,7 @@ namespace ForestAdventure
             // floor 2
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 12f), 6f));
             // floor 3
-            Game.instance.AddGameObject(new Platform(new Vector2(24f, 18f), 12f));
+            Game.instance.AddGameObject(new Platform(new Vector2(24f, 18f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 18f), 6f));
             // floor 4
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 24f), 6f));
@@ -49,21 +49,21 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 36f), 6f));
             // floor 7
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 42f), 6f));
-            Game.instance.AddGameObject(new Platform(new Vector2(40f, 42f), 12f));
+            Game.instance.AddGameObject(new Platform(new Vector2(40f, 42f), 14f));
             // floor 8
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 48f), 6f));
             // floor 9
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 54f), 6f));
             // floor 10
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 60f), 6f));
-            Game.instance.AddGameObject(new Platform(new Vector2(24f, 60f), 12f));
+            Game.instance.AddGameObject(new Platform(new Vector2(24f, 60f), 14f));
             // floor 11
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 66f), 6f));
             // floor 12
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 72f), 6f));
             // floor 13
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 78f), 6f));
-            Game.instance.AddGameObject(new Platform(new Vector2(48f, 78f), 12f));
+            Game.instance.AddGameObject(new Platform(new Vector2(48f, 78f), 14f));
             // floor 14
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 84f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 84f), 6f));
@@ -85,17 +85,17 @@ namespace ForestAdventure
         private static void AddEnemies()
         {
             // Ground floor
-            Game.instance.AddGameObject(new Enemy(new Vector2(20f, 1.2f), 1f, 63f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(30f, 1.2f), 1f, 63f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 1.2f), 1f, 63f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(20f, 1.8f), 1f, 63f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(30f, 1.8f), 1f, 63f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 1.8f), 1f, 63f));
             // floor 3
-            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.2f), 18f, 30f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.8f), 18f, 30f));
             // floor 7
-            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 43.2f), 34f, 46f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 43.8f), 34f, 46f));
             // floor 10
-            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 61.2f), 18f, 30f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(24f, 61.8f), 18f, 30f));
             // floor 13
-            Game.instance.AddGameObject(new Enemy(new Vector2(48f, 79.2f), 42f, 54f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(48f, 79.8f), 42f, 54f));
         }
     }
 }

@@ -105,6 +105,9 @@ namespace Framework.Render
         {
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
+            // without flipping the textures are upside down
+            textureBitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+
             GL.GenTextures(1, out int tex);
             GL.BindTexture(TextureTarget.Texture2D, tex);
 

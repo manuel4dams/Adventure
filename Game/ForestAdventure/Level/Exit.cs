@@ -10,7 +10,7 @@ namespace ForestAdventure.Level
     {
         public Exit()
         {
-            transform.position = new Vector2(65f, 97.8f);
+            transform.position = new Vector2(60f, 97.8f);
 
             var bounds = new RectangleBounds(2f, 3f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Portal));

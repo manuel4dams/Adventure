@@ -40,6 +40,8 @@ namespace Framework.Render
             GL.TexCoord2(0f, 1f);
             GL.Vertex2(quad.vertex4);
             GL.End();
+            // Color needs to be reset to prevent coloring following objects with this color
+            GL.Color4(Color.White);
         }
     }
 }
