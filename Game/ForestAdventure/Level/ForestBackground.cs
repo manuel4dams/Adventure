@@ -1,5 +1,4 @@
-﻿using Framework.Development.Components;
-using Framework.Game;
+﻿using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
 using OpenTK;

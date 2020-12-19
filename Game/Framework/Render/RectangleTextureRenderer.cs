@@ -17,7 +17,6 @@ namespace Framework.Render
         private int? textureId;
         public GameObject gameObject { get; }
 
-
         public RectangleTextureRenderer(
             GameObject gameObject,
             RectangleBounds rectangleBounds,
@@ -130,7 +129,6 @@ namespace Framework.Render
                 data.Scan0);
             textureBitmap.UnlockBits(data);
 
-
             GL.TexParameter(
                 TextureTarget.Texture2D,
                 TextureParameterName.TextureMinFilter,
@@ -147,7 +145,6 @@ namespace Framework.Render
                 TextureTarget.Texture2D,
                 TextureParameterName.TextureWrapT,
                 (int) TextureWrapMode.Repeat);
-
 
             return tex;
         }

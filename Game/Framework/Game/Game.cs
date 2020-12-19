@@ -3,8 +3,6 @@ using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
 using Framework.Util;
-using OpenTK.Graphics.OpenGL;
-using GL = OpenTK.Graphics.ES10.GL;
 
 namespace Framework.Game
 {
@@ -19,7 +17,6 @@ namespace Framework.Game
         public readonly List<GameObject> gameObjects = new List<GameObject>();
 
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
-
 
         private Game()
         {

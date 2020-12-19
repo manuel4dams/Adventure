@@ -4,7 +4,6 @@ using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenTK.Graphics;
 
 namespace UnitTestForestAdventure.Framework.RenderTests
 {

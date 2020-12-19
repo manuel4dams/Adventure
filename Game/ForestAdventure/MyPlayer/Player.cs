@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Drawing;
 using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
 using ForestAdventure.Level;
 using Framework.Collision.Collider;
-using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;

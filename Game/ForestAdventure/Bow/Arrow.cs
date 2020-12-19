@@ -3,7 +3,6 @@ using ForestAdventure.Enemies;
 using ForestAdventure.MyPlayer;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
-using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
