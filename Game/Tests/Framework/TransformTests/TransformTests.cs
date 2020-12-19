@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Framework.Transform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenTK;
 
 namespace UnitTestForestAdventure.Framework.TransformTests
 {
@@ -7,47 +9,89 @@ namespace UnitTestForestAdventure.Framework.TransformTests
     [ExcludeFromCodeCoverage]
     public class TransformTests
     {
-        // TODO implement test
-        [Ignore]
+        // testcase 1: no values 
         [TestMethod]
-        public void ApplyTest()
+        public void TransformTest_NoValues()
         {
-            Assert.Fail();
-            // testcase 1: apply position
+            var transform = new Transform();
 
-            // testcase 2: apply rotation
-
-            // testcase 3: apply scale
-
-            // testcase 4: apply position, rotation
-
-            // testcase 5 apply position, scale
-
-            // testcase 6: apply rotation, scale
-
-            // testcase 7: apply position, rotation, scale
+            Assert.IsTrue(transform.position == new Vector2(0f, 0f) &&
+                          transform.rotation == 0f &&
+                          transform.scale == new Vector2(1f, 1f)
+            );
         }
 
-        // TODO implement test
-        [Ignore]
+        // testcase 7: with position, rotation, scale
+        [TestMethod]
+        public void TransformTest_AllValues()
+        {
+            var transform = new Transform();
+            transform.position = new Vector2(1f, 1f);
+            transform.rotation = 90f;
+            transform.scale = new Vector2(3f, 3f);
+
+            Assert.IsTrue(transform.position == new Vector2(1f, 1f) &&
+                          transform.rotation == 90f &&
+                          transform.scale == new Vector2(3f, 3f)
+            );
+        }
+
+        // testcase 1: apply no values
+        [TestMethod]
+        public void ApplyTest_NoValues()
+        {
+            var transformA = new Transform();
+            var transformB = new Transform();
+
+            transformA.Apply(transformB);
+
+            Assert.IsTrue(transformA.position == new Vector2(0f, 0f) &&
+                          transformA.rotation == 0f &&
+                          transformA.scale == new Vector2(1f, 1f)
+            );
+        }
+
+        // testcase 7: apply position, rotation, scale
+        [TestMethod]
+        public void ApplyTest_AllValues()
+        {
+            var transformA = new Transform();
+            var transformB = new Transform();
+            transformB.position = new Vector2(2f, 2f);
+            transformB.rotation = 90f;
+            transformB.scale = new Vector2(3f, 3f);
+
+            transformA.Apply(transformB);
+
+            Assert.IsTrue(transformA.position == new Vector2(2f, 2f) &&
+                          transformA.rotation == 90f &&
+                          transformA.scale == new Vector2(3f, 3f)
+            );
+        }
+
+        // testcase 1: apply new position
         [TestMethod]
         public void TranslateTest()
         {
-            Assert.Fail();
-            // testcase 1: apply new position
+            var transform = new Transform();
 
-            // testcase 2: apply same position
+            transform.Translate(new Vector2(3f, 3f));
+
+            Assert.IsTrue(transform.position == new Vector2(3f, 3f) &&
+                          transform.rotation == 0f &&
+                          transform.scale == new Vector2(1f, 1f)
+            );
         }
 
-        // TODO implement test
-        [Ignore]
+        // testcase 1: apply new position
         [TestMethod]
         public void TranslatePositionTest()
         {
-            Assert.Fail();
-            // testcase 1: apply new position
+            var transform = new Transform();
 
-            // testcase 2: apply same position
+            var position = transform.TranslatePosition(new Vector2(4f, 4f));
+
+            Assert.IsTrue(position == new Vector2(4f, 4f));
         }
     }
 }
