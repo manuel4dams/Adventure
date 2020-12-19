@@ -3,6 +3,8 @@ using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
 using Framework.Util;
+using OpenTK.Graphics.OpenGL;
+using GL = OpenTK.Graphics.ES10.GL;
 
 namespace Framework.Game
 {

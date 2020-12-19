@@ -16,10 +16,6 @@ namespace ForestAdventure.Level
             var bounds = new RectangleBounds(2f, 3f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.WoodenDoor));
             AddComponent(new RectangleColliderComponent(this, bounds, true));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
-#endif
         }
     }
 }

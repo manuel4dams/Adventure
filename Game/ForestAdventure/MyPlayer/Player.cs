@@ -26,10 +26,6 @@ namespace ForestAdventure.MyPlayer
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
             AddComponent(new BowComponent(this));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));
-#endif
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)

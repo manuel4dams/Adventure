@@ -18,10 +18,6 @@ namespace ForestAdventure.Ropes
             var bounds = new RectangleBounds(length, 0.40f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Rope));
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugColliderEdgesComponent(this, bounds));
-#endif
         }
     }
 }

@@ -20,10 +20,6 @@ namespace ForestAdventure.Enemies
             AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.EnemyRight));
             AddComponent(new RectangleColliderComponent(this, bodyBounds, true));
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds));
-#endif
         }
     }
 }

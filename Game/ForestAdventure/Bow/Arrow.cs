@@ -34,10 +34,6 @@ namespace ForestAdventure.Bow
             var arrowBounds = new RectangleBounds(2f, 0.1f);
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this, 0.1f));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds));
-#endif
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)

@@ -14,9 +14,6 @@ namespace ForestAdventure.Level
 
             var bounds = new RectangleBounds(200f, 200f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.ForestBackground));
-#if DEBUG
-            AddComponent(new DebugTransformPositionComponent(this));
-#endif
         }
     }
 }
