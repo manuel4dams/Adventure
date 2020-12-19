@@ -2,7 +2,6 @@
 using System.Drawing;
 using Framework.Game;
 using Framework.Interfaces;
-using Framework.Render.Helper;
 using Framework.Shapes;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -91,7 +90,8 @@ namespace Framework.Render
             rectangle.Translate(-Camera.Camera.instance.transform.position);
 
             GL.Enable(EnableCap.Texture2D);
-            GL.BindTexture(TextureTarget.Texture2D, TextureHelper.LoadTextureFromBitmap(textureBitmap));
+            // TODO
+            // GL.BindTexture(TextureTarget.Texture2D, TextureHelper.LoadTextureFromBitmap(textureBitmap));
 
             GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0f, 0f);
