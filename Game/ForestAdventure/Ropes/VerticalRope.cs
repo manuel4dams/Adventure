@@ -9,8 +9,6 @@ namespace ForestAdventure.Ropes
 {
     public class VerticalRope : GameObject
     {
-        // TODO should player be able to jump from climbing?
-        // TODO if climbing player should clipp to fixed position in platform
         public VerticalRope(Vector2 position, float height)
         {
             transform.position = position;
