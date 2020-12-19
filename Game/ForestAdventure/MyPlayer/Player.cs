@@ -1,8 +1,8 @@
-﻿using System;
-using ForestAdventure.Bow;
+﻿using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
 using ForestAdventure.Level;
+using ForestAdventure.MyGame;
 using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Interfaces;
@@ -31,12 +31,12 @@ namespace ForestAdventure.MyPlayer
             if (other.gameObject is Enemy)
             {
                 // TODO show game over screen
-                ForestAdventure.RestartLevel();
+                ForestAdventureGame.RestartLevel();
             }
             else if (other.gameObject is Exit)
             {
                 // TODO show game won screen
-                ForestAdventure.RestartLevel();
+                ForestAdventureGame.RestartLevel();
             }
         }
     }

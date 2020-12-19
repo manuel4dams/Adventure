@@ -9,9 +9,9 @@ using Framework.Game;
 using Framework.Transform;
 using OpenTK;
 
-namespace ForestAdventure
+namespace ForestAdventure.MyGame
 {
-    public static class ForestAdventure
+    public static class ForestAdventureGame
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
         public static void Main()
