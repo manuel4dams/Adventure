@@ -30,13 +30,13 @@ namespace ForestAdventure.MyPlayer
         {
             if (other.gameObject is Enemy)
             {
-                // TODO handle death
-                transform.position = new Vector2(2f, 2f);
+                // TODO show game over screen
+                ForestAdventure.RestartLevel();
             }
             else if (other.gameObject is Exit)
             {
-                // TODO won status
-                Console.WriteLine("Game Won");
+                // TODO show game won screen
+                ForestAdventure.RestartLevel();
             }
         }
     }

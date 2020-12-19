@@ -8,7 +8,7 @@ namespace ForestAdventure.Bow
 {
     public class BowComponent : IComponent, IUpdateable
     {
-        private const float SHOT_COOLDOWN = 1f;
+        private const float SHOT_COOLDOWN = 3f;
 
         private float shotTimer = SHOT_COOLDOWN;
 

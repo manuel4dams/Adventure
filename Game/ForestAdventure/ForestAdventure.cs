@@ -16,6 +16,18 @@ namespace ForestAdventure
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
+            InitLevel();
+            Game.instance.AddGameObject(new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f));
+            Game.instance.Run();
+        }
+
+        public static void RestartLevel()
+        {
+            Game.instance.ClearGameObjects();
+            InitLevel();
+        }
+        private static void InitLevel()
+        {
             Game.instance.AddGameObject(new ForestBackground());
             Game.instance.AddGameObject(new Tower());
             AddPlatforms();
@@ -24,10 +36,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Entrance());
             AddEnemies();
             Game.instance.AddGameObject(new Player());
-            Game.instance.AddGameObject(new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f));
-            Game.instance.Run();
         }
-
         private static void AddPlatforms()
         {
             // tower floor for now

@@ -40,6 +40,11 @@ namespace Framework.Game
             gameObjects.Remove(gameObject);
         }
 
+        public void ClearGameObjects()
+        {
+            gameObjects.Clear();
+        }
+
         internal void Resize(int width, int height)
         {
             gameObjectsClone
