@@ -13,11 +13,12 @@ namespace ForestAdventure
 {
     public static class ForestAdventure
     {
+        private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
             InitLevel();
-            Game.instance.AddGameObject(new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f));
+            Game.instance.AddGameObject(camera);
             Game.instance.Run();
         }
 
@@ -33,9 +34,9 @@ namespace ForestAdventure
             AddPlatforms();
             AddRopes();
             Game.instance.AddGameObject(new Exit());
-            Game.instance.AddGameObject(new Entrance());
             AddEnemies();
             Game.instance.AddGameObject(new Player());
+            Game.instance.AddGameObject(camera);
         }
         private static void AddPlatforms()
         {
@@ -43,6 +44,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(32f, 0f), 64f));
 
             // floor 1
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 6f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 6f), 6f));
             // floor 2
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 12f), 6f));

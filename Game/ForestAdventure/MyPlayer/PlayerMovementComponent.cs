@@ -65,22 +65,22 @@ namespace ForestAdventure.MyPlayer
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
             var climbing = keyboardState.IsKeyDown(Key.ShiftLeft);
-            var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.5f : 0f;
+            var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
             if ((climbableH || climbableV) && climbing)
             {
                 velocity.Y = 0f;
                 if (climbableV)
                 {
-                    left *= 0.2f;
-                    right *= 0.2f;
+                    left *= 0.1f;
+                    right *= 0.1f;
                 }
             }
 
             if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing &&
                 (climbableH || climbableV))
             {
-                up = 0.5f;
+                up = 0.2f;
             }
 
             jumpTimer += deltaTime;

@@ -16,7 +16,7 @@ namespace ForestAdventure.MyPlayer
     {
         public Player()
         {
-            transform.position = new Vector2(2f, 2f);
+            transform.position = new Vector2(3f, 8f);
 
             var bodyBounds = new RectangleBounds(2f, 3f);
             AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.PlayerRight));
