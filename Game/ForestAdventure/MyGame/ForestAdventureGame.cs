@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.MyPlayer;
@@ -14,6 +15,7 @@ namespace ForestAdventure.MyGame
     public static class ForestAdventureGame
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
+
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
@@ -25,8 +27,21 @@ namespace ForestAdventure.MyGame
         public static void RestartLevel()
         {
             Game.instance.ClearGameObjects();
-            InitLevel();
+            InitDebugLevel();
+            // InitLevel();
         }
+
+        private static void InitDebugLevel()
+        {
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 1f), new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
+            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
+            Game.instance.AddGameObject(camera);
+        }
+
         private static void InitLevel()
         {
             Game.instance.AddGameObject(new ForestBackground());
@@ -38,6 +53,7 @@ namespace ForestAdventure.MyGame
             Game.instance.AddGameObject(new Player());
             Game.instance.AddGameObject(camera);
         }
+
         private static void AddPlatforms()
         {
             // tower floor for now
