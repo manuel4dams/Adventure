@@ -18,6 +18,7 @@ namespace Framework.Game
 
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
+        // TODO add animations to objects/components
         private Game()
         {
         }

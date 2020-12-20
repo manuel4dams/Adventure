@@ -14,19 +14,24 @@ namespace Framework.Render
         private readonly RectangleBounds rectangleBounds;
         private readonly Bitmap texture;
         private readonly RenderScaleType renderScaleType;
+        private readonly RenderTileableType renderTileableType;
         private int? textureId;
         public GameObject gameObject { get; }
 
+        // TODO implement render texture methods
+        // TODO implement tiling of textures
         public RectangleTextureRenderer(
             GameObject gameObject,
             RectangleBounds rectangleBounds,
             Bitmap texture,
-            RenderScaleType renderScaleType = RenderScaleType.Deform)
+            RenderScaleType renderScaleType = RenderScaleType.Deform,
+            RenderTileableType renderTileableType = RenderTileableType.None)
         {
             this.gameObject = gameObject;
             this.rectangleBounds = rectangleBounds;
             this.texture = texture;
             this.renderScaleType = renderScaleType;
+            this.renderTileableType = renderTileableType;
         }
 
         public void Draw()
@@ -38,6 +43,8 @@ namespace Framework.Render
             if (textureId == null)
                 textureId = LoadTextureFromBitmap(texture);
             GL.BindTexture(TextureTarget.Texture2D, textureId.Value);
+
+            SwitchTileableType();
             switch (renderScaleType)
             {
                 case RenderScaleType.Deform:
@@ -67,6 +74,39 @@ namespace Framework.Render
             texture.Dispose();
         }
 
+        private void SwitchTileableType()
+        {
+            switch (renderTileableType)
+            {
+                case RenderTileableType.None:
+                    break;
+                case RenderTileableType.TilableX:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapS,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                case RenderTileableType.TilableY:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapT,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                case RenderTileableType.TileableXY:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapS,
+                        (int) TextureWrapMode.Repeat);
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapT,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid " + nameof(RenderScaleType));
+            }
+        }
+
         private static void DeformTexture(Quad rectangle)
         {
             GL.Begin(PrimitiveType.Quads);
@@ -84,21 +124,61 @@ namespace Framework.Render
         private static void CropTexture(Quad rectangle)
         {
             throw new NotImplementedException();
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(1f, 1f);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(0f, 1f);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         private static void FitTexture(Quad rectangle)
         {
             throw new NotImplementedException();
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(1f, 1f);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(0f, 1f);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         private static void FixedHeightTexture(Quad rectangle)
         {
             throw new NotImplementedException();
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(1f, 1f);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(0f, 1f);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         private static void FixedWidthTexture(Quad rectangle)
         {
             throw new NotImplementedException();
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(1f, 1f);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(0f, 1f);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         private static int LoadTextureFromBitmap(Bitmap textureBitmap)

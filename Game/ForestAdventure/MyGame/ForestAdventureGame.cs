@@ -27,11 +27,10 @@ namespace ForestAdventure.MyGame
         public static void RestartLevel()
         {
             Game.instance.ClearGameObjects();
-            InitDebugLevel();
-            // InitLevel();
+            InitLevel();
         }
 
-        private static void InitDebugLevel()
+        private static void InitLevel()
         {
             Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
             Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
@@ -39,18 +38,14 @@ namespace ForestAdventure.MyGame
             Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
             Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
             Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
-            Game.instance.AddGameObject(camera);
-        }
-
-        private static void InitLevel()
-        {
-            Game.instance.AddGameObject(new ForestBackground());
-            Game.instance.AddGameObject(new Tower());
-            AddPlatforms();
-            AddRopes();
-            Game.instance.AddGameObject(new Exit());
-            AddEnemies();
-            Game.instance.AddGameObject(new Player());
+            
+            // Game.instance.AddGameObject(new ForestBackground());
+            // Game.instance.AddGameObject(new Tower());
+            // AddPlatforms();
+            // AddRopes();
+            // Game.instance.AddGameObject(new Exit());
+            // AddEnemies();
+            // Game.instance.AddGameObject(new Player());
             Game.instance.AddGameObject(camera);
         }
 
