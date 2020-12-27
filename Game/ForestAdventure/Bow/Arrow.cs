@@ -1,6 +1,5 @@
 ﻿using System;
 using ForestAdventure.Enemies;
-using ForestAdventure.MyPlayer;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
 using Framework.Game;

@@ -18,6 +18,7 @@ namespace Framework.Game
 
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
+        // TODO add animations to objects/components
         private Game()
         {
         }
@@ -38,6 +39,11 @@ namespace Framework.Game
         public void RemoveGameObject(GameObject gameObject)
         {
             gameObjects.Remove(gameObject);
+        }
+
+        public void ClearGameObjects()
+        {
+            gameObjects.Clear();
         }
 
         internal void Resize(int width, int height)

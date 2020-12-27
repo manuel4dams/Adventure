@@ -1,8 +1,8 @@
-﻿using System;
-using ForestAdventure.Bow;
+﻿using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
 using ForestAdventure.Level;
+using ForestAdventure.PlayerComponents;
 using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Interfaces;
@@ -10,13 +10,13 @@ using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
 
-namespace ForestAdventure.MyPlayer
+namespace ForestAdventure
 {
     public class Player : GameObject, ICollision
     {
         public Player()
         {
-            transform.position = new Vector2(2f, 2f);
+            transform.position = new Vector2(3f, 8f);
 
             var bodyBounds = new RectangleBounds(2f, 3f);
             AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.PlayerRight));
@@ -30,13 +30,11 @@ namespace ForestAdventure.MyPlayer
         {
             if (other.gameObject is Enemy)
             {
-                // TODO handle death
-                transform.position = new Vector2(2f, 2f);
+                ForestAdventure.GameEnded(transform.position);
             }
             else if (other.gameObject is Exit)
             {
-                // TODO won status
-                Console.WriteLine("Game Won");
+                ForestAdventure.GameEnded(transform.position, true);
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
-using ForestAdventure.MyPlayer;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
 using Framework.Camera;
@@ -13,19 +12,44 @@ namespace ForestAdventure
 {
     public static class ForestAdventure
     {
+        private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
+
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
+            InitLevel();
+            Game.instance.AddGameObject(camera);
+            Game.instance.Run();
+        }
+
+        public static void GameEnded(Vector2 position, bool gameWon = false)
+        {
+            Game.instance.AddGameObject(new GameEndingOverlay(gameWon));
+        }
+
+        public static void RestartLevel()
+        {
+            Game.instance.ClearGameObjects();
+            InitLevel();
+        }
+
+        private static void InitLevel()
+        {
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 1f), new Vector2(0f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
+
             Game.instance.AddGameObject(new ForestBackground());
             Game.instance.AddGameObject(new Tower());
             AddPlatforms();
             AddRopes();
             Game.instance.AddGameObject(new Exit());
-            Game.instance.AddGameObject(new Entrance());
             AddEnemies();
             Game.instance.AddGameObject(new Player());
-            Game.instance.AddGameObject(new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f));
-            Game.instance.Run();
+            Game.instance.AddGameObject(camera);
         }
 
         private static void AddPlatforms()
@@ -34,6 +58,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(32f, 0f), 64f));
 
             // floor 1
+            Game.instance.AddGameObject(new Platform(new Vector2(3f, 6f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 6f), 6f));
             // floor 2
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 12f), 6f));
