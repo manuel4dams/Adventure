@@ -1,3 +1,4 @@
+using System;
 using ForestAdventure.Enemies;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
@@ -13,7 +14,7 @@ namespace ForestAdventure.PlayerComponents
         private const float MOVEMENT_SPEED = 15f;
         private const float CLIMB_SPEED = 7f;
         private const float GRAVITY_CONSTANT = -22f;
-        private const float JUMP_MULTIPLIER = 18f;
+        private const float JUMP_MULTIPLIER = 0.3f;
         private const float JUMP_COOLDOWN = 1f;
         private const float FALL_MULTIPLIER = 3.5f;
         private const float LOW_JUMP_MULTIPLIER = 2.25f;
@@ -83,12 +84,11 @@ namespace ForestAdventure.PlayerComponents
             {
                 up = 0.2f;
             }
-
+            
             jumpTimer += deltaTime;
             if (keyboardState.IsKeyDown(Key.Space) && jumpTimer >= JUMP_COOLDOWN && jumpAllowed)
             {
-                // velocity.Y = deltaTime * JUMP_MULTIPLIER;
-                velocity.Y = deltaTime * JUMP_MULTIPLIER;
+                velocity.Y = JUMP_MULTIPLIER;
                 jumpTimer = 0f;
                 jumpAllowed = false;
             }
