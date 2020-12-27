@@ -69,6 +69,9 @@ namespace ForestAdventure.Bow
             // Cache position
             var previousPosition = transform.position;
 
+            // TODO might be needed when fixing deltatime spikes
+            // deltaTime = MathF.Max(1f / 60f, deltaTime);
+
             // Apply force
             transform.position += FORCE_INITIAL_MULTIPLIER * deltaTime * force;
             force *= FORCE_DRAIN;
@@ -79,12 +82,9 @@ namespace ForestAdventure.Bow
                 gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
                 transform.position += gravityVelocity * new Vector2(0f, -1f);
             }
-
-            // TODO fix rotation of arrows
-            // Calculate rotation by position change
-            var positionOffset = previousPosition - transform.position;
-            transform.rotation =
-                LerpUtils.Lerp(transform.rotation, MathF.Atan2(positionOffset.Y, positionOffset.X), 1f);
+            
+            var deltaPosition = previousPosition - transform.position;
+            transform.rotation = MathF.Atan2(deltaPosition.Y, deltaPosition.X);
         }
     }
 }
