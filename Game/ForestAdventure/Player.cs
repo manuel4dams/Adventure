@@ -2,7 +2,7 @@
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
 using ForestAdventure.Level;
-using ForestAdventure.MyGame;
+using ForestAdventure.PlayerComponents;
 using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Interfaces;
@@ -10,7 +10,7 @@ using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
 
-namespace ForestAdventure.MyPlayer
+namespace ForestAdventure
 {
     public class Player : GameObject, ICollision
     {
@@ -30,13 +30,11 @@ namespace ForestAdventure.MyPlayer
         {
             if (other.gameObject is Enemy)
             {
-                // TODO show game over screen
-                ForestAdventureGame.RestartLevel();
+                ForestAdventure.GameEnded(transform.position);
             }
             else if (other.gameObject is Exit)
             {
-                // TODO show game won screen
-                ForestAdventureGame.RestartLevel();
+                ForestAdventure.GameEnded(transform.position, true);
             }
         }
     }

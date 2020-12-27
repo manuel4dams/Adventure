@@ -1,8 +1,6 @@
 ﻿using System.Reflection;
-using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
-using ForestAdventure.MyPlayer;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
 using Framework.Camera;
@@ -10,9 +8,9 @@ using Framework.Game;
 using Framework.Transform;
 using OpenTK;
 
-namespace ForestAdventure.MyGame
+namespace ForestAdventure
 {
-    public static class ForestAdventureGame
+    public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
 
@@ -24,6 +22,11 @@ namespace ForestAdventure.MyGame
             Game.instance.Run();
         }
 
+        public static void GameEnded(Vector2 position, bool gameWon = false)
+        {
+            Game.instance.AddGameObject(new GameEndingOverlay(gameWon));
+        }
+
         public static void RestartLevel()
         {
             Game.instance.ClearGameObjects();
@@ -32,20 +35,20 @@ namespace ForestAdventure.MyGame
 
         private static void InitLevel()
         {
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 1f), new Vector2(0f, 0f)));
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
-            Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
-            
-            // Game.instance.AddGameObject(new ForestBackground());
-            // Game.instance.AddGameObject(new Tower());
-            // AddPlatforms();
-            // AddRopes();
-            // Game.instance.AddGameObject(new Exit());
-            // AddEnemies();
-            // Game.instance.AddGameObject(new Player());
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 1f), new Vector2(0f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
+            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
+
+            Game.instance.AddGameObject(new ForestBackground());
+            Game.instance.AddGameObject(new Tower());
+            AddPlatforms();
+            AddRopes();
+            Game.instance.AddGameObject(new Exit());
+            AddEnemies();
+            Game.instance.AddGameObject(new Player());
             Game.instance.AddGameObject(camera);
         }
 

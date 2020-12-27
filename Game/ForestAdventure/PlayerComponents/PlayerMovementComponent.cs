@@ -6,7 +6,7 @@ using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Input;
 
-namespace ForestAdventure.MyPlayer
+namespace ForestAdventure.PlayerComponents
 {
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
