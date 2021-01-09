@@ -26,7 +26,6 @@ namespace ForestAdventure.PlayerComponents
         private bool climbableV;
         private Vector2 velocity;
 
-        // TODO fix jumping, the jump height varies 
         public GameObject gameObject { get; }
 
         public PlayerMovementComponent(GameObject gameObject)

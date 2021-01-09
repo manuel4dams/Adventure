@@ -24,7 +24,7 @@ namespace ForestAdventure
 
         public static void GameEnded(Vector2 position, bool gameWon = false)
         {
-            Game.instance.AddGameObject(new GameEndingOverlay(gameWon));
+            Game.instance.AddGameObject(new GameEndingOverlay(position, gameWon));
         }
 
         public static void RestartLevel()
@@ -35,13 +35,6 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(2f, 1f), new Vector2(-6f, 0f)));
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(6f, 3f), new Vector2(-6f, 6f)));
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 1f), new Vector2(0f, 0f)));
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 3f), new Vector2(0f, 3f)));
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(1f, 2f), new Vector2(4f, 0f)));
-            // Game.instance.AddGameObject(new DebugTextureComponent(new Vector2(3f, 6f), new Vector2(4f, 6f)));
-
             Game.instance.AddGameObject(new ForestBackground());
             Game.instance.AddGameObject(new Tower());
             AddPlatforms();

@@ -28,13 +28,16 @@ namespace ForestAdventure
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
-            if (other.gameObject is Enemy)
+            switch (other.gameObject)
             {
-                ForestAdventure.GameEnded(transform.position);
-            }
-            else if (other.gameObject is Exit)
-            {
-                ForestAdventure.GameEnded(transform.position, true);
+                case Enemy _:
+                    ForestAdventure.GameEnded(transform.position);
+                    Game.instance.RemoveGameObject(this);
+                    break;
+                case Exit _:
+                    ForestAdventure.GameEnded(transform.position, true);
+                    Game.instance.RemoveGameObject(this);
+                    break;
             }
         }
     }

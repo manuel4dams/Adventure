@@ -68,7 +68,6 @@ namespace Framework.Shapes
 
         public static Quad Transform(this RectangleBounds rectangleBounds, Transform.Transform transform)
         {
-            // TODO maybe get rid of tmp variable
             var tmp = new RectangleBounds(rectangleBounds.size * transform.scale);
 #pragma warning disable
             return new Quad

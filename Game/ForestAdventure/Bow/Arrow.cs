@@ -68,8 +68,7 @@ namespace ForestAdventure.Bow
             // Cache position
             var previousPosition = transform.position;
 
-            // TODO might be needed when fixing deltatime spikes
-            // deltaTime = MathF.Max(1f / 60f, deltaTime);
+            deltaTime = MathF.Max(1f / 60f, deltaTime);
 
             // Apply force
             transform.position += FORCE_INITIAL_MULTIPLIER * deltaTime * force;
@@ -82,7 +81,7 @@ namespace ForestAdventure.Bow
                 transform.position += gravityVelocity * new Vector2(0f, -1f);
             }
             
-            var deltaPosition = previousPosition - transform.position;
+            var deltaPosition = transform.position - previousPosition;
             transform.rotation = MathF.Atan2(deltaPosition.Y, deltaPosition.X);
         }
     }

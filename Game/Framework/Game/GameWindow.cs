@@ -9,7 +9,6 @@ namespace Framework.Game
         public GameWindow(Game game, string title)
         {
             Title = title;
-            // TODO fix warning
             WindowState = WindowState.Normal;
             VSync = VSyncMode.On;
             UpdateFrame += (objectArgs, args) =>

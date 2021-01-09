@@ -121,64 +121,24 @@ namespace Framework.Render
             GL.End();
         }
 
-        private static void CropTexture(Quad rectangle)
+        private void CropTexture(Quad rectangle)
         {
             throw new NotImplementedException();
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
         }
 
         private static void FitTexture(Quad rectangle)
         {
             throw new NotImplementedException();
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
         }
 
         private static void FixedHeightTexture(Quad rectangle)
         {
             throw new NotImplementedException();
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
         }
 
         private static void FixedWidthTexture(Quad rectangle)
         {
             throw new NotImplementedException();
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
         }
 
         private static int LoadTextureFromBitmap(Bitmap textureBitmap)
@@ -186,7 +146,7 @@ namespace Framework.Render
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
             // without flipping the textures are upside down
-            textureBitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+            textureBitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
             GL.GenTextures(1, out int tex);
             GL.BindTexture(TextureTarget.Texture2D, tex);

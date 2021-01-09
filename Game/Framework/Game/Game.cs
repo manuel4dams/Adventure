@@ -3,6 +3,7 @@ using System.Linq;
 using Framework.Collision;
 using Framework.Interfaces;
 using Framework.Util;
+using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Game
 {
@@ -68,6 +69,9 @@ namespace Framework.Game
 
         internal void Draw()
         {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.Enable(EnableCap.Blend);
             gameObjectsClone
                 .AsEnumerable()
                 .ForEach(gameObject => (gameObject as IRender)?.Draw())
@@ -92,7 +96,6 @@ namespace Framework.Game
                         continue;
                     }
 
-                    // TODO catch collision with same gameObject?
                     CollisionHandler.HandleCollision(collider, secondCollider);
                 }
             }

@@ -11,29 +11,30 @@ namespace ForestAdventure
 {
     public class GameEndingOverlay : GameObject, IUpdateable
     {
-        public GameEndingOverlay(bool gameWon)
+        public GameEndingOverlay(Vector2 position, bool gameWon)
         {
-            Color color;
-            transform.position = new Vector2(3f, 8f);
-            var bounds = new RectangleBounds(new Vector2(15f, 5f));
+            var textureBounds = new RectangleBounds(new Vector2(15f, 5f));
+            var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));
 
             if (gameWon)
             {
-                color = Color.FromArgb(255, Color.Green);
+                transform.position = position;
+                AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
+                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.GameWon));
             }
             else
             {
-                color = Color.FromArgb(255, Color.Red);
+                transform.position = position;
+                AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Red)));
+                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.GameOver));
             }
-
-            AddComponent(new RectangleColorRenderer(this, bounds, color));
             AddComponent(new CameraFollowObjectComponent(this));
         }
 
         public void Update(float deltaTime)
         {
             var keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Key.Space))
+            if (keyboardState.IsKeyDown(Key.Enter))
             {
                 ForestAdventure.RestartLevel();
             }

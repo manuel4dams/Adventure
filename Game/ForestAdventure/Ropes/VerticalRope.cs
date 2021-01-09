@@ -12,7 +12,7 @@ namespace ForestAdventure.Ropes
         {
             transform.position = position;
 
-            var bounds = new RectangleBounds(0.40f, height);
+            var bounds = new RectangleBounds(0.1f, height);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Rope));
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
         }

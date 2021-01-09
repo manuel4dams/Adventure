@@ -144,6 +144,14 @@
         <value>ForestBackground\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral
         </value>
     </data>
+    <data name="GameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>GameOver\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral
+        </value>
+    </data>
+    <data name="GameWon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>GameWon\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral
+        </value>
+    </data>
     <data name="PlayerRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
         <value>Player\dummy_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral
         </value>
