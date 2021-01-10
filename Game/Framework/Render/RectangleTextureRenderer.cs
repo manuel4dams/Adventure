@@ -21,6 +21,7 @@ namespace Framework.Render
         public GameObject gameObject { get; }
 
         // TODO implement tiling of textures
+
         public RectangleTextureRenderer(
             GameObject gameObject,
             RectangleBounds rectangleBounds,
@@ -85,39 +86,6 @@ namespace Framework.Render
         public void setCropData(Vector4 size)
         {
             this.size = size;
-        }
-
-        private void SwitchTileableType()
-        {
-            switch (renderTileableType)
-            {
-                case RenderTileableType.None:
-                    break;
-                case RenderTileableType.TilableX:
-                    GL.TexParameter(
-                        TextureTarget.Texture2D,
-                        TextureParameterName.TextureWrapS,
-                        (int) TextureWrapMode.Repeat);
-                    break;
-                case RenderTileableType.TilableY:
-                    GL.TexParameter(
-                        TextureTarget.Texture2D,
-                        TextureParameterName.TextureWrapT,
-                        (int) TextureWrapMode.Repeat);
-                    break;
-                case RenderTileableType.TileableXY:
-                    GL.TexParameter(
-                        TextureTarget.Texture2D,
-                        TextureParameterName.TextureWrapS,
-                        (int) TextureWrapMode.Repeat);
-                    GL.TexParameter(
-                        TextureTarget.Texture2D,
-                        TextureParameterName.TextureWrapT,
-                        (int) TextureWrapMode.Repeat);
-                    break;
-                default:
-                    throw new ArgumentException("Invalid " + nameof(RenderScaleType));
-            }
         }
 
         private static void DeformTexture(Quad rectangle)
@@ -212,6 +180,39 @@ namespace Framework.Render
                 (int) TextureWrapMode.Repeat);
 
             return tex;
+        }
+
+        private void SwitchTileableType()
+        {
+            switch (renderTileableType)
+            {
+                case RenderTileableType.None:
+                    break;
+                case RenderTileableType.TilableX:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapS,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                case RenderTileableType.TilableY:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapT,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                case RenderTileableType.TileableXY:
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapS,
+                        (int) TextureWrapMode.Repeat);
+                    GL.TexParameter(
+                        TextureTarget.Texture2D,
+                        TextureParameterName.TextureWrapT,
+                        (int) TextureWrapMode.Repeat);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid " + nameof(RenderScaleType));
+            }
         }
     }
 }
