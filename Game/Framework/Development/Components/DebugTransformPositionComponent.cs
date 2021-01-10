@@ -1,5 +1,6 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
+﻿using System.Drawing;
+using Framework.Game;
+using Framework.Interfaces;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
@@ -24,7 +25,7 @@ namespace Framework.Development.Components
 
         public void Draw()
         {
-            var pos = gameObject.transform.position - Camera.instance.transform.position;
+            var pos = gameObject.transform.position - Camera.Camera.instance.transform.position;
             GL.Color4(Color.Pink);
             GL.Begin(PrimitiveType.Lines);
             GL.Vertex2(pos - Vector2.UnitX * lineLength);

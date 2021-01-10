@@ -18,8 +18,4 @@
       <ProjectReference Include="..\Framework\Framework.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Framework" />
-    </ItemGroup>
-
 </Project>
