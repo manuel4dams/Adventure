@@ -13,7 +13,7 @@ namespace ForestAdventure.Level
             transform.position = new Vector2(60f, 97.8f);
 
             var bounds = new RectangleBounds(2f, 3f);
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Portal));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Portal));
             AddComponent(new RectangleColliderComponent(this, bounds, true));
         }
     }

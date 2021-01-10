@@ -1,9 +1,10 @@
-using System;
 using ForestAdventure.Enemies;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
+using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
+using Framework.Render;
 using OpenTK;
 using OpenTK.Input;
 
@@ -18,6 +19,7 @@ namespace ForestAdventure.PlayerComponents
         private const float JUMP_COOLDOWN = 1f;
         private const float FALL_MULTIPLIER = 3.5f;
         private const float LOW_JUMP_MULTIPLIER = 2.25f;
+        private const float ANIMATION_TIMER_RESET = 0.1f;
 
         private float jumpTimer = JUMP_COOLDOWN;
         private float graceJumpTimer;
@@ -25,12 +27,16 @@ namespace ForestAdventure.PlayerComponents
         private bool climbableH;
         private bool climbableV;
         private Vector2 velocity;
+        private RectangleTextureRenderer playerRenderer;
+        private int animationFrame;
+        private float animationTimer = 0;
 
         public GameObject gameObject { get; }
 
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
+            playerRenderer = gameObject.GetComponent<RectangleTextureRenderer>(0) as RectangleTextureRenderer;
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
@@ -83,7 +89,7 @@ namespace ForestAdventure.PlayerComponents
             {
                 up = 0.2f;
             }
-            
+
             jumpTimer += deltaTime;
             if (keyboardState.IsKeyDown(Key.Space) && jumpTimer >= JUMP_COOLDOWN && jumpAllowed)
             {
@@ -123,6 +129,44 @@ namespace ForestAdventure.PlayerComponents
             }
 
             gameObject.transform.position += velocity;
+            var mousePosition = Camera.instance.MousePositionToWorld();
+            var pos = mousePosition - gameObject.transform.position;
+            if (velocity.X != 0)
+            {
+                if (animationTimer <= 0)
+                {
+                    if (pos.X > 0)
+                    {
+                        playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0.5f,
+                            (animationFrame + 1) * 0.25f, 1f));
+                    }
+                    else
+                    {
+                        playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0.5f,
+                            animationFrame * 0.25f, 1f));
+                    }
+
+                    animationFrame++;
+                    if (animationFrame >= 4)
+                    {
+                        animationFrame = 0;
+                    }
+
+                    animationTimer = ANIMATION_TIMER_RESET;
+                }
+
+                animationTimer -= deltaTime;
+            }
+            else if (pos.X > 0)
+            {
+                playerRenderer.setCropData(new Vector4(0, 0.5f, 0.25f, 1f));
+                animationTimer = 0;
+            }
+            else if (pos.X <= 0)
+            {
+                playerRenderer.setCropData(new Vector4(0.25f, 0.5f, 0f, 1f));
+                animationTimer = 0;
+            }
 
             climbableH = false;
             climbableV = false;

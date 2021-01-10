@@ -1,12 +1,12 @@
 ﻿using System;
 using ForestAdventure.Enemies;
+using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
-using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Bow
@@ -30,7 +30,7 @@ namespace ForestAdventure.Bow
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
             var arrowBounds = new RectangleBounds(3f, 0.3f);
-            AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Arrow));
+            AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
         }
 
@@ -80,7 +80,7 @@ namespace ForestAdventure.Bow
                 gravityVelocity += deltaTime * deltaTime * GRAVITY_CONSTANT;
                 transform.position += gravityVelocity * new Vector2(0f, -1f);
             }
-            
+
             var deltaPosition = transform.position - previousPosition;
             transform.rotation = MathF.Atan2(deltaPosition.Y, deltaPosition.X);
         }

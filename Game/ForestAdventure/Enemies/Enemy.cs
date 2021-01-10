@@ -16,7 +16,7 @@ namespace ForestAdventure.Enemies
             transform.position = position;
 
             var bodyBounds = new RectangleBounds(2f, 3f);
-            AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.EnemyRight));
+            AddComponent(new RectangleTextureRenderer(this, bodyBounds, Resources.Resources.EnemyRight));
             AddComponent(new RectangleColliderComponent(this, bodyBounds, true));
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
         }

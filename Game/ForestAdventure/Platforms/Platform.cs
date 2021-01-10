@@ -13,7 +13,7 @@ namespace ForestAdventure.Platforms
             transform.position = position;
 
             var bounds = new RectangleBounds(length, 0.50f);
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.WoodenPlatform));
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.WoodenPlatform));
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
         }
     }

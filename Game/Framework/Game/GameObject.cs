@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Framework.Interfaces;
 
 namespace Framework.Game
@@ -27,6 +28,12 @@ namespace Framework.Game
         public void RemoveComponent(IComponent component)
         {
             components.Remove(component);
+        }
+
+        // TODO change method to get specific component, this solution is ugly!!!
+        public IComponent GetComponent<T>(int index)
+        {
+            return components.Where(c => c.GetType() == typeof(T)).ToList()[index];
         }
     }
 }

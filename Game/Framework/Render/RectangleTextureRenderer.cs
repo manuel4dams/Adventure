@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Shapes;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
@@ -16,22 +17,29 @@ namespace Framework.Render
         private readonly RenderScaleType renderScaleType;
         private readonly RenderTileableType renderTileableType;
         private int? textureId;
+        private Vector4 size;
         public GameObject gameObject { get; }
 
-        // TODO implement render texture methods
         // TODO implement tiling of textures
         public RectangleTextureRenderer(
             GameObject gameObject,
             RectangleBounds rectangleBounds,
             Bitmap texture,
             RenderScaleType renderScaleType = RenderScaleType.Deform,
-            RenderTileableType renderTileableType = RenderTileableType.None)
+            RenderTileableType renderTileableType = RenderTileableType.None,
+            Vector4? size = null)
         {
             this.gameObject = gameObject;
             this.rectangleBounds = rectangleBounds;
             this.texture = texture;
             this.renderScaleType = renderScaleType;
             this.renderTileableType = renderTileableType;
+            if (size == null)
+            {
+                size = new Vector4(0, 0, 1, 1);
+            }
+
+            this.size = (Vector4) size;
         }
 
         public void Draw()
@@ -51,7 +59,7 @@ namespace Framework.Render
                     DeformTexture(rectangle);
                     break;
                 case RenderScaleType.Crop:
-                    CropTexture(rectangle);
+                    CropTexture(rectangle, size);
                     break;
                 case RenderScaleType.Fit:
                     FitTexture(rectangle);
@@ -72,6 +80,11 @@ namespace Framework.Render
         public void Dispose()
         {
             texture.Dispose();
+        }
+
+        public void setCropData(Vector4 size)
+        {
+            this.size = size;
         }
 
         private void SwitchTileableType()
@@ -121,9 +134,18 @@ namespace Framework.Render
             GL.End();
         }
 
-        private void CropTexture(Quad rectangle)
+        private static void CropTexture(Quad rectangle, Vector4 size)
         {
-            throw new NotImplementedException();
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(size.X, size.Y);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(size.Z, size.Y);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(size.Z, size.W);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(size.X, size.W);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         private static void FitTexture(Quad rectangle)

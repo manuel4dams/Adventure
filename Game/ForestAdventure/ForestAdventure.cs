@@ -2,6 +2,7 @@
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.Platforms;
+using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Camera;
 using Framework.Game;
@@ -20,11 +21,6 @@ namespace ForestAdventure
             InitLevel();
             Game.instance.AddGameObject(camera);
             Game.instance.Run();
-        }
-
-        public static void GameEnded(Vector2 position, bool gameWon = false)
-        {
-            Game.instance.AddGameObject(new GameEndingOverlay(position, gameWon));
         }
 
         public static void RestartLevel()

@@ -13,7 +13,8 @@ namespace ForestAdventure.Develop
             transform.position = position;
 
             var bound = new RectangleBounds(bounds);
-            AddComponent(new RectangleTextureRenderer(this, bound, Resources.EnemyRight, RenderScaleType.Crop));
+            AddComponent(
+                new RectangleTextureRenderer(this, bound, Resources.Resources.EnemyRight, RenderScaleType.Crop));
             AddComponent(new DebugColliderEdgesComponent(this, bound));
             AddComponent(new DebugTransformPositionComponent(this));
         }

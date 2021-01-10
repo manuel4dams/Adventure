@@ -1,5 +1,4 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Input;
 
 namespace Framework.Game
@@ -18,7 +17,7 @@ namespace Framework.Game
                 // to fast because the deltaTime is used to calculate the updating of objects,
                 // which can cause clipping errors. To prevent this we skip the Frame when we get a deltaTime spike.
                 if (args.Time >= 0.5)
-                   return;
+                    return;
 
                 // game.Update((float) args.Time);
                 // TODO find better solution than fixed value...

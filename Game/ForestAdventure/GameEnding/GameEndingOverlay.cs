@@ -7,12 +7,14 @@ using Framework.Shapes;
 using OpenTK;
 using OpenTK.Input;
 
-namespace ForestAdventure
+namespace ForestAdventure.GameEnding
 {
     public class GameEndingOverlay : GameObject, IUpdateable
     {
-        public GameEndingOverlay(Vector2 position, bool gameWon)
+        public GameEndingOverlay(GameObject gameObject, Vector2 position, bool gameWon)
         {
+            Game.instance.RemoveGameObject(gameObject);
+
             var textureBounds = new RectangleBounds(new Vector2(15f, 5f));
             var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));
 
@@ -20,14 +22,15 @@ namespace ForestAdventure
             {
                 transform.position = position;
                 AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
-                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.GameWon));
+                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameWon));
             }
             else
             {
                 transform.position = position;
                 AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Red)));
-                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.GameOver));
+                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameOver));
             }
+
             AddComponent(new CameraFollowObjectComponent(this));
         }
 
