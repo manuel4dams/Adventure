@@ -1,6 +1,7 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
-using OpenTK;
+﻿using System.Drawing;
+using Framework.Game;
+using Framework.Interfaces;
+using Framework.Shapes;
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Development.Components
@@ -20,7 +21,7 @@ namespace Framework.Development.Components
         public void Draw()
         {
             var rectangle = rectangleBounds.Transform(gameObject.transform);
-            rectangle.Translate(-Camera.instance.transform.position);
+            rectangle.Translate(-Camera.Camera.instance.transform.position);
 
             GL.Color4(Color.Pink);
             GL.Begin(PrimitiveType.Lines);

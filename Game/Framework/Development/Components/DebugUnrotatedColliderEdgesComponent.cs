@@ -1,6 +1,7 @@
-﻿using Framework.Interfaces;
-using Framework.Objects;
-using OpenTK;
+﻿using System.Drawing;
+using Framework.Game;
+using Framework.Interfaces;
+using Framework.Shapes;
 using OpenTK.Graphics.OpenGL;
 
 namespace Framework.Development.Components
@@ -22,29 +23,29 @@ namespace Framework.Development.Components
             GL.Color4(Color.Pink);
             GL.Begin(PrimitiveType.Lines);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.minX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.minY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.minX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.minY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.maxX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.minY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.maxX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.minY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.minX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.minY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.minX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.minY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.minX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.minX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.maxX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.minY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.maxX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.minY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.maxX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.maxX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.maxX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.maxX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.Camera.instance.transform.position.Y);
             GL.Vertex2(
-                gameObject.transform.position.X + rectangleBounds.minX - Camera.instance.transform.position.X,
-                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.instance.transform.position.Y);
+                gameObject.transform.position.X + rectangleBounds.minX - Camera.Camera.instance.transform.position.X,
+                gameObject.transform.position.Y + rectangleBounds.maxY - Camera.Camera.instance.transform.position.Y);
             GL.End();
         }
     }
