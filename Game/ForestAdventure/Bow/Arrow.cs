@@ -32,7 +32,7 @@ namespace ForestAdventure.Bow
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
-            var arrowBounds = new RectangleBounds(3f, 0.5f);
+            var arrowBounds = new RectangleBounds(6f, 2f);
             var colliderBounds = new RectangleBounds(0f,0f,0.5f, 0.5f);
             
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
