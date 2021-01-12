@@ -3,6 +3,7 @@ using ForestAdventure.Enemies;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
@@ -30,9 +31,12 @@ namespace ForestAdventure.Bow
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
-            var arrowBounds = new RectangleBounds(3f, 0.3f);
+            var arrowBounds = new RectangleBounds(6f, 2f);
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
+#if DEBUG
+           AddComponent(new DebugColliderEdgesComponent(this, arrowBounds));
+#endif
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
