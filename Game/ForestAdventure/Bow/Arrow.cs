@@ -56,6 +56,7 @@ namespace ForestAdventure.Bow
                 case Enemy _:
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
+                    Game.instance.AddGameObject(new EnemyHitOverlay());
                     break;
                 default:
                     if (lifeTime < arrowNoCollisionTime)
