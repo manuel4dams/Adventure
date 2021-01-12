@@ -16,7 +16,7 @@ namespace ForestAdventure.Bow
             var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));
 
             transform.position = Vector2.Zero;
-            AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
+            AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Black)));
         }
 
         public void Update(float deltaTime)

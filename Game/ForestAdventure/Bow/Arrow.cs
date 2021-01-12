@@ -13,7 +13,6 @@ using OpenTK;
 
 namespace ForestAdventure.Bow
 {
-    // TODO add hit feedback
     public class Arrow : GameObject, IUpdateable, ICollision
     {
         private const float GRAVITY_CONSTANT = 9.81f;
@@ -32,13 +31,13 @@ namespace ForestAdventure.Bow
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
-            var arrowBounds = new RectangleBounds(6f, 2f);
-            var colliderBounds = new RectangleBounds(0f,0f,0.5f, 0.5f);
-            
+            var arrowBounds = new RectangleBounds(2f, 0.5f);
+            var colliderBounds = new RectangleBounds(0f, 0f, 0.5f, 0.5f);
+
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, colliderBounds, true));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this,arrowBounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
 #endif
         }
@@ -48,8 +47,6 @@ namespace ForestAdventure.Bow
             switch (other.gameObject)
             {
                 case Player _:
-                    break;
-                case HorizontalRope _:
                     break;
                 case VerticalRope _:
                     break;

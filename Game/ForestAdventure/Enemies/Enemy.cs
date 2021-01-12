@@ -18,8 +18,8 @@ namespace ForestAdventure.Enemies
             transform.position = position;
 
             var bodyBounds = new RectangleBounds(2f, 3f);
-            var colliderBounds = new RectangleBounds(0f,-0.2f,0.5f, 2.5f);
-            
+            var colliderBounds = new RectangleBounds(0f, -0.2f, 0.5f, 2.5f);
+
             AddComponent(new RectangleTextureRenderer(
                 this,
                 bodyBounds,
@@ -29,7 +29,7 @@ namespace ForestAdventure.Enemies
             AddComponent(new RectangleColliderComponent(this, bodyBounds, true));
             AddComponent(new MovementNoInputComponent(this, movementBorderLeft, movementBorderRight));
 #if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this,bodyBounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
 #endif
         }

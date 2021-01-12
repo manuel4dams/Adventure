@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using ForestAdventure.Checkpoints;
+using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.Platforms;
@@ -11,14 +13,11 @@ using OpenTK;
 
 namespace ForestAdventure
 {
-    // TODO Fix hitboxes when Textures are finished
-    // TODO add checkpoints
     // TODO maybe add traps?
-    // TODO maybe add collectable ammo
     // TODO add bigger and cooler level when hitboxes and textures are finished and all features are implemented
     public static class ForestAdventure
     {
-        private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
+        private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
 
         public static void Main()
         {
@@ -37,22 +36,24 @@ namespace ForestAdventure
         private static void InitLevel()
         {
             Game.instance.AddGameObject(new ForestBackground());
-            Game.instance.AddGameObject(new Tower());
             AddPlatforms();
             AddRopes();
-            Game.instance.AddGameObject(new Exit());
+            AddCheckpoints();
+            Game.instance.AddGameObject(new Exit(new Vector2(60f, 97.8f)));
             AddEnemies();
-            Game.instance.AddGameObject(new Player());
+            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(camera);
+            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(0f, -20f), 500));
         }
 
         private static void AddPlatforms()
         {
-            // tower floor for now
-            Game.instance.AddGameObject(new Platform(new Vector2(32f, 0f), 64f));
-
             // floor 1
-            Game.instance.AddGameObject(new Platform(new Vector2(3f, 6f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(0f, -1.5f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(12f, 2f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(24f, 3f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(36f, 4f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 6f), 6f));
             // floor 2
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 12f), 6f));
@@ -76,13 +77,15 @@ namespace ForestAdventure
             // floor 10
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 60f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(24f, 60f), 14f));
-            // floor 11
+            Game.instance.AddGameObject(new Platform(new Vector2(40f, 60f), 6f));
+            // floor 11a
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 66f), 6f));
             // floor 12
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 72f), 6f));
             // floor 13
             Game.instance.AddGameObject(new Platform(new Vector2(16f, 78f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(48f, 78f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(29f, 82f), 6f));
             // floor 14
             Game.instance.AddGameObject(new Platform(new Vector2(3f, 84f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(61f, 84f), 6f));
@@ -95,18 +98,15 @@ namespace ForestAdventure
         private static void AddRopes()
         {
             Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 16f), 20f));
-            // floor 10
-            Game.instance.AddGameObject(new HorizontalRope(new Vector2(44f, 63f), 30f));
-            // floor 13
-            Game.instance.AddGameObject(new HorizontalRope(new Vector2(32f, 81f), 30f));
+        }
+
+        private static void AddCheckpoints()
+        {
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(0f, 0f)));
         }
 
         private static void AddEnemies()
         {
-            // Ground floor
-            Game.instance.AddGameObject(new Enemy(new Vector2(20f, 1.8f), 1f, 63f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(30f, 1.8f), 1f, 63f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(40f, 1.8f), 1f, 63f));
             // floor 3
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.8f), 18f, 30f));
             // floor 7
