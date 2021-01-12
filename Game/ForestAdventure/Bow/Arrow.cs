@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using ForestAdventure.Enemies;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
@@ -31,11 +32,14 @@ namespace ForestAdventure.Bow
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
-            var arrowBounds = new RectangleBounds(6f, 2f);
+            var arrowBounds = new RectangleBounds(3f, 0.5f);
+            var colliderBounds = new RectangleBounds(0f,0f,0.5f, 0.5f);
+            
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
-            AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
+            AddComponent(new RectangleColliderComponent(this, colliderBounds, true));
 #if DEBUG
-           AddComponent(new DebugColliderEdgesComponent(this, arrowBounds));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this,arrowBounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
 #endif
         }
 
