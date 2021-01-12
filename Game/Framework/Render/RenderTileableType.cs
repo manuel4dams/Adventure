@@ -3,8 +3,8 @@
     public enum RenderTileableType
     {
         None,
-        TilableX,
-        TilableY,
+        TileableX,
+        TileableY,
         TileableXY,
     }
 }

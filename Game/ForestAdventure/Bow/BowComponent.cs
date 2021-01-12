@@ -8,6 +8,7 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Bow
 {
+    // TODO maybe limit ammo count?
     public class BowComponent : IComponent, IUpdateable
     {
         private const float SHOT_COOLDOWN = 1f;

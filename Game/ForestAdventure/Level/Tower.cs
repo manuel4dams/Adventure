@@ -22,34 +22,58 @@ namespace ForestAdventure.Level
         private void AddTowerBackground()
         {
             var bounds = new RectangleBounds(new Vector2(33f, 52f), new Vector2(66f, 104f));
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.TowerBackground));
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds,
+                Resources.Resources.TowerBackground,
+                RenderScaleType.Crop,
+                RenderTileableType.TileableXY));
         }
 
         private void AddTowerFloor()
         {
             var bounds = new RectangleBounds(new Vector2(33f, 1f), new Vector2(68f, 2f));
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.BrickWall));
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds,
+                Resources.Resources.BrickWall,
+                RenderScaleType.Crop,
+                RenderTileableType.TileableX));
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
         }
 
         private void AddRightWall()
         {
             var bounds = new RectangleBounds(new Vector2(0f, 52f), new Vector2(2f, 100f));
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.BrickWall));
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds,
+                Resources.Resources.BrickWall,
+                RenderScaleType.Crop,
+                RenderTileableType.TileableY));
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
         }
 
         private void AddLeftWall()
         {
             var bounds = new RectangleBounds(new Vector2(66f, 52f), new Vector2(2f, 100f));
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.BrickWall));
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds,
+                Resources.Resources.BrickWall,
+                RenderScaleType.Crop,
+                RenderTileableType.TileableY));
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
         }
 
         private void AddTowerRoof()
         {
             var bounds = new RectangleBounds(new Vector2(33f, 105), new Vector2(68f, 6f));
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.BrickWall));
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds, Resources.Resources.BrickWall,
+                RenderScaleType.Crop,
+                RenderTileableType.TileableX));
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
         }
     }

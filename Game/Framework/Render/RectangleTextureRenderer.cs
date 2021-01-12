@@ -188,13 +188,13 @@ namespace Framework.Render
             {
                 case RenderTileableType.None:
                     break;
-                case RenderTileableType.TilableX:
+                case RenderTileableType.TileableX:
                     GL.TexParameter(
                         TextureTarget.Texture2D,
                         TextureParameterName.TextureWrapS,
                         (int) TextureWrapMode.Repeat);
                     break;
-                case RenderTileableType.TilableY:
+                case RenderTileableType.TileableY:
                     GL.TexParameter(
                         TextureTarget.Texture2D,
                         TextureParameterName.TextureWrapT,

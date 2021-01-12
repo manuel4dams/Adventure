@@ -11,6 +11,7 @@ using OpenTK;
 
 namespace ForestAdventure.Bow
 {
+    // TODO add hit feedback
     public class Arrow : GameObject, IUpdateable, ICollision
     {
         private const float GRAVITY_CONSTANT = 9.81f;

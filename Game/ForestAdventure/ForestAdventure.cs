@@ -11,6 +11,11 @@ using OpenTK;
 
 namespace ForestAdventure
 {
+    // TODO Fix hitboxes when Textures are finished
+    // TODO add checkpoints
+    // TODO maybe add traps?
+    // TODO maybe add collectable ammo
+    // TODO add bigger and cooler level when hitboxes and textures are finished and all features are implemented
     public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 15f}, 1.6f);
