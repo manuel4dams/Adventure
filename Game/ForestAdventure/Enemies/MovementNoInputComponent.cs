@@ -1,16 +1,23 @@
 ﻿using System;
 using Framework.Game;
 using Framework.Interfaces;
+using Framework.Render;
+using OpenTK;
 
 namespace ForestAdventure.Enemies
 {
     public class MovementNoInputComponent : IComponent, IUpdateable
     {
         private const float MOVEMENT_SPEED = 5f;
+        private const float ANIMATION_TIMER_RESET = 0.1f;
 
         private readonly float movementBorderLeft;
         private readonly float movementBorderRight;
         private readonly Random random = new Random();
+
+        private RectangleTextureRenderer enemyRenderer;
+        private int animationFrame;
+        private float animationTimer = 0;
 
         private bool leftRight;
 
@@ -24,6 +31,7 @@ namespace ForestAdventure.Enemies
             this.gameObject = gameObject;
             this.movementBorderLeft = movementBorderLeft;
             this.movementBorderRight = movementBorderRight;
+            enemyRenderer = gameObject.GetComponent<RectangleTextureRenderer>(0) as RectangleTextureRenderer;
 
             // start moving in random direction
             leftRight = random.Next(1, 3) == 2;
@@ -42,6 +50,20 @@ namespace ForestAdventure.Enemies
                 {
                     leftRight = false;
                 }
+
+                if (animationTimer <= 0)
+                {
+                    enemyRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0f,
+                        animationFrame * 0.25f, 1f));
+
+                    animationFrame++;
+                    if (animationFrame >= 4)
+                    {
+                        animationFrame = 0;
+                    }
+
+                    animationTimer = ANIMATION_TIMER_RESET;
+                }
             }
             else
             {
@@ -53,7 +75,22 @@ namespace ForestAdventure.Enemies
                 {
                     leftRight = true;
                 }
+
+                if (animationTimer <= 0)
+                {
+                    enemyRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0f,
+                        (animationFrame + 1) * 0.25f, 1f));
+
+                    animationFrame++;
+                    if (animationFrame >= 4)
+                    {
+                        animationFrame = 0;
+                    }
+
+                    animationTimer = ANIMATION_TIMER_RESET;
+                }
             }
+            animationTimer -= deltaTime;
         }
     }
 }
