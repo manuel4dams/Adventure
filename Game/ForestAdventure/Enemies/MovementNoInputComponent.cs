@@ -90,6 +90,7 @@ namespace ForestAdventure.Enemies
                     animationTimer = ANIMATION_TIMER_RESET;
                 }
             }
+
             animationTimer -= deltaTime;
         }
     }

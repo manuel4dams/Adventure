@@ -24,8 +24,7 @@ namespace ForestAdventure.PlayerComponents
         private float jumpTimer = JUMP_COOLDOWN;
         private float graceJumpTimer;
         private bool jumpAllowed;
-        private bool climbableH;
-        private bool climbableV;
+        private bool climbable;
         private Vector2 velocity;
         private RectangleTextureRenderer playerRenderer;
         private int animationFrame;
@@ -34,9 +33,6 @@ namespace ForestAdventure.PlayerComponents
         public GameObject gameObject { get; }
 
         // TODO climbing feedback is missing, player needs to know if he/she is climbing
-        // TODO prevent player from shooting by climbing
-        // TODO maybe set player to fixed position when climbing?
-        // TODO show indicator when falling into enemy?
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
@@ -56,11 +52,8 @@ namespace ForestAdventure.PlayerComponents
                     }
 
                     break;
-                case HorizontalRope _:
-                    climbableH = true;
-                    break;
                 case VerticalRope _:
-                    climbableV = true;
+                    climbable = true;
                     break;
             }
 
@@ -75,21 +68,21 @@ namespace ForestAdventure.PlayerComponents
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
-            var climbing = keyboardState.IsKeyDown(Key.ShiftLeft);
+            var climbing = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.E) ||
+                           Mouse.GetState().IsButtonDown(MouseButton.Right);
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
-            if ((climbableH || climbableV) && climbing)
+            if (climbable && climbing)
             {
                 velocity.Y = 0f;
-                if (climbableV)
+                if (climbable)
                 {
                     left *= 0.1f;
                     right *= 0.1f;
                 }
             }
 
-            if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing &&
-                (climbableH || climbableV))
+            if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing && climbable)
             {
                 up = 0.2f;
             }
@@ -104,7 +97,7 @@ namespace ForestAdventure.PlayerComponents
 
             velocity.X = (CLIMB_SPEED + MOVEMENT_SPEED) * deltaTime * (left + right);
 
-            if (climbing && (climbableH || climbableV))
+            if (climbing && climbable)
             {
                 velocity = (CLIMB_SPEED + MOVEMENT_SPEED) * deltaTime * new Vector2(
                     left + right,
@@ -171,9 +164,8 @@ namespace ForestAdventure.PlayerComponents
                 playerRenderer.setCropData(new Vector4(0.25f, 0.5f, 0f, 1f));
                 animationTimer = 0;
             }
-
-            climbableH = false;
-            climbableV = false;
+            
+            climbable = false;
         }
     }
 }
