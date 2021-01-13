@@ -80,6 +80,9 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(81f, 80f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(79f, 95), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(71f, 102), 14f));
+
+            // Test-Platform
+            Game.instance.AddGameObject(new Platform(new Vector2(10f, 2f), 14f));
         }
 
         private static void AddRopes()
@@ -97,12 +100,16 @@ namespace ForestAdventure
         {
             // values for 14f long Platform
             // enemyY = platformY +1.8f, movementBorderLeft = x - 6, movementBorderRight = x + 6
+            // enemyY = platformY +2.2f,
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.8f), 18f, 30f));
             Game.instance.AddGameObject(new Enemy(new Vector2(40f, 43.8f), 34f, 46f));
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 61.8f), 18f, 30f));
             Game.instance.AddGameObject(new Enemy(new Vector2(48f, 79.8f), 42f, 54f));
             Game.instance.AddGameObject(new Enemy(new Vector2(81f, 81.8f), 75f, 87f));
             Game.instance.AddGameObject(new Enemy(new Vector2(71f, 103.8f), 65f, 77f));
+
+            // Test-Gegner
+            Game.instance.AddGameObject(new Enemy(new Vector2(10f, 4.2f), 4f, 16f));
         }
     }
 }
