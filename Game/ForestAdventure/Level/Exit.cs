@@ -8,9 +8,9 @@ namespace ForestAdventure.Level
 {
     public class Exit : GameObject
     {
-        public Exit()
+        public Exit(Vector2 position)
         {
-            transform.position = new Vector2(60f, 97.8f);
+            transform.position = position;
 
             var bounds = new RectangleBounds(2f, 3f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Portal));

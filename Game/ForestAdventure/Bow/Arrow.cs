@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using ForestAdventure.Enemies;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
@@ -11,7 +13,6 @@ using OpenTK;
 
 namespace ForestAdventure.Bow
 {
-    // TODO add hit feedback
     public class Arrow : GameObject, IUpdateable, ICollision
     {
         private const float GRAVITY_CONSTANT = 9.81f;
@@ -30,9 +31,15 @@ namespace ForestAdventure.Bow
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
-            var arrowBounds = new RectangleBounds(3f, 0.3f);
+            var arrowBounds = new RectangleBounds(2f, 0.5f);
+            var colliderBounds = new RectangleBounds(0f, 0f, 0.5f, 0.5f);
+
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
-            AddComponent(new RectangleColliderComponent(this, arrowBounds, true));
+            AddComponent(new RectangleColliderComponent(this, colliderBounds, true));
+#if DEBUG
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
+#endif
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
@@ -41,13 +48,12 @@ namespace ForestAdventure.Bow
             {
                 case Player _:
                     break;
-                case HorizontalRope _:
-                    break;
                 case VerticalRope _:
                     break;
                 case Enemy _:
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
+                    Game.instance.AddGameObject(new EnemyHitOverlay());
                     break;
                 default:
                     if (lifeTime < arrowNoCollisionTime)

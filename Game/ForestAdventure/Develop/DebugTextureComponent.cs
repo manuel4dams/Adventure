@@ -14,7 +14,7 @@ namespace ForestAdventure.Develop
 
             var bound = new RectangleBounds(bounds);
             AddComponent(
-                new RectangleTextureRenderer(this, bound, Resources.Resources.EnemyRight, RenderScaleType.Crop));
+                new RectangleTextureRenderer(this, bound, Resources.Resources.Enemy, RenderScaleType.Crop));
             AddComponent(new DebugColliderEdgesComponent(this, bound));
             AddComponent(new DebugTransformPositionComponent(this));
         }
