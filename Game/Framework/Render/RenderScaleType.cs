@@ -4,8 +4,5 @@
     {
         Deform,
         Crop,
-        Fit,
-        FixedWidth,
-        FixedHeight,
     }
 }

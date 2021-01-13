@@ -35,7 +35,7 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
-            // Game.instance.AddGameObject(new ForestBackground());
+            Game.instance.AddGameObject(new ForestBackground());
             AddPlatforms();
             AddRopes();
             AddCheckpoints();

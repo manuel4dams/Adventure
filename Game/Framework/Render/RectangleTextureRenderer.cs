@@ -62,15 +62,6 @@ namespace Framework.Render
                 case RenderScaleType.Crop:
                     CropTexture(rectangle, size);
                     break;
-                case RenderScaleType.Fit:
-                    FitTexture(rectangle);
-                    break;
-                case RenderScaleType.FixedHeight:
-                    FixedHeightTexture(rectangle);
-                    break;
-                case RenderScaleType.FixedWidth:
-                    FixedWidthTexture(rectangle);
-                    break;
                 default:
                     throw new ArgumentException("Invalid " + nameof(RenderScaleType));
             }
@@ -114,21 +105,6 @@ namespace Framework.Render
             GL.TexCoord2(size.X, size.W);
             GL.Vertex2(rectangle.vertex4);
             GL.End();
-        }
-
-        private static void FitTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void FixedHeightTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void FixedWidthTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
         }
 
         private static int LoadTextureFromBitmap(Bitmap textureBitmap)
