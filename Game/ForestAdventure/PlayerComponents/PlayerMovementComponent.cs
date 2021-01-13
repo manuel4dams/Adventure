@@ -33,8 +33,6 @@ namespace ForestAdventure.PlayerComponents
         public GameObject gameObject { get; }
 
         // TODO climbing feedback is missing, player needs to know if he/she is climbing
-        // TODO maybe set player to fixed position when climbing?
-        // TODO show indicator when falling into enemy?
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;
