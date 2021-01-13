@@ -24,7 +24,7 @@ namespace ForestAdventure.PlayerComponents
             transform.position = position;
 
             var bodyBounds = new RectangleBounds(4f, 4f);
-            var colliderBounds = new RectangleBounds(0f, -0.3f, 1.2f, 3.5f);
+            var colliderBounds = new RectangleBounds(0f, -0.3f, 0.9f, 3.4f);
 
             AddComponent(new RectangleTextureRenderer(
                 this,
