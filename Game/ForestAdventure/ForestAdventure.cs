@@ -6,6 +6,7 @@ using ForestAdventure.Level;
 using ForestAdventure.Platforms;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
+using ForestAdventure.Traps;
 using Framework.Camera;
 using Framework.Game;
 using Framework.Transform;
@@ -40,6 +41,7 @@ namespace ForestAdventure
             AddRopes();
             AddCheckpoints();
             Game.instance.AddGameObject(new Exit(new Vector2(60f, 97.8f)));
+            AddTraps();
             AddEnemies();
             // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(new LevelMover());
@@ -104,6 +106,11 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Enemy(new Vector2(48f, 79.8f), 42f, 54f));
             Game.instance.AddGameObject(new Enemy(new Vector2(81f, 81.8f), 75f, 87f));
             Game.instance.AddGameObject(new Enemy(new Vector2(71f, 103.8f), 65f, 77f));
+        }
+
+        private static void AddTraps()
+        {
+            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(12f, 2f), 9f, 15f));
         }
     }
 }
