@@ -18,7 +18,7 @@ namespace ForestAdventure.Traps
             transform.position = position;
 
             var bodyBounds = new RectangleBounds(1f, 1f);
-            var colliderBounds = new RectangleBounds(0f, 0f, 1f, 1f);
+            var colliderBounds = new RectangleBounds(0f, 0f, 0.6f, 0.6f);
 
             AddComponent(new RectangleTextureRenderer(
                 this,
