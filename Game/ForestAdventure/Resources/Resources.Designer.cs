@@ -163,6 +163,16 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Spiked_Ball {
+            get {
+                object obj = ResourceManager.GetObject("Spiked_Ball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WoodenPlatform {
             get {
                 object obj = ResourceManager.GetObject("WoodenPlatform", resourceCulture);
