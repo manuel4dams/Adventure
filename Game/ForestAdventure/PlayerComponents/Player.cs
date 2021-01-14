@@ -24,8 +24,8 @@ namespace ForestAdventure.PlayerComponents
         {
             transform.position = position;
 
-            var bodyBounds = new RectangleBounds(2f, 3f);
-            var colliderBounds = new RectangleBounds(0f, -0.2f, 0.5f, 2.5f);
+            var bodyBounds = new RectangleBounds(4f, 4f);
+            var colliderBounds = new RectangleBounds(0f, -0.3f, 0.9f, 3.4f);
 
             AddComponent(new RectangleTextureRenderer(
                 this,
@@ -33,16 +33,16 @@ namespace ForestAdventure.PlayerComponents
                 Resources.Resources.Player,
                 RenderScaleType.Crop,
                 size: new Vector4(0f, 0.5f, 0.25f, 1f)));
-            AddComponent(new RectangleColliderComponent(this, colliderBounds));
-            AddComponent(new PlayerMovementComponent(this));
-            AddComponent(new CameraFollowObjectComponent(this));
             AddComponent(new RectangleTextureRenderer(
                 this,
                 bodyBounds,
                 Resources.Resources.Player_bow,
                 RenderScaleType.Crop,
                 size: new Vector4(0f, 0.5f, 0.25f, 1f)));
+            AddComponent(new RectangleColliderComponent(this, colliderBounds));
+            AddComponent(new PlayerMovementComponent(this));
             AddComponent(new BowComponent(this));
+            AddComponent(new CameraFollowObjectComponent(this));
 #if DEBUG
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));

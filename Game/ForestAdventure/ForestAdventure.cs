@@ -43,8 +43,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Exit(new Vector2(60f, 97.8f)));
             AddTraps();
             AddEnemies();
-            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            Game.instance.AddGameObject(new LevelMover());
+            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(0f, -20f), 500));
         }
@@ -99,7 +98,8 @@ namespace ForestAdventure
         private static void AddEnemies()
         {
             // values for 14f long Platform
-            // enemyY = platformY +1.8f, movementBorderLeft = x - 6, movementBorderRight = x + 6
+            // enemyY = platformY +2.3f, movementBorderLeft = x - 6, movementBorderRight = x + 6
+
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 19.8f), 18f, 30f));
             Game.instance.AddGameObject(new Enemy(new Vector2(40f, 43.8f), 34f, 46f));
             Game.instance.AddGameObject(new Enemy(new Vector2(24f, 61.8f), 18f, 30f));

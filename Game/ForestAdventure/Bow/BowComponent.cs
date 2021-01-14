@@ -16,6 +16,7 @@ namespace ForestAdventure.Bow
         private RectangleTextureRenderer bowRenderer;
 
         public GameObject gameObject { get; }
+        public bool enabled;
 
         public BowComponent(GameObject gameObject)
         {
@@ -25,6 +26,11 @@ namespace ForestAdventure.Bow
 
         public void Update(float deltaTime)
         {
+            if (!enabled)
+            {
+                bowRenderer.setCropData(new Vector4(0, 0, 0, 0));
+                return;
+            }
             var keyboardState = Keyboard.GetState();
             shotTimer += deltaTime;
             var mousePosition = Camera.instance.MousePositionToWorld();

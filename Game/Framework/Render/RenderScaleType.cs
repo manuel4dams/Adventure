@@ -4,5 +4,6 @@
     {
         Deform,
         Crop,
+        Tile,
     }
 }
