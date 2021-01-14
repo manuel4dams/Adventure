@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ForestAdventure.GameCamera;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;

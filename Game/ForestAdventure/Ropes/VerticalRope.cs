@@ -1,4 +1,5 @@
-﻿using Framework.Collision.Collider;
+﻿using System.Drawing;
+using Framework.Collision.Collider;
 using Framework.Development.Components;
 using Framework.Game;
 using Framework.Render;
@@ -18,6 +19,10 @@ namespace ForestAdventure.Ropes
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
             textureRenderer.setCropData(new Vector4(0, 0f, 1f, length / 2f));
+#if DEBUG
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
+#endif
         }
     }
 }
