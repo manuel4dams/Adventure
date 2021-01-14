@@ -18,12 +18,12 @@ namespace ForestAdventure.Traps
             transform.position = position;
 
             var bodyBounds = new RectangleBounds(1f, 1f);
-            var colliderBounds = new RectangleBounds(0f, 0f, 1f, 1f);
+            var colliderBounds = new RectangleBounds(0f, 0f, 0.6f, 0.6f);
 
             AddComponent(new RectangleTextureRenderer(
                 this,
                 bodyBounds,
-                Resources.Resources.WoodenPlatform,
+                Resources.Resources.Spiked_Ball,
                 RenderScaleType.Crop));
             AddComponent(new RectangleColliderComponent(this, bodyBounds, true));
             AddComponent(new TrapMovementComponent(this, movementBorderLeft, movementBorderRight));

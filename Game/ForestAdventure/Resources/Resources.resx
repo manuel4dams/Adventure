@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Arrow\Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
-  </data>
   <data name="ForestBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ForestBackground\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
   </data>
@@ -133,8 +130,8 @@
   <data name="Portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Portal\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
   </data>
-  <data name="WoodenPlatform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>WoodenPlatform\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
+  <data name="Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Arrow\Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
   </data>
   <data name="Enemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>enemy\enemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,7 +140,7 @@
     <value>player\player_bow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Platform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>woodenplatform\platform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>WoodenPlatform\platform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>player\player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

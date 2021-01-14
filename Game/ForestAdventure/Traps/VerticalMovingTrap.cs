@@ -23,7 +23,7 @@ namespace ForestAdventure.Traps
             AddComponent(new RectangleTextureRenderer(
                 this,
                 bodyBounds,
-                Resources.Resources.WoodenPlatform,
+                Resources.Resources.Spiked_Ball,
                 RenderScaleType.Crop));
             AddComponent(new RectangleColliderComponent(this, bodyBounds, true));
             AddComponent(new TrapMovementComponent(
