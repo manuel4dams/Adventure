@@ -43,7 +43,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
             AddTraps();
             AddEnemies();
-            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new Player(new Vector2(205f, 62f)));
             // Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
@@ -101,7 +101,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Enemy(new Vector2(33f, 60.3f), 27f, 39f));
             Game.instance.AddGameObject(new Enemy(new Vector2(54f, 60.3f), 48f, 60f));
             Game.instance.AddGameObject(new Enemy(new Vector2(180f, 78.3f), 174f, 186f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.3f), 194f, 206f));
+            // Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.3f), 194f, 206f));
         }
 
         private static void AddTraps()
