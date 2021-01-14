@@ -78,8 +78,7 @@ namespace ForestAdventure.PlayerComponents
                 if (climbable)
                 {
                     left *= 0.1f;
-                    right *= 0.1f;
-                }
+                    right *= 0.1f;                }
             }
 
             if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing && climbable)

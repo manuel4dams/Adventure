@@ -113,6 +113,26 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Platform {
+            get {
+                object obj = ResourceManager.GetObject("Platform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Platform_test {
+            get {
+                object obj = ResourceManager.GetObject("Platform_test", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Player {
             get {
                 object obj = ResourceManager.GetObject("Player", resourceCulture);
@@ -126,6 +146,16 @@ namespace ForestAdventure.Resources {
         internal static System.Drawing.Bitmap Player_bow {
             get {
                 object obj = ResourceManager.GetObject("Player_bow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Player_Climbing {
+            get {
+                object obj = ResourceManager.GetObject("Player_Climbing", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
