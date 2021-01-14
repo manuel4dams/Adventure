@@ -101,13 +101,13 @@ namespace ForestAdventure.PlayerComponents
                         {
                             if (gameObject.transform.position.X < rope.position.X)
                             {
-                                playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0f,
-                                    (animationFrame + 1) * 0.25f, 0.5f));
+                                playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0.33333f,
+                                    (animationFrame + 1) * 0.25f, 0.66666f));
                             }
                             else
                             {
-                                playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0f,
-                                     animationFrame * 0.25f, 0.5f));
+                                playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
+                                     animationFrame * 0.25f, 0.66666f));
                             }
 
                             animationFrame++;
@@ -126,12 +126,12 @@ namespace ForestAdventure.PlayerComponents
                         if (gameObject.transform.position.X < rope.position.X)
                         {
                             gameObject.transform.position.X = rope.position.X - 0.6f;
-                            playerRenderer.setCropData(new Vector4(0f, 0f, 0.25f, 0.5f));
+                            playerRenderer.setCropData(new Vector4(0f, 0.33333f, 0.25f, 0.66666f));
                         }
                         else
                         {
                             gameObject.transform.position.X = rope.position.X + 0.6f;
-                            playerRenderer.setCropData(new Vector4(0f, 0f, 0.25f, 0.5f));
+                            playerRenderer.setCropData(new Vector4(0.25f, 0.33333f, 0f, 0.66666f));
                         }
                     }
 
@@ -185,43 +185,57 @@ namespace ForestAdventure.PlayerComponents
             gameObject.transform.position += velocity;
             var mousePosition = Camera.instance.MousePositionToWorld();
             var pos = mousePosition - gameObject.transform.position;
-            if (velocity.X != 0)
+            if (jumpAllowed)
             {
-                if (animationTimer <= 0)
+                if (velocity.X != 0)
                 {
-                    if (pos.X > 0)
+                    if (animationTimer <= 0)
                     {
-                        playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0.5f,
-                            (animationFrame + 1) * 0.25f, 1f));
-                    }
-                    else
-                    {
-                        playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0.5f,
-                            animationFrame * 0.25f, 1f));
+                        if (pos.X > 0)
+                        {
+                            playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0.66666f,
+                                (animationFrame + 1) * 0.25f, 1f));
+                        }
+                        else
+                        {
+                            playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0.66666f,
+                                animationFrame * 0.25f, 1f));
+                        }
+
+                        animationFrame++;
+                        if (animationFrame >= 4)
+                        {
+                            animationFrame = 0;
+                        }
+
+                        animationTimer = ANIMATION_TIMER_RESET;
                     }
 
-                    animationFrame++;
-                    if (animationFrame >= 4)
-                    {
-                        animationFrame = 0;
-                    }
-
-                    animationTimer = ANIMATION_TIMER_RESET;
+                    animationTimer -= deltaTime;
                 }
-
-                animationTimer -= deltaTime;
             }
-            else if (!(climbing && climbable))
+            else if (!jumpAllowed && !(climbable && climbing))
             {
                 if (pos.X > 0)
                 {
-                    playerRenderer.setCropData(new Vector4(0, 0.5f, 0.25f, 1f));
+                    playerRenderer.setCropData(new Vector4(0f, 0f, 0.25f, 0.33333f));
+                }
+                else
+                {
+                    playerRenderer.setCropData(new Vector4(0.25f, 0f, 0f, 0.33333f));
+                }
+            }
+
+            if (!(climbing && climbable) && velocity.X == 0 && jumpAllowed)
+            {
+                if (pos.X > 0)
+                {
+                    playerRenderer.setCropData(new Vector4(0, 0.66666f, 0.25f, 1f));
                     animationTimer = 0;
                 }
-
-                if (pos.X <= 0)
+                else
                 {
-                    playerRenderer.setCropData(new Vector4(0.25f, 0.5f, 0f, 1f));
+                    playerRenderer.setCropData(new Vector4(0.25f, 0.66666f, 0f, 1f));
                     animationTimer = 0;
                 }
             }
