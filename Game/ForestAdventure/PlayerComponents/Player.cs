@@ -66,7 +66,7 @@ namespace ForestAdventure.PlayerComponents
                     Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position));
                     break;
                 case Checkpoint _:
-                    checkpointPosition = other.gameObject.transform.position;
+                    checkpointPosition = other.gameObject.transform.position + new Vector2(0f,1f);
                     break;
                 case BottomLevelBorder _:
                     transform.position = checkpointPosition;
