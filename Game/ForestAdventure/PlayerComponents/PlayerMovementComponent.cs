@@ -1,3 +1,4 @@
+using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
@@ -5,6 +6,7 @@ using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
+using Framework.Transform;
 using OpenTK;
 using OpenTK.Input;
 
@@ -31,6 +33,8 @@ namespace ForestAdventure.PlayerComponents
         private float animationTimer = 0;
 
         public GameObject gameObject { get; }
+        private Transform rope;
+        private BowComponent bow;
 
         // TODO climbing feedback is missing, player needs to know if he/she is climbing
         public PlayerMovementComponent(GameObject gameObject)
@@ -54,6 +58,7 @@ namespace ForestAdventure.PlayerComponents
                     break;
                 case VerticalRope _:
                     climbable = true;
+                    rope = other.gameObject.transform;
                     break;
             }
 
@@ -65,6 +70,12 @@ namespace ForestAdventure.PlayerComponents
 
         public void Update(float deltaTime)
         {
+            if (bow == null)
+            {
+                bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
+            }
+
+            bow.enabled = true;
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
@@ -74,11 +85,58 @@ namespace ForestAdventure.PlayerComponents
             var up = 0f;
             if (climbable && climbing)
             {
-                velocity.Y = 0f;
                 if (climbable)
                 {
-                    left *= 0.1f;
-                    right *= 0.1f;                }
+                    left *= 0f;
+                    right *= 0f;
+                    if(bow == null)
+                    {
+                        bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
+                    }
+
+                    bow.enabled = false;
+                    if (velocity.Y != 0)
+                    {
+                        if (animationTimer <= 0)
+                        {
+                            if (gameObject.transform.position.X < rope.position.X)
+                            {
+                                playerRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0f,
+                                    (animationFrame + 1) * 0.25f, 0.5f));
+                            }
+                            else
+                            {
+                                playerRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0f,
+                                     animationFrame * 0.25f, 0.5f));
+                            }
+
+                            animationFrame++;
+                            if (animationFrame >= 4)
+                            {
+                                animationFrame = 0;
+                            }
+
+                            animationTimer = ANIMATION_TIMER_RESET;
+                        }
+
+                        animationTimer -= deltaTime;
+                    }
+                    else
+                    {
+                        if (gameObject.transform.position.X < rope.position.X)
+                        {
+                            gameObject.transform.position.X = rope.position.X - 0.6f;
+                            playerRenderer.setCropData(new Vector4(0f, 0f, 0.25f, 0.5f));
+                        }
+                        else
+                        {
+                            gameObject.transform.position.X = rope.position.X + 0.6f;
+                            playerRenderer.setCropData(new Vector4(0f, 0f, 0.25f, 0.5f));
+                        }
+                    }
+
+                    velocity.Y = 0f;
+                }
             }
 
             if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing && climbable)
@@ -153,15 +211,19 @@ namespace ForestAdventure.PlayerComponents
 
                 animationTimer -= deltaTime;
             }
-            else if (pos.X > 0)
+            else if (!(climbing && climbable))
             {
-                playerRenderer.setCropData(new Vector4(0, 0.5f, 0.25f, 1f));
-                animationTimer = 0;
-            }
-            else if (pos.X <= 0)
-            {
-                playerRenderer.setCropData(new Vector4(0.25f, 0.5f, 0f, 1f));
-                animationTimer = 0;
+                if (pos.X > 0)
+                {
+                    playerRenderer.setCropData(new Vector4(0, 0.5f, 0.25f, 1f));
+                    animationTimer = 0;
+                }
+
+                if (pos.X <= 0)
+                {
+                    playerRenderer.setCropData(new Vector4(0.25f, 0.5f, 0f, 1f));
+                    animationTimer = 0;
+                }
             }
             
             climbable = false;
