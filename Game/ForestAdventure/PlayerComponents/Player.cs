@@ -5,6 +5,7 @@ using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
 using ForestAdventure.GameEnding;
 using ForestAdventure.Level;
+using ForestAdventure.Traps;
 using Framework.Collision.Collider;
 using Framework.Development.Components;
 using Framework.Game;
@@ -53,6 +54,12 @@ namespace ForestAdventure.PlayerComponents
             switch (other.gameObject)
             {
                 case Enemy _:
+                    transform.position = checkpointPosition;
+                    break;
+                case HorizontalMovingTrap _:
+                    transform.position = checkpointPosition;
+                    break;
+                case VerticalMovingTrap _:
                     transform.position = checkpointPosition;
                     break;
                 case Exit _:

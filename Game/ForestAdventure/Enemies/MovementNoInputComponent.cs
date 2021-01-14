@@ -43,7 +43,6 @@ namespace ForestAdventure.Enemies
             if (leftRight)
             {
                 gameObject.transform.position.X -= MOVEMENT_SPEED * deltaTime;
-                gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
                 if (gameObject.transform.position.X < movementBorderLeft)
@@ -68,7 +67,6 @@ namespace ForestAdventure.Enemies
             else
             {
                 gameObject.transform.position.X += MOVEMENT_SPEED * deltaTime;
-                gameObject.transform.position.X = Math.Max(gameObject.transform.position.X, -1f);
 
                 // turn when border reached
                 if (gameObject.transform.position.X > movementBorderRight)
