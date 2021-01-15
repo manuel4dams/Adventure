@@ -1,4 +1,6 @@
-﻿using Framework.Collision.Collider;
+﻿using System.Drawing;
+using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
@@ -8,13 +10,19 @@ namespace ForestAdventure.Ropes
 {
     public class VerticalRope : GameObject
     {
-        public VerticalRope(Vector2 position, float height)
+        public VerticalRope(Vector2 position, float length)
         {
             transform.position = position;
 
-            var bounds = new RectangleBounds(0.10f, height);
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Rope));
+            var bounds = new RectangleBounds(0.35f, length);
+            var textureRenderer = new RectangleTextureRenderer(this, bounds, Resources.Resources.Rope, RenderScaleType.Tile);
+            AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
+            textureRenderer.setCropData(new Vector4(0, 0f, 1f, length / 2f));
+#if DEBUG
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
+#endif
         }
     }
 }

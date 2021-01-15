@@ -33,6 +33,7 @@ namespace Framework.Development.Components
             GL.Vertex2(pos - Vector2.UnitY * lineLength);
             GL.Vertex2(pos + Vector2.UnitY * lineLength);
             GL.End();
+            GL.Color4(Color.White);
         }
     }
 }

@@ -73,9 +73,9 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BrickWall {
+        internal static System.Drawing.Bitmap Checkpoint {
             get {
-                object obj = ResourceManager.GetObject("BrickWall", resourceCulture);
+                object obj = ResourceManager.GetObject("Checkpoint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,19 +83,9 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EnemyLeft {
+        internal static System.Drawing.Bitmap Enemy {
             get {
-                object obj = ResourceManager.GetObject("EnemyLeft", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap EnemyRight {
-            get {
-                object obj = ResourceManager.GetObject("EnemyRight", resourceCulture);
+                object obj = ResourceManager.GetObject("Enemy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +103,9 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GameOver {
+        internal static System.Drawing.Bitmap GameWon {
             get {
-                object obj = ResourceManager.GetObject("GameOver", resourceCulture);
+                object obj = ResourceManager.GetObject("GameWon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +113,9 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GameWon {
+        internal static System.Drawing.Bitmap Platform {
             get {
-                object obj = ResourceManager.GetObject("GameWon", resourceCulture);
+                object obj = ResourceManager.GetObject("Platform", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,66 +143,6 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Player1 {
-            get {
-                object obj = ResourceManager.GetObject("Player1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerDown {
-            get {
-                object obj = ResourceManager.GetObject("PlayerDown", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerJump {
-            get {
-                object obj = ResourceManager.GetObject("PlayerJump", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerLeft {
-            get {
-                object obj = ResourceManager.GetObject("PlayerLeft", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerRight {
-            get {
-                object obj = ResourceManager.GetObject("PlayerRight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerUp {
-            get {
-                object obj = ResourceManager.GetObject("PlayerUp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Portal {
             get {
                 object obj = ResourceManager.GetObject("Portal", resourceCulture);
@@ -233,29 +163,9 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TowerBackground {
+        internal static System.Drawing.Bitmap Spiked_Ball {
             get {
-                object obj = ResourceManager.GetObject("TowerBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WoodenDoor {
-            get {
-                object obj = ResourceManager.GetObject("WoodenDoor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap WoodenPlatform {
-            get {
-                object obj = ResourceManager.GetObject("WoodenPlatform", resourceCulture);
+                object obj = ResourceManager.GetObject("Spiked_Ball", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -62,20 +62,28 @@ namespace Framework.Render
                 case RenderScaleType.Crop:
                     CropTexture(rectangle, size);
                     break;
-                case RenderScaleType.Fit:
-                    FitTexture(rectangle);
-                    break;
-                case RenderScaleType.FixedHeight:
-                    FixedHeightTexture(rectangle);
-                    break;
-                case RenderScaleType.FixedWidth:
-                    FixedWidthTexture(rectangle);
+                case RenderScaleType.Tile:
+                    TileTexture(rectangle, size);
                     break;
                 default:
                     throw new ArgumentException("Invalid " + nameof(RenderScaleType));
             }
 
             GL.Disable(EnableCap.Texture2D);
+        }
+
+        private void TileTexture(Quad rectangle, Vector4 size)
+        {
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(size.X, size.Y);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(size.Z, size.Y);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(size.Z, size.W);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(size.X, size.W);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
         }
 
         public void Dispose()
@@ -114,21 +122,6 @@ namespace Framework.Render
             GL.TexCoord2(size.X, size.W);
             GL.Vertex2(rectangle.vertex4);
             GL.End();
-        }
-
-        private static void FitTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void FixedHeightTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void FixedWidthTexture(Quad rectangle)
-        {
-            throw new NotImplementedException();
         }
 
         private static int LoadTextureFromBitmap(Bitmap textureBitmap)

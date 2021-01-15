@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ForestAdventure.GameCamera;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
@@ -11,26 +12,15 @@ namespace ForestAdventure.GameEnding
 {
     public class GameEndingOverlay : GameObject, IUpdateable
     {
-        public GameEndingOverlay(GameObject gameObject, Vector2 position, bool gameWon)
+        public GameEndingOverlay(GameObject gameObject, Vector2 position)
         {
             Game.instance.RemoveGameObject(gameObject);
 
             var textureBounds = new RectangleBounds(new Vector2(15f, 5f));
             var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));
-
-            if (gameWon)
-            {
-                transform.position = position;
-                AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
-                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameWon));
-            }
-            else
-            {
-                transform.position = position;
-                AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Red)));
-                AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameOver));
-            }
-
+            transform.position = position;
+            AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
+            AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameWon));
             AddComponent(new CameraFollowObjectComponent(this));
         }
 

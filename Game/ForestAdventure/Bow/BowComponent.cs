@@ -8,7 +8,6 @@ using OpenTK.Input;
 
 namespace ForestAdventure.Bow
 {
-    // TODO maybe limit ammo count?
     public class BowComponent : IComponent, IUpdateable
     {
         private const float SHOT_COOLDOWN = 1f;
@@ -17,6 +16,7 @@ namespace ForestAdventure.Bow
         private RectangleTextureRenderer bowRenderer;
 
         public GameObject gameObject { get; }
+        public bool enabled;
 
         public BowComponent(GameObject gameObject)
         {
@@ -26,6 +26,12 @@ namespace ForestAdventure.Bow
 
         public void Update(float deltaTime)
         {
+            if (!enabled)
+            {
+                bowRenderer.setCropData(new Vector4(0, 0, 0, 0));
+                return;
+            }
+            var keyboardState = Keyboard.GetState();
             shotTimer += deltaTime;
             var mousePosition = Camera.instance.MousePositionToWorld();
             var pos = mousePosition - gameObject.transform.position;
@@ -33,7 +39,11 @@ namespace ForestAdventure.Bow
             var angle = MathF.Atan2((pos.X), (pos.Y));
             var Y = 0f;
             var W = 0f;
-            if (Mouse.GetState().IsButtonDown(MouseButton.Left) && shotTimer >= SHOT_COOLDOWN)
+            if (Mouse.GetState().IsButtonDown(MouseButton.Left) && shotTimer >= SHOT_COOLDOWN &&
+                // check that non of the climbing keys is pressed
+                !(keyboardState.IsKeyDown(Key.ShiftLeft) ||
+                  keyboardState.IsKeyDown(Key.E) ||
+                  Mouse.GetState().IsButtonDown(MouseButton.Right)))
             {
                 ShootArrow();
                 shotTimer = 0f;

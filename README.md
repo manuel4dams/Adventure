@@ -11,7 +11,7 @@ The objective of this project is to apply the knowledge about git and teamwork w
     3) Open the netcoreapp3.1 folder
     4) Start the ForestAdventure.exe
 2.	Latest releases
-    2020/Sprint-5
+    2021/Sprint-5
 
 # Build and Test
 
