@@ -36,7 +36,6 @@ namespace ForestAdventure.PlayerComponents
         private Transform rope;
         private BowComponent bow;
 
-        // TODO climbing feedback is missing, player needs to know if he/she is climbing
         public PlayerMovementComponent(GameObject gameObject)
         {
             this.gameObject = gameObject;

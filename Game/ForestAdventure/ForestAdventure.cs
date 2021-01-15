@@ -14,8 +14,6 @@ using OpenTK;
 
 namespace ForestAdventure
 {
-    // TODO maybe add traps?
-    // TODO add bigger and cooler level when hitboxes and textures are finished and all features are implemented
     public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
@@ -36,6 +34,7 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
+            // TODO implement Background
             // Game.instance.AddGameObject(new ForestBackground());
             AddRopes();
             AddPlatforms();
@@ -43,8 +42,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
             AddTraps();
             AddEnemies();
-            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            Game.instance.AddGameObject(new LevelMover());
+            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
