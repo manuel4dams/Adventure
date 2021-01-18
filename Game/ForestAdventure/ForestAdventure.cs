@@ -43,8 +43,8 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
             AddTraps();
             AddEnemies();
-            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            // Game.instance.AddGameObject(new LevelMover());
+            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
@@ -71,7 +71,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(145f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(160f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(180f, 76f), 14f));
-            Game.instance.AddGameObject(new Platform(new Vector2(195f, 110f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(195f, 90f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(200f, 56f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(214f, 60f), 6f));
         }
@@ -80,7 +80,7 @@ namespace ForestAdventure
         {
             Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 13f), 26f));
             Game.instance.AddGameObject(new VerticalRope(new Vector2(-8f, 43f), 30f));
-            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 86f), 48f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 76f), 28f));
         }
 
         private static void AddCheckpoints()
