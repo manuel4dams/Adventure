@@ -70,7 +70,7 @@ namespace Framework.Game
         {
             // clear the texture buffer to prevent trailing textures
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            
+
             GL.Enable(EnableCap.Texture2D);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.Enable(EnableCap.Blend);

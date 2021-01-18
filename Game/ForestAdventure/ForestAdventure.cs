@@ -14,6 +14,8 @@ using OpenTK;
 
 namespace ForestAdventure
 {
+    // TODO maybe add traps?
+    // TODO add bigger and cooler level when hitboxes and textures are finished and all features are implemented
     public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
@@ -34,15 +36,15 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
-            // TODO implement Background
-            // Game.instance.AddGameObject(new ForestBackground());
+            Game.instance.AddGameObject(new ForestBackground());
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
             AddTraps();
             AddEnemies();
-            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
@@ -69,7 +71,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(145f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(160f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(180f, 76f), 14f));
-            Game.instance.AddGameObject(new Platform(new Vector2(195f, 110f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(195f, 90f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(200f, 56f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(214f, 60f), 6f));
         }
@@ -78,7 +80,7 @@ namespace ForestAdventure
         {
             Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 13f), 26f));
             Game.instance.AddGameObject(new VerticalRope(new Vector2(-8f, 43f), 30f));
-            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 86f), 48f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 76f), 28f));
         }
 
         private static void AddCheckpoints()
@@ -104,14 +106,14 @@ namespace ForestAdventure
         private static void AddTraps()
         {
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 80.5f), 84f, 90f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f,89.5f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(96f, 80.5f), 94f, 100f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(104f, 80.5f), 104f, 110f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(105f, 81f), 80.5f,89.5f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(105f, 81f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(116f, 80.5f), 114f, 118f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(153f, 88f), 74f,88f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(153f, 88f), 74f, 88f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(160f, 76.5f), 157f, 163f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f,88f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f, 88f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 74f), 190f, 198f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 68f), 190f, 198f));
         }
