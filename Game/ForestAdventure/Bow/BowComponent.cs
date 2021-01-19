@@ -28,7 +28,7 @@ namespace ForestAdventure.Bow
         {
             if (!enabled)
             {
-                bowRenderer.setCropData(new Vector4(0, 0, 0, 0));
+                bowRenderer.SetCropData(new Vector4(0, 0, 0, 0));
                 return;
             }
             var keyboardState = Keyboard.GetState();
@@ -95,34 +95,34 @@ namespace ForestAdventure.Bow
             {
                 if (shotTimer >= SHOT_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0f, Y, 0.33333f, W));
+                    bowRenderer.SetCropData(new Vector4(0f, Y, 0.33333f, W));
                 }
 
                 if (shotTimer >= 0 && shotTimer < (SHOT_COOLDOWN / 2))
                 {
-                    bowRenderer.setCropData(new Vector4(0.33333f, Y, 0.66666f, W));
+                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0.66666f, W));
                 }
 
                 if (shotTimer >= (SHOT_COOLDOWN / 2) && shotTimer < SHOT_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0.66666f, Y, 1f, W));
+                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 1f, W));
                 }
             }
             else
             {
                 if (shotTimer >= SHOT_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0.33333f, Y, 0f, W));
+                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0f, W));
                 }
 
                 if (shotTimer >= 0 && shotTimer < (SHOT_COOLDOWN / 2))
                 {
-                    bowRenderer.setCropData(new Vector4(0.66666f, Y, 0.33333f, W));
+                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 0.33333f, W));
                 }
 
                 if (shotTimer >= (SHOT_COOLDOWN / 2) && shotTimer < SHOT_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(1f, Y, 0.66666f, W));
+                    bowRenderer.SetCropData(new Vector4(1f, Y, 0.66666f, W));
                 }
             }
         }

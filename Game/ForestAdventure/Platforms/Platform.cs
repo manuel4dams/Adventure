@@ -18,7 +18,7 @@ namespace ForestAdventure.Platforms
             var textureRenderer = new RectangleTextureRenderer(this, bounds, Resources.Resources.Platform, RenderScaleType.Tile);
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
-            textureRenderer.setCropData(new Vector4(0f, 0.71875f, length / 2f, 1f));
+            textureRenderer.SetCropData(new Vector4(0f, 0.71875f, length / 2f, 1f));
 #if DEBUG
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));

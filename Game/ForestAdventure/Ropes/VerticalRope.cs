@@ -18,7 +18,7 @@ namespace ForestAdventure.Ropes
             var textureRenderer = new RectangleTextureRenderer(this, bounds, Resources.Resources.Rope, RenderScaleType.Tile);
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
-            textureRenderer.setCropData(new Vector4(0, 0f, 1f, length / 2f));
+            textureRenderer.SetCropData(new Vector4(0, 0f, 1f, length / 2f));
 #if DEBUG
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
             AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
