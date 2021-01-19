@@ -11,6 +11,7 @@ namespace ForestAdventure.Bow
     public class BowComponent : IComponent, IUpdateable
     {
         private const float SHOT_COOLDOWN = 1f;
+        private const float SHOT_ANIMATION_COOLDOWN = 0.9f;
 
         private float shotTimer = SHOT_COOLDOWN;
         private RectangleTextureRenderer bowRenderer;
@@ -93,34 +94,34 @@ namespace ForestAdventure.Bow
 
             if (angle >= 0)
             {
-                if (shotTimer >= SHOT_COOLDOWN)
+                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
                 {
                     bowRenderer.setCropData(new Vector4(0f, Y, 0.33333f, W));
                 }
 
-                if (shotTimer >= 0 && shotTimer < (SHOT_COOLDOWN / 2))
+                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
                 {
                     bowRenderer.setCropData(new Vector4(0.33333f, Y, 0.66666f, W));
                 }
 
-                if (shotTimer >= (SHOT_COOLDOWN / 2) && shotTimer < SHOT_COOLDOWN)
+                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
                 {
                     bowRenderer.setCropData(new Vector4(0.66666f, Y, 1f, W));
                 }
             }
             else
             {
-                if (shotTimer >= SHOT_COOLDOWN)
+                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
                 {
                     bowRenderer.setCropData(new Vector4(0.33333f, Y, 0f, W));
                 }
 
-                if (shotTimer >= 0 && shotTimer < (SHOT_COOLDOWN / 2))
+                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
                 {
                     bowRenderer.setCropData(new Vector4(0.66666f, Y, 0.33333f, W));
                 }
 
-                if (shotTimer >= (SHOT_COOLDOWN / 2) && shotTimer < SHOT_COOLDOWN)
+                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
                 {
                     bowRenderer.setCropData(new Vector4(1f, Y, 0.66666f, W));
                 }
