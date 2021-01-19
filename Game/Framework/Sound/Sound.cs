@@ -3,6 +3,7 @@ using NAudio.Wave;
 
 namespace Framework.Sound
 {
+    // TODO unclean implementation, needs testing and refactoring
     public class Sound
     {
         private readonly WaveFileReader audioFile;

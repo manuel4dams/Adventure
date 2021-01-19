@@ -2,6 +2,7 @@ using NAudio.Wave;
 
 namespace Framework.Sound
 {
+    // TODO check whats rely needed
     // Implementation from post https://markheath.net/post/looped-playback-in-net-with-naudio
     public class LoopStream : WaveStream
     {
