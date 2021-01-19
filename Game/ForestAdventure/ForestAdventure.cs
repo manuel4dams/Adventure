@@ -24,7 +24,6 @@ namespace ForestAdventure
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
-            Game.instance.AddGameObject(camera);
             InitLevel();
             Game.instance.Run();
         }
@@ -37,6 +36,7 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
+            Game.instance.AddGameObject(camera);
             AddBackground();
             AddRopes();
             AddPlatforms();
@@ -46,7 +46,6 @@ namespace ForestAdventure
             AddEnemies();
             Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             // Game.instance.AddGameObject(new LevelMover());
-            Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
 
@@ -115,6 +114,7 @@ namespace ForestAdventure
 
         private static void AddTraps()
         {
+            return;
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 80.5f), 84f, 90f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 89.5f), 84f, 90f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f,89.5f));

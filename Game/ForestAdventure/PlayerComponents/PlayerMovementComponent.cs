@@ -1,5 +1,6 @@
 using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
+using ForestAdventure.Level;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
@@ -64,7 +65,7 @@ namespace ForestAdventure.PlayerComponents
                     break;
             }
 
-            if ((other.gameObject is Enemy) || (other.gameObject is HorizontalMovingTrap) || (other.gameObject is VerticalMovingTrap))
+            if ((other.gameObject is Enemy) || (other.gameObject is HorizontalMovingTrap) || (other.gameObject is VerticalMovingTrap) || (other.gameObject is BottomLevelBorder))
             {
                 velocity = new Vector2(0, 0);
             }
