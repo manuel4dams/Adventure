@@ -1,5 +1,6 @@
 using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
+using ForestAdventure.Level;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
