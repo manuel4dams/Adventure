@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Drawing;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
-using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;

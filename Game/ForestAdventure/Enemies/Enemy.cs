@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using Framework.Collision.Collider;
-using Framework.Development.Components;
+﻿using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;

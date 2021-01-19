@@ -13,7 +13,6 @@ using OpenTK.Input;
 
 namespace ForestAdventure.PlayerComponents
 {
-    
     // set movement and jump to 0 on respawn
     // Sprung timer? oder reset 
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
@@ -66,7 +65,9 @@ namespace ForestAdventure.PlayerComponents
                     break;
             }
 
-            if ((other.gameObject is Enemy) || (other.gameObject is HorizontalMovingTrap) || (other.gameObject is VerticalMovingTrap))
+            if (other.gameObject is Enemy ||
+                other.gameObject is HorizontalMovingTrap ||
+                other.gameObject is VerticalMovingTrap)
             {
                 velocity = new Vector2(0, 0);
             }
@@ -87,7 +88,7 @@ namespace ForestAdventure.PlayerComponents
                            Mouse.GetState().IsButtonDown(MouseButton.Right);
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
-            if(velocity.Y <= MAX_FALL_SPEED)
+            if (velocity.Y <= MAX_FALL_SPEED)
             {
                 velocity.Y = MAX_FALL_SPEED;
             }

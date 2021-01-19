@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using ForestAdventure.Bow;
+﻿using ForestAdventure.Bow;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
@@ -7,7 +6,6 @@ using ForestAdventure.GameEnding;
 using ForestAdventure.Level;
 using ForestAdventure.Traps;
 using Framework.Collision.Collider;
-using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
