@@ -1,9 +1,6 @@
 ﻿using Framework.Game;
 using Framework.Interfaces;
 using OpenTK;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Framework.Render
 {
