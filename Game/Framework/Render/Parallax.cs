@@ -10,7 +10,7 @@ namespace Framework.Render
     public class Parallax : IComponent, IUpdateable
     {
         public GameObject gameObject { get; }
-        private Vector2 startPosition = new Vector2(0f, 0f);
+        private Vector2 startPosition = new Vector2(0f, 15f);
         private Transform.Transform target;
         private float parallaxFactor;
 
@@ -19,7 +19,7 @@ namespace Framework.Render
             this.gameObject = gameObject;
             this.target = Camera.Camera.instance.transform;
             this.parallaxFactor = parallaxFactor;
-            gameObject.transform.position = new Vector2(target.position.X, target.position.Y + 15f);
+            gameObject.transform.position = new Vector2(target.position.X, target.position.Y);
         }
 
         private Vector2 travel => target.position - startPosition;
