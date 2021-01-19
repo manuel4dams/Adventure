@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
@@ -11,7 +10,6 @@ using Framework.Camera;
 using Framework.Game;
 using Framework.Sound;
 using Framework.Transform;
-using NAudio.Wave;
 using OpenTK;
 
 namespace ForestAdventure
@@ -24,9 +22,7 @@ namespace ForestAdventure
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
             InitLevel();
-            // TODO sound should repeat playing
-            // add ambient sound to game
-            var sound = new Sound(Resources.Resources.Ambient_DutchForest);
+            var sound = new Sound(Resources.Resources.Ambient_DutchForest, true);
             sound.Play();
 
             Game.instance.Run();
