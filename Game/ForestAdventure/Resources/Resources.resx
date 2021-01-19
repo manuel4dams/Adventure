@@ -166,4 +166,13 @@
   <data name="Ambient_DutchForest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Audio\Ambient\dutch_forrest.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
   </data>
+  <data name="Arrow_hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Audio\Arrow\Hit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
+  </data>
+  <data name="Arrow_enemy_hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Audio\Arrow\Enemy_hit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
+  </data>
+  <data name="Arrow_miss" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Audio\Arrow\Miss.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
+  </data>
 </root>

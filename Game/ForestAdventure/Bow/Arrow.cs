@@ -2,6 +2,7 @@
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
+using ForestAdventure.Platforms;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
@@ -9,6 +10,7 @@ using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
+using Framework.Sound;
 using OpenTK;
 
 namespace ForestAdventure.Bow
@@ -24,7 +26,10 @@ namespace ForestAdventure.Bow
         private float gravityVelocity;
         private bool gravityEnabled = true;
         private Vector2 force;
-
+        private readonly Sound soundArrowHit = new Sound(Resources.Resources.Arrow_hit);
+        private readonly Sound soundEnemyHit = new Sound(Resources.Resources.Arrow_enemy_hit);
+        private readonly Sound soundMiss = new Sound(Resources.Resources.Arrow_miss);
+        
         public Arrow(Vector2 force)
         {
             arrowNoCollisionTime = lifeTime - 0.04f;
@@ -45,19 +50,32 @@ namespace ForestAdventure.Bow
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
             switch (other.gameObject)
-            {
+            { 
                 case Player _:
+                    soundMiss.Play();
                     break;
                 case VerticalRope _:
+                    soundMiss.Play();
                     break;
                 case Checkpoint _:
+                    soundMiss.Play();
                     break;
                 case Exit _:
+                    soundMiss.Play();
                     break;
-                case Enemy _:
+                case Platform _:
+                    soundArrowHit.Play();
+                    Game.instance.RemoveGameObject(this);
+                    break;
+                case Arrow _:
+                    soundEnemyHit.Play();
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
-                    Game.instance.AddGameObject(new EnemyHitOverlay());
+                    break;
+                case Enemy _:
+                    soundEnemyHit.Play();
+                    Game.instance.RemoveGameObject(other.gameObject);
+                    Game.instance.RemoveGameObject(this);
                     break;
                 default:
                     if (lifeTime < arrowNoCollisionTime)
