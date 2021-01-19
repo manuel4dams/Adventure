@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
@@ -23,8 +24,8 @@ namespace ForestAdventure
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
-            InitLevel();
             Game.instance.AddGameObject(camera);
+            InitLevel();
             Game.instance.Run();
         }
 
@@ -36,7 +37,7 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
-            Game.instance.AddGameObject(new ForestBackground());
+            AddBackground();
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
@@ -47,6 +48,14 @@ namespace ForestAdventure
             // Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
+        }
+
+        private static void AddBackground()
+        {
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_0, 1f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_1, 0.95f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_2, 0.9f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_3, 0.75f));
         }
 
         private static void AddPlatforms()

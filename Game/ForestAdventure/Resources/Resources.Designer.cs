@@ -83,6 +83,46 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BackGround_v2_0 {
+            get {
+                object obj = ResourceManager.GetObject("BackGround_v2_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackGround_v2_1 {
+            get {
+                object obj = ResourceManager.GetObject("BackGround_v2_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackGround_v2_2 {
+            get {
+                object obj = ResourceManager.GetObject("BackGround_v2_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackGround_v2_3 {
+            get {
+                object obj = ResourceManager.GetObject("BackGround_v2_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Checkpoint {
             get {
                 object obj = ResourceManager.GetObject("Checkpoint", resourceCulture);
