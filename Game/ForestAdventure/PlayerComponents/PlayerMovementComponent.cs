@@ -2,6 +2,7 @@ using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
+using ForestAdventure.Traps;
 using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
@@ -22,6 +23,7 @@ namespace ForestAdventure.PlayerComponents
         private const float FALL_MULTIPLIER = 3.5f;
         private const float LOW_JUMP_MULTIPLIER = 2.25f;
         private const float ANIMATION_TIMER_RESET = 0.1f;
+        private const float MAX_FALL_SPEED = -40f;
 
         private float jumpTimer = JUMP_COOLDOWN;
         private float graceJumpTimer;
@@ -62,7 +64,7 @@ namespace ForestAdventure.PlayerComponents
                     break;
             }
 
-            if (other.gameObject is Enemy)
+            if ((other.gameObject is Enemy) || (other.gameObject is HorizontalMovingTrap) || (other.gameObject is VerticalMovingTrap))
             {
                 velocity = new Vector2(0, 0);
             }
@@ -83,6 +85,11 @@ namespace ForestAdventure.PlayerComponents
                            Mouse.GetState().IsButtonDown(MouseButton.Right);
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
+            if(velocity.Y <= MAX_FALL_SPEED)
+            {
+                velocity.Y = MAX_FALL_SPEED;
+            }
+
             if (climbable && climbing)
             {
                 if (climbable)
