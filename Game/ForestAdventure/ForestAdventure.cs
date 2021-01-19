@@ -9,7 +9,9 @@ using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
 using Framework.Camera;
 using Framework.Game;
+using Framework.Sound;
 using Framework.Transform;
+using NAudio.Wave;
 using OpenTK;
 
 namespace ForestAdventure
@@ -22,6 +24,11 @@ namespace ForestAdventure
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
             InitLevel();
+            // TODO sound should repeat playing
+            // add ambient sound to game
+            var sound = new Sound(Resources.Resources.Ambient_DutchForest);
+            sound.Play();
+
             Game.instance.Run();
         }
 
