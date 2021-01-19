@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
@@ -20,8 +21,8 @@ namespace ForestAdventure
         public static void Main()
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
-            InitLevel();
             Game.instance.AddGameObject(camera);
+            InitLevel();
             Game.instance.Run();
         }
 
@@ -33,7 +34,7 @@ namespace ForestAdventure
 
         private static void InitLevel()
         {
-            Game.instance.AddGameObject(new ForestBackground());
+            AddBackground();
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
@@ -43,6 +44,14 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(camera);
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
+        }
+
+        private static void AddBackground()
+        {
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_0, 1f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_1, 0.95f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_2, 0.9f));
+            Game.instance.AddGameObject(new ForestBackground(Resources.Resources.BackGround_v2_3, 0.75f));
         }
 
         private static void AddPlatforms()
@@ -91,12 +100,12 @@ namespace ForestAdventure
         private static void AddEnemies()
         {
             // values for 14f long Platform
-            // enemyY = platformY +2.3f, movementBorderLeft = x - 6, movementBorderRight = x + 6
-            Game.instance.AddGameObject(new Enemy(new Vector2(11f, 60.3f), 5f, 17f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(33f, 60.3f), 27f, 39f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(54f, 60.3f), 48f, 60f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(180f, 78.3f), 174f, 186f));
-            Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.3f), 194f, 206f));
+            // enemyY = platformY +2.2f, movementBorderLeft = x - 6, movementBorderRight = x + 6
+            Game.instance.AddGameObject(new Enemy(new Vector2(11f, 60.2f), 5f, 17f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(33f, 60.2f), 27f, 39f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(54f, 60.2f), 48f, 60f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(180f, 78.2f), 174f, 186f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.2f), 194f, 206f));
         }
 
         private static void AddTraps()

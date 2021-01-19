@@ -10,7 +10,6 @@ using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace Framework.Render
 {
-    // TODO fix black border on enemy and player
     public class RectangleTextureRenderer : IComponent, IRender, IDisposable
     {
         private readonly RectangleBounds rectangleBounds;
@@ -77,6 +76,34 @@ namespace Framework.Render
             this.size = size;
         }
 
+        private static void DeformTexture(Quad rectangle)
+        {
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(0f, 0f);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(1f, 0f);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(1f, 0.995f);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(0f, 0.995f);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
+        }
+
+        private static void CropTexture(Quad rectangle, Vector4 size)
+        {
+            GL.Begin(PrimitiveType.Quads);
+            GL.TexCoord2(size.X, size.Y);
+            GL.Vertex2(rectangle.vertex1);
+            GL.TexCoord2(size.Z, size.Y);
+            GL.Vertex2(rectangle.vertex2);
+            GL.TexCoord2(size.Z, size.W);
+            GL.Vertex2(rectangle.vertex3);
+            GL.TexCoord2(size.X, size.W);
+            GL.Vertex2(rectangle.vertex4);
+            GL.End();
+        }
+
         private static int LoadTextureFromBitmap(Bitmap textureBitmap)
         {
             GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
@@ -126,34 +153,6 @@ namespace Framework.Render
                 (int) TextureWrapMode.Repeat);
 
             return tex;
-        }
-
-        private static void DeformTexture(Quad rectangle)
-        {
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 1f);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 1f);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
-        }
-
-        private static void CropTexture(Quad rectangle, Vector4 size)
-        {
-            GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(size.X, size.Y);
-            GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(size.Z, size.Y);
-            GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(size.Z, size.W);
-            GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(size.X, size.W);
-            GL.Vertex2(rectangle.vertex4);
-            GL.End();
         }
 
         private static void TileTexture(Quad rectangle, Vector4 size)
