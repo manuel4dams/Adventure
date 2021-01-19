@@ -1,13 +1,12 @@
 using Framework.Collision.Collider;
 using Framework.Development.Components;
 using Framework.Game;
-using Framework.Render;
 using Framework.Shapes;
 using OpenTK;
 
 namespace ForestAdventure.Level
 {
-    public class BottomLevelBorder: GameObject
+    public class BottomLevelBorder : GameObject
     {
         public BottomLevelBorder(Vector2 position, float length)
         {

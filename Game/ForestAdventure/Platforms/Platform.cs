@@ -15,7 +15,8 @@ namespace ForestAdventure.Platforms
             transform.position = position;
 
             var bounds = new RectangleBounds(length, 0.5f);
-            var textureRenderer = new RectangleTextureRenderer(this, bounds, Resources.Resources.Platform, RenderScaleType.Tile);
+            var textureRenderer =
+                new RectangleTextureRenderer(this, bounds, Resources.Resources.Platform, RenderScaleType.Tile);
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
             textureRenderer.SetCropData(new Vector4(0f, 0.71875f, length / 2f, 1f));

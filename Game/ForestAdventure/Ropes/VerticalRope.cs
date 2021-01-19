@@ -15,7 +15,8 @@ namespace ForestAdventure.Ropes
             transform.position = position;
 
             var bounds = new RectangleBounds(0.35f, length);
-            var textureRenderer = new RectangleTextureRenderer(this, bounds, Resources.Resources.Rope, RenderScaleType.Tile);
+            var textureRenderer =
+                new RectangleTextureRenderer(this, bounds, Resources.Resources.Rope, RenderScaleType.Tile);
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, true, true));
             textureRenderer.SetCropData(new Vector4(0, 0f, 1f, length / 2f));

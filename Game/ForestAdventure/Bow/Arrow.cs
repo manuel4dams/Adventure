@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
+using ForestAdventure.Level;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using Framework.Collision.Collider;
@@ -49,6 +51,10 @@ namespace ForestAdventure.Bow
                 case Player _:
                     break;
                 case VerticalRope _:
+                    break;
+                case Checkpoint _:
+                    break;
+                case Exit _:
                     break;
                 case Enemy _:
                     Game.instance.RemoveGameObject(other.gameObject);

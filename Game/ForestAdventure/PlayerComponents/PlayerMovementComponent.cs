@@ -12,6 +12,9 @@ using OpenTK.Input;
 
 namespace ForestAdventure.PlayerComponents
 {
+    
+    // set movement and jump to 0 on respawn
+    // Sprung timer? oder reset 
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 15f;
@@ -88,7 +91,7 @@ namespace ForestAdventure.PlayerComponents
                 {
                     left *= 0f;
                     right *= 0f;
-                    if(bow == null)
+                    if (bow == null)
                     {
                         bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
                     }
@@ -106,7 +109,7 @@ namespace ForestAdventure.PlayerComponents
                             else
                             {
                                 playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
-                                     animationFrame * 0.25f, 0.66666f));
+                                    animationFrame * 0.25f, 0.66666f));
                             }
 
                             animationFrame++;
@@ -134,12 +137,12 @@ namespace ForestAdventure.PlayerComponents
                         }
                     }
 
-                    if(keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
+                    if (keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
                     {
                         gameObject.transform.position.X = rope.position.X - 0.6f;
                     }
 
-                    if(keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
+                    if (keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
                     {
                         gameObject.transform.position.X = rope.position.X + 0.6f;
                     }
@@ -248,7 +251,7 @@ namespace ForestAdventure.PlayerComponents
                     animationTimer = 0;
                 }
             }
-            
+
             climbable = false;
         }
     }

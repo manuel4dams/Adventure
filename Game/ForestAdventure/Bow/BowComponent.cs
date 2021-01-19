@@ -31,6 +31,7 @@ namespace ForestAdventure.Bow
                 bowRenderer.SetCropData(new Vector4(0, 0, 0, 0));
                 return;
             }
+
             var keyboardState = Keyboard.GetState();
             shotTimer += deltaTime;
             var mousePosition = Camera.instance.MousePositionToWorld();

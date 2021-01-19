@@ -11,6 +11,7 @@ namespace ForestAdventure.Bow
     {
         private float lifeTime = 0.02f;
 
+        // TODO add better enemy hit feedback
         public EnemyHitOverlay()
         {
             var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));

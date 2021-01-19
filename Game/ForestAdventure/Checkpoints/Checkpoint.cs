@@ -8,7 +8,7 @@ using OpenTK;
 
 namespace ForestAdventure.Checkpoints
 {
-    public class Checkpoint: GameObject
+    public class Checkpoint : GameObject
     {
         public Checkpoint(Vector2 position)
         {

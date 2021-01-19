@@ -10,6 +10,7 @@ using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace Framework.Render
 {
+    // TODO fix black border on enemy and player
     public class RectangleTextureRenderer : IComponent, IRender, IDisposable
     {
         private readonly RectangleBounds rectangleBounds;
