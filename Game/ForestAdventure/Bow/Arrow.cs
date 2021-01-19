@@ -26,10 +26,10 @@ namespace ForestAdventure.Bow
         private float gravityVelocity;
         private bool gravityEnabled = true;
         private Vector2 force;
-        private readonly Sound soundArrowHit = new Sound(Resources.Resources.Arrow_hit);
+        private readonly Sound soundHit = new Sound(Resources.Resources.Arrow_hit);
         private readonly Sound soundEnemyHit = new Sound(Resources.Resources.Arrow_enemy_hit);
         private readonly Sound soundMiss = new Sound(Resources.Resources.Arrow_miss);
-        
+
         public Arrow(Vector2 force)
         {
             arrowNoCollisionTime = lifeTime - 0.04f;
@@ -50,22 +50,23 @@ namespace ForestAdventure.Bow
         public void OnCollision(ICollider other, Vector2 touchOffset)
         {
             switch (other.gameObject)
-            { 
+            {
                 case Player _:
-                    soundMiss.Play();
                     break;
                 case VerticalRope _:
                     soundMiss.Play();
                     break;
                 case Checkpoint _:
-                    soundMiss.Play();
                     break;
                 case Exit _:
-                    soundMiss.Play();
                     break;
                 case Platform _:
-                    soundArrowHit.Play();
-                    Game.instance.RemoveGameObject(this);
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
                     break;
                 case Arrow _:
                     soundEnemyHit.Play();
@@ -80,6 +81,7 @@ namespace ForestAdventure.Bow
                 default:
                     if (lifeTime < arrowNoCollisionTime)
                     {
+                        soundHit.Play();
                         Game.instance.RemoveGameObject(this);
                     }
 

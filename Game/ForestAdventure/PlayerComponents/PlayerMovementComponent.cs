@@ -206,44 +206,51 @@ namespace ForestAdventure.PlayerComponents
             gameObject.transform.position += velocity;
             var mousePosition = Camera.instance.MousePositionToWorld();
             var pos = mousePosition - gameObject.transform.position;
-            if (jumpAllowed)
+            switch (jumpAllowed)
             {
-                if (velocity.X != 0)
+                case true:
                 {
-                    if (animationTimer <= 0)
+                    if (velocity.X != 0)
                     {
-                        if (pos.X > 0)
+                        if (animationTimer <= 0)
                         {
-                            playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.66666f,
-                                (animationFrame + 1) * 0.25f, 1f));
-                        }
-                        else
-                        {
-                            playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.66666f,
-                                animationFrame * 0.25f, 1f));
+                            if (pos.X > 0)
+                            {
+                                playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.66666f,
+                                    (animationFrame + 1) * 0.25f, 1f));
+                            }
+                            else
+                            {
+                                playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.66666f,
+                                    animationFrame * 0.25f, 1f));
+                            }
+
+                            animationFrame++;
+                            if (animationFrame >= 4)
+                            {
+                                animationFrame = 0;
+                            }
+
+                            animationTimer = ANIMATION_TIMER_RESET;
                         }
 
-                        animationFrame++;
-                        if (animationFrame >= 4)
-                        {
-                            animationFrame = 0;
-                        }
-
-                        animationTimer = ANIMATION_TIMER_RESET;
+                        animationTimer -= deltaTime;
                     }
 
-                    animationTimer -= deltaTime;
+                    break;
                 }
-            }
-            else if (!jumpAllowed && !(climbable && climbing))
-            {
-                if (pos.X > 0)
+                case false when !(climbable && climbing):
                 {
-                    playerRenderer.SetCropData(new Vector4(0f, 0f, 0.25f, 0.33333f));
-                }
-                else
-                {
-                    playerRenderer.SetCropData(new Vector4(0.25f, 0f, 0f, 0.33333f));
+                    if (pos.X > 0)
+                    {
+                        playerRenderer.SetCropData(new Vector4(0f, 0f, 0.25f, 0.33333f));
+                    }
+                    else
+                    {
+                        playerRenderer.SetCropData(new Vector4(0.25f, 0f, 0f, 0.33333f));
+                    }
+
+                    break;
                 }
             }
 
