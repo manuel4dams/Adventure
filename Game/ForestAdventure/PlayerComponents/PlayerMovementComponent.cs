@@ -135,6 +135,16 @@ namespace ForestAdventure.PlayerComponents
                         }
                     }
 
+                    if(keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
+                    {
+                        gameObject.transform.position.X = rope.position.X - 0.6f;
+                    }
+
+                    if(keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
+                    {
+                        gameObject.transform.position.X = rope.position.X + 0.6f;
+                    }
+
                     velocity.Y = 0f;
                 }
             }
