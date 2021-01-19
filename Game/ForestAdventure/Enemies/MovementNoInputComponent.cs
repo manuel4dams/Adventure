@@ -52,7 +52,7 @@ namespace ForestAdventure.Enemies
 
                 if (animationTimer <= 0)
                 {
-                    enemyRenderer.setCropData(new Vector4((animationFrame + 1) * 0.25f, 0f,
+                    enemyRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0f,
                         animationFrame * 0.25f, 1f));
 
                     animationFrame++;
@@ -76,7 +76,7 @@ namespace ForestAdventure.Enemies
 
                 if (animationTimer <= 0)
                 {
-                    enemyRenderer.setCropData(new Vector4(animationFrame * 0.25f, 0f,
+                    enemyRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0f,
                         (animationFrame + 1) * 0.25f, 1f));
 
                     animationFrame++;
