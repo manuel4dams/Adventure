@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
@@ -7,11 +8,13 @@ using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
 using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
 using Framework.Sound;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Bow
@@ -42,10 +45,11 @@ namespace ForestAdventure.Bow
 
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, colliderBounds, true));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
+            }
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)

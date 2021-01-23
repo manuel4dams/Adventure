@@ -1,6 +1,8 @@
 using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Shapes;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Level
@@ -13,9 +15,10 @@ namespace ForestAdventure.Level
 
             var bounds = new RectangleBounds(length, 1f);
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
+            }
         }
     }
 }
