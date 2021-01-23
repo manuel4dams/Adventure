@@ -5,6 +5,7 @@ using ForestAdventure.Level;
 using ForestAdventure.Platforms;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
+using ForestAdventure.Traps;
 using Framework.Collision.Collider;
 using Framework.Game;
 using Framework.Interfaces;
@@ -60,6 +61,12 @@ namespace ForestAdventure.Bow
                     break;
                 case Exit _:
                     break;
+                case VerticalMovingTrap _:
+                    soundMiss.Play();
+                    break;
+                case HorizontalMovingTrap _:
+                    soundMiss.Play();
+                    break;
                 case Platform _:
                     if (lifeTime < arrowNoCollisionTime)
                     {
@@ -81,7 +88,6 @@ namespace ForestAdventure.Bow
                 default:
                     if (lifeTime < arrowNoCollisionTime)
                     {
-                        soundHit.Play();
                         Game.instance.RemoveGameObject(this);
                     }
 
