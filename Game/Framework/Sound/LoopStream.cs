@@ -6,7 +6,7 @@ namespace Framework.Sound
     // Implementation from post https://markheath.net/post/looped-playback-in-net-with-naudio
     public class LoopStream : WaveStream
     {
-        WaveStream sourceStream;
+        private readonly WaveStream sourceStream;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoopStream"/> class.
@@ -17,7 +17,7 @@ namespace Framework.Sound
         public LoopStream(WaveStream sourceStream)
         {
             this.sourceStream = sourceStream;
-            this.EnableLooping = true;
+            EnableLooping = true;
         }
 
         /// <summary>
