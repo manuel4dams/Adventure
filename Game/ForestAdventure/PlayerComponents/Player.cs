@@ -17,6 +17,7 @@ namespace ForestAdventure.PlayerComponents
     public class Player : GameObject, ICollision
     {
         private Vector2 checkpointPosition;
+        private CheckpointAnimation currentCheckpoint;
 
         public Player(Vector2 position)
         {
@@ -64,7 +65,10 @@ namespace ForestAdventure.PlayerComponents
                     Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position));
                     break;
                 case Checkpoint _:
+                    currentCheckpoint?.setActive(false);
+                    currentCheckpoint = other.gameObject.GetComponent<CheckpointAnimation>(0) as CheckpointAnimation;
                     checkpointPosition = other.gameObject.transform.position + new Vector2(0f, 1f);
+                    currentCheckpoint.setActive(true);
                     break;
                 case BottomLevelBorder _:
                     transform.position = checkpointPosition;
