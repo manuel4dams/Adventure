@@ -124,12 +124,6 @@
   <data name="GameWon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>GameWon\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
   </data>
-  <data name="Checkpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Checkpoint\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Portal\dummy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
-  </data>
   <data name="Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Arrow\Arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral</value>
   </data>
@@ -165,5 +159,17 @@
   </data>
   <data name="BackGround_v2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>forestbackground\background_v2-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Checkpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>checkpoint\checkpoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Endscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>gamewon\endscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Portal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>portal\portal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Victory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>gamewon\victory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
