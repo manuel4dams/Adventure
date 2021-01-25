@@ -41,7 +41,7 @@ namespace ForestAdventure
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
-            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
+            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             AddTraps();
             AddEnemies();
             Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));

@@ -79,13 +79,13 @@ namespace Framework.Render
         private static void DeformTexture(Quad rectangle)
         {
             GL.Begin(PrimitiveType.Quads);
-            GL.TexCoord2(0f, 0f);
+            GL.TexCoord2(0f, 0.01f);
             GL.Vertex2(rectangle.vertex1);
-            GL.TexCoord2(1f, 0f);
+            GL.TexCoord2(1f, 0.01f);
             GL.Vertex2(rectangle.vertex2);
-            GL.TexCoord2(1f, 0.995f);
+            GL.TexCoord2(1f, 0.99f);
             GL.Vertex2(rectangle.vertex3);
-            GL.TexCoord2(0f, 0.995f);
+            GL.TexCoord2(0f, 0.99f);
             GL.Vertex2(rectangle.vertex4);
             GL.End();
         }

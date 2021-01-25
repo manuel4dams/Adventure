@@ -62,7 +62,8 @@ namespace ForestAdventure.PlayerComponents
                     transform.position = checkpointPosition;
                     break;
                 case Exit _:
-                    Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position));
+                    Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position, Resources.Resources.Victory, new RectangleBounds(15f, 5f)));
+                    Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position - new Vector2(0f, 5f), Resources.Resources.Endscreen, new RectangleBounds(30f, 2.5f)));
                     break;
                 case Checkpoint _:
                     currentCheckpoint?.setActive(false);
