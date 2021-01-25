@@ -3,6 +3,7 @@ using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
+using Framework.Sound;
 using OpenTK;
 using OpenTK.Input;
 
@@ -47,6 +48,8 @@ namespace ForestAdventure.Bow
                   keyboardState.IsKeyDown(Key.E) ||
                   Mouse.GetState().IsButtonDown(MouseButton.Right)))
             {
+                var bowShot = new Sound(Resources.Resources.Bow_shot);
+                bowShot.Play();
                 ShootArrow();
                 shotTimer = 0f;
             }

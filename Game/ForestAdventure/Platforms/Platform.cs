@@ -1,7 +1,10 @@
-﻿using Framework.Collision.Collider;
+﻿using System.Drawing;
+using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Platforms
@@ -18,10 +21,11 @@ namespace ForestAdventure.Platforms
             AddComponent(textureRenderer);
             AddComponent(new RectangleColliderComponent(this, bounds, false, true));
             textureRenderer.SetCropData(new Vector4(0f, 0.71875f, length / 2f, 1f));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
+            }
         }
     }
 }

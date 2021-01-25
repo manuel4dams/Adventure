@@ -1,4 +1,5 @@
-﻿using ForestAdventure.Bow;
+﻿using System.Drawing;
+using ForestAdventure.Bow;
 using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
 using ForestAdventure.GameCamera;
@@ -6,10 +7,12 @@ using ForestAdventure.GameEnding;
 using ForestAdventure.Level;
 using ForestAdventure.Traps;
 using Framework.Collision.Collider;
+using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.PlayerComponents
@@ -42,10 +45,11 @@ namespace ForestAdventure.PlayerComponents
             AddComponent(new PlayerMovementComponent(this));
             AddComponent(new BowComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
+            }
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
