@@ -11,15 +11,12 @@ namespace ForestAdventure.GameEnding
 {
     public class GameEndingOverlay : GameObject, IUpdateable
     {
-        public GameEndingOverlay(GameObject gameObject, Vector2 position)
+        public GameEndingOverlay(GameObject gameObject, Vector2 position, Bitmap texture, RectangleBounds textureBounds)
         {
             Game.instance.RemoveGameObject(gameObject);
 
-            var textureBounds = new RectangleBounds(new Vector2(15f, 5f));
-            var colorOverlayBounds = new RectangleBounds(new Vector2(200f, 200f));
             transform.position = position;
-            AddComponent(new RectangleColorRenderer(this, colorOverlayBounds, Color.FromArgb(50, Color.Green)));
-            AddComponent(new RectangleTextureRenderer(this, textureBounds, Resources.Resources.GameWon));
+            AddComponent(new RectangleTextureRenderer(this, textureBounds, texture));
             AddComponent(new CameraFollowObjectComponent(this));
         }
 

@@ -41,7 +41,7 @@ namespace ForestAdventure
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
-            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62f)));
+            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             AddTraps();
             AddEnemies();
             Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
@@ -94,11 +94,11 @@ namespace ForestAdventure
 
         private static void AddCheckpoints()
         {
-            // y = platformY + 4f
-            Game.instance.AddGameObject(new Checkpoint(new Vector2(0f, 3f)));
-            Game.instance.AddGameObject(new Checkpoint(new Vector2(-8f, 61f)));
-            Game.instance.AddGameObject(new Checkpoint(new Vector2(72f, 77f)));
-            Game.instance.AddGameObject(new Checkpoint(new Vector2(130f, 79f)));
+            // y = platformY + 2.2f
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(0f, 0.7f)));
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(-8f, 60.2f)));
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(72f, 76.2f)));
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(130f, 78.2f)));
         }
 
         private static void AddEnemies()
