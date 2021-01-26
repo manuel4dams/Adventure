@@ -1,5 +1,6 @@
 using ForestAdventure.Bow;
 using ForestAdventure.Enemies;
+using ForestAdventure.Level;
 using ForestAdventure.Platforms;
 using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
@@ -34,7 +35,7 @@ namespace ForestAdventure.PlayerComponents
         private Vector2 velocity;
         private RectangleTextureRenderer playerRenderer;
         private int animationFrame;
-        private float animationTimer = 0;
+        private float animationTimer;
         private Transform rope;
         private BowComponent bow;
         public GameObject gameObject { get; }
@@ -62,13 +63,18 @@ namespace ForestAdventure.PlayerComponents
                     climbable = true;
                     rope = other.gameObject.transform;
                     break;
-            }
-
-            if (other.gameObject is Enemy ||
-                other.gameObject is HorizontalMovingTrap ||
-                other.gameObject is VerticalMovingTrap)
-            {
-                velocity = new Vector2(0, 0);
+                case Enemy _:
+                    velocity = new Vector2(0, 0);
+                    break;
+                case HorizontalMovingTrap _:
+                    velocity = new Vector2(0, 0);
+                    break;
+                case VerticalMovingTrap _:
+                    velocity = new Vector2(0, 0);
+                    break;
+                case BottomLevelBorder _:
+                    velocity = new Vector2(0, 0);
+                    break;
             }
         }
 
