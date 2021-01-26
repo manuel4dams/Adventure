@@ -59,17 +59,26 @@ namespace ForestAdventure.Bow
                 case Player _:
                     break;
                 case VerticalRope _:
-                    soundMiss.Play();
                     break;
                 case Checkpoint _:
                     break;
                 case Exit _:
                     break;
                 case VerticalMovingTrap _:
-                    soundMiss.Play();
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
                     break;
                 case HorizontalMovingTrap _:
-                    soundMiss.Play();
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
                     break;
                 case Platform _:
                     if (lifeTime < arrowNoCollisionTime)
@@ -80,7 +89,7 @@ namespace ForestAdventure.Bow
 
                     break;
                 case Arrow _:
-                    soundEnemyHit.Play();
+                    soundHit.Play();
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
                     break;
