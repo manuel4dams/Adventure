@@ -114,7 +114,6 @@ namespace ForestAdventure
 
         private static void AddTraps()
         {
-            return;
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 80.5f), 84f, 90f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 89.5f), 84f, 90f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f,89.5f));
