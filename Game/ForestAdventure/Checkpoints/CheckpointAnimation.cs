@@ -2,9 +2,6 @@
 using Framework.Interfaces;
 using Framework.Render;
 using OpenTK;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ForestAdventure.Checkpoints
 {
@@ -40,10 +37,12 @@ namespace ForestAdventure.Checkpoints
                 {
                     if (animationTimer <= 0)
                     {
-                        checkpointRenderer.SetCropData(new Vector4(0.2f * animationFrame, 0f, 0.2f * (animationFrame + 1f), 0.99f));
+                        checkpointRenderer.SetCropData(new Vector4(0.2f * animationFrame, 0f,
+                            0.2f * (animationFrame + 1f), 0.99f));
                         animationFrame++;
                         animationTimer = ANIMATION_TIMER_RESET;
                     }
+
                     animationTimer -= deltaTime;
                 }
             }
