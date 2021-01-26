@@ -14,6 +14,20 @@ using OpenTK;
 
 namespace ForestAdventure
 {
+    // TODO
+    // seil hitbox zu klein?
+    // was muss man tun?
+    // klettern mit w oder leertaste?
+    // nach respawn nicht direkt bewegen?
+    // sprung ist zu hoch?
+    // warum kann  man pfeile abschiessen?
+    // soll man sich mit pfeilen selbst töten können?
+    //
+    // spike textur ist nicht so gut
+    // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
+    // velocity beim reset auch resetten
+    //
+    // Level muss größer werden!
     public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
