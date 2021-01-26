@@ -64,12 +64,15 @@ namespace ForestAdventure.PlayerComponents
                     rope = other.gameObject.transform;
                     break;
                 case Enemy _:
+                    climbable = false;
                     velocity = new Vector2(0, 0);
                     break;
                 case HorizontalMovingTrap _:
+                    climbable = false;
                     velocity = new Vector2(0, 0);
                     break;
                 case VerticalMovingTrap _:
+                    climbable = false;
                     velocity = new Vector2(0, 0);
                     break;
                 case BottomLevelBorder _:
