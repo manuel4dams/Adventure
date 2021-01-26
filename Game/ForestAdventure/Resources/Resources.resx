@@ -166,8 +166,8 @@
   <data name="Arrow_enemy_hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Audio\Arrow\Enemy_hit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
   </data>
-  <data name="Arrow_miss" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Audio\Arrow\Miss.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
+  <data name="Bow_shot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Audio\Bow_shot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral</value>
   </data>
   <data name="Checkpoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>checkpoint\checkpoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

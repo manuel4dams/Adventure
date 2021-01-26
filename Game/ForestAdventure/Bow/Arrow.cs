@@ -32,7 +32,6 @@ namespace ForestAdventure.Bow
         private Vector2 force;
         private readonly Sound soundHit = new Sound(Resources.Resources.Arrow_hit);
         private readonly Sound soundEnemyHit = new Sound(Resources.Resources.Arrow_enemy_hit);
-        private readonly Sound soundMiss = new Sound(Resources.Resources.Arrow_miss);
 
         public Arrow(Vector2 force)
         {
