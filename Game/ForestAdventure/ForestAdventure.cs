@@ -15,21 +15,16 @@ using OpenTK;
 namespace ForestAdventure
 {
     // TODO
-    // seil hitbox zu klein?
     // was muss man tun?
-    // klettern mit w oder leertaste?
     // nach respawn nicht direkt bewegen?
-    // sprung ist zu hoch?
     // warum kann  man pfeile abschiessen?
     // soll man sich mit pfeilen selbst töten können?
-    // checkpoints in neutraler farbe statt rot?
     // minen part evtl vereinfachen?
     // 2ter minenteil wenn treffer am seil buggy?
     // Partikel bei gegner tod
     
     // spike textur ist nicht so gut
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
-    // velocity beim reset auch resetten
     //
     // Level muss größer werden!
     public static class ForestAdventure
