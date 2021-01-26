@@ -57,13 +57,13 @@ namespace ForestAdventure.PlayerComponents
             switch (other.gameObject)
             {
                 case Enemy _:
-                    transform.position = checkpointPosition;
+                    Killed();
                     break;
                 case HorizontalMovingTrap _:
-                    transform.position = checkpointPosition;
+                    Killed();
                     break;
                 case VerticalMovingTrap _:
-                    transform.position = checkpointPosition;
+                    Killed();
                     break;
                 case Exit _:
                     Game.instance.AddGameObject(new GameEndingOverlay(this, transform.position));
@@ -78,6 +78,11 @@ namespace ForestAdventure.PlayerComponents
                     transform.position = checkpointPosition;
                     break;
             }
+        }
+
+        public void Killed()
+        {
+            transform.position = checkpointPosition;
         }
     }
 }

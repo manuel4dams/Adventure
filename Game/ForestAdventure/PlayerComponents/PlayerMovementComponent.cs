@@ -89,7 +89,7 @@ namespace ForestAdventure.PlayerComponents
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
             var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
-            var climbing = keyboardState.IsKeyDown(Key.Space) ;
+            var climbing = keyboardState.IsKeyDown(Key.Space) || Mouse.GetState().IsButtonDown(MouseButton.Right);
             var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
             if (velocity.Y <= MAX_FALL_SPEED)

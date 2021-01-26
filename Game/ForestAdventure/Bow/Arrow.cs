@@ -25,8 +25,8 @@ namespace ForestAdventure.Bow
         private const float FORCE_INITIAL_MULTIPLIER = 30f;
         private const float FORCE_DRAIN = 0.99f;
 
-        private readonly float arrowNoCollisionTime;
         private float lifeTime = 5f;
+        private readonly float arrowNoCollisionTime;
         private float gravityVelocity;
         private bool gravityEnabled = true;
         private Vector2 force;
@@ -35,7 +35,7 @@ namespace ForestAdventure.Bow
 
         public Arrow(Vector2 force)
         {
-            arrowNoCollisionTime = lifeTime - 0.04f;
+            arrowNoCollisionTime = lifeTime - 0.07f;
             this.force = force;
             transform.rotation = MathF.Atan2(force.Y, force.X);
 
@@ -55,7 +55,12 @@ namespace ForestAdventure.Bow
         {
             switch (other.gameObject)
             {
-                case Player _:
+                case Player player:
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        player.Killed();
+                    }
                     break;
                 case VerticalRope _:
                     break;
@@ -87,22 +92,10 @@ namespace ForestAdventure.Bow
                     }
 
                     break;
-                case Arrow _:
-                    soundHit.Play();
-                    Game.instance.RemoveGameObject(other.gameObject);
-                    Game.instance.RemoveGameObject(this);
-                    break;
                 case Enemy _:
                     soundEnemyHit.Play();
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
-                    break;
-                default:
-                    if (lifeTime < arrowNoCollisionTime)
-                    {
-                        Game.instance.RemoveGameObject(this);
-                    }
-
                     break;
             }
         }

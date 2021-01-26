@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using ForestAdventure.Checkpoints;
+using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.Platforms;
@@ -15,14 +16,9 @@ using OpenTK;
 namespace ForestAdventure
 {
     // TODO
-    // was muss man tun?
-    // nach respawn nicht direkt bewegen?
-    // warum kann  man pfeile abschiessen?
-    // soll man sich mit pfeilen selbst töten können?
-    // minen part evtl vereinfachen?
     // 2ter minenteil wenn treffer am seil buggy?
     // Partikel bei gegner tod
-    
+    //
     // spike textur ist nicht so gut
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
     //
@@ -57,7 +53,8 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             AddTraps();
             AddEnemies();
-            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            Game.instance.AddGameObject(new LevelMover());
+            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
 
@@ -128,7 +125,6 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 80.5f), 84f, 90f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(96f, 80.5f), 94f, 100f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(104f, 80.5f), 104f, 110f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(105f, 81f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(116f, 80.5f), 114f, 118f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(153f, 88f), 74f, 88f));
