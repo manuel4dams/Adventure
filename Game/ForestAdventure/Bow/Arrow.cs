@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Drawing;
+using ForestAdventure.Checkpoints;
 using ForestAdventure.Enemies;
+using ForestAdventure.Level;
+using ForestAdventure.Platforms;
 using ForestAdventure.PlayerComponents;
 using ForestAdventure.Ropes;
+using ForestAdventure.Traps;
 using Framework.Collision.Collider;
 using Framework.Development.Components;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
 using Framework.Shapes;
+using Framework.Sound;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Bow
@@ -24,6 +30,8 @@ namespace ForestAdventure.Bow
         private float gravityVelocity;
         private bool gravityEnabled = true;
         private Vector2 force;
+        private readonly Sound soundHit = new Sound(Resources.Resources.Arrow_hit);
+        private readonly Sound soundEnemyHit = new Sound(Resources.Resources.Arrow_enemy_hit);
 
         public Arrow(Vector2 force)
         {
@@ -36,10 +44,11 @@ namespace ForestAdventure.Bow
 
             AddComponent(new RectangleTextureRenderer(this, arrowBounds, Resources.Resources.Arrow));
             AddComponent(new RectangleColliderComponent(this, colliderBounds, true));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, arrowBounds, Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
+            }
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
@@ -50,10 +59,43 @@ namespace ForestAdventure.Bow
                     break;
                 case VerticalRope _:
                     break;
-                case Enemy _:
+                case Checkpoint _:
+                    break;
+                case Exit _:
+                    break;
+                case VerticalMovingTrap _:
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
+                    break;
+                case HorizontalMovingTrap _:
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
+                    break;
+                case Platform _:
+                    if (lifeTime < arrowNoCollisionTime)
+                    {
+                        soundHit.Play();
+                        Game.instance.RemoveGameObject(this);
+                    }
+
+                    break;
+                case Arrow _:
+                    soundHit.Play();
                     Game.instance.RemoveGameObject(other.gameObject);
                     Game.instance.RemoveGameObject(this);
-                    Game.instance.AddGameObject(new EnemyHitOverlay());
+                    break;
+                case Enemy _:
+                    soundEnemyHit.Play();
+                    Game.instance.RemoveGameObject(other.gameObject);
+                    Game.instance.RemoveGameObject(this);
                     break;
                 default:
                     if (lifeTime < arrowNoCollisionTime)

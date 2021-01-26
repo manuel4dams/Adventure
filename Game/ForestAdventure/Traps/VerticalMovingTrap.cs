@@ -4,6 +4,7 @@ using Framework.Development.Components;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
+using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Traps
@@ -31,10 +32,11 @@ namespace ForestAdventure.Traps
                 movementBorderBottom,
                 movementBorderTop,
                 TrapMovementComponent.MovementDirection.Vertical));
-#if DEBUG
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
-            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
-#endif
+            if (Debug.enabled)
+            {
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bodyBounds, Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, colliderBounds));
+            }
         }
     }
 }

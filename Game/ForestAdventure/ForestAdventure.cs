@@ -1,7 +1,5 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using ForestAdventure.Checkpoints;
-using ForestAdventure.Develop;
 using ForestAdventure.Enemies;
 using ForestAdventure.Level;
 using ForestAdventure.Platforms;
@@ -10,13 +8,25 @@ using ForestAdventure.Ropes;
 using ForestAdventure.Traps;
 using Framework.Camera;
 using Framework.Game;
+using Framework.Sound;
 using Framework.Transform;
 using OpenTK;
 
 namespace ForestAdventure
 {
-    // TODO maybe add traps?
-    // TODO add bigger and cooler level when hitboxes and textures are finished and all features are implemented
+    // TODO
+    // was muss man tun?
+    // nach respawn nicht direkt bewegen?
+    // warum kann  man pfeile abschiessen?
+    // soll man sich mit pfeilen selbst töten können?
+    // minen part evtl vereinfachen?
+    // 2ter minenteil wenn treffer am seil buggy?
+    // Partikel bei gegner tod
+    
+    // spike textur ist nicht so gut
+    // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
+    //
+    // Level muss größer werden!
     public static class ForestAdventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
@@ -25,6 +35,9 @@ namespace ForestAdventure
         {
             Game.instance.title = Assembly.GetExecutingAssembly().GetName().Name;
             InitLevel();
+            var sound = new Sound(Resources.Resources.Ambient_DutchForest, true);
+            sound.Play();
+
             Game.instance.Run();
         }
 
@@ -45,7 +58,6 @@ namespace ForestAdventure
             AddTraps();
             AddEnemies();
             Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            // Game.instance.AddGameObject(new LevelMover());
             Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
         }
 
@@ -61,10 +73,9 @@ namespace ForestAdventure
         {
             Game.instance.AddGameObject(new Platform(new Vector2(0f, -1.5f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(7f, 26f), 6f));
-            Game.instance.AddGameObject(new Platform(new Vector2(12f, 18f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(11f, 18f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(20f, 23f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(-4f, 41f), 6f));
-            Game.instance.AddGameObject(new Platform(new Vector2(-9f, 36f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(11f, 58f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(5f, 46f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(-4f, 52f), 6f));
@@ -80,7 +91,7 @@ namespace ForestAdventure
             Game.instance.AddGameObject(new Platform(new Vector2(145f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(160f, 76f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(180f, 76f), 14f));
-            Game.instance.AddGameObject(new Platform(new Vector2(195f, 110f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(195f, 90f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(200f, 56f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(214f, 60f), 6f));
         }
@@ -88,8 +99,8 @@ namespace ForestAdventure
         private static void AddRopes()
         {
             Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 13f), 26f));
-            Game.instance.AddGameObject(new VerticalRope(new Vector2(-4f, 35f), 12f));
-            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 86f), 48f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(-8f, 43f), 30f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 76f), 28f));
         }
 
         private static void AddCheckpoints()
@@ -115,20 +126,16 @@ namespace ForestAdventure
         private static void AddTraps()
         {
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 80.5f), 84f, 90f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(86f, 89.5f), 84f, 90f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f,89.5f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(92f, 87f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(96f, 80.5f), 94f, 100f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(96f, 89.5f), 94f, 100f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(104f, 80.5f), 104f, 110f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(104f, 89.5f), 104f, 110f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(105f, 81f), 80.5f,89.5f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(109f, 89f), 80.5f,89.5f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(105f, 81f), 80.5f, 89.5f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(116f, 80.5f), 114f, 118f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(116f, 89.5f), 114f, 118f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(138f, 81f), 74f,88f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(153f, 88f), 74f,88f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(153f, 88f), 74f, 88f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(160f, 76.5f), 157f, 163f));
-            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f,88f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f, 88f));
+            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 74f), 190f, 198f));
+            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 68f), 190f, 198f));
         }
     }
 }

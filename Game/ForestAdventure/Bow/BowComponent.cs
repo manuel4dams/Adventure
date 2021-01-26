@@ -3,6 +3,7 @@ using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Render;
+using Framework.Sound;
 using OpenTK;
 using OpenTK.Input;
 
@@ -29,9 +30,10 @@ namespace ForestAdventure.Bow
         {
             if (!enabled)
             {
-                bowRenderer.setCropData(new Vector4(0, 0, 0, 0));
+                bowRenderer.SetCropData(new Vector4(0, 0, 0, 0));
                 return;
             }
+
             var keyboardState = Keyboard.GetState();
             shotTimer += deltaTime;
             var mousePosition = Camera.instance.MousePositionToWorld();
@@ -46,6 +48,8 @@ namespace ForestAdventure.Bow
                   keyboardState.IsKeyDown(Key.E) ||
                   Mouse.GetState().IsButtonDown(MouseButton.Right)))
             {
+                var bowShot = new Sound(Resources.Resources.Bow_shot);
+                bowShot.Play();
                 ShootArrow();
                 shotTimer = 0f;
             }
@@ -96,34 +100,34 @@ namespace ForestAdventure.Bow
             {
                 if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0f, Y, 0.33333f, W));
+                    bowRenderer.SetCropData(new Vector4(0f, Y, 0.33333f, W));
                 }
 
                 if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
                 {
-                    bowRenderer.setCropData(new Vector4(0.33333f, Y, 0.66666f, W));
+                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0.66666f, W));
                 }
 
                 if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0.66666f, Y, 1f, W));
+                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 1f, W));
                 }
             }
             else
             {
                 if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(0.33333f, Y, 0f, W));
+                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0f, W));
                 }
 
                 if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
                 {
-                    bowRenderer.setCropData(new Vector4(0.66666f, Y, 0.33333f, W));
+                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 0.33333f, W));
                 }
 
                 if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
                 {
-                    bowRenderer.setCropData(new Vector4(1f, Y, 0.66666f, W));
+                    bowRenderer.SetCropData(new Vector4(1f, Y, 0.66666f, W));
                 }
             }
         }
