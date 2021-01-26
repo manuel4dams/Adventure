@@ -198,16 +198,6 @@ namespace ForestAdventure.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GameWon {
-            get {
-                object obj = ResourceManager.GetObject("GameWon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Platform {
             get {
                 object obj = ResourceManager.GetObject("Platform", resourceCulture);

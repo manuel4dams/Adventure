@@ -16,7 +16,10 @@ namespace ForestAdventure.Checkpoints
             transform.position = position;
 
             var bounds = new RectangleBounds(4f, 4f);
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Checkpoint,
+            AddComponent(new RectangleTextureRenderer(
+                this,
+                bounds,
+                Resources.Resources.Checkpoint,
                 RenderScaleType.Crop));
             AddComponent(new RectangleColliderComponent(this, bounds, true));
             AddComponent(new CheckpointAnimation(this));
