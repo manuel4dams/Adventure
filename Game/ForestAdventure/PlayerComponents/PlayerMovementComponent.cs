@@ -35,10 +35,9 @@ namespace ForestAdventure.PlayerComponents
         private RectangleTextureRenderer playerRenderer;
         private int animationFrame;
         private float animationTimer = 0;
-
-        public GameObject gameObject { get; }
         private Transform rope;
         private BowComponent bow;
+        public GameObject gameObject { get; }
 
         public PlayerMovementComponent(GameObject gameObject)
         {
@@ -95,68 +94,65 @@ namespace ForestAdventure.PlayerComponents
 
             if (climbable && climbing)
             {
-                if (climbable)
+                left *= 0f;
+                right *= 0f;
+                if (bow == null)
                 {
-                    left *= 0f;
-                    right *= 0f;
-                    if (bow == null)
-                    {
-                        bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
-                    }
+                    bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
+                }
 
-                    bow.enabled = false;
-                    if (velocity.Y != 0)
-                    {
-                        if (animationTimer <= 0)
-                        {
-                            if (gameObject.transform.position.X < rope.position.X)
-                            {
-                                playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.33333f,
-                                    (animationFrame + 1) * 0.25f, 0.66666f));
-                            }
-                            else
-                            {
-                                playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
-                                    animationFrame * 0.25f, 0.66666f));
-                            }
-
-                            animationFrame++;
-                            if (animationFrame >= 4)
-                            {
-                                animationFrame = 0;
-                            }
-
-                            animationTimer = ANIMATION_TIMER_RESET;
-                        }
-
-                        animationTimer -= deltaTime;
-                    }
-                    else
+                bow.enabled = false;
+                if (velocity.Y != 0)
+                {
+                    if (animationTimer <= 0)
                     {
                         if (gameObject.transform.position.X < rope.position.X)
                         {
-                            gameObject.transform.position.X = rope.position.X - 0.6f;
-                            playerRenderer.SetCropData(new Vector4(0f, 0.33333f, 0.25f, 0.66666f));
+                            playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.33333f,
+                                (animationFrame + 1) * 0.25f, 0.66666f));
                         }
                         else
                         {
-                            gameObject.transform.position.X = rope.position.X + 0.6f;
-                            playerRenderer.SetCropData(new Vector4(0.25f, 0.33333f, 0f, 0.66666f));
+                            playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
+                                animationFrame * 0.25f, 0.66666f));
                         }
+
+                        animationFrame++;
+                        if (animationFrame >= 4)
+                        {
+                            animationFrame = 0;
+                        }
+
+                        animationTimer = ANIMATION_TIMER_RESET;
                     }
 
-                    if (keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
+                    animationTimer -= deltaTime;
+                }
+                else
+                {
+                    if (gameObject.transform.position.X < rope.position.X)
                     {
                         gameObject.transform.position.X = rope.position.X - 0.6f;
+                        playerRenderer.SetCropData(new Vector4(0f, 0.33333f, 0.25f, 0.66666f));
                     }
-
-                    if (keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
+                    else
                     {
                         gameObject.transform.position.X = rope.position.X + 0.6f;
+                        playerRenderer.SetCropData(new Vector4(0.25f, 0.33333f, 0f, 0.66666f));
                     }
-
-                    velocity.Y = 0f;
                 }
+
+                if (keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
+                {
+                    gameObject.transform.position.X = rope.position.X - 0.6f;
+                }
+
+                if (keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
+                {
+                    gameObject.transform.position.X = rope.position.X + 0.6f;
+                }
+
+                velocity.Y = 0f;
             }
 
             if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing && climbable)

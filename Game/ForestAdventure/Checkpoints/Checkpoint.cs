@@ -1,10 +1,7 @@
-using System.Drawing;
 using Framework.Collision.Collider;
-using Framework.Development.Components;
 using Framework.Game;
 using Framework.Render;
 using Framework.Shapes;
-using Framework.Util;
 using OpenTK;
 
 namespace ForestAdventure.Checkpoints
@@ -15,14 +12,14 @@ namespace ForestAdventure.Checkpoints
         {
             transform.position = position;
 
-            var bounds = new RectangleBounds(2f, 2f);
-            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Checkpoint));
+            var bounds = new RectangleBounds(4f, 4f);
+            AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Checkpoint, RenderScaleType.Crop));
             AddComponent(new RectangleColliderComponent(this, bounds, true));
-            if (Debug.enabled)
-            {
-                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
-                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
-            }
+            AddComponent(new CheckpointAnimation(this));
+#if DEBUG
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds, Color.GreenYellow));
+            AddComponent(new DebugUnrotatedColliderEdgesComponent(this, bounds));
+#endif
         }
     }
 }

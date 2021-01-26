@@ -8,31 +8,31 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NAudio" Version="1.10.0"/>
-        <PackageReference Include="System.Resources.Extensions" Version="5.0.0"/>
+      <PackageReference Include="NAudio" Version="1.10.0" />
+      <PackageReference Include="System.Resources.Extensions" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\.editorconfig" Link=".editorconfig"/>
+        <None Include="..\.editorconfig" Link=".editorconfig" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Framework\Framework.csproj"/>
+        <ProjectReference Include="..\Framework\Framework.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Update="Resources\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Update="Resources\Resources.Designer.cs">
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
-            <DesignTime>True</DesignTime>
-        </Compile>
+      <Compile Update="Resources\Resources.Designer.cs">
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ namespace ForestAdventure.Level
         {
             transform.position = position;
 
-            var bounds = new RectangleBounds(2f, 3f);
+            var bounds = new RectangleBounds(4f, 4f);
             AddComponent(new RectangleTextureRenderer(this, bounds, Resources.Resources.Portal));
             AddComponent(new RectangleColliderComponent(this, bounds, true));
             if (Debug.enabled)
