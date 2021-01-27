@@ -52,9 +52,9 @@ namespace Adventure
             Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             AddTraps();
             AddEnemies();
-            Game.instance.AddGameObject(new LevelMover());
-            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -20f), 500));
+            // Game.instance.AddGameObject(new LevelMover());
+            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            AddLevelBorders();
         }
 
         private static void AddBackground()
@@ -131,6 +131,11 @@ namespace Adventure
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f, 88f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 74f), 190f, 198f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 68f), 190f, 198f));
+        }
+
+        private static void AddLevelBorders()
+        {
+            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -12f), 500));
         }
     }
 }
