@@ -16,6 +16,9 @@ namespace Adventure.Bow
 
         private float shotTimer = SHOT_COOLDOWN;
         private RectangleTextureRenderer bowRenderer;
+        private float y;
+        private float w;
+        private float angle;
 
         public GameObject gameObject { get; }
         public bool enabled;
@@ -39,9 +42,8 @@ namespace Adventure.Bow
             var mousePosition = Camera.instance.MousePositionToWorld();
             var pos = mousePosition - gameObject.transform.position;
             pos /= MathF.Sqrt((pos.X * pos.X) + (pos.Y * pos.Y));
-            var angle = MathF.Atan2((pos.X), (pos.Y));
-            var Y = 0f;
-            var W = 0f;
+            angle = MathF.Atan2((pos.X), (pos.Y));
+
             if (Mouse.GetState().IsButtonDown(MouseButton.Left) && shotTimer >= SHOT_COOLDOWN &&
                 // check that non of the climbing keys is pressed
                 !(keyboardState.IsKeyDown(Key.ShiftLeft) ||
@@ -54,82 +56,8 @@ namespace Adventure.Bow
                 shotTimer = 0f;
             }
 
-            if (angle > Math.PI * (7f / 8) || angle <= Math.PI * (-7f / 8))
-            {
-                Y = 0f;
-                W = 0.2f;
-            }
-            else if (angle > Math.PI * (5f / 8))
-            {
-                Y = 0.2f;
-                W = 0.4f;
-            }
-            else if (angle > Math.PI * (3f / 8))
-            {
-                Y = 0.8f;
-                W = 1f;
-            }
-            else if (angle > Math.PI * (1f / 8))
-            {
-                Y = 0.4f;
-                W = 0.6f;
-            }
-            else if (angle > Math.PI * (-1f / 8))
-            {
-                Y = 0.6f;
-                W = 0.8f;
-            }
-            else if (angle > Math.PI * (-3f / 8))
-            {
-                Y = 0.4f;
-                W = 0.6f;
-            }
-            else if (angle > Math.PI * (-5f / 8))
-            {
-                Y = 0.8f;
-                W = 1f;
-            }
-            else if (angle > Math.PI * (-7f / 8))
-            {
-                Y = 0.2f;
-                W = 0.4f;
-            }
-
-
-            if (angle >= 0)
-            {
-                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
-                {
-                    bowRenderer.SetCropData(new Vector4(0f, Y, 0.33333f, W));
-                }
-
-                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
-                {
-                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0.66666f, W));
-                }
-
-                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
-                {
-                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 1f, W));
-                }
-            }
-            else
-            {
-                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
-                {
-                    bowRenderer.SetCropData(new Vector4(0.33333f, Y, 0f, W));
-                }
-
-                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
-                {
-                    bowRenderer.SetCropData(new Vector4(0.66666f, Y, 0.33333f, W));
-                }
-
-                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
-                {
-                    bowRenderer.SetCropData(new Vector4(1f, Y, 0.66666f, W));
-                }
-            }
+            GetAimAngle();
+            SetAnimation();
         }
 
         private void ShootArrow()
@@ -140,6 +68,88 @@ namespace Adventure.Bow
             var arrow = new Arrow(force);
             arrow.transform.position = gameObject.transform.position;
             Game.instance.AddGameObject(arrow);
+        }
+
+        private void GetAimAngle()
+        {
+            if (angle > Math.PI * (7f / 8) || angle <= Math.PI * (-7f / 8))
+            {
+                y = 0f;
+                w = 0.2f;
+            }
+            else if (angle > Math.PI * (5f / 8))
+            {
+                y = 0.2f;
+                w = 0.4f;
+            }
+            else if (angle > Math.PI * (3f / 8))
+            {
+                y = 0.8f;
+                w = 1f;
+            }
+            else if (angle > Math.PI * (1f / 8))
+            {
+                y = 0.4f;
+                w = 0.6f;
+            }
+            else if (angle > Math.PI * (-1f / 8))
+            {
+                y = 0.6f;
+                w = 0.8f;
+            }
+            else if (angle > Math.PI * (-3f / 8))
+            {
+                y = 0.4f;
+                w = 0.6f;
+            }
+            else if (angle > Math.PI * (-5f / 8))
+            {
+                y = 0.8f;
+                w = 1f;
+            }
+            else if (angle > Math.PI * (-7f / 8))
+            {
+                y = 0.2f;
+                w = 0.4f;
+            }
+        }
+
+        private void SetAnimation()
+        {
+            if (angle >= 0)
+            {
+                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
+                {
+                    bowRenderer.SetCropData(new Vector4(0f, y, 0.33333f, w));
+                }
+
+                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
+                {
+                    bowRenderer.SetCropData(new Vector4(0.33333f, y, 0.66666f, w));
+                }
+
+                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
+                {
+                    bowRenderer.SetCropData(new Vector4(0.66666f, y, 1f, w));
+                }
+            }
+            else
+            {
+                if (shotTimer >= SHOT_ANIMATION_COOLDOWN)
+                {
+                    bowRenderer.SetCropData(new Vector4(0.33333f, y, 0f, w));
+                }
+
+                if (shotTimer >= 0 && shotTimer < (SHOT_ANIMATION_COOLDOWN / 2))
+                {
+                    bowRenderer.SetCropData(new Vector4(0.66666f, y, 0.33333f, w));
+                }
+
+                if (shotTimer >= (SHOT_ANIMATION_COOLDOWN / 2) && shotTimer < SHOT_ANIMATION_COOLDOWN)
+                {
+                    bowRenderer.SetCropData(new Vector4(1f, y, 0.66666f, w));
+                }
+            }
         }
     }
 }
