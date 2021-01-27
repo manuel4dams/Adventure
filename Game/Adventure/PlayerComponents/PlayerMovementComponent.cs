@@ -100,47 +100,9 @@ namespace Adventure.PlayerComponents
             {
                 left *= 0f;
                 right *= 0f;
-                
+
                 bow.enabled = false;
-                if (velocity.Y != 0)
-                {
-                    if (animationTimer <= 0)
-                    {
-                        if (gameObject.transform.position.X < rope.position.X)
-                        {
-                            playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.33333f,
-                                (animationFrame + 1) * 0.25f, 0.66666f));
-                        }
-                        else
-                        {
-                            playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
-                                animationFrame * 0.25f, 0.66666f));
-                        }
-
-                        animationFrame++;
-                        if (animationFrame >= 4)
-                        {
-                            animationFrame = 0;
-                        }
-
-                        animationTimer = ANIMATION_TIMER_RESET;
-                    }
-
-                    animationTimer -= deltaTime;
-                }
-                else
-                {
-                    if (gameObject.transform.position.X < rope.position.X)
-                    {
-                        gameObject.transform.position.X = rope.position.X - 0.6f;
-                        playerRenderer.SetCropData(new Vector4(0f, 0.33333f, 0.25f, 0.66666f));
-                    }
-                    else
-                    {
-                        gameObject.transform.position.X = rope.position.X + 0.6f;
-                        playerRenderer.SetCropData(new Vector4(0.25f, 0.33333f, 0f, 0.66666f));
-                    }
-                }
+                SetAnimation(deltaTime);
 
                 if (keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
                 {
@@ -203,7 +165,55 @@ namespace Adventure.PlayerComponents
             pos = mousePosition - gameObject.transform.position;
 
             CheckIfJumpAllowed(deltaTime, climbing);
+            SetStandingAnimation(climbing);
+            climbable = false;
+        }
 
+        private void SetAnimation(float deltaTime)
+        {
+            if (velocity.Y != 0)
+            {
+                if (animationTimer <= 0)
+                {
+                    if (gameObject.transform.position.X < rope.position.X)
+                    {
+                        playerRenderer.SetCropData(new Vector4(animationFrame * 0.25f, 0.33333f,
+                            (animationFrame + 1) * 0.25f, 0.66666f));
+                    }
+                    else
+                    {
+                        playerRenderer.SetCropData(new Vector4((animationFrame + 1) * 0.25f, 0.33333f,
+                            animationFrame * 0.25f, 0.66666f));
+                    }
+
+                    animationFrame++;
+                    if (animationFrame >= 4)
+                    {
+                        animationFrame = 0;
+                    }
+
+                    animationTimer = ANIMATION_TIMER_RESET;
+                }
+
+                animationTimer -= deltaTime;
+            }
+            else
+            {
+                if (gameObject.transform.position.X < rope.position.X)
+                {
+                    gameObject.transform.position.X = rope.position.X - 0.6f;
+                    playerRenderer.SetCropData(new Vector4(0f, 0.33333f, 0.25f, 0.66666f));
+                }
+                else
+                {
+                    gameObject.transform.position.X = rope.position.X + 0.6f;
+                    playerRenderer.SetCropData(new Vector4(0.25f, 0.33333f, 0f, 0.66666f));
+                }
+            }
+        }
+
+        private void SetStandingAnimation(bool climbing)
+        {
             if (!(climbing && climbable) && velocity.X == 0 && jumpAllowed)
             {
                 if (pos.X > 0)
@@ -217,8 +227,6 @@ namespace Adventure.PlayerComponents
                     animationTimer = 0;
                 }
             }
-
-            climbable = false;
         }
 
         private void CheckIfJumpAllowed(float deltaTime, bool climbing)
