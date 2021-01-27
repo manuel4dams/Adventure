@@ -16,7 +16,6 @@ using OpenTK;
 namespace Adventure
 {
     // TODO
-    // Spielname ändern oder den wald mehr in den vordergrund
     // 2ter minenteil wenn treffer am seil buggy?
     // Partikel bei gegner tod
     //
