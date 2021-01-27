@@ -86,10 +86,10 @@ namespace Adventure.PlayerComponents
         {
             bow.enabled = true;
             var keyboardState = Keyboard.GetState();
-            var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
-            var right = keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
-            var climbing = keyboardState.IsKeyDown(Key.Space) || Mouse.GetState().IsButtonDown(MouseButton.Right);
-            var down = keyboardState.IsKeyDown(Key.Down) || keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
+            var left = keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
+            var right = keyboardState.IsKeyDown(Key.D) ? 0.5f : 0f;
+            var climbing = keyboardState.IsKeyDown(Key.Space);
+            var down = keyboardState.IsKeyDown(Key.S) ? -0.2f : 0f;
             var up = 0f;
             if (velocity.Y <= MAX_FALL_SPEED)
             {
@@ -104,12 +104,12 @@ namespace Adventure.PlayerComponents
                 bow.enabled = false;
                 SetAnimation(deltaTime);
 
-                if (keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A))
+                if (keyboardState.IsKeyDown(Key.A))
                 {
                     gameObject.transform.position.X = rope.position.X - 0.6f;
                 }
 
-                if (keyboardState.IsKeyDown(Key.Right) || keyboardState.IsKeyDown(Key.D))
+                if (keyboardState.IsKeyDown(Key.D))
                 {
                     gameObject.transform.position.X = rope.position.X + 0.6f;
                 }
@@ -117,7 +117,7 @@ namespace Adventure.PlayerComponents
                 velocity.Y = 0f;
             }
 
-            if ((keyboardState.IsKeyDown(Key.Up) || keyboardState.IsKeyDown(Key.W)) && climbing && climbable)
+            if ((keyboardState.IsKeyDown(Key.W)) && climbing && climbable)
             {
                 up = 0.2f;
             }
