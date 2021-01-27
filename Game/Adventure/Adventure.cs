@@ -16,7 +16,6 @@ using OpenTK;
 namespace Adventure
 {
     // TODO
-    // 2ter minenteil wenn treffer am seil buggy?
     // Partikel bei gegner tod
     //
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
