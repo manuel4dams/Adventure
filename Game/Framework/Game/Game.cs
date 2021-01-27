@@ -19,7 +19,6 @@ namespace Framework.Game
 
         public static Game instance => instanceInternal ?? (instanceInternal = new Game());
 
-        // TODO add animations to objects/components
         private Game()
         {
         }
@@ -69,6 +68,9 @@ namespace Framework.Game
 
         internal void Draw()
         {
+            // clear the texture buffer to prevent trailing textures
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+
             GL.Enable(EnableCap.Texture2D);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.Enable(EnableCap.Blend);

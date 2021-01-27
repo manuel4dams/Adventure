@@ -34,6 +34,7 @@ namespace Framework.Development.Components
             GL.Vertex2(rectangle.vertex4);
             GL.Vertex2(rectangle.vertex1);
             GL.End();
+            GL.Color4(Color.White);
         }
     }
 }
