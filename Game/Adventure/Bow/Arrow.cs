@@ -55,13 +55,13 @@ namespace Adventure.Bow
         {
             switch (other.gameObject)
             {
-                case Player player:
-                    if (lifeTime < arrowNoCollisionTime)
-                    {
-                        soundHit.Play();
-                        player.Killed();
-                    }
-                    break;
+                // case Player player:
+                //     if (lifeTime < arrowNoCollisionTime)
+                //     {
+                //         soundHit.Play();
+                //         player.Killed();
+                //     }
+                //     break;
                 case VerticalRope _:
                     break;
                 case Checkpoint _:
