@@ -20,7 +20,6 @@ namespace ForestAdventure
     // 2ter minenteil wenn treffer am seil buggy?
     // Partikel bei gegner tod
     //
-    // spike textur ist nicht so gut
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
     //
     // Level muss größer werden!
