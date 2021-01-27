@@ -14,8 +14,6 @@ using OpenTK.Input;
 
 namespace Adventure.PlayerComponents
 {
-    // set movement and jump to 0 on respawn
-    // Sprung timer? oder reset 
     public class PlayerMovementComponent : IComponent, IUpdateable, ICollision
     {
         private const float MOVEMENT_SPEED = 15f;
@@ -28,14 +26,16 @@ namespace Adventure.PlayerComponents
         private const float ANIMATION_TIMER_RESET = 0.1f;
         private const float MAX_FALL_SPEED = -40f;
 
+        private readonly RectangleTextureRenderer playerRenderer;
+
         private float jumpTimer = JUMP_COOLDOWN;
         private float graceJumpTimer;
         private bool jumpAllowed;
         private bool climbable;
         private Vector2 velocity;
-        private RectangleTextureRenderer playerRenderer;
         private int animationFrame;
         private float animationTimer;
+        private Vector2 pos;
         private Transform rope;
         private BowComponent bow;
         public GameObject gameObject { get; }
@@ -44,6 +44,7 @@ namespace Adventure.PlayerComponents
         {
             this.gameObject = gameObject;
             playerRenderer = gameObject.GetComponent<RectangleTextureRenderer>(0) as RectangleTextureRenderer;
+            bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
         }
 
         public void OnCollision(ICollider other, Vector2 touchOffset)
@@ -83,11 +84,6 @@ namespace Adventure.PlayerComponents
 
         public void Update(float deltaTime)
         {
-            if (bow == null)
-            {
-                bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
-            }
-
             bow.enabled = true;
             var keyboardState = Keyboard.GetState();
             var left = keyboardState.IsKeyDown(Key.Left) || keyboardState.IsKeyDown(Key.A) ? -0.5f : 0f;
@@ -104,11 +100,7 @@ namespace Adventure.PlayerComponents
             {
                 left *= 0f;
                 right *= 0f;
-                if (bow == null)
-                {
-                    bow = gameObject.GetComponent<BowComponent>(0) as BowComponent;
-                }
-
+                
                 bow.enabled = false;
                 if (velocity.Y != 0)
                 {
@@ -208,7 +200,29 @@ namespace Adventure.PlayerComponents
 
             gameObject.transform.position += velocity;
             var mousePosition = Camera.instance.MousePositionToWorld();
-            var pos = mousePosition - gameObject.transform.position;
+            pos = mousePosition - gameObject.transform.position;
+
+            CheckIfJumpAllowed(deltaTime, climbing);
+
+            if (!(climbing && climbable) && velocity.X == 0 && jumpAllowed)
+            {
+                if (pos.X > 0)
+                {
+                    playerRenderer.SetCropData(new Vector4(0, 0.66666f, 0.25f, 1f));
+                    animationTimer = 0;
+                }
+                else
+                {
+                    playerRenderer.SetCropData(new Vector4(0.25f, 0.66666f, 0f, 1f));
+                    animationTimer = 0;
+                }
+            }
+
+            climbable = false;
+        }
+
+        private void CheckIfJumpAllowed(float deltaTime, bool climbing)
+        {
             switch (jumpAllowed)
             {
                 case true:
@@ -244,34 +258,13 @@ namespace Adventure.PlayerComponents
                 }
                 case false when !(climbable && climbing):
                 {
-                    if (pos.X > 0)
-                    {
-                        playerRenderer.SetCropData(new Vector4(0f, 0f, 0.25f, 0.33333f));
-                    }
-                    else
-                    {
-                        playerRenderer.SetCropData(new Vector4(0.25f, 0f, 0f, 0.33333f));
-                    }
+                    playerRenderer.SetCropData(pos.X > 0
+                        ? new Vector4(0f, 0f, 0.25f, 0.33333f)
+                        : new Vector4(0.25f, 0f, 0f, 0.33333f));
 
                     break;
                 }
             }
-
-            if (!(climbing && climbable) && velocity.X == 0 && jumpAllowed)
-            {
-                if (pos.X > 0)
-                {
-                    playerRenderer.SetCropData(new Vector4(0, 0.66666f, 0.25f, 1f));
-                    animationTimer = 0;
-                }
-                else
-                {
-                    playerRenderer.SetCropData(new Vector4(0.25f, 0.66666f, 0f, 1f));
-                    animationTimer = 0;
-                }
-            }
-
-            climbable = false;
         }
     }
 }
