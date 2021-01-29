@@ -197,7 +197,6 @@ namespace Adventure
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(393f, 43.5f), 382f, 403f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(460f, 40f), 30f, 50f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(470f, 50f), 30f, 50f));
-            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(480f, 26.5f), 473f, 487f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(495f, 12.5f), 488f, 502f));
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(505f, 10f), 5f, 20f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(510f, 5.5f), 507f, 513f));
