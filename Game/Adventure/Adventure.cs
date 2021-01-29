@@ -16,11 +16,8 @@ using OpenTK;
 namespace Adventure
 {
     // TODO
-    // Partikel/Animation bei gegner tod?
-    //
+    // Partikel bei gegner tod?
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
-    //
-    // Level muss größer werden!
     public static class Adventure
     {
         private static Camera camera = new Camera(new Transform {scale = Vector2.One * 20f}, 1.6f);
