@@ -16,7 +16,7 @@ using OpenTK;
 namespace Adventure
 {
     // TODO
-    // Partikel bei gegner tod
+    // Partikel/Animation bei gegner tod?
     //
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
     //
@@ -48,11 +48,11 @@ namespace Adventure
             AddRopes();
             AddPlatforms();
             AddCheckpoints();
-            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
+            // Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             AddTraps();
             AddEnemies();
-            // Game.instance.AddGameObject(new LevelMover());
-            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            // Game.instance.AddGameObject(new LevelMover(new Vector2(300f, 65f)));
+            Game.instance.AddGameObject(new Player(new Vector2(214f, 70f)));
             AddLevelBorders();
         }
 
@@ -89,6 +89,23 @@ namespace Adventure
             Game.instance.AddGameObject(new Platform(new Vector2(195f, 90f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(200f, 56f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(214f, 60f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(220f, 66f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(220f, -1.5f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(245f, 3f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(270f, 7f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(295f, 11f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(295f, 11f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(330f, 70f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(310f, 16f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(320f, 21f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(330f, 26f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(235f, 66f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(250f, 66f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(265f, 66f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(283f, 66f), 14f));
+            Game.instance.AddGameObject(new Platform(new Vector2(300f, 66f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(317f, 62f), 6f));
+            Game.instance.AddGameObject(new Platform(new Vector2(340f, 43f), 14f));
         }
 
         private static void AddRopes()
@@ -96,6 +113,8 @@ namespace Adventure
             Game.instance.AddGameObject(new VerticalRope(new Vector2(7f, 13f), 26f));
             Game.instance.AddGameObject(new VerticalRope(new Vector2(-8f, 43f), 30f));
             Game.instance.AddGameObject(new VerticalRope(new Vector2(195f, 76f), 28f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(220f, 36f), 60f));
+            Game.instance.AddGameObject(new VerticalRope(new Vector2(330f, 50f), 40f));
         }
 
         private static void AddCheckpoints()
@@ -105,6 +124,8 @@ namespace Adventure
             Game.instance.AddGameObject(new Checkpoint(new Vector2(-8f, 60.2f)));
             Game.instance.AddGameObject(new Checkpoint(new Vector2(72f, 76.2f)));
             Game.instance.AddGameObject(new Checkpoint(new Vector2(130f, 78.2f)));
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(214f, 62.2f)));
+            Game.instance.AddGameObject(new Checkpoint(new Vector2(342f, 45.2f)));
         }
 
         private static void AddEnemies()
@@ -116,6 +137,9 @@ namespace Adventure
             Game.instance.AddGameObject(new Enemy(new Vector2(54f, 60.2f), 48f, 60f));
             Game.instance.AddGameObject(new Enemy(new Vector2(180f, 78.2f), 174f, 186f));
             Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.2f), 194f, 206f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(245f, 5.2f), 239f, 251f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(270f, 9.2f), 264f, 276f));
+            Game.instance.AddGameObject(new Enemy(new Vector2(295f, 13.2f), 289f, 301f));
         }
 
         private static void AddTraps()
@@ -130,11 +154,21 @@ namespace Adventure
             Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(168f, 84f), 74f, 88f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 74f), 190f, 198f));
             Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(194f, 68f), 190f, 198f));
+            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(283f, 66.5f), 276f, 288f));
+            Game.instance.AddGameObject(new HorizontalMovingTrap(new Vector2(244f, 66.5f), 216f, 268f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(227f, 66f), 60f, 80f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(242f, 66f), 60f, 75f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(257f, 66f), 60f, 80f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(271f, 66f), 60f, 75f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(293f, 66f), 60f, 80f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(306f, 63f), 60f, 75f));
+            Game.instance.AddGameObject(new VerticalMovingTrap(new Vector2(311f, 63f), 55f, 80f));
         }
 
         private static void AddLevelBorders()
         {
-            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(107f, -12f), 500));
+            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(200f, -12f), 500));
+            Game.instance.AddGameObject(new BottomLevelBorder(new Vector2(270f, 48f), 80));
         }
     }
 }
