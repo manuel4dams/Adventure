@@ -15,7 +15,6 @@ namespace Adventure.Enemies
             transform.position = position;
             var particleRenderer = new ParticleRenderer(this, 100, 2f, 0.1f, Color.IndianRed);
             AddComponent(particleRenderer);
-            particleRenderer.CreateParticles();
             if (Debug.enabled)
             {
                 AddComponent(new DebugUnrotatedColliderEdgesComponent(
