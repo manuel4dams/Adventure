@@ -63,6 +63,7 @@ namespace Adventure.Enemies
     {
         public float lifetime;
         private float size;
+        private int alpha = 255;
         private Vector2 position;
         private Vector2 direction;
         private Vector2 velocity;
@@ -83,6 +84,11 @@ namespace Adventure.Enemies
             velocity = Vector2.Lerp(velocity, new Vector2(0, -1), deltaTime * 2f);
             position += velocity * deltaTime;
             lifetime -= deltaTime;
+            color = Color.FromArgb(alpha, color);
+            if (alpha > 5)
+            {
+                alpha -= 5;
+            }
             Console.WriteLine($"{lifetime} {deltaTime} {position}");
         }
 

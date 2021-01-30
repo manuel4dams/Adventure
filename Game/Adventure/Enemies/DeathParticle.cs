@@ -10,7 +10,7 @@ namespace Adventure.Enemies
         {
             transform.position = position;
 
-            AddComponent(new ParticleRenderer(this, 100, 1f, 0.1f, Color.DarkRed));
+            AddComponent(new ParticleRenderer(this, 100, 2f, 0.1f, Color.DarkRed));
         }
     }
 }
