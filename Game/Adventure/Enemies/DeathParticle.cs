@@ -1,13 +1,10 @@
-﻿using Framework.Game;
-using Framework.Render;
-using OpenTK;
-using OpenTK.Graphics;
-using Framework.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Drawing;
 using Framework.Development.Components;
-using System.Drawing;
+using Framework.Game;
+using Framework.Render;
+using Framework.Shapes;
+using Framework.Util;
+using OpenTK;
 
 namespace Adventure.Enemies
 {
@@ -16,14 +13,16 @@ namespace Adventure.Enemies
         public DeathParticle(Vector2 position)
         {
             transform.position = position;
-            ParticleRenderer particleRenderer = new ParticleRenderer(this, 100, 2f, 0.1f, Color4.IndianRed);
+            var particleRenderer = new ParticleRenderer(this, 100, 2f, 0.1f, Color.IndianRed);
             AddComponent(particleRenderer);
             particleRenderer.CreateParticles();
             if (Debug.enabled)
             {
-                AddComponent(new DebugUnrotatedColliderEdgesComponent(this, new Framework.Shapes.RectangleBounds(.5f, .5f), Color.GreenYellow));
+                AddComponent(new DebugUnrotatedColliderEdgesComponent(
+                    this,
+                    new RectangleBounds(0.5f, 0.5f),
+                    Color.GreenYellow));
             }
         }
-
     }
 }

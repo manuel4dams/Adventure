@@ -1,69 +1,69 @@
-﻿using Framework.Game;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using Framework.Game;
 using Framework.Interfaces;
 using Framework.Shapes;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Framework.Render
 {
     public class ParticleRenderer : IComponent, IUpdateable, IRender
     {
-        struct Particle
+        private struct Particle
         {
-            public float Lifetime;
-            private float Size;
-            private Vector2 Position;
-            private Vector2 Direction;
-            private Vector2 Velocity;
-            private Color4 Color;
+            public float lifetime;
+            private float size;
+            private Vector2 position;
+            private Vector2 direction;
+            private Vector2 velocity;
+            private Color color;
 
-            public Particle(float lifetime, float size, Vector2 position, Vector2 direction, Color4 color)
+            public Particle(float lifetime, float size, Vector2 position, Vector2 direction, Color color)
             {
-                Lifetime = lifetime;
-                Size = size;
-                Position = position;
-                Direction = direction;
-                Velocity = Direction;
-                Color = color;
+                this.lifetime = lifetime;
+                this.size = size;
+                this.position = position;
+                this.direction = direction;
+                velocity = this.direction;
+                this.color = color;
             }
 
             public void Update(float deltaTime)
             {
-                //Vector2.Lerp(Velocity, new Vector2(0, -1), deltaTime);
-                Position = Position + Velocity * deltaTime;
-                Lifetime = Lifetime - deltaTime;
-                Console.WriteLine($"{Lifetime} {deltaTime} {Position}");
+                // Vector2.Lerp(Velocity, new Vector2(0, -1), deltaTime);
+                position += velocity * deltaTime;
+                lifetime -= deltaTime;
+                Console.WriteLine($"{lifetime} {deltaTime} {position}");
             }
 
             public void Draw()
             {
-                Quad quad = new Quad();
-                quad.vertex1 = Position + new Vector2(-Size, -Size);
-                quad.vertex2 = Position + new Vector2(Size, -Size);
-                quad.vertex3 = Position + new Vector2(Size, Size);
-                quad.vertex4 = Position + new Vector2(-Size, Size);
+                var quad = default(Quad);
+                quad.vertex1 = position + new Vector2(-size, -size);
+                quad.vertex2 = position + new Vector2(size, -size);
+                quad.vertex3 = position + new Vector2(size, size);
+                quad.vertex4 = position + new Vector2(-size, size);
                 quad.Translate(-Camera.Camera.instance.transform.position);
                 GL.Begin(PrimitiveType.Quads);
-                GL.Color4(Color);
+                GL.Color4(color);
                 GL.Vertex2(quad.vertex1);
                 GL.Vertex2(quad.vertex2);
                 GL.Vertex2(quad.vertex3);
                 GL.Vertex2(quad.vertex4);
                 GL.End();
+                GL.Color4(Color.White);
             }
         }
 
         int maxParticles;
         float Lifetime;
         float Size;
-        Color4 Color;
+        Color Color;
 
-        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float size, Color4 color)
+        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float size, Color color)
         {
             this.gameObject = gameObject;
             this.maxParticles = maxParticles;
@@ -78,22 +78,29 @@ namespace Framework.Render
 
         public void CreateParticles()
         {
-            Random random = new Random();
+            var random = new Random();
 
             for (int i = 0; i < maxParticles; i++)
             {
-                particles.Add(new Particle(Lifetime, Size, new Vector2(gameObject.transform.position.X, gameObject.transform.position.Y), new Vector2(2f, 1f), Color));
+                particles.Add(new Particle(
+                    Lifetime,
+                    Size,
+                    new Vector2(gameObject.transform.position.X,
+                        gameObject.transform.position.Y),
+                    new Vector2(2f, 1f),
+                    Color));
             }
         }
 
         public void Update(float deltaTime)
         {
-            //particles.ForEach(particle => particle.Update(deltaTime));
-            for (int i = 0; i < particles.Count; i++)
+            // particles.ForEach(particle => particle.Update(deltaTime));
+            for (var i = 0; i < particles.Count; i++)
             {
                 particles[i].Update(deltaTime);
             }
-            particles.RemoveAll(particle => particle.Lifetime <= 0);
+
+            particles.RemoveAll(particle => particle.lifetime <= 0);
         }
 
         public void Draw()
