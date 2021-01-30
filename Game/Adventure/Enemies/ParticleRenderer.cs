@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Framework.Camera;
 using Framework.Game;
 using Framework.Interfaces;
 using Framework.Shapes;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace Framework.Render
+namespace Adventure.Enemies
 {
     public class ParticleRenderer : IComponent, IUpdateable, IRender
     {
@@ -16,7 +17,8 @@ namespace Framework.Render
         float particleBounds;
         Color color;
 
-        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float particleBounds, Color color)
+        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float particleBounds,
+            Color color)
         {
             this.gameObject = gameObject;
             this.maxParticles = maxParticles;
@@ -50,10 +52,8 @@ namespace Framework.Render
                 particles.Add(new Particle(
                     lifetime,
                     particleBounds,
-                    new Vector2(
-                        gameObject.transform.position.X,
-                        gameObject.transform.position.Y),
-                    new Vector2(2f, 1f),
+                    gameObject.transform.position,
+                    new Vector2(new Random().Next(-10, 10), new Random().Next(-10, 10)),
                     color));
             }
         }
@@ -93,7 +93,7 @@ namespace Framework.Render
             quad.vertex2 = position + new Vector2(size, -size);
             quad.vertex3 = position + new Vector2(size, size);
             quad.vertex4 = position + new Vector2(-size, size);
-            quad.Translate(-Camera.Camera.instance.transform.position);
+            quad.Translate(-Camera.instance.transform.position);
 
             GL.Begin(PrimitiveType.Quads);
             GL.Color4(color);

@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using Framework.Game;
-using Framework.Render;
 using OpenTK;
 
 namespace Adventure.Enemies

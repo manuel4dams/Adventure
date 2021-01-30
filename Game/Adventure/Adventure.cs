@@ -44,16 +44,15 @@ namespace Adventure
         private static void InitLevel()
         {
             Game.instance.AddGameObject(camera);
-            // AddBackground();
-            // AddRopes();
-            // AddPlatforms();
-            // AddCheckpoints();
-            // Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
-            // AddTraps();
-            // AddEnemies();
-            // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
-            Game.instance.AddGameObject(new DeathParticle(new Vector2(2f, 1f)));
-            // AddLevelBorders();
+            AddBackground();
+            AddRopes();
+            AddPlatforms();
+            AddCheckpoints();
+            Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
+            AddTraps();
+            AddEnemies();
+            Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
+            AddLevelBorders();
         }
 
         private static void AddBackground()
