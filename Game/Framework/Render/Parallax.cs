@@ -14,7 +14,7 @@ namespace Framework.Render
         public Parallax(GameObject gameObject, float parallaxFactor)
         {
             this.gameObject = gameObject;
-            this.target = Camera.Camera.instance.transform;
+            target = Camera.Camera.instance.transform;
             this.parallaxFactor = parallaxFactor;
             gameObject.transform.position = new Vector2(target.position.X, target.position.Y);
         }
