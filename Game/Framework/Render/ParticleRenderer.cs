@@ -13,15 +13,15 @@ namespace Framework.Render
     {
         int maxParticles;
         float lifetime;
-        float size;
+        float particleBounds;
         Color color;
 
-        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float size, Color color)
+        public ParticleRenderer(GameObject gameObject, int maxParticles, float lifetime, float particleBounds, Color color)
         {
             this.gameObject = gameObject;
             this.maxParticles = maxParticles;
             this.lifetime = lifetime;
-            this.size = size;
+            this.particleBounds = particleBounds;
             this.color = color;
 
             CreateParticles();
@@ -35,7 +35,7 @@ namespace Framework.Render
         {
             particles.ForEach(particle => particle.Update(deltaTime));
 
-            // particles.RemoveAll(particle => particle.lifetime <= 0);
+            particles.RemoveAll(particle => particle.lifetime <= 0);
         }
 
         public void Draw()
@@ -49,7 +49,7 @@ namespace Framework.Render
             {
                 particles.Add(new Particle(
                     lifetime,
-                    size,
+                    particleBounds,
                     new Vector2(
                         gameObject.transform.position.X,
                         gameObject.transform.position.Y),
@@ -57,52 +57,52 @@ namespace Framework.Render
                     color));
             }
         }
+    }
 
-        private struct Particle
+    public class Particle
+    {
+        public float lifetime;
+        private float size;
+        private Vector2 position;
+        private Vector2 direction;
+        private Vector2 velocity;
+        private Color color;
+
+        public Particle(float lifetime, float size, Vector2 position, Vector2 direction, Color color)
         {
-            public float lifetime;
-            private float size;
-            private Vector2 position;
-            private Vector2 direction;
-            private Vector2 velocity;
-            private Color color;
+            this.lifetime = lifetime;
+            this.size = size;
+            this.position = position;
+            this.direction = direction;
+            velocity = this.direction;
+            this.color = color;
+        }
 
-            public Particle(float lifetime, float size, Vector2 position, Vector2 direction, Color color)
-            {
-                this.lifetime = lifetime;
-                this.size = size;
-                this.position = position;
-                this.direction = direction;
-                velocity = this.direction;
-                this.color = color;
-            }
+        public void Update(float deltaTime)
+        {
+            // Vector2.Lerp(Velocity, new Vector2(0, -1), deltaTime);
+            position += velocity * deltaTime;
+            lifetime -= deltaTime;
+            Console.WriteLine($"{lifetime} {deltaTime} {position}");
+        }
 
-            public void Update(float deltaTime)
-            {
-                // Vector2.Lerp(Velocity, new Vector2(0, -1), deltaTime);
-                position += velocity * deltaTime;
-                lifetime -= deltaTime;
-                Console.WriteLine($"{lifetime} {deltaTime} {position}");
-            }
+        public void Draw()
+        {
+            var quad = default(Quad);
+            quad.vertex1 = position + new Vector2(-size, -size);
+            quad.vertex2 = position + new Vector2(size, -size);
+            quad.vertex3 = position + new Vector2(size, size);
+            quad.vertex4 = position + new Vector2(-size, size);
+            quad.Translate(-Camera.Camera.instance.transform.position);
 
-            public void Draw()
-            {
-                var quad = default(Quad);
-                quad.vertex1 = position + new Vector2(-size, -size);
-                quad.vertex2 = position + new Vector2(size, -size);
-                quad.vertex3 = position + new Vector2(size, size);
-                quad.vertex4 = position + new Vector2(-size, size);
-                quad.Translate(-Camera.Camera.instance.transform.position);
-
-                GL.Begin(PrimitiveType.Quads);
-                GL.Color4(color);
-                GL.Vertex2(quad.vertex1);
-                GL.Vertex2(quad.vertex2);
-                GL.Vertex2(quad.vertex3);
-                GL.Vertex2(quad.vertex4);
-                GL.End();
-                GL.Color4(Color.White);
-            }
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color4(color);
+            GL.Vertex2(quad.vertex1);
+            GL.Vertex2(quad.vertex2);
+            GL.Vertex2(quad.vertex3);
+            GL.Vertex2(quad.vertex4);
+            GL.End();
+            GL.Color4(Color.White);
         }
     }
 }

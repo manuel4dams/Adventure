@@ -51,7 +51,6 @@ namespace Adventure
             // Game.instance.AddGameObject(new Exit(new Vector2(214f, 62.2f)));
             // AddTraps();
             // AddEnemies();
-            Game.instance.AddGameObject(new LevelMover());
             // Game.instance.AddGameObject(new Player(new Vector2(0f, 0f)));
             Game.instance.AddGameObject(new DeathParticle(new Vector2(2f, 1f)));
             // AddLevelBorders();
