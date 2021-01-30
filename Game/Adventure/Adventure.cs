@@ -88,6 +88,9 @@ namespace Adventure
             Game.instance.AddGameObject(new Platform(new Vector2(195f, 90f), 6f));
             Game.instance.AddGameObject(new Platform(new Vector2(200f, 56f), 14f));
             Game.instance.AddGameObject(new Platform(new Vector2(214f, 60f), 6f));
+
+            // Debug-Platform
+            Game.instance.AddGameObject(new Platform(new Vector2(14f, 0f), 14f));
         }
 
         private static void AddRopes()
@@ -115,6 +118,9 @@ namespace Adventure
             Game.instance.AddGameObject(new Enemy(new Vector2(54f, 60.2f), 48f, 60f));
             Game.instance.AddGameObject(new Enemy(new Vector2(180f, 78.2f), 174f, 186f));
             Game.instance.AddGameObject(new Enemy(new Vector2(200f, 58.2f), 194f, 206f));
+
+            // Debug-Enemy
+            Game.instance.AddGameObject(new Enemy(new Vector2(14f, 2.2f), 8f, 20f));
         }
 
         private static void AddTraps()

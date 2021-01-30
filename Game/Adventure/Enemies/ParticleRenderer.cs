@@ -53,7 +53,7 @@ namespace Adventure.Enemies
                     lifetime,
                     particleBounds,
                     gameObject.transform.position,
-                    new Vector2(new Random().Next(-10, 10), new Random().Next(-10, 10)),
+                    new Vector2(new Random().Next(-30, 30) / 10f, new Random().Next(-40, 50) / 10f),
                     color));
             }
         }
@@ -80,7 +80,7 @@ namespace Adventure.Enemies
 
         public void Update(float deltaTime)
         {
-            // Vector2.Lerp(Velocity, new Vector2(0, -1), deltaTime);
+            velocity = Vector2.Lerp(velocity, new Vector2(0, -1), deltaTime * 2f);
             position += velocity * deltaTime;
             lifetime -= deltaTime;
             Console.WriteLine($"{lifetime} {deltaTime} {position}");
