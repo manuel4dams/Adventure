@@ -95,6 +95,7 @@ namespace Adventure.Bow
                 case Enemy _:
                     soundEnemyHit.Play();
                     Game.instance.RemoveGameObject(other.gameObject);
+                    Game.instance.AddGameObject(new DeathParticle(transform.position));
                     Game.instance.RemoveGameObject(this);
                     break;
             }

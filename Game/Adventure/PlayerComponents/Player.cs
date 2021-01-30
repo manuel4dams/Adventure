@@ -42,8 +42,8 @@ namespace Adventure.PlayerComponents
                 RenderScaleType.Crop,
                 size: new Vector4(0f, 0.5f, 0.25f, 1f)));
             AddComponent(new RectangleColliderComponent(this, colliderBounds));
-            AddComponent(new PlayerMovementComponent(this));
             AddComponent(new BowComponent(this));
+            AddComponent(new PlayerMovementComponent(this));
             AddComponent(new CameraFollowObjectComponent(this));
             if (Debug.enabled)
             {
