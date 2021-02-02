@@ -16,7 +16,6 @@ using OpenTK;
 namespace Adventure
 {
     // TODO
-    // Partikel bei gegner tod?
     // beim klettern kann man daneben greifen, (eine textur wird zuspät upgedated?)
     public static class Adventure
     {
