@@ -89,7 +89,6 @@ namespace Adventure.Enemies
             {
                 alpha -= 5;
             }
-            Console.WriteLine($"{lifetime} {deltaTime} {position}");
         }
 
         public void Draw()
